@@ -1,8 +1,8 @@
 """
-Stock Screener – SMI Signal Strategy + FVG Analysis
-Kryteria: USA + Europa | cena < 50 USD/EUR | rosnące Revenue i Net Income QoQ
+Stock Screener – SMI Signal Strategy
+Kryteria: USA + Europa | cena < 100 USD/EUR | market cap > 200 mln
+         | rosnące Revenue i Net Income QoQ
 Sygnał wejścia: SMI crossover / exit OS na interwale tygodniowym
-FVG: Fair Value Gap – detekcja niezapełnionych luk na tygodniowym interwale
 (port Pine Script: "SMI Signal Strategy" – lengthK=10, lengthD=3, lengthEMA=3)
 """
 
@@ -16,14 +16,10 @@ import os
 from datetime import datetime
 from io import StringIO
 
-MAX_PRICE  = 100
-DELAY      = 0.25
-OUTPUT_DIR = "results"
-
-# FVG – ile tygodniowych świec wstecz szukamy luk
-FVG_LOOKBACK = 20
-# FVG – uznajemy cenę za "bliską" luce gdy jest w strefie lub do X% powyżej dolnej granicy
-FVG_NEAR_PCT = 0.03   # 3 %
+MAX_PRICE      = 100
+MIN_MARKET_CAP = 200_000_000   # 200 mln USD / EUR
+DELAY          = 0.25
+OUTPUT_DIR     = "results"
 
 # ══════════════════════════════════════════════════════════════
 #  POBIERANIE TICKERÓW
@@ -170,10 +166,10 @@ def calc_smi(high: pd.Series, low: pd.Series, close: pd.Series,
     SMI = 200 * emaEma(relativeRange, lengthD) / emaEma(highestLowestRange, lengthD)
     smiEMA = EMA(SMI, lengthEMA)
     """
-    highest_high        = high.rolling(length_k).max()
-    lowest_low          = low.rolling(length_k).min()
+    highest_high         = high.rolling(length_k).max()
+    lowest_low           = low.rolling(length_k).min()
     highest_lowest_range = highest_high - lowest_low
-    relative_range      = close - (highest_high + lowest_low) / 2
+    relative_range       = close - (highest_high + lowest_low) / 2
 
     denom = ema_ema(highest_lowest_range, length_d)
     denom = denom.replace(0, np.nan)
@@ -210,9 +206,9 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
         (use_zero  and zero_up)
     )
 
-    is_os       = s0 <= -40
-    strong_buy  = raw_buy and (s1 <= -40 or is_os)
-    buy_signal  = strong_only and strong_buy or (not strong_only and raw_buy)
+    is_os      = s0 <= -40
+    strong_buy = raw_buy and (s1 <= -40 or is_os)
+    buy_signal = strong_only and strong_buy or (not strong_only and raw_buy)
 
     if s0 >= 40:
         zone = "OVERBOUGHT"
@@ -224,132 +220,6 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
         zone = "Bearish"
 
     return buy_signal, strong_buy, round(s0, 2), round(e0, 2), zone
-
-
-# ══════════════════════════════════════════════════════════════
-#  FVG – FAIR VALUE GAP (tygodniowy interwał)
-#
-#  Definicja:
-#    Bullish FVG: high[i-2] < low[i]   → luka wzrostowa
-#                 strefa = [high[i-2], low[i]]
-#    Bearish FVG: low[i-2]  > high[i]  → luka spadkowa
-#                 strefa = [high[i], low[i-2]]
-#
-#  Luka jest "niezapełniona" dopóki żadna kolejna świeca nie
-#  przetradowała całego jej obszaru (cena nie weszła w strefę
-#  od przeciwnej strony i jej nie zamknęła).
-#
-#  Zwracamy OSTATNIĄ niezapełnioną bullish FVG w oknie lookback.
-#  Sprawdzamy też, czy bieżąca cena jest wewnątrz strefy lub
-#  tuż powyżej jej dolnej granicy (potencjalny test wsparcia).
-# ══════════════════════════════════════════════════════════════
-
-def calc_fvg(high: pd.Series, low: pd.Series, close: pd.Series,
-             lookback: int = FVG_LOOKBACK,
-             near_pct: float = FVG_NEAR_PCT):
-    """
-    Wykrywa niezapełnione Fair Value Gaps na danych tygodniowych.
-
-    Zwraca słownik:
-        fvg_bull        – czy istnieje niezapełniona bullish FVG (bool)
-        fvg_bear        – czy istnieje niezapełniona bearish FVG (bool)
-        fvg_bull_top    – górna granica ostatniej bullish FVG
-        fvg_bull_bot    – dolna granica ostatniej bullish FVG
-        fvg_bear_top    – górna granica ostatniej bearish FVG
-        fvg_bear_bot    – dolna granica ostatniej bearish FVG
-        fvg_bull_age    – ile tygodni temu powstała bullish FVG
-        fvg_bear_age    – ile tygodni temu powstała bearish FVG
-        fvg_price_in_bull – cena wewnątrz bullish FVG (bool)
-        fvg_price_near_bull – cena tuż nad dolną granicą bullish FVG (bool)
-        fvg_price_in_bear – cena wewnątrz bearish FVG (bool)
-        fvg_confluence  – sygnał SMI + cena przy bullish FVG (bool, wypełniany zewnętrznie)
-    """
-    result = {
-        "fvg_bull": False,
-        "fvg_bear": False,
-        "fvg_bull_top": None,
-        "fvg_bull_bot": None,
-        "fvg_bear_top": None,
-        "fvg_bear_bot": None,
-        "fvg_bull_age": None,
-        "fvg_bear_age": None,
-        "fvg_price_in_bull": False,
-        "fvg_price_near_bull": False,
-        "fvg_price_in_bear": False,
-    }
-
-    n = len(high)
-    if n < 3:
-        return result
-
-    current_price = float(close.iloc[-1])
-
-    # Pracujemy na ostatnich (lookback + 3) świecach
-    window = min(n, lookback + 3)
-    h = high.iloc[-window:].reset_index(drop=True)
-    l = low.iloc[-window:].reset_index(drop=True)
-    w = len(h)
-
-    # ── Szukamy FVG iterując od świecy i=2 do w-1
-    #    Świeca i jest ŚRODKOWĄ (napędową). Luka między i-2 a i.
-    #    Po znalezieniu sprawdzamy, czy późniejsze świece ją zapełniły.
-
-    last_bull = None   # (bot, top, age)
-    last_bear = None
-
-    for i in range(2, w):
-        bot_b = float(h.iloc[i - 2])   # Bullish FVG: high[i-2]
-        top_b = float(l.iloc[i])        #              low[i]
-        if bot_b < top_b:
-            # Potencjalna bullish FVG – sprawdzamy czy niezapełniona
-            # przez świece i+1 … w-1
-            filled = False
-            for j in range(i + 1, w):
-                # Wypełnienie = low[j] <= bot_b (cena weszła poniżej dolnej granicy FVG)
-                if float(l.iloc[j]) <= bot_b:
-                    filled = True
-                    break
-            if not filled:
-                age = (w - 1) - i   # ile świec temu (0 = najnowsza)
-                if last_bull is None or age < last_bull[2]:
-                    last_bull = (bot_b, top_b, age)
-
-        top_br = float(l.iloc[i - 2])  # Bearish FVG: low[i-2]
-        bot_br = float(h.iloc[i])       #              high[i]
-        if top_br > bot_br:
-            filled = False
-            for j in range(i + 1, w):
-                # Wypełnienie = high[j] >= top_br
-                if float(h.iloc[j]) >= top_br:
-                    filled = True
-                    break
-            if not filled:
-                age = (w - 1) - i
-                if last_bear is None or age < last_bear[2]:
-                    last_bear = (bot_br, top_br, age)
-
-    # ── Bullish FVG
-    if last_bull:
-        bot, top, age = last_bull
-        result["fvg_bull"]     = True
-        result["fvg_bull_bot"] = round(bot, 4)
-        result["fvg_bull_top"] = round(top, 4)
-        result["fvg_bull_age"] = age
-        # Cena wewnątrz strefy
-        result["fvg_price_in_bull"]   = bot <= current_price <= top
-        # Cena do near_pct% powyżej dolnej granicy (strefa wsparcia)
-        result["fvg_price_near_bull"] = current_price <= bot * (1 + near_pct) and current_price >= bot * (1 - near_pct)
-
-    # ── Bearish FVG
-    if last_bear:
-        bot, top, age = last_bear
-        result["fvg_bear"]     = True
-        result["fvg_bear_bot"] = round(bot, 4)
-        result["fvg_bear_top"] = round(top, 4)
-        result["fvg_bear_age"] = age
-        result["fvg_price_in_bear"] = bot <= current_price <= top
-
-    return result
 
 
 # ══════════════════════════════════════════════════════════════
@@ -378,7 +248,7 @@ def check_fundamentals(tkr_obj, min_annual_rev_growth: float = 0.15):
                 if ttm_prev > 0:
                     annual_rev_growth = (ttm_curr - ttm_prev) / ttm_prev
             elif len(rev) >= 5:
-                curr = float(rev.iloc[0])
+                curr      = float(rev.iloc[0])
                 prev_year = float(rev.iloc[4])
                 if prev_year > 0:
                     annual_rev_growth = (curr - prev_year) / prev_year
@@ -409,7 +279,7 @@ def run_screener():
     print(f"SCREENER START: {start.strftime('%Y-%m-%d %H:%M:%S')}")
     print("Wskaźnik: SMI Signal Strategy (lengthK=10, lengthD=3, lengthEMA=3)")
     print("Sygnały:  cross_up + exit_OS | strong = z głębi strefy OS")
-    print("FVG:      Fair Value Gap (tygodniowy, lookback=20 świec)")
+    print(f"Filtry:   cena ≤ {MAX_PRICE} USD/EUR | market cap > {MIN_MARKET_CAP/1e6:.0f} mln")
     print("=" * 60)
 
     print("\n[1/5] Pobieranie list spółek...")
@@ -419,11 +289,11 @@ def run_screener():
     print(f"\nŁącznie: {len(all_tickers)} spółek ({len(usa_tickers)} USA, {len(eu_tickers)} EU)")
 
     print("\n[2/5] Analiza spółek...")
-    results  = []
-    signals  = []
-    strong   = []
-    skipped  = 0
-    errors   = 0
+    results = []
+    signals = []
+    strong  = []
+    skipped = 0
+    errors  = 0
 
     for i, (symbol, market) in enumerate(all_tickers):
         try:
@@ -431,7 +301,14 @@ def run_screener():
             fi    = tkr.fast_info
             price = getattr(fi, "last_price", None)
 
+            # ── Filtr ceny
             if not price or price <= 0 or price > MAX_PRICE:
+                skipped += 1
+                continue
+
+            # ── Filtr kapitalizacji (market cap > 200 mln)
+            market_cap = getattr(fi, "market_cap", None)
+            if not market_cap or market_cap < MIN_MARKET_CAP:
                 skipped += 1
                 continue
 
@@ -455,13 +332,6 @@ def run_screener():
                 skipped += 1
                 continue
 
-            # ── FVG
-            fvg = calc_fvg(hist["High"], hist["Low"], hist["Close"])
-            # Confluence = sygnał SMI + cena przy / wewnątrz bullish FVG
-            fvg["fvg_confluence"] = buy_sig and (
-                fvg["fvg_price_in_bull"] or fvg["fvg_price_near_bull"]
-            )
-
             try:
                 info    = tkr.info
                 name    = info.get("shortName", symbol)
@@ -474,48 +344,38 @@ def run_screener():
 
             annual_growth_pct = round(annual_growth * 100, 1) if annual_growth else None
             smi_above_ema     = smi_val > smi_ema_val if smi_ema_val else False
+            market_cap_mln    = round(market_cap / 1e6, 1)
 
             row = {
-                "ticker":               symbol,
-                "name":                 name,
-                "market":               market,
-                "country":              country,
-                "sector":               sector,
-                "price":                round(price, 2),
-                "currency":             currency,
-                "smi":                  smi_val,
-                "smi_ema":              smi_ema_val,
-                "smi_above_ema":        smi_above_ema,
-                "zone":                 zone,
-                "signal":               buy_sig,
-                "strong_signal":        strong_sig,
-                "rev_prev":             rev_vals[0] if rev_vals else None,
-                "rev_curr":             rev_vals[1] if rev_vals else None,
-                "earn_prev":            earn_vals[0] if earn_vals else None,
-                "earn_curr":            earn_vals[1] if earn_vals else None,
-                "rev_yoy_pct":          annual_growth_pct,
-                # FVG fields
-                "fvg_bull":             fvg["fvg_bull"],
-                "fvg_bull_bot":         fvg["fvg_bull_bot"],
-                "fvg_bull_top":         fvg["fvg_bull_top"],
-                "fvg_bull_age":         fvg["fvg_bull_age"],
-                "fvg_price_in_bull":    fvg["fvg_price_in_bull"],
-                "fvg_price_near_bull":  fvg["fvg_price_near_bull"],
-                "fvg_bear":             fvg["fvg_bear"],
-                "fvg_bear_bot":         fvg["fvg_bear_bot"],
-                "fvg_bear_top":         fvg["fvg_bear_top"],
-                "fvg_bear_age":         fvg["fvg_bear_age"],
-                "fvg_price_in_bear":    fvg["fvg_price_in_bear"],
-                "fvg_confluence":       fvg["fvg_confluence"],
-                "scanned_at":           datetime.now().isoformat(),
+                "ticker":         symbol,
+                "name":           name,
+                "market":         market,
+                "country":        country,
+                "sector":         sector,
+                "price":          round(price, 2),
+                "currency":       currency,
+                "market_cap_mln": market_cap_mln,
+                "smi":            smi_val,
+                "smi_ema":        smi_ema_val,
+                "smi_above_ema":  smi_above_ema,
+                "zone":           zone,
+                "signal":         buy_sig,
+                "strong_signal":  strong_sig,
+                "rev_prev":       rev_vals[0] if rev_vals else None,
+                "rev_curr":       rev_vals[1] if rev_vals else None,
+                "earn_prev":      earn_vals[0] if earn_vals else None,
+                "earn_curr":      earn_vals[1] if earn_vals else None,
+                "rev_yoy_pct":    annual_growth_pct,
+                "scanned_at":     datetime.now().isoformat(),
             }
             results.append(row)
 
-            growth_str  = f"+{annual_growth_pct}% YoY" if annual_growth_pct else ""
-            sig_tag     = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
-            fvg_tag     = " [FVG✓]" if fvg["fvg_confluence"] else (" [fvg]" if fvg["fvg_bull"] else "")
+            growth_str = f"+{annual_growth_pct}% YoY" if annual_growth_pct else ""
+            sig_tag    = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
+            cap_str    = f"cap={market_cap_mln:.0f}M"
             print(f"  {sig_tag} [{i+1}] {symbol:10s} {market} | {price:6.2f} {currency} "
-                  f"| SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} | {zone:12s} | {growth_str}{fvg_tag}")
+                  f"| {cap_str:12s} | SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} "
+                  f"| {zone:12s} | {growth_str}")
 
             if buy_sig:
                 signals.append(row)
@@ -532,28 +392,23 @@ def run_screener():
 
     elapsed = round((datetime.now() - start).total_seconds() / 60, 1)
 
-    # Statystyki FVG
-    fvg_bull_count   = sum(1 for r in results if r["fvg_bull"])
-    fvg_conf_count   = sum(1 for r in results if r["fvg_confluence"])
-
     print(f"\n[3/5] Skanowanie zakończone w {elapsed} min")
     print(f"  Kandydaci: {len(results)} | Sygnały: {len(signals)} | Strong: {len(strong)} | "
           f"Pominięto: {skipped} | Błędy: {errors}")
-    print(f"  FVG Bullish: {fvg_bull_count} | FVG+Sygnał (confluence): {fvg_conf_count}")
 
     print("\n[4/5] Zapis wyników...")
     meta = {
-        "generated_at":   datetime.now().isoformat(),
-        "elapsed_min":    elapsed,
-        "total_scanned":  len(all_tickers),
-        "candidates":     len(results),
-        "signals":        len(signals),
-        "strong":         len(strong),
-        "skipped":        skipped,
-        "errors":         errors,
-        "indicator":      "SMI(10,3,3)",
-        "fvg_bull_count": fvg_bull_count,
-        "fvg_conf_count": fvg_conf_count,
+        "generated_at":  datetime.now().isoformat(),
+        "elapsed_min":   elapsed,
+        "total_scanned": len(all_tickers),
+        "candidates":    len(results),
+        "signals":       len(signals),
+        "strong":        len(strong),
+        "skipped":       skipped,
+        "errors":        errors,
+        "indicator":     "SMI(10,3,3)",
+        "max_price":     MAX_PRICE,
+        "min_cap_mln":   MIN_MARKET_CAP / 1e6,
     }
     for fname, data in [("meta", meta), ("results", results), ("signals", signals), ("strong", strong)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
@@ -582,55 +437,12 @@ def generate_html(meta, results, signals, strong):
                "Bullish": "zone-bull", "Bearish": "zone-bear"}.get(zone, "")
         return f'<span class="zone-badge {cls}">{zone}</span>'
 
-    def fvg_badge_html(r):
-        """Zwraca badge FVG dla tabeli."""
-        if r.get("fvg_confluence"):
-            return '<span class="badge-fvg-conf" title="SMI + cena przy Bullish FVG">FVG✦</span>'
-        if r.get("fvg_price_in_bull"):
-            return '<span class="badge-fvg-in" title="Cena wewnątrz Bullish FVG">FVG▲</span>'
-        if r.get("fvg_price_near_bull"):
-            return '<span class="badge-fvg-near" title="Cena blisko dolnej granicy Bullish FVG">FVG~</span>'
-        if r.get("fvg_bull"):
-            return '<span class="badge-fvg" title="Niezapełniona Bullish FVG w oknie 20 tygodni">FVG</span>'
-        if r.get("fvg_price_in_bear"):
-            return '<span class="badge-fvg-bear" title="Cena wewnątrz Bearish FVG (opór)">FVG▼</span>'
-        return ''
-
-    def fvg_summary_html(r):
-        """Blok FVG do karty sygnału."""
-        lines = []
-        if r.get("fvg_bull"):
-            bot  = r["fvg_bull_bot"]
-            top  = r["fvg_bull_top"]
-            age  = r["fvg_bull_age"]
-            age_str = f"{age}W temu" if age else "bieżący"
-            in_str = ""
-            if r.get("fvg_price_in_bull"):
-                in_str = ' <span style="color:var(--green);font-size:10px">● W STREFIE</span>'
-            elif r.get("fvg_price_near_bull"):
-                in_str = ' <span style="color:var(--amber);font-size:10px">~ BLISKO</span>'
-            lines.append(
-                f'<div class="fvg-row fvg-bull">'
-                f'<span>▲ Bull FVG</span>'
-                f'<span>{bot} – {top} ({age_str}){in_str}</span>'
-                f'</div>'
-            )
-        if r.get("fvg_bear"):
-            bot  = r["fvg_bear_bot"]
-            top  = r["fvg_bear_top"]
-            age  = r["fvg_bear_age"]
-            age_str = f"{age}W temu" if age else "bieżący"
-            in_str = ' <span style="color:var(--red);font-size:10px">● W STREFIE</span>' if r.get("fvg_price_in_bear") else ""
-            lines.append(
-                f'<div class="fvg-row fvg-bear">'
-                f'<span>▼ Bear FVG</span>'
-                f'<span>{bot} – {top} ({age_str}){in_str}</span>'
-                f'</div>'
-            )
-        if not lines:
-            return ""
-        inner = "".join(lines)
-        return f'<div class="fvg-block">{inner}</div>'
+    def fmt_cap(mln):
+        if mln is None:
+            return "—"
+        if mln >= 1000:
+            return f"{mln/1000:.1f} B"
+        return f"{mln:.0f} M"
 
     def rows_html(data):
         if not data:
@@ -638,11 +450,11 @@ def generate_html(meta, results, signals, strong):
         html = ""
         for r in data:
             strong_badge = '<span class="badge-strong">STRONG</span>' if r.get("strong_signal") else (
-                           '<span class="badge-signal">BUY</span>'   if r.get("signal")        else "")
+                           '<span class="badge-signal">BUY</span>'    if r.get("signal")        else "")
             rev_str  = f"{r['rev_prev']} → {r['rev_curr']} M"  if r.get("rev_curr")  else "—"
             earn_str = f"{r['earn_prev']} → {r['earn_curr']} M" if r.get("earn_curr") else "—"
             smi_cls  = "smi-above" if r["smi_above_ema"] else "smi-below"
-            fvg_b    = fvg_badge_html(r)
+            cap_str  = fmt_cap(r.get("market_cap_mln"))
             html += f"""
             <tr>
               <td><span class="ticker">{r['ticker']}</span>{strong_badge}</td>
@@ -650,10 +462,10 @@ def generate_html(meta, results, signals, strong):
               <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
               <td>{r['sector']}</td>
               <td class="num">{r['price']} {r['currency']}</td>
+              <td class="num cap-col">{cap_str}</td>
               <td class="num {smi_cls}">{r['smi']}</td>
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
-              <td class="num">{fvg_b}</td>
               <td class="num">{rev_str}</td>
               <td class="num">{earn_str}</td>
             </tr>"""
@@ -663,32 +475,22 @@ def generate_html(meta, results, signals, strong):
         if not data:
             return "<div class='empty'>Brak sygnałów w tym skanie</div>"
         cards = ""
-        for r in sorted(data, key=lambda x: (-x.get("fvg_confluence", 0),
-                                               -x.get("strong_signal", 0))):
-            market_cls   = "usa" if r["market"] == "USA" else "eu"
-            rev_str      = f"{r['rev_prev']} &rarr; {r['rev_curr']} M" if r.get("rev_curr")  else "&mdash;"
-            earn_str     = f"{r['earn_prev']} &rarr; {r['earn_curr']} M" if r.get("earn_curr") else "&mdash;"
+        for r in sorted(data, key=lambda x: -x.get("strong_signal", 0)):
+            market_cls = "usa" if r["market"] == "USA" else "eu"
+            rev_str    = f"{r['rev_prev']} &rarr; {r['rev_curr']} M" if r.get("rev_curr")  else "&mdash;"
+            earn_str   = f"{r['earn_prev']} &rarr; {r['earn_curr']} M" if r.get("earn_curr") else "&mdash;"
+            cap_str    = fmt_cap(r.get("market_cap_mln"))
 
-            # Kolor paska górnego: confluence > strong > buy
-            if r.get("fvg_confluence"):
-                top_color = "linear-gradient(90deg,#9b59b6,#00e599)"
-            elif r.get("strong_signal"):
-                top_color = "linear-gradient(90deg,#ff6b00,#ffb800)"
-            else:
-                top_color = "linear-gradient(90deg,#00c8ff,#00e599)"
-
+            top_color = ("linear-gradient(90deg,#ff6b00,#ffb800)"
+                         if r.get("strong_signal")
+                         else "linear-gradient(90deg,#00c8ff,#00e599)")
             sig_label = "STRONG BUY" if r.get("strong_signal") else "BUY SIGNAL"
             sig_color = "#ffb800"    if r.get("strong_signal") else "#00c8ff"
-            if r.get("fvg_confluence"):
-                sig_label = ("STRONG + FVG✦" if r.get("strong_signal") else "BUY + FVG✦")
-                sig_color = "#b07fff"
 
-            yoy_str  = f"+{r['rev_yoy_pct']}% YoY" if r.get("rev_yoy_pct") else "—"
-            zone     = r.get("zone", "—")
+            yoy_str    = f"+{r['rev_yoy_pct']}% YoY" if r.get("rev_yoy_pct") else "—"
+            zone       = r.get("zone", "—")
             zone_color = {"OVERBOUGHT": "#ff4560", "OVERSOLD": "#00e599",
                           "Bullish": "#4da6ff", "Bearish": "#ffa040"}.get(zone, "#888")
-
-            fvg_section = fvg_summary_html(r)
 
             cards += (
                 f'<div class="signal-card">'
@@ -701,6 +503,7 @@ def generate_html(meta, results, signals, strong):
                 f'<div class="sc-row"><span>Sygnał</span><span style="color:{sig_color};font-weight:500">{sig_label}</span></div>'
                 f'<div class="sc-row"><span>Strefa</span><span style="color:{zone_color}">{zone}</span></div>'
                 f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
+                f'<div class="sc-row"><span>Market Cap</span><span style="color:var(--accent)">{cap_str}</span></div>'
                 f'<div class="sc-row"><span>Revenue QoQ</span><span style="color:var(--green)">{rev_str}</span></div>'
                 f'<div class="sc-row"><span>Net Income QoQ</span><span style="color:var(--green)">{earn_str}</span></div>'
                 f'<div class="sc-row"><span>Rev. wzrost YoY</span><span style="color:var(--green)">{yoy_str}</span></div>'
@@ -710,16 +513,12 @@ def generate_html(meta, results, signals, strong):
                 f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI EMA</div>'
                 f'<div class="sc-stoch-val">{r["smi_ema"]}</div></div>'
                 f'</div>'
-                f'{fvg_section}'
                 f'</div>'
             )
         return f'<div class="signal-grid">{cards}</div>'
 
-    # Sortowanie: confluence na górze, potem strong, potem zwykłe
-    all_rows    = rows_html(sorted(results, key=lambda x: (
-        -x.get("fvg_confluence", 0), -x.get("strong_signal", 0), x["smi"])))
-    signal_rows = rows_html(sorted(signals, key=lambda x: (
-        -x.get("fvg_confluence", 0), -x.get("strong_signal", 0))))
+    all_rows    = rows_html(sorted(results, key=lambda x: (-x.get("strong_signal", 0), x["smi"])))
+    signal_rows = rows_html(sorted(signals, key=lambda x: -x.get("strong_signal", 0)))
     cards_html  = signal_cards(signals)
 
     sc   = meta["signals"]
@@ -727,15 +526,14 @@ def generate_html(meta, results, signals, strong):
     cc   = meta["candidates"]
     tc   = meta["total_scanned"]
     el   = meta["elapsed_min"]
-    fbc  = meta.get("fvg_bull_count", 0)
-    fcc  = meta.get("fvg_conf_count", 0)
+    cap  = int(meta.get("min_cap_mln", 200))
 
     html = f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Stock Screener SMI + FVG – {dt}</title>
+<title>Stock Screener SMI – {dt}</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
@@ -744,7 +542,6 @@ def generate_html(meta, results, signals, strong):
     --border: #1e2d45; --text: #c8d8f0; --muted: #4a6080;
     --accent: #00c8ff; --green: #00e599; --amber: #ffb800;
     --red: #ff4560; --usa: #3b82f6; --eu: #10b981;
-    --purple: #9b59b6; --fvg: #b07fff;
   }}
   body {{ background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-size:14px; line-height:1.6; }}
 
@@ -755,7 +552,6 @@ def generate_html(meta, results, signals, strong):
   .criteria-pills {{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }}
   .pill {{ font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 10px; border:1px solid var(--border); border-radius:100px; color:var(--muted); }}
   .pill.active {{ border-color:var(--accent); color:var(--accent); }}
-  .pill.fvg {{ border-color:var(--fvg); color:var(--fvg); }}
 
   .stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px; background:var(--border); border-bottom:1px solid var(--border); }}
   .stat {{ background:var(--bg); padding:1.25rem 1.5rem; }}
@@ -764,7 +560,6 @@ def generate_html(meta, results, signals, strong):
   .stat-value.highlight {{ color:var(--accent); }}
   .stat-value.green {{ color:var(--green); }}
   .stat-value.amber {{ color:var(--amber); }}
-  .stat-value.purple {{ color:var(--fvg); }}
   .stat-sub {{ font-size:11px; color:var(--muted); margin-top:2px; }}
 
   .tabs {{ display:flex; border-bottom:1px solid var(--border); padding:0 2rem; }}
@@ -791,6 +586,7 @@ def generate_html(meta, results, signals, strong):
   td {{ padding:10px 12px; vertical-align:middle; }}
   .ticker {{ font-family:'IBM Plex Mono',monospace; font-weight:500; color:#fff; font-size:13px; }}
   .name-col {{ max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--muted); font-size:12px; }}
+  .cap-col {{ color:var(--muted); font-size:12px; }}
   .num {{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right; }}
   .smi-above {{ color:var(--green); }}
   .smi-below {{ color:var(--red); }}
@@ -799,13 +595,6 @@ def generate_html(meta, results, signals, strong):
   .badge-eu  {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 7px; border-radius:4px; background:rgba(16,185,129,.15); color:var(--eu);  border:1px solid rgba(16,185,129,.3); }}
   .badge-signal {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(0,200,255,.15); color:var(--accent); border:1px solid rgba(0,200,255,.3); margin-left:6px; vertical-align:middle; animation:pulse 2s infinite; }}
   .badge-strong {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(255,184,0,.15); color:var(--amber); border:1px solid rgba(255,184,0,.4); margin-left:6px; vertical-align:middle; animation:pulse 1.5s infinite; }}
-
-  /* FVG badges */
-  .badge-fvg-conf {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(176,127,255,.2); color:var(--fvg); border:1px solid rgba(176,127,255,.5); white-space:nowrap; animation:pulse 1.5s infinite; }}
-  .badge-fvg-in   {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(0,229,153,.15); color:var(--green); border:1px solid rgba(0,229,153,.4); white-space:nowrap; }}
-  .badge-fvg-near {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(255,184,0,.12); color:var(--amber); border:1px solid rgba(255,184,0,.35); white-space:nowrap; }}
-  .badge-fvg      {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(155,89,182,.12); color:#c07fff; border:1px solid rgba(155,89,182,.3); white-space:nowrap; }}
-  .badge-fvg-bear {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(255,69,96,.12); color:var(--red); border:1px solid rgba(255,69,96,.3); white-space:nowrap; }}
 
   @keyframes pulse {{ 0%,100%{{opacity:1}} 50%{{opacity:.45}} }}
 
@@ -829,22 +618,8 @@ def generate_html(meta, results, signals, strong):
   .sc-stoch-val.green {{ color:var(--green); }}
   .sc-stoch-val.red {{ color:var(--red); }}
 
-  /* FVG block w karcie */
-  .fvg-block {{ margin-top:10px; padding-top:10px; border-top:1px solid var(--border); display:flex; flex-direction:column; gap:5px; }}
-  .fvg-row {{ display:flex; justify-content:space-between; font-size:11px; font-family:'IBM Plex Mono',monospace; gap:8px; flex-wrap:wrap; }}
-  .fvg-row span:first-child {{ font-weight:500; white-space:nowrap; }}
-  .fvg-row span:last-child {{ color:var(--muted); text-align:right; }}
-  .fvg-bull span:first-child {{ color:var(--fvg); }}
-  .fvg-bear span:first-child {{ color:var(--red); }}
-
-  /* Legenda FVG */
-  .fvg-legend {{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:1rem; font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--muted); align-items:center; }}
-  .fvg-legend span {{ color:var(--text); }}
-
   .empty {{ text-align:center; padding:4rem 2rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:13px; }}
   .empty::before {{ content:'//'; display:block; font-size:32px; margin-bottom:1rem; color:var(--border); }}
-
-  footer {{ border-top:1px solid var(--border); padding:1rem 2rem; font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }}
 
   /* ── AI ANALIZA PANEL ───────────────────────────────────── */
   .ai-panel-wrap {{ max-width:900px; }}
@@ -852,9 +627,9 @@ def generate_html(meta, results, signals, strong):
   .ai-intro strong {{ color:var(--text); }}
   .ai-key-row {{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:1rem; }}
   .ai-key-input {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:8px 14px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; width:340px; outline:none; letter-spacing:.05em; }}
-  .ai-key-input:focus {{ border-color:var(--fvg); box-shadow:0 0 0 2px rgba(176,127,255,.15); }}
-  .ai-run-btn {{ background:linear-gradient(135deg,rgba(176,127,255,.2),rgba(0,200,255,.15)); border:1px solid rgba(176,127,255,.4); border-radius:6px; padding:8px 20px; color:var(--fvg); font-family:'IBM Plex Mono',monospace; font-size:12px; cursor:pointer; white-space:nowrap; transition:all .2s; }}
-  .ai-run-btn:hover:not(:disabled) {{ background:linear-gradient(135deg,rgba(176,127,255,.35),rgba(0,200,255,.25)); border-color:var(--fvg); }}
+  .ai-key-input:focus {{ border-color:var(--accent); box-shadow:0 0 0 2px rgba(0,200,255,.15); }}
+  .ai-run-btn {{ background:linear-gradient(135deg,rgba(0,200,255,.2),rgba(0,229,153,.15)); border:1px solid rgba(0,200,255,.4); border-radius:6px; padding:8px 20px; color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:12px; cursor:pointer; white-space:nowrap; transition:all .2s; }}
+  .ai-run-btn:hover:not(:disabled) {{ background:linear-gradient(135deg,rgba(0,200,255,.35),rgba(0,229,153,.25)); border-color:var(--accent); }}
   .ai-run-btn:disabled {{ opacity:.5; cursor:not-allowed; }}
   .ai-key-note {{ font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; }}
   .ai-status {{ display:none; font-size:12px; font-family:'IBM Plex Mono',monospace; padding:6px 12px; border-radius:5px; margin-bottom:.75rem; }}
@@ -863,42 +638,43 @@ def generate_html(meta, results, signals, strong):
   .ai-output {{ min-height:80px; }}
   .ai-loading {{ display:flex; flex-direction:column; align-items:center; padding:3rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:12px; }}
   .ai-dots {{ display:flex; gap:6px; }}
-  .ai-dots span {{ width:8px; height:8px; border-radius:50%; background:var(--fvg); animation:ai-bounce .9s ease-in-out infinite; }}
+  .ai-dots span {{ width:8px; height:8px; border-radius:50%; background:var(--accent); animation:ai-bounce .9s ease-in-out infinite; }}
   .ai-dots span:nth-child(2) {{ animation-delay:.15s; }}
   .ai-dots span:nth-child(3) {{ animation-delay:.30s; }}
   @keyframes ai-bounce {{ 0%,100%{{transform:translateY(0);opacity:.4}} 50%{{transform:translateY(-6px);opacity:1}} }}
   .ai-spin {{ display:inline-block; animation:ai-rotate 1s linear infinite; }}
   @keyframes ai-rotate {{ to{{transform:rotate(360deg)}} }}
-  .ai-cursor {{ animation:ai-blink 1s step-end infinite; color:var(--fvg); }}
+  .ai-cursor {{ animation:ai-blink 1s step-end infinite; color:var(--accent); }}
   @keyframes ai-blink {{ 50%{{opacity:0}} }}
   .ai-error {{ background:rgba(255,69,96,.08); border:1px solid rgba(255,69,96,.25); border-radius:6px; padding:1rem 1.25rem; color:var(--red); font-size:13px; }}
   .ai-result {{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:1.75rem 2rem; line-height:1.75; }}
-  .ai-h2 {{ font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; color:var(--fvg); margin:1.5rem 0 .5rem; padding-bottom:6px; border-bottom:1px solid var(--border); }}
+  .ai-h2 {{ font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; color:var(--accent); margin:1.5rem 0 .5rem; padding-bottom:6px; border-bottom:1px solid var(--border); }}
   .ai-h2:first-child {{ margin-top:0; }}
-  .ai-h3 {{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--accent); margin:.75rem 0 .25rem; }}
+  .ai-h3 {{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--green); margin:.75rem 0 .25rem; }}
   .ai-p {{ margin:.35rem 0; font-size:13.5px; color:var(--text); }}
   .ai-gap {{ height:.5rem; }}
   .ai-ul, .ai-ol {{ margin:.4rem 0 .4rem 1.25rem; padding:0; }}
   .ai-ul li, .ai-ol li {{ font-size:13.5px; color:var(--text); margin:.2rem 0; }}
-  .ai-num {{ font-family:'IBM Plex Mono',monospace; color:var(--fvg); font-size:12px; margin-right:4px; }}
+  .ai-num {{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:12px; margin-right:4px; }}
   .ai-code {{ font-family:'IBM Plex Mono',monospace; font-size:12px; background:rgba(255,255,255,.07); padding:1px 5px; border-radius:3px; color:var(--amber); }}
+
+  footer {{ border-top:1px solid var(--border); padding:1rem 2rem; font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }}
 </style>
 </head>
 <body>
 
 <div class="header">
   <div class="header-left">
-    <h1>STOCK <span>SCREENER</span> // SMI + FVG</h1>
-    <p>// generated {dt} &nbsp;|&nbsp; elapsed {el} min &nbsp;|&nbsp; SMI(10,3,3) weekly &nbsp;|&nbsp; FVG lookback 20W</p>
+    <h1>STOCK <span>SCREENER</span> // SMI</h1>
+    <p>// generated {dt} &nbsp;|&nbsp; elapsed {el} min &nbsp;|&nbsp; SMI(10,3,3) weekly</p>
     <div class="criteria-pills">
       <span class="pill active">USA + Europa</span>
       <span class="pill active">cena ≤ 100 USD/EUR</span>
+      <span class="pill active">market cap &gt; {cap} mln</span>
       <span class="pill active">Revenue ↑ QoQ</span>
       <span class="pill active">Net Income ↑ QoQ</span>
       <span class="pill active">Rev YoY ≥ 15%</span>
       <span class="pill active">SMI cross / exit OS (1W)</span>
-      <span class="pill fvg">FVG Bullish (niezapełniony)</span>
-      <span class="pill fvg">FVG✦ = SMI + cena przy luce</span>
     </div>
   </div>
 </div>
@@ -908,37 +684,28 @@ def generate_html(meta, results, signals, strong):
   <div class="stat"><div class="stat-label">Kandydaci</div><div class="stat-value highlight">{cc}</div><div class="stat-sub">fundamenty OK</div></div>
   <div class="stat"><div class="stat-label">Sygnały BUY</div><div class="stat-value green">{sc}</div><div class="stat-sub">cross / exit OS</div></div>
   <div class="stat"><div class="stat-label">Strong BUY</div><div class="stat-value amber">{str_}</div><div class="stat-sub">z głębi strefy OS</div></div>
-  <div class="stat"><div class="stat-label">Bull FVG</div><div class="stat-value purple">{fbc}</div><div class="stat-sub">niezapełnione luki</div></div>
-  <div class="stat"><div class="stat-label">FVG✦ Konfluencja</div><div class="stat-value purple">{fcc}</div><div class="stat-sub">SMI + cena przy FVG</div></div>
+  <div class="stat"><div class="stat-label">Min. Cap</div><div class="stat-value">{cap}</div><div class="stat-sub">mln USD/EUR</div></div>
   <div class="stat"><div class="stat-label">Czas skanu</div><div class="stat-value">{el}</div><div class="stat-sub">minut</div></div>
 </div>
 
 <div class="tabs">
   <button class="tab active" onclick="switchTab('signals',this)">Sygnały BUY ({sc})</button>
   <button class="tab" onclick="switchTab('all',this)">Wszyscy kandydaci ({cc})</button>
-  <button class="tab" onclick="switchTab('ai',this)" style="color:var(--fvg);margin-left:auto">✦ AI Analiza</button>
+  <button class="tab" onclick="switchTab('ai',this)" style="color:var(--accent);margin-left:auto">✦ AI Analiza</button>
 </div>
 
 <div class="content">
 
   <div id="panel-signals" class="panel active">
-    <div class="fvg-legend">
-      FVG legenda:
-      <span class="badge-fvg-conf">FVG✦</span> <span>Konfluencja – SMI + cena przy Bullish FVG (najsilniejszy sygnał)</span>
-      <span class="badge-fvg-in">FVG▲</span> <span>Cena wewnątrz Bullish FVG (wsparcie)</span>
-      <span class="badge-fvg-near">FVG~</span> <span>Cena blisko dolnej granicy FVG (±3%)</span>
-      <span class="badge-fvg">FVG</span> <span>Niezapełniona Bullish FVG w oknie 20W</span>
-      <span class="badge-fvg-bear">FVG▼</span> <span>Cena w Bearish FVG (opór)</span>
-    </div>
     {cards_html}
     <div class="table-wrap">
       <table><thead><tr>
         <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
         <th style="text-align:right">Cena</th>
+        <th style="text-align:right">Market Cap</th>
         <th style="text-align:right">SMI</th>
         <th style="text-align:right">EMA</th>
         <th>Strefa</th>
-        <th>FVG</th>
         <th style="text-align:right">Revenue (M)</th>
         <th style="text-align:right">Net Inc. (M)</th>
       </tr></thead><tbody>{signal_rows}</tbody></table>
@@ -960,13 +727,6 @@ def generate_html(meta, results, signals, strong):
         <option value="Bullish">Bullish</option>
         <option value="OVERBOUGHT">OVERBOUGHT</option>
       </select>
-      <select class="filter-select" onchange="filterFvg(this.value)">
-        <option value="">Wszystkie FVG</option>
-        <option value="FVG✦">FVG✦ Konfluencja</option>
-        <option value="FVG▲">FVG▲ W strefie</option>
-        <option value="FVG~">FVG~ Blisko</option>
-        <option value="FVG">FVG Bullish</option>
-      </select>
       <span class="count-label" id="row-count">{cc} wyników</span>
     </div>
     <div class="table-wrap">
@@ -974,10 +734,10 @@ def generate_html(meta, results, signals, strong):
         <thead><tr>
           <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
           <th style="text-align:right">Cena</th>
+          <th style="text-align:right">Market Cap</th>
           <th style="text-align:right">SMI</th>
           <th style="text-align:right">EMA</th>
           <th>Strefa</th>
-          <th>FVG</th>
           <th style="text-align:right">Revenue (M)</th>
           <th style="text-align:right">Net Inc. (M)</th>
         </tr></thead>
@@ -991,7 +751,7 @@ def generate_html(meta, results, signals, strong):
     <div class="ai-panel-wrap">
       <p class="ai-intro">
         Wklej swój klucz <strong>Anthropic API</strong> — Claude przeanalizuje wszystkie {sc} sygnałów
-        z tego skanu: sektory, ryzyka, FVG confluence i ranking wejść.<br>
+        z tego skanu: sektory, ryzyka i ranking wejść.<br>
         <span style="color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace">
           // Klucz używany wyłącznie w tej sesji przeglądarki — nie jest zapisywany nigdzie.
         </span>
@@ -1011,7 +771,7 @@ def generate_html(meta, results, signals, strong):
 </div>
 
 <footer>
-  <span>// stock-screener &nbsp;|&nbsp; SMI(10,3,3) + FVG(20W) &nbsp;|&nbsp; dane: Yahoo Finance</span>
+  <span>// stock-screener &nbsp;|&nbsp; SMI(10,3,3) &nbsp;|&nbsp; dane: Yahoo Finance</span>
   <span>Nie stanowi porady inwestycyjnej</span>
 </footer>
 
@@ -1022,7 +782,6 @@ __AI_JS__
 </body>
 </html>"""
 
-    # Wstrzyknięcie kodu AI JS poza f-stringiem (brak podwajania nawiasów)
     signals_json = json.dumps(signals, ensure_ascii=False)
     meta_json    = json.dumps(meta,    ensure_ascii=False)
     html = html.replace("__TABS_JS__", build_tabs_js())
@@ -1035,13 +794,10 @@ __AI_JS__
 
 
 # ══════════════════════════════════════════════════════════════
-#  GENERATOR KODU JS DLA ANALIZY AI
-#  Budowany poza f-stringiem HTML, żeby uniknąć konieczności
-#  podwajania wszystkich nawiasów klamrowych ({{}}).
+#  GENERATOR KODU JS
 # ══════════════════════════════════════════════════════════════
 
 def build_tabs_js() -> str:
-    """Zwraca JS obsługujący zakładki i filtry tabeli."""
     return """
 function switchTab(name, btn) {
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1049,10 +805,9 @@ function switchTab(name, btn) {
   btn.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
 }
-let mf = '', zf = '', ff = '';
+let mf = '', zf = '';
 function filterMarket(v) { mf = v; applyFilters(); }
 function filterZone(v)   { zf = v; applyFilters(); }
-function filterFvg(v)    { ff = v; applyFilters(); }
 function filterTable(v)  { applyFilters(v); }
 function applyFilters(search) {
   const rows = document.querySelectorAll('#tbody-all tr');
@@ -1062,7 +817,6 @@ function applyFilters(search) {
     const t = row.textContent.toLowerCase();
     const ok = (!mf || t.includes(mf.toLowerCase()))
             && (!zf || t.includes(zf.toLowerCase()))
-            && (!ff || row.innerHTML.includes(ff))
             && (!s  || t.includes(s));
     row.style.display = ok ? '' : 'none';
     if (ok) visible++;
@@ -1072,31 +826,23 @@ function applyFilters(search) {
 """
 
 def build_ai_js(signals_json: str, meta_json: str) -> str:
-    """Zwraca blok JavaScript obsługujący analizę AI w przeglądarce."""
     return (
         "const SIGNALS_DATA = " + signals_json + ";\n"
         "const META_DATA = "    + meta_json    + ";\n\n"
         """
-// ── Budowanie promptu ────────────────────────────────────────
 function buildPrompt() {
   const sc = SIGNALS_DATA;
   if (!sc || sc.length === 0) return null;
 
   const sigLines = sc.map(s => {
-    const fvgTag = s.fvg_confluence      ? '[FVG✦ KONFLUENCJA]'  :
-                   s.fvg_price_in_bull   ? '[FVG▲ w strefie]'    :
-                   s.fvg_price_near_bull ? '[FVG~ blisko]'        :
-                   s.fvg_bull            ? '[FVG bullish]'        :
-                   s.fvg_price_in_bear   ? '[FVG▼ opór]'         : '';
-    const sigType  = s.strong_signal ? 'STRONG BUY' : 'BUY';
-    const rev      = s.rev_curr  != null ? `Rev: ${s.rev_prev}→${s.rev_curr}M`   : '';
-    const earn     = s.earn_curr != null ? `NetInc: ${s.earn_prev}→${s.earn_curr}M` : '';
-    const yoy      = s.rev_yoy_pct != null ? `YoY: +${s.rev_yoy_pct}%` : '';
-    const fvgZone  = s.fvg_bull
-      ? `FVG-bull: ${s.fvg_bull_bot}–${s.fvg_bull_top} (${s.fvg_bull_age}W temu)` : '';
+    const sigType = s.strong_signal ? 'STRONG BUY' : 'BUY';
+    const rev     = s.rev_curr  != null ? `Rev: ${s.rev_prev}→${s.rev_curr}M`      : '';
+    const earn    = s.earn_curr != null ? `NetInc: ${s.earn_prev}→${s.earn_curr}M` : '';
+    const yoy     = s.rev_yoy_pct != null ? `YoY: +${s.rev_yoy_pct}%` : '';
+    const cap     = s.market_cap_mln != null ? `Cap: ${s.market_cap_mln}M` : '';
     return `- ${s.ticker} (${s.name}) | ${s.market} | ${s.sector} | ${s.price} ${s.currency}`
-         + ` | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType} ${fvgTag}`
-         + ` | ${rev} | ${earn} | ${yoy} | ${fvgZone}`.trimEnd();
+         + ` | ${cap} | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType}`
+         + ` | ${rev} | ${earn} | ${yoy}`.trimEnd();
   }).join('\\n');
 
   const m = META_DATA;
@@ -1109,9 +855,8 @@ PARAMETRY SKANU:
 - Przeskanowano: ${m.total_scanned} spółek (USA + Europa)
 - Kandydaci (fundamenty OK): ${m.candidates}
 - Sygnały BUY: ${m.signals} | Strong BUY: ${m.strong}
-- Niezapełnione Bullish FVG: ${m.fvg_bull_count} | FVG✦ Konfluencja: ${m.fvg_conf_count}
 - Wskaźnik: SMI(10,3,3) interwał tygodniowy
-- Kryteria fundamentalne: Revenue ↑ QoQ + Net Income ↑ QoQ + Rev YoY ≥ 15%
+- Kryteria: cena ≤ ${m.max_price} USD/EUR | market cap > ${m.min_cap_mln} mln | Revenue ↑ QoQ + Net Income ↑ QoQ + Rev YoY ≥ 15%
 
 LISTA SYGNAŁÓW (${sc.length} pozycji):
 ${sigLines}
@@ -1122,28 +867,24 @@ Przygotuj analizę w języku polskim zgodnie z poniższą strukturą:
 Oceń jakość i siłę obecnego skanu: stosunek sygnałów do kandydatów, dominujące strefy SMI, rozkład USA vs EU. Co to mówi o aktualnym sentymencie rynkowym?
 
 ## 2. Analiza sektorowa
-Które sektory dominują wśród sygnałów? Czy to przypadkowe, czy sygnalizuje szerszy trend makroekonomiczny? Które sektory budzą Twoje szczególne zainteresowanie?
+Które sektory dominują wśród sygnałów? Czy to przypadkowe, czy sygnalizuje szerszy trend makroekonomiczny?
 
-## 3. FVG Confluence — najsilniejsze setupy techniczne
-Szczegółowo opisz każdą spółkę z oznaczeniem FVG✦ (SMI crossover + cena przy niezapełnionej Bullish FVG). Wyjaśnij dlaczego połączenie tych dwóch sygnałów jest technicznie wyjątkowe. Oceń siłę każdego setupu.
-
-## 4. Ranking Top 5 sygnałów
+## 3. Ranking Top 5 sygnałów
 Dla każdego z 5 najlepszych sygnałów podaj:
 - **Ticker i uzasadnienie wyboru**
-- **Mocne strony** (techniczne + fundamentalne)
+- **Mocne strony** (techniczne + fundamentalne + kapitalizacja)
 - **Ryzyka i słabe punkty**
-- **Sugerowany poziom wejścia** (przy FVG, przy cenie bieżącej, czy czekamy na cofnięcie?)
+- **Sugerowany poziom wejścia**
 
-## 5. Sygnały ostrzegawcze
-Które spółki spełniły kryteria screener, ale budzą wątpliwości? Podaj konkretne powody (np. mała dynamika wzrostu, strefa OVERBOUGHT, opór w postaci Bearish FVG, niedawny duży ruch, itp.).
+## 4. Sygnały ostrzegawcze
+Które spółki spełniły kryteria screener, ale budzą wątpliwości? Podaj konkretne powody.
 
-## 6. Podsumowanie i kolejność wejść
-Konkretna lista priorytetów (1–5) z jednozdaniowym uzasadnieniem dla każdej pozycji. Który ticker wchodzi pierwszy i dlaczego?
+## 5. Podsumowanie i kolejność wejść
+Konkretna lista priorytetów (1–5) z jednozdaniowym uzasadnieniem.
 
 Używaj konkretnych danych liczbowych z listy. Odpowiedź NIE stanowi porady inwestycyjnej.`;
 }
 
-// ── Wywołanie API z SSE streamingiem ─────────────────────────
 async function runAiAnalysis() {
   const key = (document.getElementById('ai-key-input') || {}).value.trim();
   if (!key) { showAiStatus('error', 'Wpisz klucz Anthropic API (sk-ant-...)'); return; }
@@ -1196,7 +937,7 @@ async function runAiAnalysis() {
       if (done) break;
       buf += decoder.decode(value, { stream: true });
       const lines = buf.split('\\n');
-      buf = lines.pop();          // niedokończona linia – trzymamy w buforze
+      buf = lines.pop();
       for (const line of lines) {
         if (!line.startsWith('data: ')) continue;
         const raw = line.slice(6).trim();
@@ -1231,7 +972,6 @@ function showAiStatus(type, msg) {
   if (type === 'ok') setTimeout(() => { el.style.display = 'none'; }, 4000);
 }
 
-// ── Prosty renderer Markdown → HTML ──────────────────────────
 function renderMd(raw) {
   let t = raw
     .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -1241,7 +981,6 @@ function renderMd(raw) {
     .replace(/\\*(.+?)\\*/g,  '<em>$1</em>')
     .replace(/`(.+?)`/g,      '<code class="ai-code">$1</code>');
 
-  // Listy: zbieramy kolejne linie z "-" i "1." w bloki <ul>/<ol>
   const lines = t.split('\\n');
   const out = [];
   let inUl = false, inOl = false;
