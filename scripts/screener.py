@@ -226,7 +226,24 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
 #  ANALIZA FUNDAMENTALNA
 # ══════════════════════════════════════════════════════════════
 
-def check_fundamentals(tkr_obj, min_annual_rev_growth: float = 0.15):
+def check_fundamentals(tkr_obj, min_annual_rev_growth: float = 0.15,
+                       trend_quarters: int = 4):
+    """
+    Sprawdza trend fundamentalny na przestrzeni ostatnich `trend_quarters` kwartałów.
+
+    Kryterium wzrostu przychodu (rev_up):
+      Każdy z `trend_quarters` ostatnich kwartałów musi być wyższy od poprzedniego,
+      tj. q[0] > q[1] > q[2] > ... > q[trend_quarters-1].
+      Jeśli dostępnych kwartałów jest mniej niż trend_quarters+1, wymagamy
+      co najmniej 2 kwartałów (fallback do zwykłego QoQ).
+
+    Kryterium wzrostu zysku (earn_up):
+      Analogicznie – pełny trend wzrostowy w oknie trend_quarters kwartałów.
+
+    rev_vals / earn_vals:
+      Pokazują najstarszy i najnowszy kwartał z analizowanego okna
+      (zamiast tylko pary Q0/Q1).
+    """
     try:
         q = tkr_obj.quarterly_financials
         if q is None or q.empty:
@@ -236,29 +253,52 @@ def check_fundamentals(tkr_obj, min_annual_rev_growth: float = 0.15):
         rev_vals = earn_vals = None
         annual_rev_growth = None
 
+        # ── Revenue ──────────────────────────────────────────────
         if "Total Revenue" in q.index:
             rev = q.loc["Total Revenue"].dropna()
-            if len(rev) >= 2:
-                rev_up   = float(rev.iloc[0]) > float(rev.iloc[1])
-                rev_vals = (round(float(rev.iloc[1]) / 1e6, 1),
-                            round(float(rev.iloc[0]) / 1e6, 1))
-            if len(rev) >= 8:
+            n_rev = len(rev)
+
+            if n_rev >= 2:
+                # Ile kwartałów możemy realnie porównać
+                window = min(trend_quarters, n_rev - 1)
+                # rev.iloc[0] = najnowszy; iloc[window] = najstarszy w oknie
+                rev_vals = (
+                    round(float(rev.iloc[window]) / 1e6, 1),   # najstarszy
+                    round(float(rev.iloc[0])      / 1e6, 1),   # najnowszy
+                )
+                # Sprawdzamy czy każda para (i, i+1) jest rosnąca
+                rev_up = all(
+                    float(rev.iloc[i]) > float(rev.iloc[i + 1])
+                    for i in range(window)
+                )
+
+            # YoY (TTM vs TTM lub Q vs Q sprzed roku)
+            if n_rev >= 8:
                 ttm_curr = float(rev.iloc[0:4].sum())
                 ttm_prev = float(rev.iloc[4:8].sum())
                 if ttm_prev > 0:
                     annual_rev_growth = (ttm_curr - ttm_prev) / ttm_prev
-            elif len(rev) >= 5:
+            elif n_rev >= 5:
                 curr      = float(rev.iloc[0])
                 prev_year = float(rev.iloc[4])
                 if prev_year > 0:
                     annual_rev_growth = (curr - prev_year) / prev_year
 
+        # ── Net Income ───────────────────────────────────────────
         if "Net Income" in q.index:
             net = q.loc["Net Income"].dropna()
-            if len(net) >= 2:
-                earn_up   = float(net.iloc[0]) > float(net.iloc[1])
-                earn_vals = (round(float(net.iloc[1]) / 1e6, 1),
-                             round(float(net.iloc[0]) / 1e6, 1))
+            n_net = len(net)
+
+            if n_net >= 2:
+                window = min(trend_quarters, n_net - 1)
+                earn_vals = (
+                    round(float(net.iloc[window]) / 1e6, 1),
+                    round(float(net.iloc[0])      / 1e6, 1),
+                )
+                earn_up = all(
+                    float(net.iloc[i]) > float(net.iloc[i + 1])
+                    for i in range(window)
+                )
 
         rev_annual_ok = (annual_rev_growth is not None
                          and annual_rev_growth >= min_annual_rev_growth)
