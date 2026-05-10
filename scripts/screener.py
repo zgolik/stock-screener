@@ -16,8 +16,8 @@ import os
 from datetime import datetime
 from io import StringIO
 
-MIN_MARKET_CAP = 200_000_000   # 200 mln USD / EUR
-MIN_VOLUME     = 300_000       # minimalny wolumen (3M średnia dzienna)
+MIN_MARKET_CAP = 200_000_000
+MIN_VOLUME     = 300_000
 MIN_QUICK      = 1.0
 DELAY          = 0.25
 OUTPUT_DIR     = "results"
@@ -159,45 +159,31 @@ def ema(series: pd.Series, length: int) -> pd.Series:
 def ema_ema(series: pd.Series, length: int) -> pd.Series:
     return ema(ema(series, length), length)
 
-def calc_smi(high: pd.Series, low: pd.Series, close: pd.Series,
-             length_k: int = 10, length_d: int = 3, length_ema: int = 3):
+def calc_smi(high, low, close, length_k=10, length_d=3, length_ema=3):
     highest_high         = high.rolling(length_k).max()
     lowest_low           = low.rolling(length_k).min()
     highest_lowest_range = highest_high - lowest_low
     relative_range       = close - (highest_high + lowest_low) / 2
-
-    denom = ema_ema(highest_lowest_range, length_d)
-    denom = denom.replace(0, np.nan)
-
+    denom = ema_ema(highest_lowest_range, length_d).replace(0, np.nan)
     smi     = 200 * (ema_ema(relative_range, length_d) / denom)
     smi_ema = ema(smi, length_ema)
     return smi, smi_ema
 
-
-def smi_signals(smi: pd.Series, smi_ema: pd.Series,
-                use_cross: bool = True,
-                use_zone:  bool = True,
-                use_zero:  bool = False,
-                strong_only: bool = False):
+def smi_signals(smi, smi_ema, use_cross=True, use_zone=True, use_zero=False, strong_only=False):
     if len(smi) < 3:
         return False, False, None, None, "—"
-
-    s0 = float(smi.iloc[-1]);  s1 = float(smi.iloc[-2])
-    e0 = float(smi_ema.iloc[-1]); e1 = float(smi_ema.iloc[-2])
-
+    s0, s1 = float(smi.iloc[-1]), float(smi.iloc[-2])
+    e0, e1 = float(smi_ema.iloc[-1]), float(smi_ema.iloc[-2])
     cross_up = (s1 < e1) and (s0 >= e0)
     exit_os  = (s1 < -40) and (s0 >= -40)
     zero_up  = (s1 < 0)   and (s0 >= 0)
-
     raw_buy    = (use_cross and cross_up) or (use_zone and exit_os) or (use_zero and zero_up)
     strong_buy = raw_buy and (s1 <= -40 or s0 <= -40)
     buy_signal = strong_only and strong_buy or (not strong_only and raw_buy)
-
-    if s0 >= 40:   zone = "OVERBOUGHT"
+    if s0 >= 40:    zone = "OVERBOUGHT"
     elif s0 <= -40: zone = "OVERSOLD"
-    elif s0 > 0:   zone = "Bullish"
-    else:          zone = "Bearish"
-
+    elif s0 > 0:    zone = "Bullish"
+    else:           zone = "Bearish"
     return buy_signal, strong_buy, round(s0, 2), round(e0, 2), zone
 
 
@@ -206,29 +192,21 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
 # ══════════════════════════════════════════════════════════════
 
 def check_fundamentals(info: dict):
-    """
-    Kryteria:
-      - EPS TTM > 0       (trailingEps)
-      - Sales TTM > 0     (totalRevenue)
-      - Quick Ratio > 1.0 (quickRatio) — jeśli brak danych: przepuszczamy
-    """
     eps       = info.get("trailingEps")
     sales_ttm = info.get("totalRevenue")
     quick     = info.get("quickRatio")
 
     eps_ok   = eps       is not None and eps       > 0
     sales_ok = sales_ttm is not None and sales_ttm > 0
-    # Jeśli quick ratio niedostępny (np. banki) – nie dyskwalifikujemy
-    quick_ok = quick is None or quick > MIN_QUICK
+    quick_ok = quick is None or quick > MIN_QUICK   # brak danych = przepuszczamy
 
     passed = eps_ok and sales_ok and quick_ok
 
     metrics = {
-        "eps_ttm":       round(eps,  2)              if eps       is not None else None,
-        "sales_ttm_mln": round(sales_ttm / 1e6, 1)  if sales_ttm is not None else None,
-        "quick_ratio":   round(quick, 2)             if quick     is not None else None,
+        "eps_ttm":       round(eps,  2)             if eps       is not None else None,
+        "sales_ttm_mln": round(sales_ttm / 1e6, 1) if sales_ttm is not None else None,
+        "quick_ratio":   round(quick, 2)            if quick     is not None else None,
     }
-
     return passed, metrics
 
 
@@ -241,10 +219,8 @@ def run_screener():
     start = datetime.now()
     print("=" * 60)
     print(f"SCREENER START: {start.strftime('%Y-%m-%d %H:%M:%S')}")
-    print("Wskaźnik: SMI Signal Strategy (lengthK=10, lengthD=3, lengthEMA=3)")
-    print("Sygnały:  cross_up + exit_OS | strong = z głębi strefy OS")
-    print(f"Filtry:   cap>{MIN_MARKET_CAP/1e6:.0f}M | vol>{MIN_VOLUME:,} | "
-          f"EPS TTM>0 | Sales TTM>0 | Quick Ratio>{MIN_QUICK} (opcjonalny)")
+    print("Wskaźnik: SMI(10,3,3) | cross_up + exit_OS | weekly")
+    print(f"Filtry:   cap>{MIN_MARKET_CAP/1e6:.0f}M | vol>{MIN_VOLUME:,} | EPS>0 | Sales>0 | QR>{MIN_QUICK}")
     print("=" * 60)
 
     print("\n[1/5] Pobieranie list spółek...")
@@ -254,11 +230,8 @@ def run_screener():
     print(f"\nŁącznie: {len(all_tickers)} spółek ({len(usa_tickers)} USA, {len(eu_tickers)} EU)")
 
     print("\n[2/5] Analiza spółek...")
-    results = []
-    signals = []
-    strong  = []
-    skipped = 0
-    errors  = 0
+    results, signals, strong = [], [], []
+    skipped = errors = 0
 
     for i, (symbol, market) in enumerate(all_tickers):
         try:
@@ -267,44 +240,37 @@ def run_screener():
 
             price = getattr(fi, "last_price", None)
             if not price or price <= 0:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             market_cap = getattr(fi, "market_cap", None)
             if not market_cap or market_cap < MIN_MARKET_CAP:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             volume = getattr(fi, "three_month_average_volume", None) \
                      or getattr(fi, "last_volume", None)
             if not volume or volume < MIN_VOLUME:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             currency = getattr(fi, "currency", "USD")
 
             try:
                 info = tkr.info
             except Exception:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             fund_ok, metrics = check_fundamentals(info)
             if not fund_ok:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             hist = tkr.history(period="2y", interval="1wk").dropna(subset=["High", "Low", "Close"])
             if len(hist) < 20:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             smi_ser, smi_ema_ser = calc_smi(hist["High"], hist["Low"], hist["Close"])
             buy_sig, strong_sig, smi_val, smi_ema_val, zone = smi_signals(smi_ser, smi_ema_ser)
 
             if smi_val is None:
-                skipped += 1
-                continue
+                skipped += 1; continue
 
             name    = info.get("shortName", symbol)
             sector  = info.get("sector", "—")
@@ -315,79 +281,55 @@ def run_screener():
             volume_k       = round(volume / 1000, 1)
 
             row = {
-                "ticker":         symbol,
-                "name":           name,
-                "market":         market,
-                "country":        country,
-                "sector":         sector,
-                "price":          round(price, 2),
-                "currency":       currency,
-                "market_cap_mln": market_cap_mln,
-                "volume_k":       volume_k,
-                "smi":            smi_val,
-                "smi_ema":        smi_ema_val,
-                "smi_above_ema":  smi_above_ema,
-                "zone":           zone,
-                "signal":         buy_sig,
-                "strong_signal":  strong_sig,
+                "ticker": symbol, "name": name, "market": market,
+                "country": country, "sector": sector,
+                "price": round(price, 2), "currency": currency,
+                "market_cap_mln": market_cap_mln, "volume_k": volume_k,
+                "smi": smi_val, "smi_ema": smi_ema_val,
+                "smi_above_ema": smi_above_ema, "zone": zone,
+                "signal": buy_sig, "strong_signal": strong_sig,
                 **metrics,
-                "scanned_at":     datetime.now().isoformat(),
+                "scanned_at": datetime.now().isoformat(),
             }
             results.append(row)
 
-            sig_tag  = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
-            cap_str  = f"cap={market_cap_mln:.0f}M"
-            qr_str   = f"QR={metrics['quick_ratio']}" if metrics['quick_ratio'] else "QR=n/a"
+            sig_tag = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
+            qr_str  = f"QR={metrics['quick_ratio']}" if metrics['quick_ratio'] else "QR=n/a"
             print(f"  {sig_tag} [{i+1}] {symbol:10s} {market} | {price:8.2f} {currency} "
-                  f"| {cap_str:12s} | SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} "
+                  f"| cap={market_cap_mln:.0f}M | SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} "
                   f"| {zone:12s} | EPS={metrics['eps_ttm']} {qr_str}")
 
-            if buy_sig:
-                signals.append(row)
-            if strong_sig:
-                strong.append(row)
+            if buy_sig:    signals.append(row)
+            if strong_sig: strong.append(row)
 
             time.sleep(DELAY)
 
         except KeyboardInterrupt:
-            print("\nPrzerwano przez użytkownika.")
-            break
+            print("\nPrzerwano."); break
         except Exception:
             errors += 1
 
     elapsed = round((datetime.now() - start).total_seconds() / 60, 1)
-
-    print(f"\n[3/5] Skanowanie zakończone w {elapsed} min")
-    print(f"  Kandydaci: {len(results)} | Sygnały: {len(signals)} | Strong: {len(strong)} | "
-          f"Pominięto: {skipped} | Błędy: {errors}")
+    print(f"\n[3/5] Gotowe w {elapsed} min | Kandydaci:{len(results)} Sygnały:{len(signals)} Strong:{len(strong)} Pominięto:{skipped} Błędy:{errors}")
 
     print("\n[4/5] Zapis wyników...")
     meta = {
-        "generated_at":  datetime.now().isoformat(),
-        "elapsed_min":   elapsed,
-        "total_scanned": len(all_tickers),
-        "candidates":    len(results),
-        "signals":       len(signals),
-        "strong":        len(strong),
-        "skipped":       skipped,
-        "errors":        errors,
-        "indicator":     "SMI(10,3,3)",
-        "min_cap_mln":   MIN_MARKET_CAP / 1e6,
-        "min_volume":    MIN_VOLUME,
-        "min_quick":     MIN_QUICK,
+        "generated_at": datetime.now().isoformat(), "elapsed_min": elapsed,
+        "total_scanned": len(all_tickers), "candidates": len(results),
+        "signals": len(signals), "strong": len(strong),
+        "skipped": skipped, "errors": errors, "indicator": "SMI(10,3,3)",
+        "min_cap_mln": MIN_MARKET_CAP / 1e6, "min_volume": MIN_VOLUME, "min_quick": MIN_QUICK,
     }
     for fname, data in [("meta", meta), ("results", results), ("signals", signals), ("strong", strong)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-
-    if results:
-        pd.DataFrame(results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
-    if signals:
-        pd.DataFrame(signals).to_csv(f"{OUTPUT_DIR}/signals.csv", index=False)
+    if results: pd.DataFrame(results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
+    if signals: pd.DataFrame(signals).to_csv(f"{OUTPUT_DIR}/signals.csv", index=False)
 
     print("[5/5] Generowanie raportu HTML...")
     generate_html(meta, results, signals, strong)
-    print(f"\nGotowe! Wyniki w katalogu: {OUTPUT_DIR}/")
+    print(f"\nGotowe! Wyniki w: {OUTPUT_DIR}/")
+    print(f"\n💡 Aby przeanalizować wyniki: wklej plik results/signals.json do Claude.")
     return signals
 
 
@@ -399,8 +341,7 @@ def generate_html(meta, results, signals, strong):
     dt = datetime.fromisoformat(meta["generated_at"]).strftime("%d.%m.%Y %H:%M")
 
     def zone_badge(zone):
-        cls = {"OVERBOUGHT": "zone-ob", "OVERSOLD": "zone-os",
-               "Bullish": "zone-bull", "Bearish": "zone-bear"}.get(zone, "")
+        cls = {"OVERBOUGHT":"zone-ob","OVERSOLD":"zone-os","Bullish":"zone-bull","Bearish":"zone-bear"}.get(zone,"")
         return f'<span class="zone-badge {cls}">{zone}</span>'
 
     def fmt_cap(mln):
@@ -416,22 +357,21 @@ def generate_html(meta, results, signals, strong):
 
     def rows_html(data):
         if not data:
-            return "<tr><td colspan='12' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
+            return "<tr><td colspan='13' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
         html = ""
         for r in data:
-            strong_badge = '<span class="badge-strong">STRONG</span>' if r.get("strong_signal") else (
-                           '<span class="badge-signal">BUY</span>'    if r.get("signal")        else "")
-            smi_cls = "smi-above" if r["smi_above_ema"] else "smi-below"
-            html += f"""
-            <tr>
-              <td><span class="ticker">{r['ticker']}</span>{strong_badge}</td>
+            sb = '<span class="badge-strong">STRONG</span>' if r.get("strong_signal") else (
+                 '<span class="badge-signal">BUY</span>'    if r.get("signal")        else "")
+            sc = "smi-above" if r["smi_above_ema"] else "smi-below"
+            html += f"""<tr>
+              <td><span class="ticker">{r['ticker']}</span>{sb}</td>
               <td class="name-col">{r['name']}</td>
               <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
               <td>{r['sector']}</td>
               <td class="num">{r['price']} {r['currency']}</td>
               <td class="num cap-col">{fmt_cap(r.get('market_cap_mln'))}</td>
               <td class="num">{fmt_vol(r.get('volume_k'))}</td>
-              <td class="num {smi_cls}">{r['smi']}</td>
+              <td class="num {sc}">{r['smi']}</td>
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
               <td class="num">{na(r.get('eps_ttm'))}</td>
@@ -445,25 +385,21 @@ def generate_html(meta, results, signals, strong):
             return "<div class='empty'>Brak sygnałów w tym skanie</div>"
         cards = ""
         for r in sorted(data, key=lambda x: -x.get("strong_signal", 0)):
-            market_cls = "usa" if r["market"] == "USA" else "eu"
-            top_color  = ("linear-gradient(90deg,#ff6b00,#ffb800)"
-                          if r.get("strong_signal")
-                          else "linear-gradient(90deg,#00c8ff,#00e599)")
-            sig_label  = "STRONG BUY" if r.get("strong_signal") else "BUY SIGNAL"
-            sig_color  = "#ffb800"    if r.get("strong_signal") else "#00c8ff"
-            zone       = r.get("zone", "—")
-            zone_color = {"OVERBOUGHT": "#ff4560", "OVERSOLD": "#00e599",
-                          "Bullish": "#4da6ff", "Bearish": "#ffa040"}.get(zone, "#888")
+            mc  = "usa" if r["market"] == "USA" else "eu"
+            tc  = "linear-gradient(90deg,#ff6b00,#ffb800)" if r.get("strong_signal") else "linear-gradient(90deg,#00c8ff,#00e599)"
+            sl  = "STRONG BUY" if r.get("strong_signal") else "BUY SIGNAL"
+            sc2 = "#ffb800" if r.get("strong_signal") else "#00c8ff"
+            z   = r.get("zone","—")
+            zc  = {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599","Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
             cards += (
                 f'<div class="signal-card">'
-                f'<div style="position:absolute;top:0;left:0;right:0;height:2px;background:{top_color}"></div>'
+                f'<div style="position:absolute;top:0;left:0;right:0;height:2px;background:{tc}"></div>'
                 f'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
-                f'<div><div class="sc-ticker">{r["ticker"]}</div>'
-                f'<div class="sc-name">{r["name"]}</div></div>'
-                f'<span class="badge-{market_cls}">{r["market"]}</span></div>'
+                f'<div><div class="sc-ticker">{r["ticker"]}</div><div class="sc-name">{r["name"]}</div></div>'
+                f'<span class="badge-{mc}">{r["market"]}</span></div>'
                 f'<div class="sc-price">{r["price"]} {r["currency"]}</div>'
-                f'<div class="sc-row"><span>Sygnał</span><span style="color:{sig_color};font-weight:500">{sig_label}</span></div>'
-                f'<div class="sc-row"><span>Strefa SMI</span><span style="color:{zone_color}">{zone}</span></div>'
+                f'<div class="sc-row"><span>Sygnał</span><span style="color:{sc2};font-weight:500">{sl}</span></div>'
+                f'<div class="sc-row"><span>Strefa SMI</span><span style="color:{zc}">{z}</span></div>'
                 f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
                 f'<div class="sc-row"><span>Market Cap</span><span style="color:var(--accent)">{fmt_cap(r.get("market_cap_mln"))}</span></div>'
                 f'<div class="sc-row"><span>Wolumen avg</span><span>{fmt_vol(r.get("volume_k"))}</span></div>'
@@ -476,145 +412,95 @@ def generate_html(meta, results, signals, strong):
                 f'<div class="sc-stoch-val {"green" if r["smi_above_ema"] else "red"}">{r["smi"]}</div></div>'
                 f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI EMA</div>'
                 f'<div class="sc-stoch-val">{r["smi_ema"]}</div></div>'
-                f'</div>'
-                f'</div>'
+                f'</div></div>'
             )
         return f'<div class="signal-grid">{cards}</div>'
 
-    all_rows    = rows_html(sorted(results, key=lambda x: (-x.get("strong_signal", 0), x["smi"])))
-    signal_rows = rows_html(sorted(signals, key=lambda x: -x.get("strong_signal", 0)))
+    all_rows    = rows_html(sorted(results, key=lambda x: (-x.get("strong_signal",0), x["smi"])))
+    signal_rows = rows_html(sorted(signals, key=lambda x: -x.get("strong_signal",0)))
     cards_html  = signal_cards(signals)
 
-    sc   = meta["signals"]
-    str_ = meta["strong"]
-    cc   = meta["candidates"]
-    tc   = meta["total_scanned"]
-    el   = meta["elapsed_min"]
-    cap  = int(meta.get("min_cap_mln", 200))
-    vol  = int(meta.get("min_volume", 300000))
+    sc   = meta["signals"];  str_ = meta["strong"]
+    cc   = meta["candidates"]; tc = meta["total_scanned"]; el = meta["elapsed_min"]
+    cap  = int(meta.get("min_cap_mln", 200)); vol = int(meta.get("min_volume", 300000))
     qr   = meta.get("min_quick", 1.0)
 
     html = f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Stock Screener SMI – {dt}</title>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
-  :root {{
-    --bg: #0a0e14; --bg2: #111620; --bg3: #1a2030;
-    --border: #1e2d45; --text: #c8d8f0; --muted: #4a6080;
-    --accent: #00c8ff; --green: #00e599; --amber: #ffb800;
-    --red: #ff4560; --usa: #3b82f6; --eu: #10b981;
-  }}
-  body {{ background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-size:14px; line-height:1.6; }}
-  .header {{ border-bottom:1px solid var(--border); padding:2rem 2.5rem 1.5rem; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; }}
-  .header-left h1 {{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:500; color:#fff; letter-spacing:-.5px; }}
-  .header-left h1 span {{ color:var(--accent); }}
-  .header-left p {{ font-size:12px; color:var(--muted); margin-top:4px; font-family:'IBM Plex Mono',monospace; }}
-  .criteria-pills {{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }}
-  .pill {{ font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 10px; border:1px solid var(--border); border-radius:100px; color:var(--muted); }}
-  .pill.active {{ border-color:var(--accent); color:var(--accent); }}
-  .stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px; background:var(--border); border-bottom:1px solid var(--border); }}
-  .stat {{ background:var(--bg); padding:1.25rem 1.5rem; }}
-  .stat-label {{ font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }}
-  .stat-value {{ font-size:28px; font-weight:300; color:#fff; margin-top:4px; font-family:'IBM Plex Mono',monospace; }}
-  .stat-value.highlight {{ color:var(--accent); }}
-  .stat-value.green {{ color:var(--green); }}
-  .stat-value.amber {{ color:var(--amber); }}
-  .stat-sub {{ font-size:11px; color:var(--muted); margin-top:2px; }}
-  .tabs {{ display:flex; border-bottom:1px solid var(--border); padding:0 2rem; }}
-  .tab {{ font-family:'IBM Plex Mono',monospace; font-size:12px; padding:12px 20px; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px; background:none; border-top:none; border-left:none; border-right:none; transition:all .15s; }}
-  .tab:hover {{ color:var(--text); }}
-  .tab.active {{ color:var(--accent); border-bottom-color:var(--accent); }}
-  .content {{ padding:1.5rem 2rem; }}
-  .panel {{ display:none; }}
-  .panel.active {{ display:block; }}
-  .toolbar {{ display:flex; gap:10px; margin-bottom:1rem; flex-wrap:wrap; align-items:center; }}
-  .search-input {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:7px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; width:240px; outline:none; }}
-  .search-input:focus {{ border-color:var(--accent); }}
-  .filter-select {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:7px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; outline:none; cursor:pointer; }}
-  .count-label {{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-left:auto; }}
-  .table-wrap {{ overflow-x:auto; }}
-  table {{ width:100%; border-collapse:collapse; font-size:13px; }}
-  thead th {{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }}
-  tbody tr {{ border-bottom:1px solid var(--border); transition:background .1s; }}
-  tbody tr:hover {{ background:var(--bg2); }}
-  td {{ padding:10px 12px; vertical-align:middle; }}
-  .ticker {{ font-family:'IBM Plex Mono',monospace; font-weight:500; color:#fff; font-size:13px; }}
-  .name-col {{ max-width:180px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--muted); font-size:12px; }}
-  .cap-col {{ color:var(--muted); font-size:12px; }}
-  .num {{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right; }}
-  .smi-above {{ color:var(--green); }}
-  .smi-below {{ color:var(--red); }}
-  .badge-usa {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 7px; border-radius:4px; background:rgba(59,130,246,.15); color:var(--usa); border:1px solid rgba(59,130,246,.3); }}
-  .badge-eu  {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 7px; border-radius:4px; background:rgba(16,185,129,.15); color:var(--eu);  border:1px solid rgba(16,185,129,.3); }}
-  .badge-signal {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(0,200,255,.15); color:var(--accent); border:1px solid rgba(0,200,255,.3); margin-left:6px; vertical-align:middle; animation:pulse 2s infinite; }}
-  .badge-strong {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(255,184,0,.15); color:var(--amber); border:1px solid rgba(255,184,0,.4); margin-left:6px; vertical-align:middle; animation:pulse 1.5s infinite; }}
-  @keyframes pulse {{ 0%,100%{{opacity:1}} 50%{{opacity:.45}} }}
-  .zone-badge {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 8px; border-radius:4px; white-space:nowrap; }}
-  .zone-ob   {{ background:rgba(255,69,96,.12);  color:#ff4560; border:1px solid rgba(255,69,96,.3); }}
-  .zone-os   {{ background:rgba(0,229,153,.12);  color:#00e599; border:1px solid rgba(0,229,153,.3); }}
-  .zone-bull {{ background:rgba(77,166,255,.12); color:#4da6ff; border:1px solid rgba(77,166,255,.3); }}
-  .zone-bear {{ background:rgba(255,160,64,.12); color:#ffa040; border:1px solid rgba(255,160,64,.3); }}
-  .signal-grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:12px; margin-bottom:1.5rem; }}
-  .signal-card {{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; position:relative; overflow:hidden; }}
-  .sc-ticker {{ font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:500; color:#fff; }}
-  .sc-name {{ font-size:12px; color:var(--muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }}
-  .sc-price {{ font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:300; color:var(--accent); margin:10px 0 8px; }}
-  .sc-row {{ display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px; }}
-  .sc-row span:last-child {{ font-family:'IBM Plex Mono',monospace; color:var(--text); }}
-  .sc-divider {{ border-top:1px solid var(--border); margin:8px 0; }}
-  .sc-stoch {{ display:flex; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }}
-  .sc-stoch-item {{ flex:1; }}
-  .sc-stoch-label {{ font-size:10px; font-family:'IBM Plex Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }}
-  .sc-stoch-val {{ font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:500; margin-top:2px; }}
-  .sc-stoch-val.green {{ color:var(--green); }}
-  .sc-stoch-val.red {{ color:var(--red); }}
-  .empty {{ text-align:center; padding:4rem 2rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:13px; }}
-  .empty::before {{ content:'//'; display:block; font-size:32px; margin-bottom:1rem; color:var(--border); }}
-  .ai-panel-wrap {{ max-width:900px; }}
-  .ai-intro {{ font-size:13px; color:var(--muted); margin-bottom:1.5rem; line-height:1.7; }}
-  .ai-intro strong {{ color:var(--text); }}
-  .ai-key-row {{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:1rem; }}
-  .ai-key-input {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:8px 14px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; width:340px; outline:none; letter-spacing:.05em; }}
-  .ai-key-input:focus {{ border-color:var(--accent); box-shadow:0 0 0 2px rgba(0,200,255,.15); }}
-  .ai-run-btn {{ background:linear-gradient(135deg,rgba(0,200,255,.2),rgba(0,229,153,.15)); border:1px solid rgba(0,200,255,.4); border-radius:6px; padding:8px 20px; color:var(--accent); font-family:'IBM Plex Mono',monospace; font-size:12px; cursor:pointer; white-space:nowrap; transition:all .2s; }}
-  .ai-run-btn:hover:not(:disabled) {{ background:linear-gradient(135deg,rgba(0,200,255,.35),rgba(0,229,153,.25)); border-color:var(--accent); }}
-  .ai-run-btn:disabled {{ opacity:.5; cursor:not-allowed; }}
-  .ai-key-note {{ font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; }}
-  .ai-status {{ display:none; font-size:12px; font-family:'IBM Plex Mono',monospace; padding:6px 12px; border-radius:5px; margin-bottom:.75rem; }}
-  .ai-status.ok    {{ background:rgba(0,229,153,.12); color:var(--green); border:1px solid rgba(0,229,153,.25); }}
-  .ai-status.error {{ background:rgba(255,69,96,.12);  color:var(--red);   border:1px solid rgba(255,69,96,.25); }}
-  .ai-output {{ min-height:80px; }}
-  .ai-loading {{ display:flex; flex-direction:column; align-items:center; padding:3rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:12px; }}
-  .ai-dots {{ display:flex; gap:6px; }}
-  .ai-dots span {{ width:8px; height:8px; border-radius:50%; background:var(--accent); animation:ai-bounce .9s ease-in-out infinite; }}
-  .ai-dots span:nth-child(2) {{ animation-delay:.15s; }}
-  .ai-dots span:nth-child(3) {{ animation-delay:.30s; }}
-  @keyframes ai-bounce {{ 0%,100%{{transform:translateY(0);opacity:.4}} 50%{{transform:translateY(-6px);opacity:1}} }}
-  .ai-spin {{ display:inline-block; animation:ai-rotate 1s linear infinite; }}
-  @keyframes ai-rotate {{ to{{transform:rotate(360deg)}} }}
-  .ai-cursor {{ animation:ai-blink 1s step-end infinite; color:var(--accent); }}
-  @keyframes ai-blink {{ 50%{{opacity:0}} }}
-  .ai-error {{ background:rgba(255,69,96,.08); border:1px solid rgba(255,69,96,.25); border-radius:6px; padding:1rem 1.25rem; color:var(--red); font-size:13px; }}
-  .ai-result {{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:1.75rem 2rem; line-height:1.75; }}
-  .ai-h2 {{ font-family:'IBM Plex Mono',monospace; font-size:15px; font-weight:500; color:var(--accent); margin:1.5rem 0 .5rem; padding-bottom:6px; border-bottom:1px solid var(--border); }}
-  .ai-h2:first-child {{ margin-top:0; }}
-  .ai-h3 {{ font-family:'IBM Plex Mono',monospace; font-size:13px; font-weight:500; color:var(--green); margin:.75rem 0 .25rem; }}
-  .ai-p {{ margin:.35rem 0; font-size:13.5px; color:var(--text); }}
-  .ai-gap {{ height:.5rem; }}
-  .ai-ul, .ai-ol {{ margin:.4rem 0 .4rem 1.25rem; padding:0; }}
-  .ai-ul li, .ai-ol li {{ font-size:13.5px; color:var(--text); margin:.2rem 0; }}
-  .ai-num {{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:12px; margin-right:4px; }}
-  .ai-code {{ font-family:'IBM Plex Mono',monospace; font-size:12px; background:rgba(255,255,255,.07); padding:1px 5px; border-radius:3px; color:var(--amber); }}
-  footer {{ border-top:1px solid var(--border); padding:1rem 2rem; font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }}
+  *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
+  :root{{--bg:#0a0e14;--bg2:#111620;--border:#1e2d45;--text:#c8d8f0;--muted:#4a6080;
+         --accent:#00c8ff;--green:#00e599;--amber:#ffb800;--red:#ff4560;--usa:#3b82f6;--eu:#10b981}}
+  body{{background:var(--bg);color:var(--text);font-family:'IBM Plex Sans',sans-serif;font-size:14px;line-height:1.6}}
+  .header{{border-bottom:1px solid var(--border);padding:2rem 2.5rem 1.5rem;display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:1rem}}
+  .header-left h1{{font-family:'IBM Plex Mono',monospace;font-size:22px;font-weight:500;color:#fff;letter-spacing:-.5px}}
+  .header-left h1 span{{color:var(--accent)}}
+  .header-left p{{font-size:12px;color:var(--muted);margin-top:4px;font-family:'IBM Plex Mono',monospace}}
+  .criteria-pills{{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}}
+  .pill{{font-family:'IBM Plex Mono',monospace;font-size:11px;padding:3px 10px;border:1px solid var(--border);border-radius:100px;color:var(--muted)}}
+  .pill.active{{border-color:var(--accent);color:var(--accent)}}
+  .stats{{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--border);border-bottom:1px solid var(--border)}}
+  .stat{{background:var(--bg);padding:1.25rem 1.5rem}}
+  .stat-label{{font-size:11px;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:1px}}
+  .stat-value{{font-size:28px;font-weight:300;color:#fff;margin-top:4px;font-family:'IBM Plex Mono',monospace}}
+  .stat-value.highlight{{color:var(--accent)}}.stat-value.green{{color:var(--green)}}.stat-value.amber{{color:var(--amber)}}
+  .stat-sub{{font-size:11px;color:var(--muted);margin-top:2px}}
+  .tabs{{display:flex;border-bottom:1px solid var(--border);padding:0 2rem}}
+  .tab{{font-family:'IBM Plex Mono',monospace;font-size:12px;padding:12px 20px;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;background:none;border-top:none;border-left:none;border-right:none;transition:all .15s}}
+  .tab:hover{{color:var(--text)}}.tab.active{{color:var(--accent);border-bottom-color:var(--accent)}}
+  .content{{padding:1.5rem 2rem}}.panel{{display:none}}.panel.active{{display:block}}
+  .toolbar{{display:flex;gap:10px;margin-bottom:1rem;flex-wrap:wrap;align-items:center}}
+  .search-input{{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:7px 12px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:12px;width:240px;outline:none}}
+  .search-input:focus{{border-color:var(--accent)}}
+  .filter-select{{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:7px 12px;color:var(--text);font-family:'IBM Plex Mono',monospace;font-size:12px;outline:none;cursor:pointer}}
+  .count-label{{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);margin-left:auto}}
+  .table-wrap{{overflow-x:auto}}
+  table{{width:100%;border-collapse:collapse;font-size:13px}}
+  thead th{{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);white-space:nowrap}}
+  tbody tr{{border-bottom:1px solid var(--border);transition:background .1s}}
+  tbody tr:hover{{background:var(--bg2)}}
+  td{{padding:10px 12px;vertical-align:middle}}
+  .ticker{{font-family:'IBM Plex Mono',monospace;font-weight:500;color:#fff;font-size:13px}}
+  .name-col{{max-width:180px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--muted);font-size:12px}}
+  .cap-col{{color:var(--muted);font-size:12px}}
+  .num{{font-family:'IBM Plex Mono',monospace;font-size:12px;text-align:right}}
+  .smi-above{{color:var(--green)}}.smi-below{{color:var(--red)}}
+  .badge-usa{{display:inline-block;font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:4px;background:rgba(59,130,246,.15);color:var(--usa);border:1px solid rgba(59,130,246,.3)}}
+  .badge-eu{{display:inline-block;font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 7px;border-radius:4px;background:rgba(16,185,129,.15);color:var(--eu);border:1px solid rgba(16,185,129,.3)}}
+  .badge-signal{{display:inline-block;font-size:9px;font-family:'IBM Plex Mono',monospace;padding:1px 6px;border-radius:4px;background:rgba(0,200,255,.15);color:var(--accent);border:1px solid rgba(0,200,255,.3);margin-left:6px;vertical-align:middle;animation:pulse 2s infinite}}
+  .badge-strong{{display:inline-block;font-size:9px;font-family:'IBM Plex Mono',monospace;padding:1px 6px;border-radius:4px;background:rgba(255,184,0,.15);color:var(--amber);border:1px solid rgba(255,184,0,.4);margin-left:6px;vertical-align:middle;animation:pulse 1.5s infinite}}
+  @keyframes pulse{{0%,100%{{opacity:1}}50%{{opacity:.45}}}}
+  .zone-badge{{display:inline-block;font-size:10px;font-family:'IBM Plex Mono',monospace;padding:2px 8px;border-radius:4px;white-space:nowrap}}
+  .zone-ob{{background:rgba(255,69,96,.12);color:#ff4560;border:1px solid rgba(255,69,96,.3)}}
+  .zone-os{{background:rgba(0,229,153,.12);color:#00e599;border:1px solid rgba(0,229,153,.3)}}
+  .zone-bull{{background:rgba(77,166,255,.12);color:#4da6ff;border:1px solid rgba(77,166,255,.3)}}
+  .zone-bear{{background:rgba(255,160,64,.12);color:#ffa040;border:1px solid rgba(255,160,64,.3)}}
+  .signal-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px;margin-bottom:1.5rem}}
+  .signal-card{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1rem 1.25rem;position:relative;overflow:hidden}}
+  .sc-ticker{{font-family:'IBM Plex Mono',monospace;font-size:18px;font-weight:500;color:#fff}}
+  .sc-name{{font-size:12px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+  .sc-price{{font-family:'IBM Plex Mono',monospace;font-size:20px;font-weight:300;color:var(--accent);margin:10px 0 8px}}
+  .sc-row{{display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:4px}}
+  .sc-row span:last-child{{font-family:'IBM Plex Mono',monospace;color:var(--text)}}
+  .sc-divider{{border-top:1px solid var(--border);margin:8px 0}}
+  .sc-stoch{{display:flex;gap:12px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)}}
+  .sc-stoch-item{{flex:1}}
+  .sc-stoch-label{{font-size:10px;font-family:'IBM Plex Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}}
+  .sc-stoch-val{{font-family:'IBM Plex Mono',monospace;font-size:16px;font-weight:500;margin-top:2px}}
+  .sc-stoch-val.green{{color:var(--green)}}.sc-stoch-val.red{{color:var(--red)}}
+  .empty{{text-align:center;padding:4rem 2rem;color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:13px}}
+  .empty::before{{content:'//';display:block;font-size:32px;margin-bottom:1rem;color:var(--border)}}
+  .hint-box{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:1.5rem 2rem;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);line-height:1.8}}
+  .hint-box strong{{color:var(--accent)}}
+  .hint-box code{{background:rgba(0,200,255,.08);color:var(--accent);padding:2px 7px;border-radius:4px;font-size:12px}}
+  footer{{border-top:1px solid var(--border);padding:1rem 2rem;font-size:11px;color:var(--muted);font-family:'IBM Plex Mono',monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px}}
 </style>
 </head>
 <body>
-
 <div class="header">
   <div class="header-left">
     <h1>STOCK <span>SCREENER</span> // SMI</h1>
@@ -630,7 +516,6 @@ def generate_html(meta, results, signals, strong):
     </div>
   </div>
 </div>
-
 <div class="stats">
   <div class="stat"><div class="stat-label">Przeskanowano</div><div class="stat-value">{tc}</div><div class="stat-sub">USA + EU</div></div>
   <div class="stat"><div class="stat-label">Kandydaci</div><div class="stat-value highlight">{cc}</div><div class="stat-sub">fundamenty OK</div></div>
@@ -639,13 +524,11 @@ def generate_html(meta, results, signals, strong):
   <div class="stat"><div class="stat-label">Min. Cap</div><div class="stat-value">{cap}</div><div class="stat-sub">mln USD/EUR</div></div>
   <div class="stat"><div class="stat-label">Czas skanu</div><div class="stat-value">{el}</div><div class="stat-sub">minut</div></div>
 </div>
-
 <div class="tabs">
   <button class="tab active" onclick="switchTab('signals',this)">Sygnały BUY ({sc})</button>
   <button class="tab" onclick="switchTab('all',this)">Wszyscy kandydaci ({cc})</button>
-  <button class="tab" onclick="switchTab('ai',this)" style="color:var(--accent);margin-left:auto">✦ AI Analiza</button>
+  <button class="tab" onclick="switchTab('hint',this)">✦ Jak analizować</button>
 </div>
-
 <div class="content">
 
   <div id="panel-signals" class="panel active">
@@ -653,14 +536,10 @@ def generate_html(meta, results, signals, strong):
     <div class="table-wrap">
       <table><thead><tr>
         <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
-        <th style="text-align:right">Cena</th>
-        <th style="text-align:right">Cap</th>
-        <th style="text-align:right">Wolumen</th>
-        <th style="text-align:right">SMI</th>
-        <th style="text-align:right">EMA</th>
-        <th>Strefa</th>
-        <th style="text-align:right">EPS TTM</th>
-        <th style="text-align:right">Sales TTM</th>
+        <th style="text-align:right">Cena</th><th style="text-align:right">Cap</th>
+        <th style="text-align:right">Wolumen</th><th style="text-align:right">SMI</th>
+        <th style="text-align:right">EMA</th><th>Strefa</th>
+        <th style="text-align:right">EPS TTM</th><th style="text-align:right">Sales TTM</th>
         <th style="text-align:right">Quick R.</th>
       </tr></thead><tbody>{signal_rows}</tbody></table>
     </div>
@@ -670,298 +549,80 @@ def generate_html(meta, results, signals, strong):
     <div class="toolbar">
       <input class="search-input" type="text" placeholder="szukaj tickera lub nazwy..." oninput="filterTable(this.value)"/>
       <select class="filter-select" onchange="filterMarket(this.value)">
-        <option value="">Wszystkie rynki</option>
-        <option value="USA">USA</option>
-        <option value="EU">EU</option>
+        <option value="">Wszystkie rynki</option><option value="USA">USA</option><option value="EU">EU</option>
       </select>
       <select class="filter-select" onchange="filterZone(this.value)">
-        <option value="">Wszystkie strefy</option>
-        <option value="OVERSOLD">OVERSOLD</option>
-        <option value="Bearish">Bearish</option>
-        <option value="Bullish">Bullish</option>
+        <option value="">Wszystkie strefy</option><option value="OVERSOLD">OVERSOLD</option>
+        <option value="Bearish">Bearish</option><option value="Bullish">Bullish</option>
         <option value="OVERBOUGHT">OVERBOUGHT</option>
       </select>
       <span class="count-label" id="row-count">{cc} wyników</span>
     </div>
     <div class="table-wrap">
-      <table id="tbl-all">
-        <thead><tr>
-          <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
-          <th style="text-align:right">Cena</th>
-          <th style="text-align:right">Cap</th>
-          <th style="text-align:right">Wolumen</th>
-          <th style="text-align:right">SMI</th>
-          <th style="text-align:right">EMA</th>
-          <th>Strefa</th>
-          <th style="text-align:right">EPS TTM</th>
-          <th style="text-align:right">Sales TTM</th>
-          <th style="text-align:right">Quick R.</th>
-        </tr></thead>
-        <tbody id="tbody-all">{all_rows}</tbody>
-      </table>
+      <table id="tbl-all"><thead><tr>
+        <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
+        <th style="text-align:right">Cena</th><th style="text-align:right">Cap</th>
+        <th style="text-align:right">Wolumen</th><th style="text-align:right">SMI</th>
+        <th style="text-align:right">EMA</th><th>Strefa</th>
+        <th style="text-align:right">EPS TTM</th><th style="text-align:right">Sales TTM</th>
+        <th style="text-align:right">Quick R.</th>
+      </tr></thead><tbody id="tbody-all">{all_rows}</tbody></table>
     </div>
   </div>
 
-  <div id="panel-ai" class="panel">
-    <div class="ai-panel-wrap">
-      <p class="ai-intro">
-        Wklej swój klucz <strong>Anthropic API</strong> — Claude przeanalizuje wszystkie {sc} sygnałów
-        z tego skanu: sektory, ryzyka i ranking wejść.<br>
-        <span style="color:var(--muted);font-size:11px;font-family:'IBM Plex Mono',monospace">
-          // Klucz używany wyłącznie w tej sesji przeglądarki — nie jest zapisywany nigdzie.
-        </span>
-      </p>
-      <div class="ai-key-row">
-        <input type="password" id="ai-key-input" class="ai-key-input"
-               placeholder="sk-ant-api03-..."
-               onkeydown="if(event.key==='Enter') runAiAnalysis()"/>
-        <button id="ai-run-btn" class="ai-run-btn" onclick="runAiAnalysis()">✦ Analizuj z Claude</button>
-        <span class="ai-key-note">// claude-sonnet-4 | max 4000 tokenów</span>
-      </div>
-      <div id="ai-status" class="ai-status"></div>
-      <div id="ai-output" class="ai-output"></div>
+  <div id="panel-hint" class="panel">
+    <div class="hint-box">
+      <strong>// Jak uzyskać analizę AI dla tych wyników</strong><br><br>
+      1. Otwórz plik <code>results/signals.json</code> z katalogu skanu<br>
+      2. Wklej jego zawartość do Claude na <code>claude.ai</code><br>
+      3. Napisz: <em>"Przeanalizuj te sygnały screener i zrób ranking Top 5"</em><br><br>
+      Alternatywnie możesz wkleić plik <code>results/results.csv</code> jeśli chcesz analizę wszystkich kandydatów.<br><br>
+      <strong>// Pliki wynikowe</strong><br><br>
+      <code>results/signals.json</code> — spółki z sygnałem BUY<br>
+      <code>results/strong.json</code> — tylko Strong BUY (z głębi OVERSOLD)<br>
+      <code>results/results.json</code> — wszyscy kandydaci (fundamenty OK)<br>
+      <code>results/results.csv</code> — to samo w formacie CSV
     </div>
   </div>
 
 </div>
-
 <footer>
   <span>// stock-screener &nbsp;|&nbsp; SMI(10,3,3) &nbsp;|&nbsp; dane: Yahoo Finance</span>
   <span>Nie stanowi porady inwestycyjnej</span>
 </footer>
-
 <script>
-__TABS_JS__
-__AI_JS__
-</script>
-</body>
-</html>"""
-
-    signals_json = json.dumps(signals, ensure_ascii=False)
-    meta_json    = json.dumps(meta,    ensure_ascii=False)
-    html = html.replace("__TABS_JS__", build_tabs_js())
-    html = html.replace("__AI_JS__",   build_ai_js(signals_json, meta_json))
-
-    path = f"{OUTPUT_DIR}/index.html"
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(html)
-    print(f"  Raport: {path}")
-
-
-# ══════════════════════════════════════════════════════════════
-#  GENERATOR KODU JS
-# ══════════════════════════════════════════════════════════════
-
-def build_tabs_js() -> str:
-    return """
-function switchTab(name, btn) {
+function switchTab(name, btn) {{
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
   btn.classList.add('active');
   document.getElementById('panel-' + name).classList.add('active');
-}
+}}
 let mf = '', zf = '';
-function filterMarket(v) { mf = v; applyFilters(); }
-function filterZone(v)   { zf = v; applyFilters(); }
-function filterTable(v)  { applyFilters(v); }
-function applyFilters(search) {
+function filterMarket(v) {{ mf = v; applyFilters(); }}
+function filterZone(v)   {{ zf = v; applyFilters(); }}
+function filterTable(v)  {{ applyFilters(v); }}
+function applyFilters(search) {{
   const rows = document.querySelectorAll('#tbody-all tr');
   let visible = 0;
   const s = (search ?? document.querySelector('.search-input').value).toLowerCase();
-  rows.forEach(row => {
+  rows.forEach(row => {{
     const t = row.textContent.toLowerCase();
     const ok = (!mf || t.includes(mf.toLowerCase()))
             && (!zf || t.includes(zf.toLowerCase()))
             && (!s  || t.includes(s));
     row.style.display = ok ? '' : 'none';
     if (ok) visible++;
-  });
+  }});
   document.getElementById('row-count').textContent = visible + ' wyników';
-}
-"""
+}}
+</script>
+</body>
+</html>"""
 
-def build_ai_js(signals_json: str, meta_json: str) -> str:
-    return (
-        "const SIGNALS_DATA = " + signals_json + ";\n"
-        "const META_DATA = "    + meta_json    + ";\n\n"
-        """
-function buildPrompt() {
-  const sc = SIGNALS_DATA;
-  if (!sc || sc.length === 0) return null;
-
-  const sigLines = sc.map(s => {
-    const sigType = s.strong_signal ? 'STRONG BUY' : 'BUY';
-    const cap   = s.market_cap_mln != null ? `Cap: ${s.market_cap_mln}M`   : '';
-    const vol   = s.volume_k       != null ? `Vol: ${s.volume_k}K`         : '';
-    const eps   = s.eps_ttm        != null ? `EPS: ${s.eps_ttm}`           : '';
-    const sales = s.sales_ttm_mln  != null ? `Sales: ${s.sales_ttm_mln}M` : '';
-    const qr    = s.quick_ratio    != null ? `QR: ${s.quick_ratio}`        : '';
-    return `- ${s.ticker} (${s.name}) | ${s.market} | ${s.sector} | ${s.price} ${s.currency}`
-         + ` | ${cap} | ${vol} | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType}`
-         + ` | ${eps} | ${sales} | ${qr}`.replace(/\\|\\s*\\|/g,'|').trimEnd();
-  }).join('\\n');
-
-  const m = META_DATA;
-  const dt = m.generated_at ? m.generated_at.slice(0, 10) : '—';
-
-  return `Jesteś doświadczonym analitykiem rynków akcji i traderem technicznym. Przeanalizuj wyniki automatycznego screener giełdowego i przygotuj pełną analizę inwestycyjną.
-
-PARAMETRY SKANU:
-- Data: ${dt}
-- Przeskanowano: ${m.total_scanned} spółek (USA + Europa)
-- Kandydaci (fundamenty OK): ${m.candidates}
-- Sygnały BUY: ${m.signals} | Strong BUY: ${m.strong}
-- Wskaźnik: SMI(10,3,3) interwał tygodniowy
-- Kryteria: cap>${m.min_cap_mln}M | vol>${m.min_volume} | EPS TTM>0 | Sales TTM>0 | Quick Ratio>${m.min_quick}
-
-LISTA SYGNAŁÓW (${sc.length} pozycji):
-${sigLines}
-
-Przygotuj analizę w języku polskim zgodnie z poniższą strukturą:
-
-## 1. Ogólna ocena skanu
-Oceń jakość i siłę obecnego skanu: stosunek sygnałów do kandydatów, dominujące strefy SMI, rozkład USA vs EU. Co to mówi o aktualnym sentymencie rynkowym?
-
-## 2. Analiza sektorowa
-Które sektory dominują wśród sygnałów? Czy to przypadkowe, czy sygnalizuje szerszy trend makroekonomiczny?
-
-## 3. Ranking Top 5 sygnałów
-Dla każdego z 5 najlepszych sygnałów podaj:
-- **Ticker i uzasadnienie wyboru**
-- **Mocne strony** (techniczne + fundamentalne: EPS, Sales, Quick Ratio)
-- **Ryzyka i słabe punkty**
-- **Sugerowany poziom wejścia**
-
-## 4. Sygnały ostrzegawcze
-Które spółki spełniły kryteria screener, ale budzą wątpliwości? Podaj konkretne powody.
-
-## 5. Podsumowanie i kolejność wejść
-Konkretna lista priorytetów (1–5) z jednozdaniowym uzasadnieniem.
-
-Używaj konkretnych danych liczbowych z listy. Odpowiedź NIE stanowi porady inwestycyjnej.`;
-}
-
-async function runAiAnalysis() {
-  const key = (document.getElementById('ai-key-input') || {}).value.trim();
-  if (!key) { showAiStatus('error', 'Wpisz klucz Anthropic API (sk-ant-...)'); return; }
-  if (!SIGNALS_DATA || SIGNALS_DATA.length === 0) {
-    showAiStatus('error', 'Ten skan nie zawiera sygnałów — brak danych do analizy.'); return;
-  }
-
-  const prompt = buildPrompt();
-  const btn    = document.getElementById('ai-run-btn');
-  const output = document.getElementById('ai-output');
-
-  btn.disabled = true;
-  btn.innerHTML = '<span class="ai-spin">⟳</span> Analizuję...';
-  output.innerHTML = '<div class="ai-loading"><div class="ai-dots"><span></span><span></span><span></span></div>'
-    + '<div style="margin-top:12px;font-size:13px">Claude analizuje ' + SIGNALS_DATA.length + ' sygnałów…</div></div>';
-
-  try {
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-api-key': key,
-        'anthropic-version': '2023-06-01',
-        'anthropic-dangerous-direct-browser-access': 'true',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 4000,
-        stream: true,
-        messages: [{ role: 'user', content: prompt }],
-      }),
-    });
-
-    if (!resp.ok) {
-      let msg = `HTTP ${resp.status}`;
-      try { const e = await resp.json(); msg = e.error?.message || msg; } catch {}
-      throw new Error(msg);
-    }
-
-    output.innerHTML = '<div class="ai-result" id="ai-result-inner"></div>';
-    const el = document.getElementById('ai-result-inner');
-    let fullText = '';
-    let buf = '';
-    const reader  = resp.body.getReader();
-    const decoder = new TextDecoder();
-
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      buf += decoder.decode(value, { stream: true });
-      const lines = buf.split('\\n');
-      buf = lines.pop();
-      for (const line of lines) {
-        if (!line.startsWith('data: ')) continue;
-        const raw = line.slice(6).trim();
-        if (raw === '[DONE]') continue;
-        try {
-          const parsed = JSON.parse(raw);
-          if (parsed.type === 'content_block_delta' && parsed.delta?.type === 'text_delta') {
-            fullText += parsed.delta.text;
-            el.innerHTML = renderMd(fullText) + '<span class="ai-cursor">▋</span>';
-            el.scrollIntoView({ block: 'end', behavior: 'smooth' });
-          }
-        } catch {}
-      }
-    }
-    el.innerHTML = renderMd(fullText);
-    showAiStatus('ok', '✓ Analiza zakończona');
-
-  } catch (err) {
-    output.innerHTML = '<div class="ai-error">❌ ' + err.message + '<br><small>Sprawdź klucz API i połączenie z internetem.</small></div>';
-  } finally {
-    btn.disabled = false;
-    btn.innerHTML = '✦ Analizuj z Claude';
-  }
-}
-
-function showAiStatus(type, msg) {
-  const el = document.getElementById('ai-status');
-  if (!el) return;
-  el.className = 'ai-status ' + type;
-  el.textContent = msg;
-  el.style.display = 'block';
-  if (type === 'ok') setTimeout(() => { el.style.display = 'none'; }, 4000);
-}
-
-function renderMd(raw) {
-  let t = raw
-    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-    .replace(/^## (.+)$/gm,  '<h3 class="ai-h2">$1</h3>')
-    .replace(/^### (.+)$/gm, '<h4 class="ai-h3">$1</h4>')
-    .replace(/\\*\\*(.+?)\\*\\*/g, '<strong>$1</strong>')
-    .replace(/\\*(.+?)\\*/g,  '<em>$1</em>')
-    .replace(/`(.+?)`/g,      '<code class="ai-code">$1</code>');
-
-  const lines = t.split('\\n');
-  const out = [];
-  let inUl = false, inOl = false;
-  for (const ln of lines) {
-    const ulM = ln.match(/^- (.+)$/);
-    const olM = ln.match(/^(\\d+)\\. (.+)$/);
-    if (ulM) {
-      if (inOl) { out.push('</ol>'); inOl = false; }
-      if (!inUl) { out.push('<ul class="ai-ul">'); inUl = true; }
-      out.push(`<li>${ulM[1]}</li>`);
-    } else if (olM) {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      if (!inOl) { out.push('<ol class="ai-ol">'); inOl = true; }
-      out.push(`<li><span class="ai-num">${olM[1]}.</span> ${olM[2]}</li>`);
-    } else {
-      if (inUl) { out.push('</ul>'); inUl = false; }
-      if (inOl) { out.push('</ol>'); inOl = false; }
-      out.push(ln === '' ? '<div class="ai-gap"></div>' : `<p class="ai-p">${ln}</p>`);
-    }
-  }
-  if (inUl) out.push('</ul>');
-  if (inOl) out.push('</ol>');
-  return out.join('\\n');
-}
-"""
-    )
+    path = f"{OUTPUT_DIR}/index.html"
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"  Raport: {path}")
 
 
 if __name__ == "__main__":
