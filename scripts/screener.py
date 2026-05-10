@@ -1,7 +1,7 @@
 """
 Stock Screener – SMI Signal Strategy
-Kryteria: USA + Europa | market cap > 200 mln
-         | rosnące Revenue i Net Income YoY (Q vs Q rok wcześniej)
+Kryteria: USA + Europa | market cap > 200 mln | volume > 300 000
+         | EPS TTM > 0 | Sales TTM > 0 | PEG < 2 | ROE > 5% | Quick Ratio > 1.5
 Sygnał wejścia: SMI crossover / exit OS na interwale tygodniowym
 (port Pine Script: "SMI Signal Strategy" – lengthK=10, lengthD=3, lengthEMA=3)
 """
@@ -17,6 +17,10 @@ from datetime import datetime
 from io import StringIO
 
 MIN_MARKET_CAP = 200_000_000   # 200 mln USD / EUR
+MIN_VOLUME     = 300_000       # minimalny wolumen (3M średnia dzienna)
+MIN_ROE        = 0.05          # 5%
+MIN_QUICK      = 1.5
+MAX_PEG        = 2.0
 DELAY          = 0.25
 OUTPUT_DIR     = "results"
 
@@ -156,15 +160,10 @@ def ema(series: pd.Series, length: int) -> pd.Series:
     return series.ewm(span=length, adjust=False).mean()
 
 def ema_ema(series: pd.Series, length: int) -> pd.Series:
-    """Podwójne EMA – odpowiednik emaEma() w Pine Script."""
     return ema(ema(series, length), length)
 
 def calc_smi(high: pd.Series, low: pd.Series, close: pd.Series,
              length_k: int = 10, length_d: int = 3, length_ema: int = 3):
-    """
-    SMI = 200 * emaEma(relativeRange, lengthD) / emaEma(highestLowestRange, lengthD)
-    smiEMA = EMA(SMI, lengthEMA)
-    """
     highest_high         = high.rolling(length_k).max()
     lowest_low           = low.rolling(length_k).min()
     highest_lowest_range = highest_high - lowest_low
@@ -183,10 +182,6 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
                 use_zone:  bool = True,
                 use_zero:  bool = False,
                 strong_only: bool = False):
-    """
-    Zwraca (buy_signal, strong_buy, smi_val, smi_ema_val, zone_str)
-    dla OSTATNIEJ świecy.
-    """
     if len(smi) < 3:
         return False, False, None, None, "—"
 
@@ -225,92 +220,40 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
 #  ANALIZA FUNDAMENTALNA
 # ══════════════════════════════════════════════════════════════
 
-def check_fundamentals(tkr_obj, min_annual_rev_growth: float = 0.15,
-                       trend_quarters: int = 4):
+def check_fundamentals(info: dict):
     """
-    Porównuje kwartały rok do roku (YoY):
-      Q1 2025 vs Q1 2024, Q2 2025 vs Q2 2024, itd.
+    Kryteria z tkr.info:
+      - EPS TTM > 0        (trailingEps)
+      - Sales TTM > 0      (totalRevenue)
+      - PEG < 2            (pegRatio)  – odrzucamy też ujemne PEG
+      - ROE > 5%           (returnOnEquity)
+      - Quick Ratio > 1.5  (quickRatio)
 
-    W danych yfinance indeks 0 = najnowszy kwartał, indeks 4 = ten sam
-    kwartał rok wcześniej. Sprawdzamy window kolejnych par (i, i+4).
-
-    rev_vals / earn_vals: (najstarszy Q poprzedniego roku, najnowszy Q bieżący)
+    Zwraca (ok: bool, metryki: dict)
     """
-    try:
-        q = tkr_obj.quarterly_financials
-        if q is None or q.empty:
-            return False, False, None, None, None, False
+    eps       = info.get("trailingEps")
+    sales_ttm = info.get("totalRevenue")
+    peg       = info.get("pegRatio")
+    roe       = info.get("returnOnEquity")
+    quick     = info.get("quickRatio")
 
-        rev_up = earn_up = False
-        rev_vals = earn_vals = None
-        annual_rev_growth = None
+    eps_ok   = eps       is not None and eps   > 0
+    sales_ok = sales_ttm is not None and sales_ttm > 0
+    peg_ok   = peg       is not None and 0 < peg < MAX_PEG
+    roe_ok   = roe       is not None and roe   > MIN_ROE
+    quick_ok = quick     is not None and quick > MIN_QUICK
 
-        # ── Revenue YoY ──────────────────────────────────────────────
-        if "Total Revenue" in q.index:
-            rev   = q.loc["Total Revenue"].dropna()
-            n_rev = len(rev)
+    passed = eps_ok and sales_ok and peg_ok and roe_ok and quick_ok
 
-            if n_rev >= 5:
-                # Ile par (bieżący Q, Q rok temu) możemy sprawdzić
-                window = min(trend_quarters, n_rev - 4)
-                # Każdy z ostatnich `window` kwartałów musi być wyższy niż ten
-                # sam kwartał rok wcześniej (offset = 4 pozycje w liście)
-                rev_up = all(
-                    float(rev.iloc[i]) > float(rev.iloc[i + 4])
-                    for i in range(window)
-                )
-                rev_vals = (
-                    round(float(rev.iloc[window - 1 + 4]) / 1e6, 1),  # najstarszy porównywany Q (rok temu)
-                    round(float(rev.iloc[0])              / 1e6, 1),   # najnowszy Q
-                )
-            elif n_rev >= 2:
-                # Za mało danych na YoY – fallback do prostego QoQ
-                rev_up   = float(rev.iloc[0]) > float(rev.iloc[1])
-                rev_vals = (
-                    round(float(rev.iloc[1]) / 1e6, 1),
-                    round(float(rev.iloc[0]) / 1e6, 1),
-                )
+    metrics = {
+        "eps_ttm":       round(eps,  2)               if eps       is not None else None,
+        "sales_ttm_mln": round(sales_ttm / 1e6, 1)    if sales_ttm is not None else None,
+        "peg":           round(peg,  2)               if peg       is not None else None,
+        "roe_pct":       round(roe * 100, 1)           if roe       is not None else None,
+        "quick_ratio":   round(quick, 2)              if quick     is not None else None,
+    }
 
-            # Roczny wzrost przychodów (TTM lub Q vs Q sprzed roku)
-            if n_rev >= 8:
-                ttm_curr = float(rev.iloc[0:4].sum())
-                ttm_prev = float(rev.iloc[4:8].sum())
-                if ttm_prev > 0:
-                    annual_rev_growth = (ttm_curr - ttm_prev) / ttm_prev
-            elif n_rev >= 5:
-                curr      = float(rev.iloc[0])
-                prev_year = float(rev.iloc[4])
-                if prev_year > 0:
-                    annual_rev_growth = (curr - prev_year) / prev_year
-
-        # ── Net Income YoY ───────────────────────────────────────────
-        if "Net Income" in q.index:
-            net   = q.loc["Net Income"].dropna()
-            n_net = len(net)
-
-            if n_net >= 5:
-                window = min(trend_quarters, n_net - 4)
-                earn_up = all(
-                    float(net.iloc[i]) > float(net.iloc[i + 4])
-                    for i in range(window)
-                )
-                earn_vals = (
-                    round(float(net.iloc[window - 1 + 4]) / 1e6, 1),
-                    round(float(net.iloc[0])              / 1e6, 1),
-                )
-            elif n_net >= 2:
-                earn_up   = float(net.iloc[0]) > float(net.iloc[1])
-                earn_vals = (
-                    round(float(net.iloc[1]) / 1e6, 1),
-                    round(float(net.iloc[0]) / 1e6, 1),
-                )
-
-        rev_annual_ok = (annual_rev_growth is not None
-                         and annual_rev_growth >= min_annual_rev_growth)
-
-        return rev_up, earn_up, rev_vals, earn_vals, annual_rev_growth, rev_annual_ok
-    except:
-        return False, False, None, None, None, False
+    return passed, metrics
 
 
 # ══════════════════════════════════════════════════════════════
@@ -324,7 +267,8 @@ def run_screener():
     print(f"SCREENER START: {start.strftime('%Y-%m-%d %H:%M:%S')}")
     print("Wskaźnik: SMI Signal Strategy (lengthK=10, lengthD=3, lengthEMA=3)")
     print("Sygnały:  cross_up + exit_OS | strong = z głębi strefy OS")
-    print(f"Filtry:   market cap > {MIN_MARKET_CAP/1e6:.0f} mln | Revenue YoY ↑ | Net Income YoY ↑")
+    print(f"Filtry:   cap>{MIN_MARKET_CAP/1e6:.0f}M | vol>{MIN_VOLUME:,} | "
+          f"EPS>0 | Sales>0 | PEG<{MAX_PEG} | ROE>{MIN_ROE*100:.0f}% | QuickR>{MIN_QUICK}")
     print("=" * 60)
 
     print("\n[1/5] Pobieranie list spółek...")
@@ -342,54 +286,62 @@ def run_screener():
 
     for i, (symbol, market) in enumerate(all_tickers):
         try:
-            tkr   = yf.Ticker(symbol)
-            fi    = tkr.fast_info
-            price = getattr(fi, "last_price", None)
+            tkr = yf.Ticker(symbol)
+            fi  = tkr.fast_info
 
-            # ── Filtr poprawności ceny (bez limitu górnego/dolnego)
+            # ── Cena (tylko sanity check – brak limitu górnego/dolnego)
+            price = getattr(fi, "last_price", None)
             if not price or price <= 0:
                 skipped += 1
                 continue
 
-            # ── Filtr kapitalizacji (market cap > 200 mln)
+            # ── Market cap > 200 mln
             market_cap = getattr(fi, "market_cap", None)
             if not market_cap or market_cap < MIN_MARKET_CAP:
                 skipped += 1
                 continue
 
-            currency = getattr(fi, "currency", "USD")
-
-            rev_up, earn_up, rev_vals, earn_vals, annual_growth, rev_annual_ok = check_fundamentals(tkr)
-            if not (rev_up and earn_up and rev_annual_ok):
+            # ── Wolumen (3-miesięczna średnia dzienna, fallback na last_volume)
+            volume = getattr(fi, "three_month_average_volume", None) \
+                     or getattr(fi, "last_volume", None)
+            if not volume or volume < MIN_VOLUME:
                 skipped += 1
                 continue
 
+            currency = getattr(fi, "currency", "USD")
+
+            # ── Dane fundamentalne z tkr.info (jeden wolny call – po filtrach fast_info)
+            try:
+                info = tkr.info
+            except Exception:
+                skipped += 1
+                continue
+
+            fund_ok, metrics = check_fundamentals(info)
+            if not fund_ok:
+                skipped += 1
+                continue
+
+            # ── Dane techniczne – historia tygodniowa
             hist = tkr.history(period="2y", interval="1wk").dropna(subset=["High", "Low", "Close"])
             if len(hist) < 20:
                 skipped += 1
                 continue
 
-            # ── SMI
-            smi, smi_ema_ser = calc_smi(hist["High"], hist["Low"], hist["Close"])
-            buy_sig, strong_sig, smi_val, smi_ema_val, zone = smi_signals(smi, smi_ema_ser)
+            smi_ser, smi_ema_ser = calc_smi(hist["High"], hist["Low"], hist["Close"])
+            buy_sig, strong_sig, smi_val, smi_ema_val, zone = smi_signals(smi_ser, smi_ema_ser)
 
             if smi_val is None:
                 skipped += 1
                 continue
 
-            try:
-                info    = tkr.info
-                name    = info.get("shortName", symbol)
-                sector  = info.get("sector", "—")
-                country = info.get("country", "—")
-            except:
-                name    = symbol
-                sector  = "—"
-                country = "—"
+            name    = info.get("shortName", symbol)
+            sector  = info.get("sector", "—")
+            country = info.get("country", "—")
 
-            annual_growth_pct = round(annual_growth * 100, 1) if annual_growth else None
-            smi_above_ema     = smi_val > smi_ema_val if smi_ema_val else False
-            market_cap_mln    = round(market_cap / 1e6, 1)
+            smi_above_ema  = smi_val > smi_ema_val if smi_ema_val else False
+            market_cap_mln = round(market_cap / 1e6, 1)
+            volume_k       = round(volume / 1000, 1)
 
             row = {
                 "ticker":         symbol,
@@ -400,27 +352,25 @@ def run_screener():
                 "price":          round(price, 2),
                 "currency":       currency,
                 "market_cap_mln": market_cap_mln,
+                "volume_k":       volume_k,
                 "smi":            smi_val,
                 "smi_ema":        smi_ema_val,
                 "smi_above_ema":  smi_above_ema,
                 "zone":           zone,
                 "signal":         buy_sig,
                 "strong_signal":  strong_sig,
-                "rev_prev":       rev_vals[0] if rev_vals else None,
-                "rev_curr":       rev_vals[1] if rev_vals else None,
-                "earn_prev":      earn_vals[0] if earn_vals else None,
-                "earn_curr":      earn_vals[1] if earn_vals else None,
-                "rev_yoy_pct":    annual_growth_pct,
+                **metrics,
                 "scanned_at":     datetime.now().isoformat(),
             }
             results.append(row)
 
-            growth_str = f"+{annual_growth_pct}% YoY" if annual_growth_pct else ""
-            sig_tag    = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
-            cap_str    = f"cap={market_cap_mln:.0f}M"
+            sig_tag  = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
+            cap_str  = f"cap={market_cap_mln:.0f}M"
+            fund_str = (f"EPS={metrics['eps_ttm']} PEG={metrics['peg']} "
+                        f"ROE={metrics['roe_pct']}% QR={metrics['quick_ratio']}")
             print(f"  {sig_tag} [{i+1}] {symbol:10s} {market} | {price:8.2f} {currency} "
                   f"| {cap_str:12s} | SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} "
-                  f"| {zone:12s} | {growth_str}")
+                  f"| {zone:12s} | {fund_str}")
 
             if buy_sig:
                 signals.append(row)
@@ -432,7 +382,7 @@ def run_screener():
         except KeyboardInterrupt:
             print("\nPrzerwano przez użytkownika.")
             break
-        except Exception as e:
+        except Exception:
             errors += 1
 
     elapsed = round((datetime.now() - start).total_seconds() / 60, 1)
@@ -453,6 +403,10 @@ def run_screener():
         "errors":        errors,
         "indicator":     "SMI(10,3,3)",
         "min_cap_mln":   MIN_MARKET_CAP / 1e6,
+        "min_volume":    MIN_VOLUME,
+        "min_roe_pct":   MIN_ROE * 100,
+        "min_quick":     MIN_QUICK,
+        "max_peg":       MAX_PEG,
     }
     for fname, data in [("meta", meta), ("results", results), ("signals", signals), ("strong", strong)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
@@ -482,23 +436,24 @@ def generate_html(meta, results, signals, strong):
         return f'<span class="zone-badge {cls}">{zone}</span>'
 
     def fmt_cap(mln):
-        if mln is None:
-            return "—"
-        if mln >= 1000:
-            return f"{mln/1000:.1f} B"
-        return f"{mln:.0f} M"
+        if mln is None: return "—"
+        return f"{mln/1000:.1f} B" if mln >= 1000 else f"{mln:.0f} M"
+
+    def fmt_vol(k):
+        if k is None: return "—"
+        return f"{k/1000:.1f}M" if k >= 1000 else f"{k:.0f}K"
+
+    def na(v, suffix=""):
+        return f"{v}{suffix}" if v is not None else "—"
 
     def rows_html(data):
         if not data:
-            return "<tr><td colspan='11' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
+            return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
         html = ""
         for r in data:
             strong_badge = '<span class="badge-strong">STRONG</span>' if r.get("strong_signal") else (
                            '<span class="badge-signal">BUY</span>'    if r.get("signal")        else "")
-            rev_str  = f"{r['rev_prev']} → {r['rev_curr']} M"  if r.get("rev_curr")  else "—"
-            earn_str = f"{r['earn_prev']} → {r['earn_curr']} M" if r.get("earn_curr") else "—"
-            smi_cls  = "smi-above" if r["smi_above_ema"] else "smi-below"
-            cap_str  = fmt_cap(r.get("market_cap_mln"))
+            smi_cls = "smi-above" if r["smi_above_ema"] else "smi-below"
             html += f"""
             <tr>
               <td><span class="ticker">{r['ticker']}</span>{strong_badge}</td>
@@ -506,12 +461,15 @@ def generate_html(meta, results, signals, strong):
               <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
               <td>{r['sector']}</td>
               <td class="num">{r['price']} {r['currency']}</td>
-              <td class="num cap-col">{cap_str}</td>
+              <td class="num cap-col">{fmt_cap(r.get('market_cap_mln'))}</td>
+              <td class="num">{fmt_vol(r.get('volume_k'))}</td>
               <td class="num {smi_cls}">{r['smi']}</td>
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
-              <td class="num">{rev_str}</td>
-              <td class="num">{earn_str}</td>
+              <td class="num">{na(r.get('eps_ttm'))}</td>
+              <td class="num">{na(r.get('peg'))}</td>
+              <td class="num">{na(r.get('roe_pct'), '%')}</td>
+              <td class="num">{na(r.get('quick_ratio'))}</td>
             </tr>"""
         return html
 
@@ -521,21 +479,14 @@ def generate_html(meta, results, signals, strong):
         cards = ""
         for r in sorted(data, key=lambda x: -x.get("strong_signal", 0)):
             market_cls = "usa" if r["market"] == "USA" else "eu"
-            rev_str    = f"{r['rev_prev']} &rarr; {r['rev_curr']} M" if r.get("rev_curr")  else "&mdash;"
-            earn_str   = f"{r['earn_prev']} &rarr; {r['earn_curr']} M" if r.get("earn_curr") else "&mdash;"
-            cap_str    = fmt_cap(r.get("market_cap_mln"))
-
-            top_color = ("linear-gradient(90deg,#ff6b00,#ffb800)"
-                         if r.get("strong_signal")
-                         else "linear-gradient(90deg,#00c8ff,#00e599)")
-            sig_label = "STRONG BUY" if r.get("strong_signal") else "BUY SIGNAL"
-            sig_color = "#ffb800"    if r.get("strong_signal") else "#00c8ff"
-
-            yoy_str    = f"+{r['rev_yoy_pct']}% YoY" if r.get("rev_yoy_pct") else "—"
+            top_color  = ("linear-gradient(90deg,#ff6b00,#ffb800)"
+                          if r.get("strong_signal")
+                          else "linear-gradient(90deg,#00c8ff,#00e599)")
+            sig_label  = "STRONG BUY" if r.get("strong_signal") else "BUY SIGNAL"
+            sig_color  = "#ffb800"    if r.get("strong_signal") else "#00c8ff"
             zone       = r.get("zone", "—")
             zone_color = {"OVERBOUGHT": "#ff4560", "OVERSOLD": "#00e599",
                           "Bullish": "#4da6ff", "Bearish": "#ffa040"}.get(zone, "#888")
-
             cards += (
                 f'<div class="signal-card">'
                 f'<div style="position:absolute;top:0;left:0;right:0;height:2px;background:{top_color}"></div>'
@@ -545,12 +496,16 @@ def generate_html(meta, results, signals, strong):
                 f'<span class="badge-{market_cls}">{r["market"]}</span></div>'
                 f'<div class="sc-price">{r["price"]} {r["currency"]}</div>'
                 f'<div class="sc-row"><span>Sygnał</span><span style="color:{sig_color};font-weight:500">{sig_label}</span></div>'
-                f'<div class="sc-row"><span>Strefa</span><span style="color:{zone_color}">{zone}</span></div>'
+                f'<div class="sc-row"><span>Strefa SMI</span><span style="color:{zone_color}">{zone}</span></div>'
                 f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
-                f'<div class="sc-row"><span>Market Cap</span><span style="color:var(--accent)">{cap_str}</span></div>'
-                f'<div class="sc-row"><span>Revenue YoY</span><span style="color:var(--green)">{rev_str}</span></div>'
-                f'<div class="sc-row"><span>Net Income YoY</span><span style="color:var(--green)">{earn_str}</span></div>'
-                f'<div class="sc-row"><span>Rev. wzrost YoY</span><span style="color:var(--green)">{yoy_str}</span></div>'
+                f'<div class="sc-row"><span>Market Cap</span><span style="color:var(--accent)">{fmt_cap(r.get("market_cap_mln"))}</span></div>'
+                f'<div class="sc-row"><span>Wolumen avg</span><span>{fmt_vol(r.get("volume_k"))}</span></div>'
+                f'<div class="sc-divider"></div>'
+                f'<div class="sc-row"><span>EPS TTM</span><span style="color:var(--green)">{na(r.get("eps_ttm"))}</span></div>'
+                f'<div class="sc-row"><span>Sales TTM</span><span style="color:var(--green)">{na(r.get("sales_ttm_mln"))} M</span></div>'
+                f'<div class="sc-row"><span>PEG</span><span style="color:var(--amber)">{na(r.get("peg"))}</span></div>'
+                f'<div class="sc-row"><span>ROE</span><span style="color:var(--green)">{na(r.get("roe_pct"), "%")}</span></div>'
+                f'<div class="sc-row"><span>Quick Ratio</span><span style="color:var(--green)">{na(r.get("quick_ratio"))}</span></div>'
                 f'<div class="sc-stoch">'
                 f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI</div>'
                 f'<div class="sc-stoch-val {"green" if r["smi_above_ema"] else "red"}">{r["smi"]}</div></div>'
@@ -571,6 +526,10 @@ def generate_html(meta, results, signals, strong):
     tc   = meta["total_scanned"]
     el   = meta["elapsed_min"]
     cap  = int(meta.get("min_cap_mln", 200))
+    vol  = int(meta.get("min_volume", 300000))
+    roe  = meta.get("min_roe_pct", 5)
+    qr   = meta.get("min_quick", 1.5)
+    peg  = meta.get("max_peg", 2.0)
 
     html = f"""<!DOCTYPE html>
 <html lang="pl">
@@ -588,7 +547,6 @@ def generate_html(meta, results, signals, strong):
     --red: #ff4560; --usa: #3b82f6; --eu: #10b981;
   }}
   body {{ background:var(--bg); color:var(--text); font-family:'IBM Plex Sans',sans-serif; font-size:14px; line-height:1.6; }}
-
   .header {{ border-bottom:1px solid var(--border); padding:2rem 2.5rem 1.5rem; display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:1rem; }}
   .header-left h1 {{ font-family:'IBM Plex Mono',monospace; font-size:22px; font-weight:500; color:#fff; letter-spacing:-.5px; }}
   .header-left h1 span {{ color:var(--accent); }}
@@ -596,7 +554,6 @@ def generate_html(meta, results, signals, strong):
   .criteria-pills {{ display:flex; flex-wrap:wrap; gap:6px; margin-top:12px; }}
   .pill {{ font-family:'IBM Plex Mono',monospace; font-size:11px; padding:3px 10px; border:1px solid var(--border); border-radius:100px; color:var(--muted); }}
   .pill.active {{ border-color:var(--accent); color:var(--accent); }}
-
   .stats {{ display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:1px; background:var(--border); border-bottom:1px solid var(--border); }}
   .stat {{ background:var(--bg); padding:1.25rem 1.5rem; }}
   .stat-label {{ font-size:11px; font-family:'IBM Plex Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:1px; }}
@@ -605,26 +562,21 @@ def generate_html(meta, results, signals, strong):
   .stat-value.green {{ color:var(--green); }}
   .stat-value.amber {{ color:var(--amber); }}
   .stat-sub {{ font-size:11px; color:var(--muted); margin-top:2px; }}
-
   .tabs {{ display:flex; border-bottom:1px solid var(--border); padding:0 2rem; }}
   .tab {{ font-family:'IBM Plex Mono',monospace; font-size:12px; padding:12px 20px; cursor:pointer; color:var(--muted); border-bottom:2px solid transparent; margin-bottom:-1px; background:none; border-top:none; border-left:none; border-right:none; transition:all .15s; }}
   .tab:hover {{ color:var(--text); }}
   .tab.active {{ color:var(--accent); border-bottom-color:var(--accent); }}
-
   .content {{ padding:1.5rem 2rem; }}
   .panel {{ display:none; }}
   .panel.active {{ display:block; }}
-
   .toolbar {{ display:flex; gap:10px; margin-bottom:1rem; flex-wrap:wrap; align-items:center; }}
   .search-input {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:7px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; width:240px; outline:none; }}
   .search-input:focus {{ border-color:var(--accent); }}
   .filter-select {{ background:var(--bg2); border:1px solid var(--border); border-radius:6px; padding:7px 12px; color:var(--text); font-family:'IBM Plex Mono',monospace; font-size:12px; outline:none; cursor:pointer; }}
   .count-label {{ font-family:'IBM Plex Mono',monospace; font-size:11px; color:var(--muted); margin-left:auto; }}
-
   .table-wrap {{ overflow-x:auto; }}
   table {{ width:100%; border-collapse:collapse; font-size:13px; }}
-  thead th {{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); white-space:nowrap; cursor:pointer; user-select:none; }}
-  thead th:hover {{ color:var(--text); }}
+  thead th {{ font-family:'IBM Plex Mono',monospace; font-size:10px; text-transform:uppercase; letter-spacing:1px; color:var(--muted); text-align:left; padding:10px 12px; border-bottom:1px solid var(--border); white-space:nowrap; }}
   tbody tr {{ border-bottom:1px solid var(--border); transition:background .1s; }}
   tbody tr:hover {{ background:var(--bg2); }}
   td {{ padding:10px 12px; vertical-align:middle; }}
@@ -634,38 +586,32 @@ def generate_html(meta, results, signals, strong):
   .num {{ font-family:'IBM Plex Mono',monospace; font-size:12px; text-align:right; }}
   .smi-above {{ color:var(--green); }}
   .smi-below {{ color:var(--red); }}
-
   .badge-usa {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 7px; border-radius:4px; background:rgba(59,130,246,.15); color:var(--usa); border:1px solid rgba(59,130,246,.3); }}
   .badge-eu  {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 7px; border-radius:4px; background:rgba(16,185,129,.15); color:var(--eu);  border:1px solid rgba(16,185,129,.3); }}
   .badge-signal {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(0,200,255,.15); color:var(--accent); border:1px solid rgba(0,200,255,.3); margin-left:6px; vertical-align:middle; animation:pulse 2s infinite; }}
   .badge-strong {{ display:inline-block; font-size:9px; font-family:'IBM Plex Mono',monospace; padding:1px 6px; border-radius:4px; background:rgba(255,184,0,.15); color:var(--amber); border:1px solid rgba(255,184,0,.4); margin-left:6px; vertical-align:middle; animation:pulse 1.5s infinite; }}
-
   @keyframes pulse {{ 0%,100%{{opacity:1}} 50%{{opacity:.45}} }}
-
   .zone-badge {{ display:inline-block; font-size:10px; font-family:'IBM Plex Mono',monospace; padding:2px 8px; border-radius:4px; white-space:nowrap; }}
   .zone-ob   {{ background:rgba(255,69,96,.12);  color:#ff4560; border:1px solid rgba(255,69,96,.3); }}
   .zone-os   {{ background:rgba(0,229,153,.12);  color:#00e599; border:1px solid rgba(0,229,153,.3); }}
   .zone-bull {{ background:rgba(77,166,255,.12); color:#4da6ff; border:1px solid rgba(77,166,255,.3); }}
   .zone-bear {{ background:rgba(255,160,64,.12); color:#ffa040; border:1px solid rgba(255,160,64,.3); }}
-
-  .signal-grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px; margin-bottom:1.5rem; }}
+  .signal-grid {{ display:grid; grid-template-columns:repeat(auto-fill,minmax(270px,1fr)); gap:12px; margin-bottom:1.5rem; }}
   .signal-card {{ background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:1rem 1.25rem; position:relative; overflow:hidden; }}
   .sc-ticker {{ font-family:'IBM Plex Mono',monospace; font-size:18px; font-weight:500; color:#fff; }}
   .sc-name {{ font-size:12px; color:var(--muted); margin-top:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }}
   .sc-price {{ font-family:'IBM Plex Mono',monospace; font-size:20px; font-weight:300; color:var(--accent); margin:10px 0 8px; }}
   .sc-row {{ display:flex; justify-content:space-between; font-size:12px; color:var(--muted); margin-top:4px; }}
   .sc-row span:last-child {{ font-family:'IBM Plex Mono',monospace; color:var(--text); }}
+  .sc-divider {{ border-top:1px solid var(--border); margin:8px 0; }}
   .sc-stoch {{ display:flex; gap:12px; margin-top:10px; padding-top:10px; border-top:1px solid var(--border); }}
   .sc-stoch-item {{ flex:1; }}
   .sc-stoch-label {{ font-size:10px; font-family:'IBM Plex Mono',monospace; color:var(--muted); text-transform:uppercase; letter-spacing:.5px; }}
   .sc-stoch-val {{ font-family:'IBM Plex Mono',monospace; font-size:16px; font-weight:500; margin-top:2px; }}
   .sc-stoch-val.green {{ color:var(--green); }}
   .sc-stoch-val.red {{ color:var(--red); }}
-
   .empty {{ text-align:center; padding:4rem 2rem; color:var(--muted); font-family:'IBM Plex Mono',monospace; font-size:13px; }}
   .empty::before {{ content:'//'; display:block; font-size:32px; margin-bottom:1rem; color:var(--border); }}
-
-  /* ── AI ANALIZA PANEL ───────────────────────────────────── */
   .ai-panel-wrap {{ max-width:900px; }}
   .ai-intro {{ font-size:13px; color:var(--muted); margin-bottom:1.5rem; line-height:1.7; }}
   .ai-intro strong {{ color:var(--text); }}
@@ -701,7 +647,6 @@ def generate_html(meta, results, signals, strong):
   .ai-ul li, .ai-ol li {{ font-size:13.5px; color:var(--text); margin:.2rem 0; }}
   .ai-num {{ font-family:'IBM Plex Mono',monospace; color:var(--accent); font-size:12px; margin-right:4px; }}
   .ai-code {{ font-family:'IBM Plex Mono',monospace; font-size:12px; background:rgba(255,255,255,.07); padding:1px 5px; border-radius:3px; color:var(--amber); }}
-
   footer {{ border-top:1px solid var(--border); padding:1rem 2rem; font-size:11px; color:var(--muted); font-family:'IBM Plex Mono',monospace; display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }}
 </style>
 </head>
@@ -713,10 +658,13 @@ def generate_html(meta, results, signals, strong):
     <p>// generated {dt} &nbsp;|&nbsp; elapsed {el} min &nbsp;|&nbsp; SMI(10,3,3) weekly</p>
     <div class="criteria-pills">
       <span class="pill active">USA + Europa</span>
-      <span class="pill active">market cap &gt; {cap} mln</span>
-      <span class="pill active">Revenue ↑ YoY</span>
-      <span class="pill active">Net Income ↑ YoY</span>
-      <span class="pill active">Rev YoY ≥ 15%</span>
+      <span class="pill active">cap &gt; {cap} mln</span>
+      <span class="pill active">vol &gt; {vol:,}</span>
+      <span class="pill active">EPS TTM &gt; 0</span>
+      <span class="pill active">Sales TTM &gt; 0</span>
+      <span class="pill active">PEG &lt; {peg}</span>
+      <span class="pill active">ROE &gt; {roe}%</span>
+      <span class="pill active">Quick Ratio &gt; {qr}</span>
       <span class="pill active">SMI cross / exit OS (1W)</span>
     </div>
   </div>
@@ -745,12 +693,15 @@ def generate_html(meta, results, signals, strong):
       <table><thead><tr>
         <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
         <th style="text-align:right">Cena</th>
-        <th style="text-align:right">Market Cap</th>
+        <th style="text-align:right">Cap</th>
+        <th style="text-align:right">Wolumen</th>
         <th style="text-align:right">SMI</th>
         <th style="text-align:right">EMA</th>
         <th>Strefa</th>
-        <th style="text-align:right">Revenue YoY (M)</th>
-        <th style="text-align:right">Net Inc. YoY (M)</th>
+        <th style="text-align:right">EPS TTM</th>
+        <th style="text-align:right">PEG</th>
+        <th style="text-align:right">ROE</th>
+        <th style="text-align:right">Quick R.</th>
       </tr></thead><tbody>{signal_rows}</tbody></table>
     </div>
   </div>
@@ -777,19 +728,21 @@ def generate_html(meta, results, signals, strong):
         <thead><tr>
           <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
           <th style="text-align:right">Cena</th>
-          <th style="text-align:right">Market Cap</th>
+          <th style="text-align:right">Cap</th>
+          <th style="text-align:right">Wolumen</th>
           <th style="text-align:right">SMI</th>
           <th style="text-align:right">EMA</th>
           <th>Strefa</th>
-          <th style="text-align:right">Revenue YoY (M)</th>
-          <th style="text-align:right">Net Inc. YoY (M)</th>
+          <th style="text-align:right">EPS TTM</th>
+          <th style="text-align:right">PEG</th>
+          <th style="text-align:right">ROE</th>
+          <th style="text-align:right">Quick R.</th>
         </tr></thead>
         <tbody id="tbody-all">{all_rows}</tbody>
       </table>
     </div>
   </div>
 
-  <!-- ── PANEL AI ─────────────────────────────────────────── -->
   <div id="panel-ai" class="panel">
     <div class="ai-panel-wrap">
       <p class="ai-intro">
@@ -879,13 +832,16 @@ function buildPrompt() {
 
   const sigLines = sc.map(s => {
     const sigType = s.strong_signal ? 'STRONG BUY' : 'BUY';
-    const rev     = s.rev_curr  != null ? `Rev YoY: ${s.rev_prev}→${s.rev_curr}M`      : '';
-    const earn    = s.earn_curr != null ? `NetInc YoY: ${s.earn_prev}→${s.earn_curr}M` : '';
-    const yoy     = s.rev_yoy_pct != null ? `YoY: +${s.rev_yoy_pct}%` : '';
-    const cap     = s.market_cap_mln != null ? `Cap: ${s.market_cap_mln}M` : '';
+    const cap   = s.market_cap_mln != null ? `Cap: ${s.market_cap_mln}M`   : '';
+    const vol   = s.volume_k       != null ? `Vol: ${s.volume_k}K`         : '';
+    const eps   = s.eps_ttm        != null ? `EPS: ${s.eps_ttm}`           : '';
+    const sales = s.sales_ttm_mln  != null ? `Sales: ${s.sales_ttm_mln}M` : '';
+    const peg   = s.peg            != null ? `PEG: ${s.peg}`               : '';
+    const roe   = s.roe_pct        != null ? `ROE: ${s.roe_pct}%`          : '';
+    const qr    = s.quick_ratio    != null ? `QR: ${s.quick_ratio}`        : '';
     return `- ${s.ticker} (${s.name}) | ${s.market} | ${s.sector} | ${s.price} ${s.currency}`
-         + ` | ${cap} | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType}`
-         + ` | ${rev} | ${earn} | ${yoy}`.trimEnd();
+         + ` | ${cap} | ${vol} | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType}`
+         + ` | ${eps} | ${sales} | ${peg} | ${roe} | ${qr}`.replace(/\\|\\s*\\|/g,'|').trimEnd();
   }).join('\\n');
 
   const m = META_DATA;
@@ -899,7 +855,7 @@ PARAMETRY SKANU:
 - Kandydaci (fundamenty OK): ${m.candidates}
 - Sygnały BUY: ${m.signals} | Strong BUY: ${m.strong}
 - Wskaźnik: SMI(10,3,3) interwał tygodniowy
-- Kryteria: market cap > ${m.min_cap_mln} mln | Revenue ↑ YoY (Q vs Q rok wcześniej) + Net Income ↑ YoY + Rev YoY ≥ 15%
+- Kryteria: cap>${m.min_cap_mln}M | vol>${m.min_volume} | EPS TTM>0 | Sales TTM>0 | PEG<${m.max_peg} | ROE>${m.min_roe_pct}% | Quick Ratio>${m.min_quick}
 
 LISTA SYGNAŁÓW (${sc.length} pozycji):
 ${sigLines}
@@ -915,7 +871,7 @@ Które sektory dominują wśród sygnałów? Czy to przypadkowe, czy sygnalizuje
 ## 3. Ranking Top 5 sygnałów
 Dla każdego z 5 najlepszych sygnałów podaj:
 - **Ticker i uzasadnienie wyboru**
-- **Mocne strony** (techniczne + fundamentalne + kapitalizacja)
+- **Mocne strony** (techniczne + fundamentalne: EPS, PEG, ROE, Quick Ratio)
 - **Ryzyka i słabe punkty**
 - **Sugerowany poziom wejścia**
 
@@ -971,7 +927,6 @@ async function runAiAnalysis() {
     const el = document.getElementById('ai-result-inner');
     let fullText = '';
     let buf = '';
-
     const reader  = resp.body.getReader();
     const decoder = new TextDecoder();
 
