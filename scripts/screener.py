@@ -1,7 +1,7 @@
 """
 Stock Screener – SMI Signal Strategy
 Kryteria: USA + Europa | market cap > 200 mln | volume > 300 000
-         | EPS TTM > 0 | Sales TTM > 0 | PEG < 2 | ROE > 5% | Quick Ratio > 1.5
+         | EPS TTM > 0 | Sales TTM > 0 | Quick Ratio > 1.0
 Sygnał wejścia: SMI crossover / exit OS na interwale tygodniowym
 (port Pine Script: "SMI Signal Strategy" – lengthK=10, lengthD=3, lengthEMA=3)
 """
@@ -18,9 +18,7 @@ from io import StringIO
 
 MIN_MARKET_CAP = 200_000_000   # 200 mln USD / EUR
 MIN_VOLUME     = 300_000       # minimalny wolumen (3M średnia dzienna)
-MIN_ROE        = 0.05          # 5%
-MIN_QUICK      = 1.5
-MAX_PEG        = 2.0
+MIN_QUICK      = 1.0
 DELAY          = 0.25
 OUTPUT_DIR     = "results"
 
@@ -152,8 +150,7 @@ def get_european_indices():
 
 
 # ══════════════════════════════════════════════════════════════
-#  SMI INDICATOR  (port z Pine Script "SMI Signal Strategy")
-#  Parametry domyślne: lengthK=10, lengthD=3, lengthEMA=3
+#  SMI INDICATOR
 # ══════════════════════════════════════════════════════════════
 
 def ema(series: pd.Series, length: int) -> pd.Series:
@@ -185,33 +182,21 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
     if len(smi) < 3:
         return False, False, None, None, "—"
 
-    s0  = float(smi.iloc[-1])
-    s1  = float(smi.iloc[-2])
-    e0  = float(smi_ema.iloc[-1])
-    e1  = float(smi_ema.iloc[-2])
+    s0 = float(smi.iloc[-1]);  s1 = float(smi.iloc[-2])
+    e0 = float(smi_ema.iloc[-1]); e1 = float(smi_ema.iloc[-2])
 
     cross_up = (s1 < e1) and (s0 >= e0)
     exit_os  = (s1 < -40) and (s0 >= -40)
     zero_up  = (s1 < 0)   and (s0 >= 0)
 
-    raw_buy = (
-        (use_cross and cross_up) or
-        (use_zone  and exit_os)  or
-        (use_zero  and zero_up)
-    )
-
-    is_os      = s0 <= -40
-    strong_buy = raw_buy and (s1 <= -40 or is_os)
+    raw_buy    = (use_cross and cross_up) or (use_zone and exit_os) or (use_zero and zero_up)
+    strong_buy = raw_buy and (s1 <= -40 or s0 <= -40)
     buy_signal = strong_only and strong_buy or (not strong_only and raw_buy)
 
-    if s0 >= 40:
-        zone = "OVERBOUGHT"
-    elif s0 <= -40:
-        zone = "OVERSOLD"
-    elif s0 > 0:
-        zone = "Bullish"
-    else:
-        zone = "Bearish"
+    if s0 >= 40:   zone = "OVERBOUGHT"
+    elif s0 <= -40: zone = "OVERSOLD"
+    elif s0 > 0:   zone = "Bullish"
+    else:          zone = "Bearish"
 
     return buy_signal, strong_buy, round(s0, 2), round(e0, 2), zone
 
@@ -222,35 +207,26 @@ def smi_signals(smi: pd.Series, smi_ema: pd.Series,
 
 def check_fundamentals(info: dict):
     """
-    Kryteria z tkr.info:
-      - EPS TTM > 0        (trailingEps)
-      - Sales TTM > 0      (totalRevenue)
-      - PEG < 2            (pegRatio)  – odrzucamy też ujemne PEG
-      - ROE > 5%           (returnOnEquity)
-      - Quick Ratio > 1.5  (quickRatio)
-
-    Zwraca (ok: bool, metryki: dict)
+    Kryteria:
+      - EPS TTM > 0       (trailingEps)
+      - Sales TTM > 0     (totalRevenue)
+      - Quick Ratio > 1.0 (quickRatio) — jeśli brak danych: przepuszczamy
     """
     eps       = info.get("trailingEps")
     sales_ttm = info.get("totalRevenue")
-    peg       = info.get("pegRatio")
-    roe       = info.get("returnOnEquity")
     quick     = info.get("quickRatio")
 
-    eps_ok   = eps       is not None and eps   > 0
+    eps_ok   = eps       is not None and eps       > 0
     sales_ok = sales_ttm is not None and sales_ttm > 0
-    peg_ok   = peg       is not None and 0 < peg < MAX_PEG
-    roe_ok   = roe       is not None and roe   > MIN_ROE
-    quick_ok = quick     is not None and quick > MIN_QUICK
+    # Jeśli quick ratio niedostępny (np. banki) – nie dyskwalifikujemy
+    quick_ok = quick is None or quick > MIN_QUICK
 
-    passed = eps_ok and sales_ok and peg_ok and roe_ok and quick_ok
+    passed = eps_ok and sales_ok and quick_ok
 
     metrics = {
-        "eps_ttm":       round(eps,  2)               if eps       is not None else None,
-        "sales_ttm_mln": round(sales_ttm / 1e6, 1)    if sales_ttm is not None else None,
-        "peg":           round(peg,  2)               if peg       is not None else None,
-        "roe_pct":       round(roe * 100, 1)           if roe       is not None else None,
-        "quick_ratio":   round(quick, 2)              if quick     is not None else None,
+        "eps_ttm":       round(eps,  2)              if eps       is not None else None,
+        "sales_ttm_mln": round(sales_ttm / 1e6, 1)  if sales_ttm is not None else None,
+        "quick_ratio":   round(quick, 2)             if quick     is not None else None,
     }
 
     return passed, metrics
@@ -268,7 +244,7 @@ def run_screener():
     print("Wskaźnik: SMI Signal Strategy (lengthK=10, lengthD=3, lengthEMA=3)")
     print("Sygnały:  cross_up + exit_OS | strong = z głębi strefy OS")
     print(f"Filtry:   cap>{MIN_MARKET_CAP/1e6:.0f}M | vol>{MIN_VOLUME:,} | "
-          f"EPS>0 | Sales>0 | PEG<{MAX_PEG} | ROE>{MIN_ROE*100:.0f}% | QuickR>{MIN_QUICK}")
+          f"EPS TTM>0 | Sales TTM>0 | Quick Ratio>{MIN_QUICK} (opcjonalny)")
     print("=" * 60)
 
     print("\n[1/5] Pobieranie list spółek...")
@@ -289,19 +265,16 @@ def run_screener():
             tkr = yf.Ticker(symbol)
             fi  = tkr.fast_info
 
-            # ── Cena (tylko sanity check – brak limitu górnego/dolnego)
             price = getattr(fi, "last_price", None)
             if not price or price <= 0:
                 skipped += 1
                 continue
 
-            # ── Market cap > 200 mln
             market_cap = getattr(fi, "market_cap", None)
             if not market_cap or market_cap < MIN_MARKET_CAP:
                 skipped += 1
                 continue
 
-            # ── Wolumen (3-miesięczna średnia dzienna, fallback na last_volume)
             volume = getattr(fi, "three_month_average_volume", None) \
                      or getattr(fi, "last_volume", None)
             if not volume or volume < MIN_VOLUME:
@@ -310,7 +283,6 @@ def run_screener():
 
             currency = getattr(fi, "currency", "USD")
 
-            # ── Dane fundamentalne z tkr.info (jeden wolny call – po filtrach fast_info)
             try:
                 info = tkr.info
             except Exception:
@@ -322,7 +294,6 @@ def run_screener():
                 skipped += 1
                 continue
 
-            # ── Dane techniczne – historia tygodniowa
             hist = tkr.history(period="2y", interval="1wk").dropna(subset=["High", "Low", "Close"])
             if len(hist) < 20:
                 skipped += 1
@@ -366,11 +337,10 @@ def run_screener():
 
             sig_tag  = "STRONG" if strong_sig else ("SYGNAŁ" if buy_sig else "ok    ")
             cap_str  = f"cap={market_cap_mln:.0f}M"
-            fund_str = (f"EPS={metrics['eps_ttm']} PEG={metrics['peg']} "
-                        f"ROE={metrics['roe_pct']}% QR={metrics['quick_ratio']}")
+            qr_str   = f"QR={metrics['quick_ratio']}" if metrics['quick_ratio'] else "QR=n/a"
             print(f"  {sig_tag} [{i+1}] {symbol:10s} {market} | {price:8.2f} {currency} "
                   f"| {cap_str:12s} | SMI={smi_val:6.1f} EMA={smi_ema_val:6.1f} "
-                  f"| {zone:12s} | {fund_str}")
+                  f"| {zone:12s} | EPS={metrics['eps_ttm']} {qr_str}")
 
             if buy_sig:
                 signals.append(row)
@@ -404,9 +374,7 @@ def run_screener():
         "indicator":     "SMI(10,3,3)",
         "min_cap_mln":   MIN_MARKET_CAP / 1e6,
         "min_volume":    MIN_VOLUME,
-        "min_roe_pct":   MIN_ROE * 100,
         "min_quick":     MIN_QUICK,
-        "max_peg":       MAX_PEG,
     }
     for fname, data in [("meta", meta), ("results", results), ("signals", signals), ("strong", strong)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
@@ -448,7 +416,7 @@ def generate_html(meta, results, signals, strong):
 
     def rows_html(data):
         if not data:
-            return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
+            return "<tr><td colspan='12' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
         html = ""
         for r in data:
             strong_badge = '<span class="badge-strong">STRONG</span>' if r.get("strong_signal") else (
@@ -467,8 +435,7 @@ def generate_html(meta, results, signals, strong):
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
               <td class="num">{na(r.get('eps_ttm'))}</td>
-              <td class="num">{na(r.get('peg'))}</td>
-              <td class="num">{na(r.get('roe_pct'), '%')}</td>
+              <td class="num">{na(r.get('sales_ttm_mln'))} M</td>
               <td class="num">{na(r.get('quick_ratio'))}</td>
             </tr>"""
         return html
@@ -503,8 +470,6 @@ def generate_html(meta, results, signals, strong):
                 f'<div class="sc-divider"></div>'
                 f'<div class="sc-row"><span>EPS TTM</span><span style="color:var(--green)">{na(r.get("eps_ttm"))}</span></div>'
                 f'<div class="sc-row"><span>Sales TTM</span><span style="color:var(--green)">{na(r.get("sales_ttm_mln"))} M</span></div>'
-                f'<div class="sc-row"><span>PEG</span><span style="color:var(--amber)">{na(r.get("peg"))}</span></div>'
-                f'<div class="sc-row"><span>ROE</span><span style="color:var(--green)">{na(r.get("roe_pct"), "%")}</span></div>'
                 f'<div class="sc-row"><span>Quick Ratio</span><span style="color:var(--green)">{na(r.get("quick_ratio"))}</span></div>'
                 f'<div class="sc-stoch">'
                 f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI</div>'
@@ -527,9 +492,7 @@ def generate_html(meta, results, signals, strong):
     el   = meta["elapsed_min"]
     cap  = int(meta.get("min_cap_mln", 200))
     vol  = int(meta.get("min_volume", 300000))
-    roe  = meta.get("min_roe_pct", 5)
-    qr   = meta.get("min_quick", 1.5)
-    peg  = meta.get("max_peg", 2.0)
+    qr   = meta.get("min_quick", 1.0)
 
     html = f"""<!DOCTYPE html>
 <html lang="pl">
@@ -662,8 +625,6 @@ def generate_html(meta, results, signals, strong):
       <span class="pill active">vol &gt; {vol:,}</span>
       <span class="pill active">EPS TTM &gt; 0</span>
       <span class="pill active">Sales TTM &gt; 0</span>
-      <span class="pill active">PEG &lt; {peg}</span>
-      <span class="pill active">ROE &gt; {roe}%</span>
       <span class="pill active">Quick Ratio &gt; {qr}</span>
       <span class="pill active">SMI cross / exit OS (1W)</span>
     </div>
@@ -699,8 +660,7 @@ def generate_html(meta, results, signals, strong):
         <th style="text-align:right">EMA</th>
         <th>Strefa</th>
         <th style="text-align:right">EPS TTM</th>
-        <th style="text-align:right">PEG</th>
-        <th style="text-align:right">ROE</th>
+        <th style="text-align:right">Sales TTM</th>
         <th style="text-align:right">Quick R.</th>
       </tr></thead><tbody>{signal_rows}</tbody></table>
     </div>
@@ -734,8 +694,7 @@ def generate_html(meta, results, signals, strong):
           <th style="text-align:right">EMA</th>
           <th>Strefa</th>
           <th style="text-align:right">EPS TTM</th>
-          <th style="text-align:right">PEG</th>
-          <th style="text-align:right">ROE</th>
+          <th style="text-align:right">Sales TTM</th>
           <th style="text-align:right">Quick R.</th>
         </tr></thead>
         <tbody id="tbody-all">{all_rows}</tbody>
@@ -836,12 +795,10 @@ function buildPrompt() {
     const vol   = s.volume_k       != null ? `Vol: ${s.volume_k}K`         : '';
     const eps   = s.eps_ttm        != null ? `EPS: ${s.eps_ttm}`           : '';
     const sales = s.sales_ttm_mln  != null ? `Sales: ${s.sales_ttm_mln}M` : '';
-    const peg   = s.peg            != null ? `PEG: ${s.peg}`               : '';
-    const roe   = s.roe_pct        != null ? `ROE: ${s.roe_pct}%`          : '';
     const qr    = s.quick_ratio    != null ? `QR: ${s.quick_ratio}`        : '';
     return `- ${s.ticker} (${s.name}) | ${s.market} | ${s.sector} | ${s.price} ${s.currency}`
          + ` | ${cap} | ${vol} | SMI=${s.smi} EMA=${s.smi_ema} | Strefa: ${s.zone} | ${sigType}`
-         + ` | ${eps} | ${sales} | ${peg} | ${roe} | ${qr}`.replace(/\\|\\s*\\|/g,'|').trimEnd();
+         + ` | ${eps} | ${sales} | ${qr}`.replace(/\\|\\s*\\|/g,'|').trimEnd();
   }).join('\\n');
 
   const m = META_DATA;
@@ -855,7 +812,7 @@ PARAMETRY SKANU:
 - Kandydaci (fundamenty OK): ${m.candidates}
 - Sygnały BUY: ${m.signals} | Strong BUY: ${m.strong}
 - Wskaźnik: SMI(10,3,3) interwał tygodniowy
-- Kryteria: cap>${m.min_cap_mln}M | vol>${m.min_volume} | EPS TTM>0 | Sales TTM>0 | PEG<${m.max_peg} | ROE>${m.min_roe_pct}% | Quick Ratio>${m.min_quick}
+- Kryteria: cap>${m.min_cap_mln}M | vol>${m.min_volume} | EPS TTM>0 | Sales TTM>0 | Quick Ratio>${m.min_quick}
 
 LISTA SYGNAŁÓW (${sc.length} pozycji):
 ${sigLines}
@@ -871,7 +828,7 @@ Które sektory dominują wśród sygnałów? Czy to przypadkowe, czy sygnalizuje
 ## 3. Ranking Top 5 sygnałów
 Dla każdego z 5 najlepszych sygnałów podaj:
 - **Ticker i uzasadnienie wyboru**
-- **Mocne strony** (techniczne + fundamentalne: EPS, PEG, ROE, Quick Ratio)
+- **Mocne strony** (techniczne + fundamentalne: EPS, Sales, Quick Ratio)
 - **Ryzyka i słabe punkty**
 - **Sugerowany poziom wejścia**
 
