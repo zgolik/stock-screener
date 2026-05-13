@@ -448,7 +448,7 @@ def generate_html(meta, mtf_results):
             return "<div class='empty'>Brak sygnałów MTF w tym skanie</div>"
         cards = ""
         for r in sorted(data, key=lambda x: (0 if x["daily_signal"]=="Strong BUY" else 1,
-                                              -r.get("market_cap_mln", 0))):
+                                              -x.get("market_cap_mln", 0))):
             is_strong = r["daily_signal"] == "Strong BUY"
             mc   = "usa" if r["market"] == "USA" else "eu"
             tc   = ("linear-gradient(90deg,#ff6b00,#ffb800)" if is_strong
