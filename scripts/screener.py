@@ -194,11 +194,19 @@ def check_fundamentals(info):
     eps   = info.get("trailingEps")
     sales = info.get("totalRevenue")
     quick = info.get("quickRatio")
-    ok = (eps is not None and eps > 0
-          and sales is not None and sales > 0
-          and (quick is None or quick > MIN_QUICK))
+
+    # Jezeli info jest puste (401) - nie filtrujemy
+    if not info:
+        metrics = {"eps_ttm": None, "sales_ttm_mln": None, "quick_ratio": None}
+        return True, metrics
+
+    eps_ok   = eps is None or eps > 0          # None = brak danych = przepuszczamy
+    sales_ok = sales is None or sales > 0
+    quick_ok = quick is None or quick > MIN_QUICK
+
+    ok = eps_ok and sales_ok and quick_ok
     metrics = {
-        "eps_ttm":       round(eps,  2)             if eps   is not None else None,
+        "eps_ttm":       round(eps,   2)            if eps   is not None else None,
         "sales_ttm_mln": round(sales / 1e6, 1)      if sales is not None else None,
         "quick_ratio":   round(quick, 2)             if quick is not None else None,
     }
@@ -324,6 +332,19 @@ def phase2_daily_crossover(weekly_bullish):
 #  FAZA 3 – Meta + Fundamenty (równolegle)
 # ══════════════════════════════════════════════════════════════
 
+def _fetch_info_with_retry(tkr, retries=3, wait=2):
+    """Pobiera tkr.info z retry przy bledach 401/timeout."""
+    import time
+    for attempt in range(retries):
+        try:
+            info = tkr.info
+            if info and len(info) > 5:
+                return info
+        except Exception:
+            if attempt < retries - 1:
+                time.sleep(wait)
+    return {}
+
 def _check_one(symbol, market, weekly_data, daily_signal):
     """Sprawdza market cap, volume, fundamenty dla jednego tickera."""
     try:
@@ -345,10 +366,7 @@ def _check_one(symbol, market, weekly_data, daily_signal):
 
         currency = getattr(fi, "currency", "USD")
 
-        try:
-            info = tkr.info
-        except Exception:
-            return None
+        info = _fetch_info_with_retry(tkr)
 
         fund_ok, metrics = check_fundamentals(info)
         if not fund_ok:
@@ -368,15 +386,12 @@ def _check_one(symbol, market, weekly_data, daily_signal):
             "currency":       currency,
             "market_cap_mln": round(cap / 1e6, 1),
             "volume_k":       round(vol / 1000, 1),
-            # tygodniowe SMI
             "smi":            weekly_data["smi"],
             "smi_ema":        weekly_data["smi_ema"],
             "zone":           weekly_data["zone"],
             "weekly_signal":  weekly_data["weekly_signal"],
             "weekly_strong":  weekly_data["weekly_strong"],
-            # dzienny sygnał MTF
             "daily_signal":   daily_signal,
-            # fundamenty
             **metrics,
             "scanned_at": datetime.now().isoformat(),
         }
