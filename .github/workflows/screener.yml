@@ -1,5 +1,4 @@
 name: Stock Screener
-
 on:
   workflow_dispatch:
     inputs:
@@ -22,31 +21,25 @@ on:
           - USA+EU
           - USA only
           - EU only
-
 jobs:
   run-screener:
     name: Run Stock Screener
     runs-on: ubuntu-latest
     timeout-minutes: 120
-
     permissions:
       contents: write
       pages: write
       id-token: write
-
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-
       - name: Setup Python 3.11
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
-
       - name: Install dependencies
         run: pip install -r requirements.txt
-
       - name: Run screener
         env:
           MAX_PRICE: ${{ github.event.inputs.max_price }}
@@ -54,7 +47,6 @@ jobs:
           MARKETS: ${{ github.event.inputs.markets }}
         run: |
           python scripts/screener.py
-
       - name: Upload results as artifact
         uses: actions/upload-artifact@v4
         if: always()
@@ -62,7 +54,6 @@ jobs:
           name: screener-results-${{ github.run_number }}
           path: results/
           retention-days: 30
-
       - name: Deploy report to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         if: success()
@@ -71,11 +62,10 @@ jobs:
           publish_dir: results
           publish_branch: gh-pages
           commit_message: "Screener report – run #${{ github.run_number }}"
-
       - name: Summary
         if: always()
         run: |
-          echo "## Screener Results" >> $GITHUB_STEP_SUMMARY
+          echo "## 📊 Stock Screener MTF – Wyniki" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           if [ -f results/meta.json ]; then
             python3 -c "
@@ -86,10 +76,15 @@ jobs:
           print(f'|---------|---------|')
           print(f'| Wygenerowano | {m[\"generated_at\"][:16]} |')
           print(f'| Przeskanowano | {m[\"total_scanned\"]} spółek |')
-          print(f'| Kandydaci | {m[\"candidates\"]} |')
-          print(f'| Sygnały CROSS | **{m[\"signals\"]}** |')
+          print(f'| SMI byczym (tydz.) | {m[\"weekly_bullish\"]} |')
+          print(f'| Dzienny crossover | {m[\"daily_crossover\"]} |')
+          print(f'| MTF sygnały łącznie | **{m[\"mtf_total\"]}** |')
+          print(f'| ⚡ Strong BUY | **{m[\"mtf_strong\"]}** |')
+          print(f'| ✅ BUY | **{m[\"mtf_buy\"]}** |')
           print(f'| Czas skanu | {m[\"elapsed_min\"]} min |')
           " >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ Brak pliku meta.json — skan mógł się nie zakończyć." >> $GITHUB_STEP_SUMMARY
           fi
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "Raport HTML dostępny w GitHub Pages po zakończeniu deployu." >> $GITHUB_STEP_SUMMARY
