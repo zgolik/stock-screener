@@ -1,6 +1,6 @@
 """
-Stock Screener – SMI Multi-Timeframe (MTF)
-Tygodniowy SMI byczym (SMI > EMA)  +  Dzienny SMI crossover w górę
+Stock Screener – SMI Tygodniowy
+Sygnał wejścia: tygodniowy crossover SMI > EMA  lub  wyjście ze strefy wyprzedania (<−40)
 Fundamenty: market cap > 200M | volume > 300K | EPS TTM > 0 | Sales > 0 | QR > 1.0
 SMI(10,3,3) – port Pine Script "SMI Signal Strategy"
 """
@@ -21,14 +21,13 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 MIN_MARKET_CAP       = 200_000_000
 MIN_VOLUME           = 300_000
 MIN_QUICK            = 1.0
-DAILY_LOOKBACK       = 2        # ostatnie N sesji dziennych pod kątem crossovera
-FUNDAMENTALS_WORKERS = 20       # wątki równoległe dla fundamentów/meta
-DOWNLOAD_BATCH_SIZE  = 100      # tickerów na jeden bulk request
+FUNDAMENTALS_WORKERS = 20
+DOWNLOAD_BATCH_SIZE  = 100
 OUTPUT_DIR           = "results"
 SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA = 10, 3, 3
 
 # ══════════════════════════════════════════════════════════════
-#  POBIERANIE TICKERÓW (oryginalne funkcje bez zmian)
+#  POBIERANIE TICKERÓW
 # ══════════════════════════════════════════════════════════════
 
 def get_sp500():
@@ -155,7 +154,7 @@ def get_european_indices():
     return all_eu
 
 # ══════════════════════════════════════════════════════════════
-#  SMI (oryginalne funkcje – bez zmian)
+#  SMI
 # ══════════════════════════════════════════════════════════════
 
 def ema(series, length):
@@ -174,33 +173,32 @@ def calc_smi(high, low, close, lk=10, ld=3, le=3):
     smi_ema = ema(smi, le)
     return smi, smi_ema
 
-def smi_signals(smi, smi_ema):
-    """Tygodniowe sygnały: cross_up + exit_OS (dla trybu klasycznego)."""
+def smi_weekly_signal(smi, smi_ema):
+    """
+    Tygodniowe sygnały wejścia:
+      - cross_up  : SMI przecina EMA od dołu
+      - exit_os   : SMI wychodzi ze strefy wyprzedania (< −40 → ≥ −40)
+    Zwraca: (buy, strong, smi_val, smi_ema_val, zone)
+    """
     if len(smi) < 3:
         return False, False, None, None, "—"
     s0, s1 = float(smi.iloc[-1]),     float(smi.iloc[-2])
     e0, e1 = float(smi_ema.iloc[-1]), float(smi_ema.iloc[-2])
-    cross_up  = (s1 < e1) and (s0 >= e0)
-    exit_os   = (s1 < -40) and (s0 >= -40)
-    buy       = cross_up or exit_os
-    strong    = buy and (s1 <= -40 or s0 <= -40)
+    cross_up = (s1 < e1) and (s0 >= e0)
+    exit_os  = (s1 < -40) and (s0 >= -40)
+    buy      = cross_up or exit_os
+    strong   = buy and (s1 <= -40 or s0 <= -40)
     if   s0 >= 40:  zone = "OVERBOUGHT"
     elif s0 <= -40: zone = "OVERSOLD"
     elif s0 > 0:    zone = "Bullish"
     else:           zone = "Bearish"
     return buy, strong, round(s0, 2), round(e0, 2), zone
 
-# check_fundamentals zastapiona przez _get_fundamentals_from_statements
-
 # ══════════════════════════════════════════════════════════════
-#  NOWE: BULK DOWNLOAD
+#  BULK DOWNLOAD
 # ══════════════════════════════════════════════════════════════
 
 def bulk_download(tickers, period, interval):
-    """
-    Pobiera dane OHLCV dla listy tickerów w partiach.
-    Zwraca {ticker: DataFrame}.
-    """
     result  = {}
     batches = [tickers[i:i+DOWNLOAD_BATCH_SIZE]
                for i in range(0, len(tickers), DOWNLOAD_BATCH_SIZE)]
@@ -229,63 +227,19 @@ def bulk_download(tickers, period, interval):
     return result
 
 # ══════════════════════════════════════════════════════════════
-#  FAZA 1 – Tygodniowy SMI: stan byczym (SMI > EMA)
+#  FAZA 1 – Tygodniowy sygnał SMI
 # ══════════════════════════════════════════════════════════════
 
-def phase1_weekly_state(ticker_market_list):
+def phase1_weekly_signals(ticker_market_list):
     """
-    Pobiera dane tygodniowe dla wszystkich tickerów.
-    Zwraca:
-      weekly_bullish : {ticker: (market, smi_val, smi_ema_val, zone, weekly_signal, weekly_strong)}
-    Kryterium: SMI > EMA (trend byczym aktywny).
-    Przy okazji liczy też klasyczne sygnały tygodniowe (crossover/exit_OS).
+    Pobiera dane tygodniowe i zwraca tickery z aktywnym sygnałem BUY/Strong BUY.
+    Kryterium: crossover SMI > EMA  lub  wyjście ze strefy wyprzedania.
     """
     tickers    = [t for t, _ in ticker_market_list]
     market_map = {t: m for t, m in ticker_market_list}
 
-    print(f"\n📥 [1/3] Dane tygodniowe — {len(tickers)} tickerów...")
+    print(f"\n📥 [1/2] Dane tygodniowe — {len(tickers)} tickerów...")
     data = bulk_download(tickers, period="2y", interval="1wk")
-    print(f"         Pobrano: {len(data)}")
-
-    bullish = {}
-    for ticker, df in data.items():
-        try:
-            smi, smi_e = calc_smi(df["High"], df["Low"], df["Close"],
-                                  SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA)
-            s0, e0 = float(smi.iloc[-1]), float(smi_e.iloc[-1])
-            if np.isnan(s0) or np.isnan(e0):
-                continue
-            buy, strong, s_val, e_val, zone = smi_signals(smi, smi_e)
-            if s0 > e0:   # stan byczym
-                bullish[ticker] = {
-                    "market":         market_map[ticker],
-                    "smi":            round(s0, 2),
-                    "smi_ema":        round(e0, 2),
-                    "zone":           zone,
-                    "weekly_signal":  buy,
-                    "weekly_strong":  strong,
-                }
-        except Exception:
-            pass
-
-    print(f"         ✅ Tygodniowy SMI byczym: {len(bullish)}")
-    return bullish
-
-# ══════════════════════════════════════════════════════════════
-#  FAZA 2 – Dzienny SMI: crossover w górę (sygnał wejścia)
-# ══════════════════════════════════════════════════════════════
-
-def phase2_daily_crossover(weekly_bullish):
-    """
-    Pobiera dane dzienne dla tickerów z byczym SMI tygodniowym.
-    Zwraca {ticker: 'Strong BUY' | 'BUY'} dla tickerów z crossoverem w ostatnich N sesjach.
-    """
-    if not weekly_bullish:
-        return {}
-    tickers = list(weekly_bullish.keys())
-
-    print(f"\n📥 [2/3] Dane dzienne — {len(tickers)} tickerów...")
-    data = bulk_download(tickers, period="6mo", interval="1d")
     print(f"         Pobrano: {len(data)}")
 
     signals = {}
@@ -293,31 +247,28 @@ def phase2_daily_crossover(weekly_bullish):
         try:
             smi, smi_e = calc_smi(df["High"], df["Low"], df["Close"],
                                   SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA)
-            for i in range(-DAILY_LOOKBACK, 0):
-                curr = smi.iloc[i]   > smi_e.iloc[i]
-                prev = smi.iloc[i-1] <= smi_e.iloc[i-1]
-                if curr and prev:
-                    sig = "Strong BUY" if smi_e.iloc[i-1] < -40 else "BUY"
-                    signals[ticker] = sig
-                    break
+            buy, strong, s_val, e_val, zone = smi_weekly_signal(smi, smi_e)
+            if buy:
+                signals[ticker] = {
+                    "market":  market_map[ticker],
+                    "smi":     s_val,
+                    "smi_ema": e_val,
+                    "zone":    zone,
+                    "strong":  strong,
+                }
         except Exception:
             pass
 
-    s_cnt = sum(1 for v in signals.values() if v == "Strong BUY")
-    print(f"         ✅ Dzienny crossover: {len(signals)}  "
-          f"(⚡ {s_cnt} Strong BUY  /  ✅ {len(signals)-s_cnt} BUY)")
+    strong_cnt = sum(1 for v in signals.values() if v["strong"])
+    print(f"         ✅ Sygnały tygodniowe: {len(signals)}  "
+          f"(⚡ {strong_cnt} Strong BUY  /  ✅ {len(signals)-strong_cnt} BUY)")
     return signals
 
 # ══════════════════════════════════════════════════════════════
-#  FAZA 3 – Meta + Fundamenty (równolegle)
+#  FAZA 2 – Meta + Fundamenty (równolegle)
 # ══════════════════════════════════════════════════════════════
 
 def _get_fundamentals_from_statements(tkr):
-    """
-    Pobiera dane fundamentalne z raportow finansowych zamiast tkr.info.
-    Uzywa tych samych endpointow co dane historyczne — odporne na bledy 401.
-    Zwraca dict z: eps_ttm, sales_ttm_mln, quick_ratio, name, sector
-    """
     result = {
         "eps_ttm":       None,
         "sales_ttm_mln": None,
@@ -327,36 +278,27 @@ def _get_fundamentals_from_statements(tkr):
         "country":       None,
     }
     try:
-        # EPS TTM i Sales TTM z rocznych sprawozdan finansowych
-        fin = tkr.financials  # roczne
+        fin = tkr.financials
         if fin is not None and not fin.empty:
-            # Sales TTM — Total Revenue najnowszy rok
             for label in ["Total Revenue", "Operating Revenue"]:
                 if label in fin.index:
                     rev = fin.loc[label].dropna()
                     if len(rev) >= 1:
                         result["sales_ttm_mln"] = round(float(rev.iloc[0]) / 1e6, 1)
                     break
-
-            # EPS TTM — Net Income / shares (przyblizenie)
             for label in ["Net Income", "Net Income Common Stockholders"]:
                 if label in fin.index:
                     ni = fin.loc[label].dropna()
                     if len(ni) >= 1:
-                        ni_val = float(ni.iloc[0])
-                        # jesli dodatni = EPS > 0 (przyblizenie bez shares)
-                        result["eps_ttm"] = round(ni_val / 1e6, 2)  # w mln jako proxy
+                        result["eps_ttm"] = round(float(ni.iloc[0]) / 1e6, 2)
                     break
     except Exception:
         pass
 
     try:
-        # Quick Ratio z bilansu: (Current Assets - Inventory) / Current Liabilities
         bs = tkr.balance_sheet
         if bs is not None and not bs.empty:
-            ca  = None
-            inv = 0.0
-            cl  = None
+            ca, inv, cl = None, 0.0, None
             for label in ["Current Assets", "Total Current Assets"]:
                 if label in bs.index:
                     v = bs.loc[label].dropna()
@@ -378,24 +320,21 @@ def _get_fundamentals_from_statements(tkr):
         pass
 
     try:
-        # Nazwa, sektor, kraj — probuj info ale nie blokuj jesli 401
         info = tkr.info
         if info and len(info) > 5:
             result["name"]    = info.get("shortName")
             result["sector"]  = info.get("sector")
             result["country"] = info.get("country")
-            # Nadpisz EPS jesli jest w info (bardziej dokladne)
             eps = info.get("trailingEps")
             if eps is not None:
                 result["eps_ttm"] = round(float(eps), 2)
     except Exception:
-        pass  # 401 — uzywamy tego co mamy z sprawozdan
+        pass
 
     return result
 
 
-def _check_one(symbol, market, weekly_data, daily_signal):
-    """Sprawdza market cap, volume, fundamenty dla jednego tickera."""
+def _check_one(symbol, weekly_data):
     try:
         tkr = yf.Ticker(symbol)
         fi  = tkr.fast_info
@@ -415,34 +354,21 @@ def _check_one(symbol, market, weekly_data, daily_signal):
 
         currency = getattr(fi, "currency", "USD")
 
-        # Dane fundamentalne z sprawozdan (odporne na 401)
         fund = _get_fundamentals_from_statements(tkr)
 
-        # Filtr: jesli mamy EPS z rachunku wynikow (nie None) musi byc > 0
-        # (eps_ttm jako proxy net income w mln — jesli < 0 firma traci)
         if fund["eps_ttm"] is not None and fund["eps_ttm"] < 0:
             return None
-
-        # Quick ratio — jesli mamy dane i jest za niskie, odrzuc
         if fund["quick_ratio"] is not None and fund["quick_ratio"] < MIN_QUICK:
             return None
 
-        name    = fund["name"]    or symbol
-        sector  = fund["sector"]  or "—"
-        country = fund["country"] or "—"
-
-        metrics = {
-            "eps_ttm":       fund["eps_ttm"],
-            "sales_ttm_mln": fund["sales_ttm_mln"],
-            "quick_ratio":   fund["quick_ratio"],
-        }
+        signal = "Strong BUY" if weekly_data["strong"] else "BUY"
 
         return {
             "ticker":         symbol,
-            "name":           name,
-            "market":         market,
-            "country":        country,
-            "sector":         sector,
+            "name":           fund["name"]    or symbol,
+            "market":         weekly_data["market"],
+            "country":        fund["country"] or "—",
+            "sector":         fund["sector"]  or "—",
             "price":          round(price, 2),
             "currency":       currency,
             "market_cap_mln": round(cap / 1e6, 1),
@@ -450,35 +376,27 @@ def _check_one(symbol, market, weekly_data, daily_signal):
             "smi":            weekly_data["smi"],
             "smi_ema":        weekly_data["smi_ema"],
             "zone":           weekly_data["zone"],
-            "weekly_signal":  weekly_data["weekly_signal"],
-            "weekly_strong":  weekly_data["weekly_strong"],
-            "daily_signal":   daily_signal,
-            **metrics,
-            "scanned_at": datetime.now().isoformat(),
+            "signal":         signal,
+            "eps_ttm":        fund["eps_ttm"],
+            "sales_ttm_mln":  fund["sales_ttm_mln"],
+            "quick_ratio":    fund["quick_ratio"],
+            "scanned_at":     datetime.now().isoformat(),
         }
     except Exception:
         return None
 
 
-def phase3_meta_fundamentals(daily_signals, weekly_bullish):
-    """
-    Równolegle sprawdza market cap, volume i fundamenty dla tickerów
-    które przeszły fazy 1 i 2.
-    """
-    if not daily_signals:
+def phase2_meta_fundamentals(weekly_signals):
+    if not weekly_signals:
         return []
-    candidates = list(daily_signals.keys())
-    print(f"\n📥 [3/3] Meta + fundamenty — {len(candidates)} tickerów "
+    candidates = list(weekly_signals.keys())
+    print(f"\n📥 [2/2] Meta + fundamenty — {len(candidates)} tickerów "
           f"({FUNDAMENTALS_WORKERS} wątków)...")
 
     results = []
     with ThreadPoolExecutor(max_workers=FUNDAMENTALS_WORKERS) as pool:
         futures = {
-            pool.submit(_check_one,
-                        sym,
-                        weekly_bullish[sym]["market"],
-                        weekly_bullish[sym],
-                        daily_signals[sym]): sym
+            pool.submit(_check_one, sym, weekly_signals[sym]): sym
             for sym in candidates
         }
         for future in as_completed(futures):
@@ -486,13 +404,13 @@ def phase3_meta_fundamentals(daily_signals, weekly_bullish):
             if r:
                 results.append(r)
 
-    strong = sum(1 for r in results if r["daily_signal"] == "Strong BUY")
+    strong = sum(1 for r in results if r["signal"] == "Strong BUY")
     print(f"         ✅ Spełnia fundamenty: {len(results)}  "
           f"(⚡ {strong} Strong BUY  /  ✅ {len(results)-strong} BUY)")
     return results
 
 # ══════════════════════════════════════════════════════════════
-#  FORMATOWANIE POMOCNICZE
+#  FORMATOWANIE
 # ══════════════════════════════════════════════════════════════
 
 def fmt_cap(mln):
@@ -510,7 +428,7 @@ def na(v, suffix=""):
 #  RAPORT HTML
 # ══════════════════════════════════════════════════════════════
 
-def generate_html(meta, mtf_results):
+def generate_html(meta, results):
     dt = datetime.fromisoformat(meta["generated_at"]).strftime("%d.%m.%Y %H:%M")
 
     def zone_badge(zone):
@@ -518,25 +436,21 @@ def generate_html(meta, mtf_results):
                "Bullish":"zone-bull","Bearish":"zone-bear"}.get(zone, "")
         return f'<span class="zone-badge {cls}">{zone}</span>'
 
-    # ── MTF signal cards ──────────────────────────────────────
-    def mtf_cards(data):
+    def signal_cards(data):
         if not data:
-            return "<div class='empty'>Brak sygnałów MTF w tym skanie</div>"
+            return "<div class='empty'>Brak sygnałów w tym skanie</div>"
         cards = ""
-        for r in sorted(data, key=lambda x: (0 if x["daily_signal"]=="Strong BUY" else 1,
+        for r in sorted(data, key=lambda x: (0 if x["signal"]=="Strong BUY" else 1,
                                               -x.get("market_cap_mln", 0))):
-            is_strong = r["daily_signal"] == "Strong BUY"
-            mc   = "usa" if r["market"] == "USA" else "eu"
-            tc   = ("linear-gradient(90deg,#ff6b00,#ffb800)" if is_strong
-                    else "linear-gradient(90deg,#00c8ff,#00e599)")
-            sl   = "⚡ STRONG BUY" if is_strong else "✅ BUY"
-            sc   = "#ffb800" if is_strong else "#00c8ff"
-            z    = r.get("zone","—")
-            zc   = {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599",
-                    "Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
-            w_sig = ("🔥 Tygodniowy crossover" if r.get("weekly_strong")
-                     else ("📶 Tygodniowy sygnał" if r.get("weekly_signal")
-                           else "📈 Trend byczym"))
+            is_strong = r["signal"] == "Strong BUY"
+            mc  = "usa" if r["market"] == "USA" else "eu"
+            tc  = ("linear-gradient(90deg,#ff6b00,#ffb800)" if is_strong
+                   else "linear-gradient(90deg,#00c8ff,#00e599)")
+            sl  = "⚡ STRONG BUY" if is_strong else "✅ BUY"
+            sc  = "#ffb800" if is_strong else "#00c8ff"
+            z   = r.get("zone","—")
+            zc  = {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599",
+                   "Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
             cards += (
                 f'<div class="signal-card">'
                 f'<div style="position:absolute;top:0;left:0;right:0;height:3px;background:{tc}"></div>'
@@ -545,10 +459,8 @@ def generate_html(meta, mtf_results):
                 f'<div class="sc-name">{r["name"]}</div></div>'
                 f'<span class="badge-{mc}">{r["market"]}</span></div>'
                 f'<div class="sc-price">{r["price"]} {r["currency"]}</div>'
-                f'<div class="sc-row"><span>Sygnał MTF</span>'
+                f'<div class="sc-row"><span>Sygnał</span>'
                 f'<span style="color:{sc};font-weight:600">{sl}</span></div>'
-                f'<div class="sc-row"><span>Tygodniowy</span>'
-                f'<span style="color:#8891b4">{w_sig}</span></div>'
                 f'<div class="sc-row"><span>Strefa SMI</span>'
                 f'<span style="color:{zc}">{z}</span></div>'
                 f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
@@ -572,30 +484,25 @@ def generate_html(meta, mtf_results):
             )
         return f'<div class="cards-grid">{cards}</div>'
 
-    # ── tabela wyników ─────────────────────────────────────────
     def table_rows(data):
         if not data:
-            return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
+            return "<tr><td colspan='13' style='text-align:center;color:#888;padding:2rem'>Brak wyników</td></tr>"
         html = ""
         for r in data:
-            is_strong = r["daily_signal"] == "Strong BUY"
+            is_strong = r["signal"] == "Strong BUY"
             sig_badge = (
                 '<span class="badge-strong">STRONG</span>' if is_strong
                 else '<span class="badge-signal">BUY</span>'
             )
-            w_badge = (
-                '<span class="badge-weekly-strong">W⚡</span>' if r.get("weekly_strong")
-                else ('<span class="badge-weekly">W↑</span>'   if r.get("weekly_signal") else "")
-            )
             html += f"""<tr>
-              <td><span class="ticker">{r['ticker']}</span>{w_badge}{sig_badge}</td>
+              <td><span class="ticker">{r['ticker']}</span>{sig_badge}</td>
               <td class="name-col">{r['name']}</td>
               <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
               <td>{r['sector']}</td>
               <td class="num">{r['price']} {r['currency']}</td>
               <td class="num">{fmt_cap(r.get('market_cap_mln'))}</td>
               <td class="num">{fmt_vol(r.get('volume_k'))}</td>
-              <td class="num {'smi-above'}">{r['smi']}</td>
+              <td class="num smi-above">{r['smi']}</td>
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
               <td class="num">{na(r.get('eps_ttm'))}</td>
@@ -604,15 +511,15 @@ def generate_html(meta, mtf_results):
             </tr>"""
         return html
 
-    strong_mtf = [r for r in mtf_results if r["daily_signal"] == "Strong BUY"]
-    buy_mtf    = [r for r in mtf_results if r["daily_signal"] == "BUY"]
+    strong_res = [r for r in results if r["signal"] == "Strong BUY"]
+    buy_res    = [r for r in results if r["signal"] == "BUY"]
 
     html = f"""<!DOCTYPE html>
 <html lang="pl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stock Screener MTF – {dt}</title>
+<title>Stock Screener SMI – {dt}</title>
 <style>
   :root {{
     --bg:#0b0d1a; --bg2:#11142a; --bg3:#181c35; --border:#252840;
@@ -627,7 +534,6 @@ def generate_html(meta, mtf_results):
   h2{{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:1rem}}
   .subtitle{{font-size:.8rem;color:var(--muted);margin-top:.3rem}}
 
-  /* Stats bar */
   .stats-bar{{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.5rem 0}}
   .stat{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
          padding:.6rem 1.1rem;min-width:110px}}
@@ -636,14 +542,12 @@ def generate_html(meta, mtf_results):
   .stat-val.yellow{{color:var(--yellow)}}
   .stat-label{{font-size:.72rem;color:var(--muted);margin-top:.1rem}}
 
-  /* Sections */
   .section{{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
             padding:1.5rem;margin-bottom:1.5rem}}
-  .section-mtf{{border-color:#ff6b00;box-shadow:0 0 20px rgba(255,107,0,.08)}}
+  .section-strong{{border-color:#ff6b00;box-shadow:0 0 20px rgba(255,107,0,.08)}}
   .section-header{{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}}
   .section-icon{{font-size:1.2rem}}
 
-  /* Cards */
   .cards-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}}
   .signal-card{{background:var(--bg3);border:1px solid var(--border);border-radius:10px;
                 padding:1.2rem;position:relative;overflow:hidden}}
@@ -659,10 +563,9 @@ def generate_html(meta, mtf_results):
   .sc-stoch-item{{flex:1;background:var(--bg2);border-radius:6px;padding:.4rem .6rem;text-align:center}}
   .sc-stoch-label{{font-size:.65rem;color:var(--muted)}}
   .sc-stoch-val{{font-size:.95rem;font-weight:600;color:var(--text)}}
-  .sc-stoch-val.green{{color:var(--green)}} .sc-stoch-val.red{{color:var(--red)}}
+  .sc-stoch-val.green{{color:var(--green)}}
   .empty{{color:var(--muted);text-align:center;padding:2rem;font-size:.9rem}}
 
-  /* Table */
   .table-wrap{{overflow-x:auto}}
   table{{width:100%;border-collapse:collapse;font-size:.8rem}}
   th{{background:var(--bg3);color:var(--muted);font-weight:600;text-align:left;
@@ -671,24 +574,18 @@ def generate_html(meta, mtf_results):
   tr:hover td{{background:rgba(255,255,255,.02)}}
   .num{{text-align:right;font-variant-numeric:tabular-nums}}
   .name-col{{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-  .smi-above{{color:var(--green)}} .smi-below{{color:var(--red)}}
+  .smi-above{{color:var(--green)}}
   .ticker{{font-weight:600;color:#fff;margin-right:.3rem}}
 
-  /* Badges */
   .badge-strong{{background:#3d1500;color:var(--orange);font-size:.68rem;
                  font-weight:700;padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
   .badge-signal{{background:#0b2318;color:var(--green);font-size:.68rem;
                  font-weight:700;padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
-  .badge-weekly-strong{{background:#2a1f00;color:var(--yellow);font-size:.65rem;
-                        font-weight:700;padding:.12rem .4rem;border-radius:3px;margin-left:.2rem}}
-  .badge-weekly{{background:#0d1a2e;color:var(--accent);font-size:.65rem;
-                 font-weight:700;padding:.12rem .4rem;border-radius:3px;margin-left:.2rem}}
   .badge-usa{{background:#0d1a2e;color:var(--accent);font-size:.72rem;
               padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}}
   .badge-eu{{background:#1a1a0d;color:var(--yellow);font-size:.72rem;
              padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}}
 
-  /* Zone badges */
   .zone-badge{{font-size:.72rem;padding:.15rem .5rem;border-radius:4px;font-weight:500}}
   .zone-ob{{background:#3d0010;color:#ff4560}}
   .zone-os{{background:#0b2318;color:var(--green)}}
@@ -700,47 +597,46 @@ def generate_html(meta, mtf_results):
 </head>
 <body>
 <div class="page">
-  <h1>📊 Stock Screener — Multi-Timeframe (MTF)</h1>
+  <h1>📊 Stock Screener — SMI Tygodniowy</h1>
   <p class="subtitle">Wygenerowano: {dt} | Czas: {meta['elapsed_min']} min | Wskaźnik: SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})</p>
 
   <div class="stats-bar">
     <div class="stat"><div class="stat-val">{meta['total_scanned']}</div><div class="stat-label">Przeskanowano</div></div>
-    <div class="stat"><div class="stat-val">{meta['weekly_bullish']}</div><div class="stat-label">SMI byczym (W)</div></div>
-    <div class="stat"><div class="stat-val">{meta['daily_crossover']}</div><div class="stat-label">Dzienny cross.</div></div>
-    <div class="stat"><div class="stat-val green">{meta['mtf_total']}</div><div class="stat-label">MTF Sygnały</div></div>
-    <div class="stat"><div class="stat-val orange">{meta['mtf_strong']}</div><div class="stat-label">Strong BUY</div></div>
-    <div class="stat"><div class="stat-val yellow">{meta['mtf_buy']}</div><div class="stat-label">BUY</div></div>
+    <div class="stat"><div class="stat-val">{meta['weekly_signals']}</div><div class="stat-label">Sygnałów SMI(W)</div></div>
+    <div class="stat"><div class="stat-val green">{meta['results_total']}</div><div class="stat-label">Po filtrach</div></div>
+    <div class="stat"><div class="stat-val orange">{meta['results_strong']}</div><div class="stat-label">Strong BUY</div></div>
+    <div class="stat"><div class="stat-val yellow">{meta['results_buy']}</div><div class="stat-label">BUY</div></div>
   </div>
 
-  <!-- MTF Strong BUY -->
-  <div class="section section-mtf">
+  <!-- Strong BUY -->
+  <div class="section section-strong">
     <div class="section-header">
       <span class="section-icon">⚡</span>
-      <h2>MTF Strong BUY — {len(strong_mtf)} sygnałów</h2>
+      <h2>Strong BUY — {len(strong_res)} sygnałów</h2>
     </div>
     <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      Tygodniowy SMI byczym + dzienny crossover z strefy wyprzedania (&lt;−40)
+      Tygodniowy crossover SMI ze strefy wyprzedania (&lt;−40)
     </p>
-    {mtf_cards(strong_mtf)}
+    {signal_cards(strong_res)}
   </div>
 
-  <!-- MTF BUY -->
+  <!-- BUY -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">✅</span>
-      <h2>MTF BUY — {len(buy_mtf)} sygnałów</h2>
+      <h2>BUY — {len(buy_res)} sygnałów</h2>
     </div>
     <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      Tygodniowy SMI byczym + dzienny crossover (strefa neutralna)
+      Tygodniowy crossover SMI (strefa neutralna lub bycza)
     </p>
-    {mtf_cards(buy_mtf)}
+    {signal_cards(buy_res)}
   </div>
 
-  <!-- Tabela wszystkich wyników MTF -->
+  <!-- Tabela -->
   <div class="section">
     <div class="section-header">
       <span class="section-icon">📋</span>
-      <h2>Wszystkie wyniki MTF — {len(mtf_results)}</h2>
+      <h2>Wszystkie wyniki — {len(results)}</h2>
     </div>
     <div class="table-wrap">
     <table>
@@ -750,13 +646,13 @@ def generate_html(meta, mtf_results):
         <th class="num">SMI(W)</th><th class="num">EMA(W)</th><th>Strefa</th>
         <th class="num">EPS</th><th class="num">Sales</th><th class="num">QR</th>
       </tr></thead>
-      <tbody>{table_rows(mtf_results)}</tbody>
+      <tbody>{table_rows(results)}</tbody>
     </table>
     </div>
   </div>
 
   <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem">
-    Strategia: Tygodniowy SMI &gt; EMA (trend byczym) + Dzienny SMI crossover ↑ (ostatnie {DAILY_LOOKBACK} sesje)
+    Strategia: Tygodniowy SMI crossover ↑ (SMI &gt; EMA lub wyjście z oversold)
     | Fundamenty: Cap &gt; {MIN_MARKET_CAP//1_000_000}M | Vol &gt; {MIN_VOLUME:,} | EPS&gt;0 | Sales&gt;0 | QR&gt;{MIN_QUICK}
   </p>
 </div>
@@ -770,7 +666,7 @@ def generate_html(meta, mtf_results):
     print(f"✅ Raport: {path}")
 
 # ══════════════════════════════════════════════════════════════
-#  GŁÓWNA PĘTLA — pipeline 3-fazowy
+#  GŁÓWNA PĘTLA – pipeline 2-fazowy
 # ══════════════════════════════════════════════════════════════
 
 def run_screener():
@@ -778,58 +674,53 @@ def run_screener():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
 
     print("=" * 60)
-    print(f"SCREENER MTF START: {t0.strftime('%Y-%m-%d %H:%M:%S')}")
-    print(f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA}) | tygodniowy stan + dzienny crossover")
+    print(f"SCREENER START: {t0.strftime('%Y-%m-%d %H:%M:%S')}")
+    print(f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA}) | sygnał tygodniowy")
     print(f"Cap>{MIN_MARKET_CAP//1_000_000}M | Vol>{MIN_VOLUME:,} | EPS>0 | QR>{MIN_QUICK}")
     print("=" * 60)
 
-    # ── Pobieranie tickerów ──────────────────────────────────
+    # ── Tickery ──────────────────────────────────────────────
     print("\n[Tickery] Pobieranie list spółek...")
     usa = list(set(get_sp500() + get_sp600() + get_russell2000()))
     eu  = list(set(get_european_indices()))
     ticker_market = [(t, "USA") for t in usa] + [(t, "EU") for t in eu]
     print(f"\nŁącznie: {len(ticker_market)} ({len(usa)} USA, {len(eu)} EU)")
 
-    # ── Faza 1: Tygodniowy SMI (stan byczym) ────────────────
-    weekly_bullish = phase1_weekly_state(ticker_market)
+    # ── Faza 1: Tygodniowy sygnał SMI ────────────────────────
+    weekly_signals = phase1_weekly_signals(ticker_market)
 
-    # ── Faza 2: Dzienny SMI (crossover) ─────────────────────
-    daily_signals = phase2_daily_crossover(weekly_bullish)
+    # ── Faza 2: Meta + Fundamenty ────────────────────────────
+    results = phase2_meta_fundamentals(weekly_signals)
 
-    # ── Faza 3: Meta + Fundamenty (równolegle) ──────────────
-    mtf_results = phase3_meta_fundamentals(daily_signals, weekly_bullish)
-
-    # ── Zapis wyników ────────────────────────────────────────
-    elapsed = round((datetime.now() - t0).total_seconds() / 60, 1)
-    strong  = [r for r in mtf_results if r["daily_signal"] == "Strong BUY"]
-    buy     = [r for r in mtf_results if r["daily_signal"] == "BUY"]
+    # ── Zapis ────────────────────────────────────────────────
+    elapsed     = round((datetime.now() - t0).total_seconds() / 60, 1)
+    strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
+    buy_res     = [r for r in results if r["signal"] == "BUY"]
 
     meta = {
         "generated_at":   datetime.now().isoformat(),
         "elapsed_min":    elapsed,
         "total_scanned":  len(ticker_market),
-        "weekly_bullish": len(weekly_bullish),
-        "daily_crossover":len(daily_signals),
-        "mtf_total":      len(mtf_results),
-        "mtf_strong":     len(strong),
-        "mtf_buy":        len(buy),
+        "weekly_signals": len(weekly_signals),
+        "results_total":  len(results),
+        "results_strong": len(strong_res),
+        "results_buy":    len(buy_res),
         "indicator":      f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})",
-        "daily_lookback": DAILY_LOOKBACK,
     }
 
-    for fname, data in [("meta", meta), ("mtf_results", mtf_results),
-                        ("mtf_strong", strong), ("mtf_buy", buy)]:
+    for fname, data in [("meta", meta), ("results", results),
+                        ("strong", strong_res), ("buy", buy_res)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-    if mtf_results:
-        pd.DataFrame(mtf_results).to_csv(f"{OUTPUT_DIR}/mtf_results.csv", index=False)
+    if results:
+        pd.DataFrame(results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
 
     print(f"\n⏱️  Czas: {elapsed} min")
-    print(f"📊 MTF: {len(mtf_results)} wyników | ⚡ {len(strong)} Strong BUY | ✅ {len(buy)} BUY")
+    print(f"📊 Wyniki: {len(results)} | ⚡ {len(strong_res)} Strong BUY | ✅ {len(buy_res)} BUY")
 
-    generate_html(meta, mtf_results)
+    generate_html(meta, results)
     print(f"\n💡 Wyniki w: {OUTPUT_DIR}/")
-    return mtf_results
+    return results
 
 
 if __name__ == "__main__":
