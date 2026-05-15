@@ -1,94 +1,60 @@
-name: Stock Screener
+name: Daily Stock Screener
+
 on:
   schedule:
-    - cron: '0 15 * * 1-5'  # 17:00 CET (UTC+2 lato) = 15:00 UTC, pon-pt
+    # 15:00 UTC = 17:00 CEST (lato) / 16:00 CET (zima)
+    # Uruchamia się pon–pt
+    - cron: '0 15 * * 1-5'
+
+  # Możliwość ręcznego uruchomienia z GitHub UI
   workflow_dispatch:
-    inputs:
-      max_price:
-        description: 'Maksymalna cena akcji (USD/EUR)'
-        required: false
-        default: '100'
-        type: string
-      delay:
-        description: 'Opóźnienie między requestami (sekundy)'
-        required: false
-        default: '0.25'
-        type: string
-      markets:
-        description: 'Rynki do skanowania'
-        required: false
-        default: 'USA+EU'
-        type: choice
-        options:
-          - USA+EU
-          - USA only
-          - EU only
+
 jobs:
   run-screener:
-    name: Run Stock Screener
     runs-on: ubuntu-latest
-    timeout-minutes: 120
+
     permissions:
-      contents: write
-      pages: write
-      id-token: write
+      contents: write   # potrzebne do commitu JSON
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
-      - name: Setup Python 3.11
+
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: 'pip'
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: |
+          pip install yfinance pandas numpy requests
+
       - name: Run screener
+        run: |
+          python screener.py
         env:
-          MAX_PRICE: ${{ github.event.inputs.max_price }}
-          DELAY: ${{ github.event.inputs.delay }}
-          MARKETS: ${{ github.event.inputs.markets }}
+          PYTHONUNBUFFERED: "1"
+
+      # Sprawdza czy JSON został wygenerowany
+      - name: Verify JSON output
         run: |
-          python scripts/screener.py
-      - name: Upload results as artifact
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: screener-results-${{ github.run_number }}
-          path: results/
-          retention-days: 30
-      - name: Deploy report to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        if: success()
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: results
-          publish_branch: gh-pages
-          keep_files: false
-          enable_jekyll: false
-          commit_message: "Screener report – run #${{ github.run_number }}"
-      - name: Summary
-        if: always()
-        run: |
-          echo "## 📊 Stock Screener MTF – Wyniki" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          if [ -f results/meta.json ]; then
-            python3 -c "
-          import json
-          with open('results/meta.json') as f:
-              m = json.load(f)
-          print(f'| Metryka | Wartość |')
-          print(f'|---------|---------|')
-          print(f'| Wygenerowano | {m[\"generated_at\"][:16]} |')
-          print(f'| Przeskanowano | {m[\"total_scanned\"]} spółek |')
-          print(f'| SMI byczym (tydz.) | {m[\"weekly_bullish\"]} |')
-          print(f'| Dzienny crossover | {m[\"daily_crossover\"]} |')
-          print(f'| MTF sygnały łącznie | **{m[\"mtf_total\"]}** |')
-          print(f'| ⚡ Strong BUY | **{m[\"mtf_strong\"]}** |')
-          print(f'| ✅ BUY | **{m[\"mtf_buy\"]}** |')
-          print(f'| Czas skanu | {m[\"elapsed_min\"]} min |')
-          " >> $GITHUB_STEP_SUMMARY
-          else
-            echo "⚠️ Brak pliku meta.json — skan mógł się nie zakończyć." >> $GITHUB_STEP_SUMMARY
+          if [ ! -f data/screener_results.json ]; then
+            echo "BŁĄD: data/screener_results.json nie został wygenerowany!"
+            exit 1
           fi
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "Raport HTML dostępny w GitHub Pages po zakończeniu deployu." >> $GITHUB_STEP_SUMMARY
+          echo "✅ Znaleziono $(cat data/screener_results.json | python3 -c \
+            'import json,sys; d=json.load(sys.stdin); print(d["total_signals"])') sygnałów"
+
+      - name: Commit results to repo
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          git add data/screener_results.json
+          git add docs/index.html  || true   # raport HTML (jeśli generujesz)
+
+          # Commit tylko jeśli są zmiany
+          git diff --staged --quiet || \
+            git commit -m "📊 Screener results $(date -u +'%Y-%m-%d %H:%M UTC')"
+
+          git push
