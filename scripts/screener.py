@@ -8,6 +8,10 @@ Trzy typy sygnałów (tygodniowy interwał):
 
 Fundamenty: market cap > 200M | volume > 300K | EPS TTM > 0 | Sales > 0 | QR > 1.0
 SMI(10,3,3) – port Pine Script "SMI Signal Strategy"
+
+AKTYWNE FILTRY STRATEGII:
+  - Tylko sygnał Strong BUY (crossover ze strefy wyprzedania < -40)
+  - Kurs akcji min. 30% poniżej 52-tygodniowego szczytu (deep discount)
 """
 
 import yfinance as yf
@@ -26,6 +30,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 MIN_MARKET_CAP       = 200_000_000
 MIN_VOLUME           = 300_000
 MIN_QUICK            = 1.0
+MIN_DISCOUNT_52W     = 0.30        # min. 30% poniżej 52W High
 FUNDAMENTALS_WORKERS = 20
 DOWNLOAD_BATCH_SIZE  = 100
 OUTPUT_DIR           = "results"
@@ -363,12 +368,24 @@ def _get_fundamentals_from_statements(tkr):
 
 def _check_one(symbol, weekly_data):
     try:
+        # ── FILTR 1: Strong BUY lub Turning Up (bez zwykłego BUY) ─
+        if weekly_data["signal"] not in ("Strong BUY", "Turning Up"):
+            return None
+
         tkr = yf.Ticker(symbol)
         fi  = tkr.fast_info
 
         price = getattr(fi, "last_price", None)
         if not price or price <= 0:
             return None
+
+        # ── FILTR 2: min. 30% poniżej 52-tygodniowego szczytu ─────
+        high_52w = getattr(fi, "year_high", None)
+        if high_52w and high_52w > 0:
+            discount = (high_52w - price) / high_52w
+            if discount < MIN_DISCOUNT_52W:
+                return None
+        # jeśli year_high niedostępny – przepuszczamy (nie blokujemy)
 
         cap = getattr(fi, "market_cap", None)
         if not cap or cap < MIN_MARKET_CAP:
@@ -387,6 +404,11 @@ def _check_one(symbol, weekly_data):
         if fund["quick_ratio"] is not None and fund["quick_ratio"] < MIN_QUICK:
             return None
 
+        # Oblicz discount do wyświetlenia w raporcie
+        discount_pct = None
+        if high_52w and high_52w > 0:
+            discount_pct = round((high_52w - price) / high_52w * 100, 1)
+
         return {
             "ticker":         symbol,
             "name":           fund["name"]    or symbol,
@@ -395,6 +417,8 @@ def _check_one(symbol, weekly_data):
             "sector":         fund["sector"]  or "--",
             "price":          round(price, 2),
             "currency":       currency,
+            "high_52w":       round(high_52w, 2) if high_52w else None,
+            "discount_52w":   discount_pct,
             "market_cap_mln": round(cap / 1e6, 1),
             "volume_k":       round(vol / 1000, 1),
             "smi":            weekly_data["smi"],
@@ -466,26 +490,25 @@ def generate_html(meta, results):
         if not data:
             return "<div class='empty'>Brak sygnalow w tym skanie</div>"
         cards = ""
-        for r in sorted(data, key=lambda x: -x.get("market_cap_mln", 0)):
+        for r in sorted(data, key=lambda x: -(x.get("discount_52w") or 0)):
             mc = "usa" if r["market"] == "USA" else "eu"
             z  = r.get("zone","--")
 
+            sig_type = r.get("signal", "Strong BUY")
             if sig_type == "Strong BUY":
                 tc, sl, sc = "linear-gradient(90deg,#ff6b00,#ffb800)", "STRONG BUY", "#ffb800"
-            elif sig_type == "BUY":
-                tc, sl, sc = "linear-gradient(90deg,#00c8ff,#00e599)", "BUY", "#00c8ff"
             else:
                 tc, sl, sc = "linear-gradient(90deg,#7b2ff7,#c471ed)", "TURNING UP", "#c471ed"
 
             zc = {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599",
                   "Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
 
-            # Odleglosc do crossovera (tylko Turning Up)
-            gap_row = ""
-            if sig_type == "Turning Up" and r["smi"] is not None and r["smi_ema"] is not None:
-                gap = round(r["smi_ema"] - r["smi"], 2)
-                gap_row = (f'<div class="sc-row"><span>Do crossovera (delta)</span>'
-                           f'<span style="color:#c471ed">-{gap}</span></div>')
+            disc = r.get("discount_52w")
+            disc_row = ""
+            if disc is not None:
+                disc_color = "#00e599" if disc >= 50 else "#ffb800" if disc >= 30 else "#888"
+                disc_row = (f'<div class="sc-row"><span>Discount vs 52W High</span>'
+                            f'<span style="color:{disc_color};font-weight:600">-{disc}%</span></div>')
 
             cards += (
                 f'<div class="signal-card">'
@@ -497,7 +520,7 @@ def generate_html(meta, results):
                 f'<div class="sc-price">{r["price"]} {r["currency"]}</div>'
                 f'<div class="sc-row"><span>Sygnal</span>'
                 f'<span style="color:{sc};font-weight:600">{sl}</span></div>'
-                f'{gap_row}'
+                f'{disc_row}'
                 f'<div class="sc-row"><span>Strefa SMI</span>'
                 f'<span style="color:{zc}">{z}</span></div>'
                 f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
@@ -523,24 +546,16 @@ def generate_html(meta, results):
 
     def table_rows(data):
         if not data:
-            return "<tr><td colspan='13' style='text-align:center;color:#888;padding:2rem'>Brak wynikow</td></tr>"
-        order = {"Strong BUY": 0, "BUY": 1, "Turning Up": 2}
-        data  = sorted(data, key=lambda x: (order.get(x["signal"], 9),
-                                            -x.get("market_cap_mln", 0)))
+            return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wynikow</td></tr>"
+        data = sorted(data, key=lambda x: -(x.get("discount_52w") or 0))
         html = ""
         for r in data:
+            disc = r.get("discount_52w")
+            disc_str = f"-{disc}%" if disc is not None else "--"
+            disc_color = "#00e599" if (disc or 0) >= 50 else "#ffb800" if (disc or 0) >= 30 else "#888"
             sig = r["signal"]
-            if sig == "Strong BUY":
-                badge = '<span class="badge-strong">STRONG</span>'
-            elif sig == "BUY":
-                badge = '<span class="badge-signal">BUY</span>'
-            else:
-                badge = '<span class="badge-turning">TURN</span>'
-
-            gap_cell = ""
-            if sig == "Turning Up" and r["smi"] is not None and r["smi_ema"] is not None:
-                gap = round(r["smi_ema"] - r["smi"], 2)
-                gap_cell = f'<span style="color:#c471ed;font-size:.7rem"> (-{gap})</span>'
+            badge = ('<span class="badge-strong">STRONG</span>' if sig == "Strong BUY"
+                     else '<span class="badge-turning">TURN</span>')
 
             html += f"""<tr>
               <td><span class="ticker">{r['ticker']}</span>{badge}</td>
@@ -548,9 +563,10 @@ def generate_html(meta, results):
               <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
               <td>{r['sector']}</td>
               <td class="num">{r['price']} {r['currency']}</td>
+              <td class="num" style="color:{disc_color};font-weight:600">{disc_str}</td>
               <td class="num">{fmt_cap(r.get('market_cap_mln'))}</td>
               <td class="num">{fmt_vol(r.get('volume_k'))}</td>
-              <td class="num smi-col">{r['smi']}{gap_cell}</td>
+              <td class="num smi-col">{r['smi']}</td>
               <td class="num">{r['smi_ema']}</td>
               <td>{zone_badge(r['zone'])}</td>
               <td class="num">{na(r.get('eps_ttm'))}</td>
@@ -560,7 +576,6 @@ def generate_html(meta, results):
         return html
 
     strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
-    buy_res     = [r for r in results if r["signal"] == "BUY"]
     turning_res = [r for r in results if r["signal"] == "Turning Up"]
 
     html = f"""<!DOCTYPE html>
@@ -589,13 +604,16 @@ def generate_html(meta, results):
          padding:.6rem 1.1rem;min-width:110px}}
   .stat-val{{font-size:1.4rem;font-weight:700;color:#fff}}
   .stat-val.green{{color:var(--green)}} .stat-val.orange{{color:var(--orange)}}
-  .stat-val.yellow{{color:var(--yellow)}} .stat-val.purple{{color:var(--purple)}}
   .stat-label{{font-size:.72rem;color:var(--muted);margin-top:.1rem}}
+
+  .strategy-box{{background:var(--bg2);border:1px solid #ff6b00;border-radius:10px;
+                 padding:1rem 1.4rem;margin-bottom:1.5rem;font-size:.82rem;line-height:1.7}}
+  .strategy-box strong{{color:var(--orange)}}
+  .strategy-box ul{{margin:.4rem 0 0 1.2rem;color:var(--text)}}
 
   .section{{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
             padding:1.5rem;margin-bottom:1.5rem}}
   .section-strong  {{border-color:#ff6b00;box-shadow:0 0 20px rgba(255,107,0,.08)}}
-  .section-buy     {{border-color:#00c8ff;box-shadow:0 0 20px rgba(0,200,255,.05)}}
   .section-turning {{border-color:#7b2ff7;box-shadow:0 0 20px rgba(196,113,237,.08)}}
   .section-header{{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}}
   .section-icon{{font-size:1.2rem}}
@@ -629,12 +647,10 @@ def generate_html(meta, results):
   .smi-col{{color:var(--green)}}
   .ticker{{font-weight:600;color:#fff;margin-right:.3rem}}
 
-  .badge-strong  {{background:#3d1500;color:var(--orange);font-size:.68rem;font-weight:700;
-                   padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
-  .badge-signal  {{background:#0b2318;color:var(--green);font-size:.68rem;font-weight:700;
-                   padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
-  .badge-turning {{background:#1a0a2e;color:var(--purple);font-size:.68rem;font-weight:700;
-                   padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
+  .badge-strong{{background:#3d1500;color:var(--orange);font-size:.68rem;font-weight:700;
+                 padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
+  .badge-turning{{background:#1a0a2e;color:var(--purple);font-size:.68rem;font-weight:700;
+                  padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
   .badge-usa{{background:#0d1a2e;color:var(--accent);font-size:.72rem;
               padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}}
   .badge-eu {{background:#1a1a0d;color:var(--yellow);font-size:.72rem;
@@ -654,12 +670,19 @@ def generate_html(meta, results):
   <h1>Stock Screener &mdash; SMI Tygodniowy</h1>
   <p class="subtitle">Wygenerowano: {dt} &nbsp;|&nbsp; Czas: {meta['elapsed_min']} min &nbsp;|&nbsp; SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})</p>
 
+  <div class="strategy-box">
+    <strong>&#9881; Aktywna strategia wejść:</strong>
+    <ul>
+      <li>Sygnały <strong>Strong BUY</strong> i <strong>Turning Up</strong> (bez zwykłego BUY)</li>
+      <li>Kurs akcji min. <strong>{int(MIN_DISCOUNT_52W*100)}% poniżej 52-tygodniowego szczytu</strong> &mdash; głęboka korekta (deep discount)</li>
+    </ul>
+  </div>
+
   <div class="stats-bar">
     <div class="stat"><div class="stat-val">{meta['total_scanned']}</div><div class="stat-label">Przeskanowano</div></div>
     <div class="stat"><div class="stat-val">{meta['weekly_signals']}</div><div class="stat-label">Sygnalow SMI</div></div>
     <div class="stat"><div class="stat-val green">{meta['results_total']}</div><div class="stat-label">Po filtrach</div></div>
     <div class="stat"><div class="stat-val orange">{meta['results_strong']}</div><div class="stat-label">Strong BUY</div></div>
-    <div class="stat"><div class="stat-val yellow">{meta['results_buy']}</div><div class="stat-label">BUY</div></div>
     <div class="stat"><div class="stat-val purple">{meta['results_turning']}</div><div class="stat-label">Turning Up</div></div>
   </div>
 
@@ -667,18 +690,11 @@ def generate_html(meta, results):
     <div class="section-header"><span class="section-icon">&#9889;</span>
       <h2>Strong BUY &mdash; {len(strong_res)} sygnalow</h2></div>
     <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      Crossover SMI &gt; EMA ze strefy wyprzedania (&lt;&minus;40)
+      Crossover SMI &gt; EMA ze strefy wyprzedania (&lt;&minus;40) &nbsp;&bull;&nbsp;
+      Kurs &ge; {int(MIN_DISCOUNT_52W*100)}% poni&#380;ej 52W High &nbsp;&bull;&nbsp;
+      Sortowanie: najwi&#281;kszy discount najpierw
     </p>
     {signal_cards(strong_res, "Strong BUY")}
-  </div>
-
-  <div class="section section-buy">
-    <div class="section-header"><span class="section-icon">&#10003;</span>
-      <h2>BUY &mdash; {len(buy_res)} sygnalow</h2></div>
-    <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      Crossover SMI &gt; EMA (strefa neutralna lub bycza)
-    </p>
-    {signal_cards(buy_res, "BUY")}
   </div>
 
   <div class="section section-turning">
@@ -699,7 +715,8 @@ def generate_html(meta, results):
     <table>
       <thead><tr>
         <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
-        <th class="num">Cena</th><th class="num">Cap</th><th class="num">Vol avg</th>
+        <th class="num">Cena</th><th class="num">Discount 52W</th>
+        <th class="num">Cap</th><th class="num">Vol avg</th>
         <th class="num">SMI (W)</th><th class="num">EMA (W)</th><th>Strefa</th>
         <th class="num">EPS</th><th class="num">Sales</th><th class="num">QR</th>
       </tr></thead>
@@ -709,9 +726,8 @@ def generate_html(meta, results):
   </div>
 
   <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem">
-    Strong BUY = crossover ze strefy wyprzedania &lt;&minus;40 &nbsp;|&nbsp;
-    BUY = crossover SMI &gt; EMA &nbsp;|&nbsp;
-    Turning Up = lokalny dolek SMI, kierunek zmienia sie na rosnacy (przed crossoverem)
+    Strong BUY = crossover SMI &gt; EMA ze strefy &lt;&minus;40 &nbsp;|&nbsp;
+    Discount 52W = odleglosc od rocznego szczytu (min. {int(MIN_DISCOUNT_52W*100)}%)
     <br>Fundamenty: Cap &gt; {MIN_MARKET_CAP//1_000_000}M | Vol &gt; {MIN_VOLUME:,} | EPS&gt;0 | Sales&gt;0 | QR&gt;{MIN_QUICK}
   </p>
 </div>
@@ -735,6 +751,7 @@ def run_screener():
     print("=" * 60)
     print(f"SCREENER START: {t0.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA}) | sygnal tygodniowy")
+    print(f"Strategia: tylko Strong BUY | discount >= {int(MIN_DISCOUNT_52W*100)}% vs 52W High")
     print(f"Cap>{MIN_MARKET_CAP//1_000_000}M | Vol>{MIN_VOLUME:,} | EPS>0 | QR>{MIN_QUICK}")
     print("=" * 60)
 
@@ -749,7 +766,6 @@ def run_screener():
 
     elapsed     = round((datetime.now() - t0).total_seconds() / 60, 1)
     strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
-    buy_res     = [r for r in results if r["signal"] == "BUY"]
     turning_res = [r for r in results if r["signal"] == "Turning Up"]
 
     meta = {
@@ -759,22 +775,20 @@ def run_screener():
         "weekly_signals":  len(weekly_signals),
         "results_total":   len(results),
         "results_strong":  len(strong_res),
-        "results_buy":     len(buy_res),
+        "results_buy":     0,
         "results_turning": len(turning_res),
         "indicator":       f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})",
     }
 
     for fname, data in [("meta", meta), ("results", results),
-                        ("strong", strong_res), ("buy", buy_res),
-                        ("turning", turning_res)]:
+                        ("strong", strong_res), ("turning", turning_res)]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
     if results:
         pd.DataFrame(results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
 
     print(f"\nCzas: {elapsed} min")
-    print(f"Wyniki: {len(results)} | Strong BUY:{len(strong_res)} | "
-          f"BUY:{len(buy_res)} | Turning Up:{len(turning_res)}")
+    print(f"Wyniki: {len(results)} | Strong BUY: {len(strong_res)} | Turning Up: {len(turning_res)}")
 
     generate_html(meta, results)
     print(f"\nWyniki w: {OUTPUT_DIR}/")
@@ -783,6 +797,8 @@ def run_screener():
 
 if __name__ == "__main__":
     run_screener()
+
+
 # ============================================================
 # WKLEJ TEN BLOK NA KONIEC SWOJEGO screener.py
 # (po tym jak budujesz listę wyników / results)
@@ -796,11 +812,6 @@ def save_results_json(results: list[dict]) -> None:
     """
     Zapisuje wyniki screenera do data/screener_results.json
     w formacie czytelnym dla Cowork equity-research plugin.
-
-    Parametr `results` to lista słowników — taka sama, której
-    używasz do budowania tabeli HTML w swoim raporcie.
-    Każdy słownik musi zawierać klucze wymienione poniżej
-    (dopasuj nazwy kluczy do swoich, jeśli się różnią).
     """
 
     now_utc = datetime.now(timezone.utc)
@@ -814,25 +825,18 @@ def save_results_json(results: list[dict]) -> None:
 
     for r in results:
         payload["signals"].append({
-            # --- identyfikacja ---
             "ticker":             r.get("ticker", ""),
             "name":               r.get("name", r.get("shortName", "")),
-            "market":             r.get("market", "US"),   # "US" lub "EU"
+            "market":             r.get("market", "US"),
             "currency":           r.get("currency", "USD"),
-
-            # --- cena ---
             "price":              round(float(r.get("price", 0)), 2),
-
-            # --- sygnał techniczny ---
-            "signal_type":        r.get("signal", "BUY"),   # "BUY" | "Strong BUY"
+            "signal_type":        r.get("signal", "Strong BUY"),
             "smi_value":          round(float(r.get("smi", 0)), 2),
-
-            # --- fundamenty (QoQ / YoY) ---
+            "discount_52w_pct":   r.get("discount_52w", None),
+            "high_52w":           r.get("high_52w", None),
             "revenue_growth_yoy": round(float(r.get("revenue_growth_yoy", 0)), 2),
             "revenue_qoq":        round(float(r.get("revenue_qoq", 0)), 2),
             "net_income_qoq":     round(float(r.get("net_income_qoq", 0)), 2),
-
-            # --- opcjonalne (jeśli pobierasz z yfinance) ---
             "market_cap":         r.get("marketCap", None),
             "sector":             r.get("sector", ""),
             "pe_ratio":           r.get("trailingPE", None),
@@ -844,12 +848,4 @@ def save_results_json(results: list[dict]) -> None:
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(payload, f, indent=2, ensure_ascii=False)
 
-    print(f"[JSON] Zapisano {len(results)} sygnałów → {output_path}")
-
-
-# ---- Wywołanie na końcu screener.py ----
-# Upewnij się, że `results` to Twoja lista wynikowa przed tym wywołaniem
-# Przykład:
-#
-#   results = [...]   # Twoja lista spółek z sygnałami
-#   save_results_json(results)
+    print(f"[JSON] Zapisano {len(results)} sygnalow -> {output_path}")
