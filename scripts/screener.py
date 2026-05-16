@@ -40,21 +40,6 @@ SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA = 10, 3, 3
 #  POBIERANIE TICKERÓW
 # ══════════════════════════════════════════════════════════════
 
-def _wiki_tickers_regex(url):
-    """Parsuje tickery z tabeli Wikipedii bez zadnych zewnetrznych zaleznosci."""
-    import re
-    r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-    rows = re.findall(r'<tr[^>]*>(.*?)</tr>', r.text, re.DOTALL)
-    tickers = []
-    for row in rows[1:]:
-        cells = re.findall(r'<td[^>]*>(.*?)</td>', row, re.DOTALL)
-        if cells:
-            raw = re.sub(r'<[^>]+>', '', cells[0]).strip()
-            ticker = raw.replace('.', '-').strip()
-            if re.match(r'^[A-Z]{1,6}(-[A-Z])?$', ticker):
-                tickers.append(ticker)
-    return tickers
-
 def get_sp500():
     """S&P 500 z GitHub raw CSV."""
     try:
@@ -71,52 +56,36 @@ def get_sp500():
         return []
 
 def get_sp600():
-    """Spolki notowane na NASDAQ (bez ETF, bez testowych) – NASDAQ FTP."""
+    """Spolki NASDAQ z GitHub (rreichel3/US-Stock-Symbols)."""
     import re
     try:
-        url = "https://ftp.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
-        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        lines = r.text.strip().split("\n")
-        # Format: Symbol|Name|MarketCategory|TestIssue|FinancialStatus|RoundLot|ETF|NextShares
-        tickers = []
-        for line in lines[1:]:
-            parts = line.split("|")
-            if len(parts) < 7:
-                continue
-            sym        = parts[0].strip()
-            test_issue = parts[3].strip()
-            is_etf     = parts[6].strip()
-            if test_issue == "N" and is_etf == "N" and re.match(r'^[A-Z]{1,5}$', sym):
-                tickers.append(sym)
-        print(f"  NASDAQ listed (FTP): {len(tickers)} spolki")
+        url = ("https://raw.githubusercontent.com/rreichel3/"
+               "US-Stock-Symbols/main/nasdaq/nasdaq_tickers.json")
+        r       = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+        tickers = [t.strip() for t in r.json()
+                   if re.match(r'^[A-Z]{1,5}$', t.strip())]
+        print(f"  NASDAQ (GitHub JSON): {len(tickers)} spolki")
         return tickers
     except Exception as e:
-        print(f"  NASDAQ FTP blad: {e}")
+        print(f"  NASDAQ GitHub blad: {e}")
         return []
 
 def get_russell2000():
-    """Spolki notowane na NYSE/AMEX/inne (bez ETF, bez testowych) – NASDAQ FTP."""
+    """Spolki NYSE + AMEX z GitHub (rreichel3/US-Stock-Symbols)."""
     import re
-    try:
-        url = "https://ftp.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
-        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        lines = r.text.strip().split("\n")
-        # Format: ACTSymbol|Name|Exchange|CQSSymbol|ETF|RoundLot|TestIssue|NASDAQSymbol
-        tickers = []
-        for line in lines[1:]:
-            parts = line.split("|")
-            if len(parts) < 7:
-                continue
-            sym        = parts[0].strip()
-            is_etf     = parts[4].strip()
-            test_issue = parts[6].strip()
-            if test_issue == "N" and is_etf == "N" and re.match(r'^[A-Z]{1,5}$', sym):
-                tickers.append(sym)
-        print(f"  NYSE/AMEX listed (FTP): {len(tickers)} spolki")
-        return tickers
-    except Exception as e:
-        print(f"  NYSE FTP blad: {e}")
-        return []
+    tickers = []
+    for exchange in ("nyse", "amex"):
+        try:
+            url = (f"https://raw.githubusercontent.com/rreichel3/"
+                   f"US-Stock-Symbols/main/{exchange}/{exchange}_tickers.json")
+            r    = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+            part = [t.strip() for t in r.json()
+                    if re.match(r'^[A-Z]{1,5}$', t.strip())]
+            tickers.extend(part)
+            print(f"  {exchange.upper()} (GitHub JSON): {len(part)} spolki")
+        except Exception as e:
+            print(f"  {exchange.upper()} GitHub blad: {e}")
+    return tickers
 
 def get_european_indices():
     dax = [
