@@ -40,14 +40,30 @@ SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA = 10, 3, 3
 #  POBIERANIE TICKERÓW
 # ══════════════════════════════════════════════════════════════
 
+def _wiki_tickers_regex(url):
+    """Parsuje tickery z tabeli Wikipedii bez zadnych zewnetrznych zaleznosci."""
+    import re
+    r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+    rows = re.findall(r'<tr[^>]*>(.*?)</tr>', r.text, re.DOTALL)
+    tickers = []
+    for row in rows[1:]:
+        cells = re.findall(r'<td[^>]*>(.*?)</td>', row, re.DOTALL)
+        if cells:
+            raw = re.sub(r'<[^>]+>', '', cells[0]).strip()
+            ticker = raw.replace('.', '-').strip()
+            if re.match(r'^[A-Z]{1,6}(-[A-Z])?$', ticker):
+                tickers.append(ticker)
+    return tickers
+
 def get_sp500():
     try:
-        url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
-        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        tables = pd.read_html(StringIO(r.text), flavor="html.parser")
-        df = tables[0]
+        # GitHub raw CSV – nie wymaga zadnego parsera HTML
+        url = ("https://raw.githubusercontent.com/datasets/"
+               "s-and-p-500-companies/main/data/constituents.csv")
+        r  = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+        df = pd.read_csv(StringIO(r.text))
         tickers = df["Symbol"].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
-        print(f"  S&P 500 (Wikipedia): {len(tickers)} spolki")
+        print(f"  S&P 500 (GitHub CSV): {len(tickers)} spolki")
         return tickers
     except Exception as e:
         print(f"  S&P 500 blad: {e}")
@@ -56,12 +72,8 @@ def get_sp500():
 def get_sp600():
     try:
         url = "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies"
-        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        tables = pd.read_html(StringIO(r.text), flavor="html.parser")
-        df = tables[0]
-        col = next((c for c in df.columns if "ticker" in str(c).lower() or "symbol" in str(c).lower()), df.columns[0])
-        tickers = df[col].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
-        print(f"  S&P 600 (Wikipedia): {len(tickers)} spolki")
+        tickers = _wiki_tickers_regex(url)
+        print(f"  S&P 600 (Wikipedia regex): {len(tickers)} spolki")
         return tickers
     except Exception as e:
         print(f"  S&P 600 blad: {e}")
@@ -70,12 +82,8 @@ def get_sp600():
 def get_russell2000():
     try:
         url = "https://en.wikipedia.org/wiki/List_of_S%26P_400_companies"
-        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        tables = pd.read_html(StringIO(r.text), flavor="html.parser")
-        df = tables[0]
-        col = next((c for c in df.columns if "ticker" in str(c).lower() or "symbol" in str(c).lower()), df.columns[0])
-        tickers = df[col].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
-        print(f"  S&P 400 mid-cap (Wikipedia): {len(tickers)} spolki")
+        tickers = _wiki_tickers_regex(url)
+        print(f"  S&P 400 mid-cap (Wikipedia regex): {len(tickers)} spolki")
         return tickers
     except Exception as e:
         print(f"  S&P 400 blad: {e}")
