@@ -56,13 +56,14 @@ def _wiki_tickers_regex(url):
     return tickers
 
 def get_sp500():
+    """S&P 500 z GitHub raw CSV."""
     try:
-        # GitHub raw CSV – nie wymaga zadnego parsera HTML
         url = ("https://raw.githubusercontent.com/datasets/"
                "s-and-p-500-companies/main/data/constituents.csv")
         r  = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
         df = pd.read_csv(StringIO(r.text))
-        tickers = df["Symbol"].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
+        tickers = (df["Symbol"].dropna().str.strip()
+                   .str.replace(".", "-", regex=False).tolist())
         print(f"  S&P 500 (GitHub CSV): {len(tickers)} spolki")
         return tickers
     except Exception as e:
@@ -70,23 +71,51 @@ def get_sp500():
         return []
 
 def get_sp600():
+    """Spolki notowane na NASDAQ (bez ETF, bez testowych) – NASDAQ FTP."""
+    import re
     try:
-        url = "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies"
-        tickers = _wiki_tickers_regex(url)
-        print(f"  S&P 600 (Wikipedia regex): {len(tickers)} spolki")
+        url = "https://ftp.nasdaqtrader.com/dynamic/SymDir/nasdaqlisted.txt"
+        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+        lines = r.text.strip().split("\n")
+        # Format: Symbol|Name|MarketCategory|TestIssue|FinancialStatus|RoundLot|ETF|NextShares
+        tickers = []
+        for line in lines[1:]:
+            parts = line.split("|")
+            if len(parts) < 7:
+                continue
+            sym        = parts[0].strip()
+            test_issue = parts[3].strip()
+            is_etf     = parts[6].strip()
+            if test_issue == "N" and is_etf == "N" and re.match(r'^[A-Z]{1,5}$', sym):
+                tickers.append(sym)
+        print(f"  NASDAQ listed (FTP): {len(tickers)} spolki")
         return tickers
     except Exception as e:
-        print(f"  S&P 600 blad: {e}")
+        print(f"  NASDAQ FTP blad: {e}")
         return []
 
 def get_russell2000():
+    """Spolki notowane na NYSE/AMEX/inne (bez ETF, bez testowych) – NASDAQ FTP."""
+    import re
     try:
-        url = "https://en.wikipedia.org/wiki/List_of_S%26P_400_companies"
-        tickers = _wiki_tickers_regex(url)
-        print(f"  S&P 400 mid-cap (Wikipedia regex): {len(tickers)} spolki")
+        url = "https://ftp.nasdaqtrader.com/dynamic/SymDir/otherlisted.txt"
+        r   = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+        lines = r.text.strip().split("\n")
+        # Format: ACTSymbol|Name|Exchange|CQSSymbol|ETF|RoundLot|TestIssue|NASDAQSymbol
+        tickers = []
+        for line in lines[1:]:
+            parts = line.split("|")
+            if len(parts) < 7:
+                continue
+            sym        = parts[0].strip()
+            is_etf     = parts[4].strip()
+            test_issue = parts[6].strip()
+            if test_issue == "N" and is_etf == "N" and re.match(r'^[A-Z]{1,5}$', sym):
+                tickers.append(sym)
+        print(f"  NYSE/AMEX listed (FTP): {len(tickers)} spolki")
         return tickers
     except Exception as e:
-        print(f"  S&P 400 blad: {e}")
+        print(f"  NYSE FTP blad: {e}")
         return []
 
 def get_european_indices():
