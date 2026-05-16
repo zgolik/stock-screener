@@ -42,13 +42,11 @@ SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA = 10, 3, 3
 
 def get_sp500():
     try:
-        url = ("https://www.ishares.com/us/products/239726/ISHARES-CORE-SP-500-ETF/"
-               "1467271812596.ajax?fileType=csv&fileName=IVV_holdings&dataType=fund")
-        r  = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        df = pd.read_csv(StringIO(r.text), skiprows=9)
-        df = df[df["Asset Class"] == "Equity"]
-        tickers = df["Ticker"].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
-        print(f"  S&P 500 (iShares IVV): {len(tickers)} spolki")
+        url = "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies"
+        tables = pd.read_html(url)
+        df = tables[0]
+        tickers = df["Symbol"].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
+        print(f"  S&P 500 (Wikipedia): {len(tickers)} spolki")
         return tickers
     except Exception as e:
         print(f"  S&P 500 blad: {e}")
@@ -56,13 +54,15 @@ def get_sp500():
 
 def get_sp600():
     try:
-        url = ("https://www.ishares.com/us/products/239774/ISHARES-CORE-SP-SMALLCAP-ETF/"
-               "1467271812596.ajax?fileType=csv&fileName=IJR_holdings&dataType=fund")
-        r  = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        df = pd.read_csv(StringIO(r.text), skiprows=9)
-        df = df[df["Asset Class"] == "Equity"]
-        tickers = df["Ticker"].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
-        print(f"  S&P 600 (iShares IJR): {len(tickers)} spolki")
+        url = "https://en.wikipedia.org/wiki/List_of_S%26P_600_companies"
+        tables = pd.read_html(url)
+        df = tables[0]
+        # kolumna moze sie nazywac "Ticker symbol" lub "Symbol"
+        col = next((c for c in df.columns if "ticker" in c.lower() or "symbol" in c.lower()), None)
+        if col is None:
+            col = df.columns[0]
+        tickers = df[col].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
+        print(f"  S&P 600 (Wikipedia): {len(tickers)} spolki")
         return tickers
     except Exception as e:
         print(f"  S&P 600 blad: {e}")
@@ -70,16 +70,18 @@ def get_sp600():
 
 def get_russell2000():
     try:
-        url = ("https://www.ishares.com/us/products/239710/ISHARES-RUSSELL-2000-ETF/"
-               "1467271812596.ajax?fileType=csv&fileName=IWM_holdings&dataType=fund")
-        r  = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        df = pd.read_csv(StringIO(r.text), skiprows=9)
-        df = df[df["Asset Class"] == "Equity"]
-        tickers = df["Ticker"].dropna().str.strip().tolist()
-        print(f"  Russell 2000: {len(tickers)} spolki")
+        # S&P 400 mid-cap jako uzupelnienie (Wikipedia, stabilne)
+        url = "https://en.wikipedia.org/wiki/List_of_S%26P_400_companies"
+        tables = pd.read_html(url)
+        df = tables[0]
+        col = next((c for c in df.columns if "ticker" in c.lower() or "symbol" in c.lower()), None)
+        if col is None:
+            col = df.columns[0]
+        tickers = df[col].dropna().str.strip().str.replace(".", "-", regex=False).tolist()
+        print(f"  S&P 400 mid-cap (Wikipedia): {len(tickers)} spolki")
         return tickers
     except Exception as e:
-        print(f"  Russell 2000 blad: {e}")
+        print(f"  S&P 400 blad: {e}")
         return []
 
 def get_european_indices():
