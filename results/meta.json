@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-05-16T10:55:22.325277",
-  "elapsed_min": 3.6,
-  "total_scanned": 1916,
-  "weekly_signals": 107,
-  "results_total": 9,
-  "results_strong": 6,
+  "generated_at": "2026-05-16T11:02:08.838031",
+  "elapsed_min": 2.1,
+  "total_scanned": 885,
+  "weekly_signals": 69,
+  "results_total": 3,
+  "results_strong": 2,
   "results_buy": 0,
-  "results_turning": 3,
+  "results_turning": 1,
   "indicator": "SMI(10,3,3)"
 }

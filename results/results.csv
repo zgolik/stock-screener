@@ -1,10 +1,4 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,eps_ttm,sales_ttm_mln,quick_ratio,scanned_at
-AGYS,"Agilysys, Inc.",USA,United States,Technology,67.34,USD,145.25,53.6,1892.8,303.0,-39.87,-50.17,Bearish,Strong BUY,1.07,275.6,1.07,2026-05-16T10:55:20.947880
-CELH,"Celsius Holdings, Inc.",USA,United States,Consumer Defensive,30.16,USD,66.74,54.8,7710.1,7766.2,-85.31,-85.63,OVERSOLD,Strong BUY,0.43,2515.3,1.37,2026-05-16T10:55:20.969163
-WDAY,"Workday, Inc.",USA,United States,Technology,125.01,USD,274.65,54.5,31213.2,5405.0,-39.6,-46.78,Bearish,Strong BUY,2.59,9552.0,1.32,2026-05-16T10:55:21.198781
-ABT,Abbott Laboratories,USA,United States,Healthcare,84.47,USD,139.06,39.3,147131.0,12020.1,-91.22,-90.08,OVERSOLD,Turning Up,3.57,44328.0,1.18,2026-05-16T10:55:21.342045
-RUN,Sunrun Inc.,USA,United States,Technology,13.99,USD,22.44,37.7,3337.3,10006.2,-26.26,-39.37,Bearish,Strong BUY,2.13,2957.0,1.27,2026-05-16T10:55:21.539289
-PGR,Progressive Corporation (The),USA,United States,Financial Services,199.73,USD,289.96,31.1,116709.5,2863.7,-42.54,-42.7,OVERSOLD,Strong BUY,19.65,87637.0,,2026-05-16T10:55:21.630708
-MMSI,"Merit Medical Systems, Inc.",USA,United States,Healthcare,61.36,USD,100.05,38.7,3660.4,826.6,-80.03,-79.17,OVERSOLD,Turning Up,2.32,1515.9,2.95,2026-05-16T10:55:21.700532
-CALM,"Cal-Maine Foods, Inc.",USA,United States,Consumer Defensive,76.88,USD,126.4,39.2,3642.3,879.4,-58.16,-58.18,OVERSOLD,Strong BUY,14.37,4261.9,5.42,2026-05-16T10:55:21.738154
-RLI,RLI Corp.,USA,United States,Financial Services,50.82,USD,77.24,34.2,4672.3,788.4,-74.09,-70.44,OVERSOLD,Turning Up,4.29,1882.4,,2026-05-16T10:55:21.843044
+WDAY,"Workday, Inc.",USA,United States,Technology,125.01,USD,274.65,54.5,31213.2,5405.0,-39.6,-46.78,Bearish,Strong BUY,2.59,9552.0,1.32,2026-05-16T11:02:06.437971
+ABT,Abbott Laboratories,USA,United States,Healthcare,84.47,USD,139.06,39.3,147131.0,12020.1,-91.22,-90.08,OVERSOLD,Turning Up,3.57,44328.0,1.18,2026-05-16T11:02:06.998790
+PGR,Progressive Corporation (The),USA,United States,Financial Services,199.73,USD,289.96,31.1,116709.5,2863.7,-42.54,-42.7,OVERSOLD,Strong BUY,19.65,87637.0,,2026-05-16T11:02:07.345931
