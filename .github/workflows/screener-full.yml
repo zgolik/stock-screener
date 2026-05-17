@@ -23,7 +23,7 @@ on:
         options: ['true', 'false']
 
   # Harmonogram – co poniedziałek o 07:30 UTC (9:30 PL czasu letniego)
-  # Odkomentuj aby włączyć automatyczne skany tygodniowe:
+  # Odkomentuj aby włączyć:
   # schedule:
   #   - cron: '30 7 * * 1'
 
@@ -37,6 +37,10 @@ jobs:
     name: Full SMI Scan
     runs-on: ubuntu-latest
     timeout-minutes: 90
+    # ── WYMAGANE przez actions/deploy-pages@v4 ──
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout repozytorium
@@ -64,7 +68,6 @@ jobs:
         env:
           PYTHONUNBUFFERED: '1'
 
-      # Kopiuj do results/ – stamtąd GitHub Pages serwuje stronę
       - name: Kopiuj wyniki do results/
         run: |
           mkdir -p results
@@ -75,8 +78,10 @@ jobs:
           cp results_all/turning.json results/turning_all.json 2>/dev/null || true
           cp results_all/meta.json    results/meta_all.json    2>/dev/null || true
           cp results_all/results.csv  results/results_all.csv  2>/dev/null || true
-          # Landing page ze static/
-          cp static/index.html results/index.html 2>/dev/null || true
+          # Landing page – kopiuj jeśli istnieje, pomiń jeśli nie
+          cp static/index.html results/index.html \
+            && echo "✅ Landing page skopiowana" \
+            || echo "⚠️  static/index.html nie znaleziono – pomijam"
 
       - name: Podsumowanie skanu
         run: |
@@ -112,4 +117,5 @@ jobs:
           path: results/
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
