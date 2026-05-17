@@ -1,16 +1,22 @@
 name: Daily Stock Screener
 on:
   schedule:
-    # 15:00 UTC = 17:00 CEST (lato) / 16:00 CET (zima)
     - cron: '0 15 * * 1-5'
   workflow_dispatch:
+
 permissions:
   contents: write
   pages: write
   id-token: write
+
 jobs:
   run-screener:
     runs-on: ubuntu-latest
+    # ── WYMAGANE przez actions/deploy-pages@v4 ──
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -21,12 +27,10 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: |
-          pip install yfinance pandas numpy requests
+        run: pip install yfinance pandas numpy requests
 
       - name: Run screener
-        run: |
-          python scripts/screener.py
+        run: python scripts/screener.py
         env:
           PYTHONUNBUFFERED: "1"
 
@@ -42,10 +46,13 @@ jobs:
       - name: Generate Claude.ai prompt file
         run: python scripts/make_prompt.py
 
-      # ── Landing page: kopiuj stronę startową do results/ ──────────────
       - name: Copy landing page to results/
         run: |
-          cp static/index.html results/index.html
+          # Kopiuje stronę startową jeśli istnieje w static/
+          # Jeśli nie – pomija (nie przerywa workflow)
+          cp static/index.html results/index.html \
+            && echo "✅ Landing page skopiowana" \
+            || echo "⚠️  static/index.html nie znaleziono – pomijam"
 
       - name: Commit JSON results to repo
         run: |
@@ -62,4 +69,5 @@ jobs:
           path: results/
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
