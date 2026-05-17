@@ -301,13 +301,14 @@ def phase1_weekly_signals(ticker_market_list):
     return signals
 
 # ══════════════════════════════════════════════════════════════
-#  FAZA 2 – Pobierz dane (BEZ FILTROWANIA)
+#  FAZA 2 – Pobierz dane (filtr płynności: cap > 200M, vol > 300K)
 # ══════════════════════════════════════════════════════════════
 
 def _collect_one(symbol, weekly_data):
     """
-    Pobiera dane meta i fundamentalne BEZ jakiegokolwiek filtrowania.
-    Każda spółka z sygnałem SMI trafia do raportu.
+    Pobiera dane meta i fundamentalne.
+    Filtruje tylko po płynności: cap > 200M i avg volume > 300K.
+    EPS, QR, discount 52W – wyświetlane informacyjnie, nie blokują.
     """
     try:
         tkr = yf.Ticker(symbol)
@@ -319,6 +320,13 @@ def _collect_one(symbol, weekly_data):
                     or getattr(fi, "last_volume", None))
         currency = getattr(fi, "currency", "USD")
         high_52w = getattr(fi, "year_high", None)
+
+        # ── FILTRY PŁYNNOŚCI ──────────────────────────────────
+        if not cap or cap < 200_000_000:
+            return None
+        if not vol or vol < 300_000:
+            return None
+        # ──────────────────────────────────────────────────────
 
         discount_pct = None
         if high_52w and high_52w and price:
@@ -674,11 +682,13 @@ def generate_html(meta, results):
   <p class="subtitle">Wygenerowano: {dt} &nbsp;|&nbsp; Czas: {meta['elapsed_min']} min &nbsp;|&nbsp; SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})</p>
 
   <div class="info-box">
-    <strong>&#128270; Tryb Full Scan &mdash; bez filtrów fundamentalnych.</strong>
-    Wyświetlane są <strong>wszystkie spółki</strong> z sygnałem SMI (Strong BUY / BUY / Turning Up)
-    niezależnie od market cap, wolumenu, EPS, Quick Ratio ani discount 52W.
-    Dane fundamentalne są pobierane i <strong>wyświetlane informacyjnie</strong>
-    (zielony = spełnia typowe kryterium, czerwony = nie spełnia).
+    <strong>&#128270; Tryb Full Scan &mdash; minimalne filtry płynności.</strong>
+    Wyświetlane są <strong>wszystkie spółki</strong> z sygnałem SMI (Strong BUY / BUY / Turning Up),
+    które spełniają dwa warunki płynności: <strong>Market Cap &gt; 200M</strong>
+    i <strong>avg Volume &gt; 300 000</strong>.
+    EPS, Quick Ratio, cena i discount 52W są pobierane i
+    <strong>wyświetlane informacyjnie</strong>
+    (zielony = spełnia typowe kryterium, czerwony = nie spełnia) &mdash; nie filtrują wyników.
   </div>
 
   <div class="stats-bar">
@@ -739,7 +749,7 @@ def generate_html(meta, results):
   </div>
 
   <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem">
-    Full Scan &mdash; brak filtrów fundamentalnych &nbsp;|&nbsp;
+    Full Scan &mdash; filtr płynności: Cap &gt; 200M | Vol &gt; 300K &nbsp;|&nbsp;
     Strong BUY = crossover ze strefy &lt;&minus;40 &nbsp;|&nbsp;
     BUY = crossover ze strefy neutralnej &nbsp;|&nbsp;
     Turning Up = lokalny dolek SMI przed crossoverem
