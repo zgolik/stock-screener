@@ -1,0 +1,18 @@
+ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,eps_ttm,sales_ttm_mln,quick_ratio,scanned_at
+RPD,"Rapid7, Inc.",USA,United States,Technology,6.5,USD,25.85,74.9,434.4,2177.2,-16.33,-37.54,Bearish,Strong BUY,0.35,859.8,1.28,2026-05-17T12:46:52.572743
+WLDN,"Willdan Group, Inc.",USA,United States,Industrials,92.12,USD,137.0,32.8,1392.0,394.0,-22.56,-44.42,Bearish,Strong BUY,3.72,681.6,1.56,2026-05-17T12:46:54.014546
+TPB,"Turning Point Brands, Inc.",USA,United States,Consumer Defensive,89.56,USD,146.9,39.0,1734.6,502.0,-34.77,-47.11,Bearish,Strong BUY,2.92,463.1,4.12,2026-05-17T12:46:55.567154
+CHKP,Check Point Software Technologi,USA,Israel,Technology,124.03,USD,233.78,46.9,12902.6,1488.7,-79.19,-81.84,OVERSOLD,Strong BUY,9.72,2725.4,2.05,2026-05-17T12:46:55.701359
+CALM,"Cal-Maine Foods, Inc.",USA,United States,Consumer Defensive,76.88,USD,126.4,39.2,3642.3,879.4,-58.16,-58.18,OVERSOLD,Strong BUY,14.37,4261.9,5.42,2026-05-17T12:46:56.827202
+GLOB,Globant S.A.,USA,Luxembourg,Technology,38.91,USD,107.12,63.7,1680.1,1571.0,-61.54,-62.87,OVERSOLD,Strong BUY,2.29,2454.9,1.64,2026-05-17T12:46:57.088109
+AGYS,"Agilysys, Inc.",USA,United States,Technology,67.34,USD,145.25,53.6,1892.8,303.0,-39.87,-50.17,Bearish,Strong BUY,1.07,275.6,1.07,2026-05-17T12:46:59.244724
+WDAY,"Workday, Inc.",USA,United States,Technology,125.01,USD,274.65,54.5,31213.2,5405.0,-39.6,-46.78,Bearish,Strong BUY,2.59,9552.0,1.32,2026-05-17T12:46:59.610246
+RLI,RLI Corp.,USA,United States,Financial Services,50.82,USD,77.24,34.2,4672.3,788.4,-74.09,-70.44,OVERSOLD,Turning Up,4.29,1882.4,,2026-05-17T12:47:00.629260
+ABT,Abbott Laboratories,USA,United States,Healthcare,84.47,USD,139.06,39.3,147131.0,12020.1,-91.22,-90.08,OVERSOLD,Turning Up,3.57,44328.0,1.18,2026-05-17T12:47:02.322610
+CMCO,Columbus McKinnon Corporation,USA,United States,Industrials,14.28,USD,24.4,41.5,410.4,405.3,-39.05,-44.84,Bearish,Strong BUY,0.21,963.0,1.04,2026-05-17T12:47:04.266414
+PGR,Progressive Corporation (The),USA,United States,Financial Services,199.73,USD,289.96,31.1,116709.5,2863.7,-42.54,-42.7,OVERSOLD,Strong BUY,19.65,87637.0,,2026-05-17T12:47:07.058688
+WIT,Wipro Limited,USA,India,Technology,1.89,USD,3.13,39.6,19816.9,13330.8,-81.56,-79.57,OVERSOLD,Turning Up,0.13,890884.0,2.71,2026-05-17T12:47:11.756206
+CELH,"Celsius Holdings, Inc.",USA,United States,Consumer Defensive,30.16,USD,66.74,54.8,7710.1,7766.2,-85.31,-85.63,OVERSOLD,Strong BUY,0.43,2515.3,1.37,2026-05-17T12:47:12.579453
+AG,First Majestic Silver Corp.,USA,Canada,Basic Materials,20.42,USD,32.04,36.3,10082.8,18542.2,-53.86,-53.97,OVERSOLD,Strong BUY,0.59,1265.2,2.41,2026-05-17T12:47:12.772995
+RUN,Sunrun Inc.,USA,United States,Technology,13.99,USD,22.44,37.7,3337.3,10006.2,-26.26,-39.37,Bearish,Strong BUY,2.13,2957.0,1.27,2026-05-17T12:47:13.483056
+MMSI,"Merit Medical Systems, Inc.",USA,United States,Healthcare,61.36,USD,100.05,38.7,3660.4,826.6,-80.03,-79.17,OVERSOLD,Turning Up,2.32,1515.9,2.95,2026-05-17T12:47:13.923672
