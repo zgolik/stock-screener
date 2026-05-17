@@ -1,17 +1,15 @@
 """
 Stock Screener – SMI Tygodniowy
-Trzy typy sygnałów (tygodniowy interwał):
-  ⚡ Strong BUY  — crossover SMI > EMA ze strefy wyprzedania (< −40)
-  ✅ BUY         — crossover SMI > EMA (strefa neutralna lub bycza)
-  🔄 Turning Up  — SMI osiągnął lokalny dołek i zmienia kierunek na rosnący,
-                   ale jeszcze nie przekroczyło EMA (wczesny sygnał)
+Jeden przebieg generuje dwa raporty:
 
-Fundamenty: market cap > 200M | volume > 300K | EPS TTM > 0 | Sales > 0 | QR > 1.0
+  results/screener.html   – Screener główny (Strong BUY + Turning Up)
+                            Filtry: Cap>200M | Vol>300K | EPS>0 | QR≥1.0 | Discount≥30%
+
+  results/index_all.html  – Full Scan (Strong BUY + BUY + Turning Up)
+                            Filtry: tylko Cap>200M | Vol>300K
+
+Dane pobierane są raz – ticker list + tygodniowe OHLC + fundamenty.
 SMI(10,3,3) – port Pine Script "SMI Signal Strategy"
-
-AKTYWNE FILTRY STRATEGII:
-  - Tylko sygnał Strong BUY (crossover ze strefy wyprzedania < -40)
-  - Kurs akcji min. 30% poniżej 52-tygodniowego szczytu (deep discount)
 """
 
 import yfinance as yf
@@ -27,10 +25,14 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 # ══════════════════════════════════════════════════════════════
 #  KONFIGURACJA
 # ══════════════════════════════════════════════════════════════
-MIN_MARKET_CAP       = 200_000_000
-MIN_VOLUME           = 300_000
-MIN_QUICK            = 1.0
-MIN_DISCOUNT_52W     = 0.30        # min. 30% poniżej 52W High
+# Wspólne filtry płynności (oba raporty)
+MIN_MARKET_CAP   = 200_000_000
+MIN_VOLUME       = 300_000
+
+# Dodatkowe filtry – tylko screener główny
+MIN_QUICK        = 1.0
+MIN_DISCOUNT_52W = 0.30        # 30% poniżej 52W High
+
 FUNDAMENTALS_WORKERS = 20
 DOWNLOAD_BATCH_SIZE  = 100
 OUTPUT_DIR           = "results"
@@ -41,7 +43,6 @@ SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA = 10, 3, 3
 # ══════════════════════════════════════════════════════════════
 
 def get_sp500():
-    """S&P 500 z GitHub raw CSV."""
     try:
         url = ("https://raw.githubusercontent.com/datasets/"
                "s-and-p-500-companies/main/data/constituents.csv")
@@ -49,29 +50,24 @@ def get_sp500():
         df = pd.read_csv(StringIO(r.text))
         tickers = (df["Symbol"].dropna().str.strip()
                    .str.replace(".", "-", regex=False).tolist())
-        print(f"  S&P 500 (GitHub CSV): {len(tickers)} spolki")
+        print(f"  S&P 500: {len(tickers)}")
         return tickers
     except Exception as e:
-        print(f"  S&P 500 blad: {e}")
-        return []
+        print(f"  S&P 500 blad: {e}"); return []
 
-def get_sp600():
-    """Spolki NASDAQ z GitHub (rreichel3/US-Stock-Symbols)."""
+def get_nasdaq():
     import re
     try:
         url = ("https://raw.githubusercontent.com/rreichel3/"
                "US-Stock-Symbols/main/nasdaq/nasdaq_tickers.json")
-        r       = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-        tickers = [t.strip() for t in r.json()
-                   if re.match(r'^[A-Z]{1,5}$', t.strip())]
-        print(f"  NASDAQ (GitHub JSON): {len(tickers)} spolki")
+        r = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
+        tickers = [t.strip() for t in r.json() if re.match(r'^[A-Z]{1,5}$', t.strip())]
+        print(f"  NASDAQ: {len(tickers)}")
         return tickers
     except Exception as e:
-        print(f"  NASDAQ GitHub blad: {e}")
-        return []
+        print(f"  NASDAQ blad: {e}"); return []
 
-def get_russell2000():
-    """Spolki NYSE + AMEX z GitHub (rreichel3/US-Stock-Symbols)."""
+def get_nyse_amex():
     import re
     tickers = []
     for exchange in ("nyse", "amex"):
@@ -79,12 +75,11 @@ def get_russell2000():
             url = (f"https://raw.githubusercontent.com/rreichel3/"
                    f"US-Stock-Symbols/main/{exchange}/{exchange}_tickers.json")
             r    = requests.get(url, timeout=20, headers={"User-Agent": "Mozilla/5.0"})
-            part = [t.strip() for t in r.json()
-                    if re.match(r'^[A-Z]{1,5}$', t.strip())]
+            part = [t.strip() for t in r.json() if re.match(r'^[A-Z]{1,5}$', t.strip())]
             tickers.extend(part)
-            print(f"  {exchange.upper()} (GitHub JSON): {len(part)} spolki")
+            print(f"  {exchange.upper()}: {len(part)}")
         except Exception as e:
-            print(f"  {exchange.upper()} GitHub blad: {e}")
+            print(f"  {exchange.upper()} blad: {e}")
     return tickers
 
 def get_european_indices():
@@ -162,10 +157,10 @@ def get_european_indices():
         "PZU.WA","SPL.WA","TPE.WA","XTB.WA",
     ]
     all_eu = list(set(dax+cac+ftse+aex+ibex+smi_idx+mib+omx+obx+bel+wig))
-    print(f"  EU statyczna lista: {len(all_eu)} tickerow")
-    print(f"    DAX:{len(dax)} CAC:{len(cac)} FTSE:{len(ftse)} AEX:{len(aex)} "
+    print(f"  EU: {len(all_eu)} tickerow "
+          f"(DAX:{len(dax)} CAC:{len(cac)} FTSE:{len(ftse)} AEX:{len(aex)} "
           f"IBEX:{len(ibex)} SMI:{len(smi_idx)} MIB:{len(mib)} "
-          f"OMX:{len(omx)} OBX:{len(obx)} BEL:{len(bel)} WIG:{len(wig)}")
+          f"OMX:{len(omx)} OBX:{len(obx)} BEL:{len(bel)} WIG:{len(wig)})")
     return all_eu
 
 # ══════════════════════════════════════════════════════════════
@@ -189,52 +184,25 @@ def calc_smi(high, low, close, lk=10, ld=3, le=3):
     return smi, smi_ema
 
 def smi_weekly_signal(smi, smi_ema):
-    """
-    Klasyfikuje tygodniowy sygnał SMI:
-
-      "Strong BUY"  -- crossover SMI > EMA ze strefy wyprzedania (poprzedni bar <= -40)
-      "BUY"         -- crossover SMI > EMA (strefa neutralna lub bycza)
-      "Turning Up"  -- SMI osiagnal lokalny dolek i zmienia kierunek na rosnacy,
-                       ale jeszcze ponizej EMA (wczesny sygnal)
-      None          -- brak sygnalu
-
-    Zwraca: (signal_type, smi_val, smi_ema_val, zone)
-    """
     if len(smi) < 4:
         return None, None, None, "--"
-
-    s0 = float(smi.iloc[-1])
-    s1 = float(smi.iloc[-2])
-    s2 = float(smi.iloc[-3])
-    e0 = float(smi_ema.iloc[-1])
+    s0 = float(smi.iloc[-1]);  s1 = float(smi.iloc[-2])
+    s2 = float(smi.iloc[-3]);  e0 = float(smi_ema.iloc[-1])
     e1 = float(smi_ema.iloc[-2])
-
     if any(np.isnan(v) for v in [s0, s1, s2, e0, e1]):
         return None, None, None, "--"
-
-    # Strefa
     if   s0 >= 40:  zone = "OVERBOUGHT"
     elif s0 <= -40: zone = "OVERSOLD"
     elif s0 > 0:    zone = "Bullish"
     else:           zone = "Bearish"
-
-    # Crossover SMI > EMA
     cross_up = (s1 < e1) and (s0 >= e0)
     exit_os  = (s1 < -40) and (s0 >= -40)
-    buy      = cross_up or exit_os
-
-    if buy:
+    if cross_up or exit_os:
         strong = (s1 <= -40) or (s0 <= -40)
-        sig    = "Strong BUY" if strong else "BUY"
-        return sig, round(s0, 2), round(e0, 2), zone
-
-    # Turning Up: lokalny dolek SMI, jeszcze ponizej EMA
-    # s2 >= s1 (dolek na barze -2) i s0 > s1 (teraz rosnie) i s0 < e0 (przed crossoverem)
-    turning_up = (s2 >= s1) and (s0 > s1) and (s0 < e0)
-    if turning_up:
-        return "Turning Up", round(s0, 2), round(e0, 2), zone
-
-    return None, round(s0, 2), round(e0, 2), zone
+        return ("Strong BUY" if strong else "BUY"), round(s0,2), round(e0,2), zone
+    if (s2 >= s1) and (s0 > s1) and (s0 < e0):
+        return "Turning Up", round(s0,2), round(e0,2), zone
+    return None, round(s0,2), round(e0,2), zone
 
 # ══════════════════════════════════════════════════════════════
 #  BULK DOWNLOAD
@@ -269,17 +237,15 @@ def bulk_download(tickers, period, interval):
     return result
 
 # ══════════════════════════════════════════════════════════════
-#  FAZA 1 - Tygodniowy sygnal SMI
+#  FAZA 1 – Tygodniowe sygnały SMI (wszystkie 3 typy)
 # ══════════════════════════════════════════════════════════════
 
 def phase1_weekly_signals(ticker_market_list):
     tickers    = [t for t, _ in ticker_market_list]
     market_map = {t: m for t, m in ticker_market_list}
-
     print(f"\n[1/2] Dane tygodniowe -- {len(tickers)} tickerow...")
     data = bulk_download(tickers, period="2y", interval="1wk")
     print(f"      Pobrano: {len(data)}")
-
     signals = {}
     for ticker, df in data.items():
         try:
@@ -288,139 +254,101 @@ def phase1_weekly_signals(ticker_market_list):
             sig, s_val, e_val, zone = smi_weekly_signal(smi, smi_e)
             if sig is not None:
                 signals[ticker] = {
-                    "market":  market_map[ticker],
-                    "smi":     s_val,
-                    "smi_ema": e_val,
-                    "zone":    zone,
-                    "signal":  sig,
+                    "market": market_map[ticker],
+                    "smi": s_val, "smi_ema": e_val,
+                    "zone": zone, "signal": sig,
                 }
         except Exception:
             pass
-
     s  = sum(1 for v in signals.values() if v["signal"] == "Strong BUY")
     b  = sum(1 for v in signals.values() if v["signal"] == "BUY")
     tu = sum(1 for v in signals.values() if v["signal"] == "Turning Up")
-    print(f"      Sygnaly: {len(signals)}  "
-          f"( Strong BUY:{s}  BUY:{b}  Turning Up:{tu} )")
+    print(f"      Sygnaly: {len(signals)} (Strong BUY:{s}  BUY:{b}  Turning Up:{tu})")
     return signals
 
 # ══════════════════════════════════════════════════════════════
-#  FAZA 2 - Meta + Fundamenty (rownolegly)
+#  FAZA 2 – Dane meta + fundamenty (pobieranie raz, bez filtrowania)
 # ══════════════════════════════════════════════════════════════
 
-def _get_fundamentals_from_statements(tkr):
-    result = {
-        "eps_ttm": None, "sales_ttm_mln": None,
-        "quick_ratio": None, "name": None,
-        "sector": None, "country": None,
-    }
+def _collect_one(symbol, weekly_data):
+    """Pobiera dane dla tickera. Zwraca None jeśli nie spełnia
+    minimalnych warunków płynności (cap>200M, vol>300K)."""
     try:
-        fin = tkr.financials
-        if fin is not None and not fin.empty:
-            for label in ["Total Revenue", "Operating Revenue"]:
-                if label in fin.index:
-                    rev = fin.loc[label].dropna()
-                    if len(rev) >= 1:
-                        result["sales_ttm_mln"] = round(float(rev.iloc[0]) / 1e6, 1)
-                    break
-            for label in ["Net Income", "Net Income Common Stockholders"]:
-                if label in fin.index:
-                    ni = fin.loc[label].dropna()
-                    if len(ni) >= 1:
-                        result["eps_ttm"] = round(float(ni.iloc[0]) / 1e6, 2)
-                    break
-    except Exception:
-        pass
-
-    try:
-        bs = tkr.balance_sheet
-        if bs is not None and not bs.empty:
-            ca, inv, cl = None, 0.0, None
-            for label in ["Current Assets", "Total Current Assets"]:
-                if label in bs.index:
-                    v = bs.loc[label].dropna()
-                    if len(v) >= 1: ca = float(v.iloc[0])
-                    break
-            for label in ["Inventory", "Inventories"]:
-                if label in bs.index:
-                    v = bs.loc[label].dropna()
-                    if len(v) >= 1: inv = float(v.iloc[0])
-                    break
-            for label in ["Current Liabilities", "Total Current Liabilities"]:
-                if label in bs.index:
-                    v = bs.loc[label].dropna()
-                    if len(v) >= 1: cl = float(v.iloc[0])
-                    break
-            if ca is not None and cl is not None and cl > 0:
-                result["quick_ratio"] = round((ca - inv) / cl, 2)
-    except Exception:
-        pass
-
-    try:
-        info = tkr.info
-        if info and len(info) > 5:
-            result["name"]    = info.get("shortName")
-            result["sector"]  = info.get("sector")
-            result["country"] = info.get("country")
-            eps = info.get("trailingEps")
-            if eps is not None:
-                result["eps_ttm"] = round(float(eps), 2)
-    except Exception:
-        pass
-
-    return result
-
-
-def _check_one(symbol, weekly_data):
-    try:
-        # ── FILTR 1: Strong BUY lub Turning Up (bez zwykłego BUY) ─
-        if weekly_data["signal"] not in ("Strong BUY", "Turning Up"):
-            return None
-
         tkr = yf.Ticker(symbol)
         fi  = tkr.fast_info
 
-        price = getattr(fi, "last_price", None)
-        if not price or price <= 0:
-            return None
-
-        # ── FILTR 2: min. 30% poniżej 52-tygodniowego szczytu ─────
-        high_52w = getattr(fi, "year_high", None)
-        if high_52w and high_52w > 0:
-            discount = (high_52w - price) / high_52w
-            if discount < MIN_DISCOUNT_52W:
-                return None
-        # jeśli year_high niedostępny – przepuszczamy (nie blokujemy)
-
-        cap = getattr(fi, "market_cap", None)
-        if not cap or cap < MIN_MARKET_CAP:
-            return None
-
-        vol = (getattr(fi, "three_month_average_volume", None)
-               or getattr(fi, "last_volume", None))
-        if not vol or vol < MIN_VOLUME:
-            return None
-
+        price    = getattr(fi, "last_price", None)
+        cap      = getattr(fi, "market_cap", None)
+        vol      = (getattr(fi, "three_month_average_volume", None)
+                    or getattr(fi, "last_volume", None))
         currency = getattr(fi, "currency", "USD")
-        fund     = _get_fundamentals_from_statements(tkr)
+        high_52w = getattr(fi, "year_high", None)
 
-        if fund["eps_ttm"] is not None and fund["eps_ttm"] < 0:
-            return None
-        if fund["quick_ratio"] is not None and fund["quick_ratio"] < MIN_QUICK:
-            return None
+        # Filtr płynności – wspólny dla obu raportów
+        if not cap or cap < MIN_MARKET_CAP: return None
+        if not vol or vol < MIN_VOLUME:     return None
 
-        # Oblicz discount do wyświetlenia w raporcie
         discount_pct = None
-        if high_52w and high_52w > 0:
+        if high_52w and price and high_52w > 0:
             discount_pct = round((high_52w - price) / high_52w * 100, 1)
+
+        name = symbol; sector = "--"; country = "--"
+        eps_ttm = None; sales = None; qr = None
+
+        try:
+            info = tkr.info
+            if info and len(info) > 5:
+                name    = info.get("shortName") or symbol
+                sector  = info.get("sector")    or "--"
+                country = info.get("country")   or "--"
+                eps     = info.get("trailingEps")
+                if eps is not None: eps_ttm = round(float(eps), 2)
+        except Exception:
+            pass
+
+        try:
+            fin = tkr.financials
+            if fin is not None and not fin.empty:
+                for label in ["Total Revenue", "Operating Revenue"]:
+                    if label in fin.index:
+                        rev = fin.loc[label].dropna()
+                        if len(rev) >= 1:
+                            sales = round(float(rev.iloc[0]) / 1e6, 1)
+                        break
+        except Exception:
+            pass
+
+        try:
+            bs = tkr.balance_sheet
+            if bs is not None and not bs.empty:
+                ca, inv, cl = None, 0.0, None
+                for label in ["Current Assets", "Total Current Assets"]:
+                    if label in bs.index:
+                        v = bs.loc[label].dropna()
+                        if len(v) >= 1: ca = float(v.iloc[0])
+                        break
+                for label in ["Inventory", "Inventories"]:
+                    if label in bs.index:
+                        v = bs.loc[label].dropna()
+                        if len(v) >= 1: inv = float(v.iloc[0])
+                        break
+                for label in ["Current Liabilities", "Total Current Liabilities"]:
+                    if label in bs.index:
+                        v = bs.loc[label].dropna()
+                        if len(v) >= 1: cl = float(v.iloc[0])
+                        break
+                if ca is not None and cl is not None and cl > 0:
+                    qr = round((ca - inv) / cl, 2)
+        except Exception:
+            pass
 
         return {
             "ticker":         symbol,
-            "name":           fund["name"]    or symbol,
+            "name":           name,
             "market":         weekly_data["market"],
-            "country":        fund["country"] or "--",
-            "sector":         fund["sector"]  or "--",
-            "price":          round(price, 2),
+            "country":        country,
+            "sector":         sector,
+            "price":          round(price, 2) if price else None,
             "currency":       currency,
             "high_52w":       round(high_52w, 2) if high_52w else None,
             "discount_52w":   discount_pct,
@@ -430,39 +358,55 @@ def _check_one(symbol, weekly_data):
             "smi_ema":        weekly_data["smi_ema"],
             "zone":           weekly_data["zone"],
             "signal":         weekly_data["signal"],
-            "eps_ttm":        fund["eps_ttm"],
-            "sales_ttm_mln":  fund["sales_ttm_mln"],
-            "quick_ratio":    fund["quick_ratio"],
+            "eps_ttm":        eps_ttm,
+            "sales_ttm_mln":  sales,
+            "quick_ratio":    qr,
             "scanned_at":     datetime.now().isoformat(),
         }
     except Exception:
         return None
 
 
-def phase2_meta_fundamentals(weekly_signals):
-    if not weekly_signals:
-        return []
+def phase2_collect(weekly_signals):
+    if not weekly_signals: return []
     candidates = list(weekly_signals.keys())
     print(f"\n[2/2] Meta + fundamenty -- {len(candidates)} tickerow "
           f"({FUNDAMENTALS_WORKERS} watkow)...")
-
     results = []
     with ThreadPoolExecutor(max_workers=FUNDAMENTALS_WORKERS) as pool:
         futures = {
-            pool.submit(_check_one, sym, weekly_signals[sym]): sym
+            pool.submit(_collect_one, sym, weekly_signals[sym]): sym
             for sym in candidates
         }
         for future in as_completed(futures):
             r = future.result()
-            if r:
-                results.append(r)
-
-    s  = sum(1 for r in results if r["signal"] == "Strong BUY")
-    b  = sum(1 for r in results if r["signal"] == "BUY")
-    tu = sum(1 for r in results if r["signal"] == "Turning Up")
-    print(f"      Spelnia fundamenty: {len(results)}  "
-          f"( Strong BUY:{s}  BUY:{b}  Turning Up:{tu} )")
+            if r: results.append(r)
+    print(f"      Zebrano danych: {len(results)}")
     return results
+
+
+# ══════════════════════════════════════════════════════════════
+#  FILTRY
+# ══════════════════════════════════════════════════════════════
+
+def filter_main(r):
+    """Filtry screener główny: Strong BUY / Turning Up + fundamenty + discount."""
+    if r["signal"] not in ("Strong BUY", "Turning Up"):
+        return False
+    if r.get("eps_ttm") is not None and r["eps_ttm"] < 0:
+        return False
+    if r.get("quick_ratio") is not None and r["quick_ratio"] < MIN_QUICK:
+        return False
+    disc = r.get("discount_52w")
+    if disc is not None and disc < MIN_DISCOUNT_52W * 100:
+        return False
+    return True
+
+
+def filter_full(r):
+    """Filtry full scan: wszystkie sygnały, tylko płynność (już sprawdzona)."""
+    return True   # płynność filtrowana w _collect_one
+
 
 # ══════════════════════════════════════════════════════════════
 #  FORMATOWANIE
@@ -480,106 +424,221 @@ def na(v, suffix=""):
     return f"{v}{suffix}" if v is not None else "--"
 
 # ══════════════════════════════════════════════════════════════
-#  RAPORT HTML
+#  WSPÓLNE ELEMENTY HTML
 # ══════════════════════════════════════════════════════════════
 
-def generate_html(meta, results):
+COMMON_CSS = """
+  :root {
+    --bg:#0b0d1a; --bg2:#11142a; --bg3:#181c35; --border:#252840;
+    --text:#d0d4e8; --muted:#555d7a; --accent:#7c9ef0;
+    --green:#3ecf8e; --red:#ff4560; --orange:#ff6b00; --yellow:#ffb800;
+    --purple:#c471ed;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+       background:var(--bg);color:var(--text);min-height:100vh}
+  .page{max-width:1600px;margin:0 auto;padding:2rem}
+  h1{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.3px}
+  h2{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:1rem}
+  .subtitle{font-size:.8rem;color:var(--muted);margin-top:.3rem}
+
+  /* Nawigacja */
+  .report-nav{display:flex;gap:.6rem;margin-bottom:1.75rem;flex-wrap:wrap}
+  .nav-link{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+            padding:.45rem 1.1rem;font-size:.83rem;color:var(--muted);text-decoration:none;
+            transition:color .15s,border-color .15s,background .15s}
+  .nav-link:hover{color:#fff;border-color:var(--accent)}
+  .nav-link-active{color:#fff;border-color:var(--accent);background:var(--bg3);
+                   pointer-events:none}
+
+  .stats-bar{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.5rem 0}
+  .stat{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
+        padding:.6rem 1.1rem;min-width:110px}
+  .stat-val{font-size:1.4rem;font-weight:700;color:#fff}
+  .stat-val.green{color:var(--green)} .stat-val.orange{color:var(--orange)}
+  .stat-val.blue{color:var(--accent)} .stat-val.purple{color:var(--purple)}
+  .stat-label{font-size:.72rem;color:var(--muted);margin-top:.1rem}
+
+  .info-box{border-radius:10px;padding:.9rem 1.4rem;margin-bottom:1.5rem;
+            font-size:.82rem;line-height:1.7}
+  .info-box ul{margin:.4rem 0 0 1.2rem}
+
+  .section{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
+           padding:1.5rem;margin-bottom:1.5rem}
+  .section-strong {border-color:#ff6b00;box-shadow:0 0 20px rgba(255,107,0,.08)}
+  .section-buy    {border-color:#3ecf8e;box-shadow:0 0 20px rgba(62,207,142,.06)}
+  .section-turning{border-color:#7b2ff7;box-shadow:0 0 20px rgba(196,113,237,.08)}
+  .section-header{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}
+  .section-icon{font-size:1.2rem}
+
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}
+  .signal-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;
+               padding:1.2rem;position:relative;overflow:hidden}
+  .sc-ticker{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.3px}
+  .sc-name{font-size:.75rem;color:var(--muted);margin-top:.1rem;
+           white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}
+  .sc-price{font-size:1.3rem;font-weight:700;color:var(--accent);margin:.7rem 0}
+  .sc-row{display:flex;justify-content:space-between;font-size:.78rem;
+          padding:.25rem 0;border-bottom:1px solid var(--border)}
+  .sc-row span:first-child{color:var(--muted)}
+  .sc-divider{height:1px;background:var(--border);margin:.5rem 0}
+  .sc-stoch{display:flex;gap:.5rem;margin-top:.7rem}
+  .sc-stoch-item{flex:1;background:var(--bg2);border-radius:6px;padding:.4rem .6rem;text-align:center}
+  .sc-stoch-label{font-size:.65rem;color:var(--muted)}
+  .sc-stoch-val{font-size:.95rem;font-weight:600;color:var(--text)}
+  .sc-stoch-val.green{color:var(--green)}
+  .empty{color:var(--muted);text-align:center;padding:2rem;font-size:.9rem}
+
+  .table-wrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;font-size:.8rem}
+  th{background:var(--bg3);color:var(--muted);font-weight:600;text-align:left;
+     padding:.6rem 1rem;border-bottom:1px solid var(--border);white-space:nowrap}
+  td{padding:.55rem 1rem;border-bottom:1px solid rgba(37,40,64,.6);vertical-align:middle}
+  tr:hover td{background:rgba(255,255,255,.02)}
+  .num{text-align:right;font-variant-numeric:tabular-nums}
+  .name-col{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .smi-col{color:var(--green)}
+  .ticker{font-weight:600;color:#fff;margin-right:.3rem}
+
+  .badge-strong {background:#3d1500;color:var(--orange);font-size:.68rem;font-weight:700;
+                 padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}
+  .badge-buy    {background:#0b2318;color:var(--green);font-size:.68rem;font-weight:700;
+                 padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}
+  .badge-turning{background:#1a0a2e;color:var(--purple);font-size:.68rem;font-weight:700;
+                 padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}
+  .badge-usa{background:#0d1a2e;color:var(--accent);font-size:.72rem;
+             padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}
+  .badge-eu {background:#1a1a0d;color:var(--yellow);font-size:.72rem;
+             padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}
+
+  .zone-badge{font-size:.72rem;padding:.15rem .5rem;border-radius:4px;font-weight:500}
+  .zone-ob  {background:#3d0010;color:#ff4560}
+  .zone-os  {background:#0b2318;color:var(--green)}
+  .zone-bull{background:#0d1a2e;color:var(--accent)}
+  .zone-bear{background:#1a1505;color:#ffa040}
+
+  @media(max-width:900px){.page{padding:1rem} th,td{padding:.45rem .6rem}}
+"""
+
+def _signal_cfg(sig):
+    if sig == "Strong BUY":
+        return "linear-gradient(90deg,#ff6b00,#ffb800)", "STRONG BUY", "#ffb800"
+    if sig == "BUY":
+        return "linear-gradient(90deg,#1a9e5c,#3ecf8e)", "BUY", "#3ecf8e"
+    return "linear-gradient(90deg,#7b2ff7,#c471ed)", "TURNING UP", "#c471ed"
+
+def _zone_color(z):
+    return {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599",
+            "Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
+
+def _zone_badge(zone):
+    cls = {"OVERBOUGHT":"zone-ob","OVERSOLD":"zone-os",
+           "Bullish":"zone-bull","Bearish":"zone-bear"}.get(zone,"")
+    return f'<span class="zone-badge {cls}">{zone}</span>'
+
+def render_cards(data):
+    if not data:
+        return "<div class='empty'>Brak sygnalow</div>"
+    cards = ""
+    for r in sorted(data, key=lambda x: (
+        {"Strong BUY":0,"BUY":1,"Turning Up":2}.get(x["signal"],9),
+        -(x.get("discount_52w") or 0)
+    )):
+        sig = r.get("signal","Strong BUY")
+        tc, sl, sc = _signal_cfg(sig)
+        mc = "usa" if r["market"] == "USA" else "eu"
+        z  = r.get("zone","--")
+        zc = _zone_color(z)
+
+        disc = r.get("discount_52w")
+        disc_row = ""
+        if disc is not None:
+            dc = "#00e599" if disc >= 50 else "#ffb800" if disc >= 30 else "#888"
+            disc_row = (f'<div class="sc-row"><span>Discount 52W</span>'
+                        f'<span style="color:{dc};font-weight:600">-{disc}%</span></div>')
+
+        eps   = r.get("eps_ttm")
+        qr    = r.get("quick_ratio")
+        eps_c = "#3ecf8e" if eps and eps > 0 else ("#ff4560" if eps is not None and eps < 0 else "#888")
+        qr_c  = "#3ecf8e" if qr  and qr  >= 1 else ("#ff4560" if qr  is not None else "#888")
+
+        cards += (
+            f'<div class="signal-card">'
+            f'<div style="position:absolute;top:0;left:0;right:0;height:3px;background:{tc}"></div>'
+            f'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
+            f'<div><div class="sc-ticker">{r["ticker"]}</div>'
+            f'<div class="sc-name">{r["name"]}</div></div>'
+            f'<span class="badge-{mc}">{r["market"]}</span></div>'
+            f'<div class="sc-price">{na(r["price"])} {r["currency"]}</div>'
+            f'<div class="sc-row"><span>Sygnal</span>'
+            f'<span style="color:{sc};font-weight:600">{sl}</span></div>'
+            f'{disc_row}'
+            f'<div class="sc-row"><span>Strefa SMI</span>'
+            f'<span style="color:{zc}">{z}</span></div>'
+            f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
+            f'<div class="sc-row"><span>Market Cap</span>'
+            f'<span style="color:var(--accent)">{fmt_cap(r.get("market_cap_mln"))}</span></div>'
+            f'<div class="sc-row"><span>Vol avg</span>'
+            f'<span>{fmt_vol(r.get("volume_k"))}</span></div>'
+            f'<div class="sc-divider"></div>'
+            f'<div class="sc-row"><span>EPS TTM</span>'
+            f'<span style="color:{eps_c}">{na(eps)}</span></div>'
+            f'<div class="sc-row"><span>Sales TTM</span>'
+            f'<span>{na(r.get("sales_ttm_mln"))} M</span></div>'
+            f'<div class="sc-row"><span>Quick Ratio</span>'
+            f'<span style="color:{qr_c}">{na(qr)}</span></div>'
+            f'<div class="sc-stoch">'
+            f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI tydz.</div>'
+            f'<div class="sc-stoch-val green">{r["smi"]}</div></div>'
+            f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI EMA</div>'
+            f'<div class="sc-stoch-val">{r["smi_ema"]}</div></div>'
+            f'</div></div>'
+        )
+    return f'<div class="cards-grid">{cards}</div>'
+
+def render_table_rows(data):
+    if not data:
+        return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wynikow</td></tr>"
+    data = sorted(data, key=lambda x: (
+        {"Strong BUY":0,"BUY":1,"Turning Up":2}.get(x["signal"],9),
+        -(x.get("discount_52w") or 0)
+    ))
+    html = ""
+    for r in data:
+        disc = r.get("discount_52w")
+        disc_str   = f"-{disc}%" if disc is not None else "--"
+        disc_color = "#00e599" if (disc or 0) >= 50 else "#ffb800" if (disc or 0) >= 30 else "#888"
+        sig = r["signal"]
+        badge = ('<span class="badge-strong">STRONG</span>' if sig == "Strong BUY"
+                 else '<span class="badge-buy">BUY</span>'    if sig == "BUY"
+                 else '<span class="badge-turning">TURN</span>')
+        eps   = r.get("eps_ttm");  qr = r.get("quick_ratio")
+        eps_c = "#3ecf8e" if eps and eps > 0 else ("#ff4560" if eps is not None and eps < 0 else "inherit")
+        qr_c  = "#3ecf8e" if qr  and qr  >= 1 else ("#ff4560" if qr  is not None else "inherit")
+        html += f"""<tr>
+          <td><span class="ticker">{r['ticker']}</span>{badge}</td>
+          <td class="name-col">{r['name']}</td>
+          <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
+          <td>{r['sector']}</td>
+          <td class="num">{na(r['price'])} {r['currency']}</td>
+          <td class="num" style="color:{disc_color};font-weight:600">{disc_str}</td>
+          <td class="num">{fmt_cap(r.get('market_cap_mln'))}</td>
+          <td class="num">{fmt_vol(r.get('volume_k'))}</td>
+          <td class="num smi-col">{r['smi']}</td>
+          <td class="num">{r['smi_ema']}</td>
+          <td>{_zone_badge(r['zone'])}</td>
+          <td class="num" style="color:{eps_c}">{na(eps)}</td>
+          <td class="num">{na(r.get('sales_ttm_mln'))} M</td>
+          <td class="num" style="color:{qr_c}">{na(qr)}</td>
+        </tr>"""
+    return html
+
+# ══════════════════════════════════════════════════════════════
+#  HTML – SCREENER GŁÓWNY
+# ══════════════════════════════════════════════════════════════
+
+def generate_html_main(meta, results):
     dt = datetime.fromisoformat(meta["generated_at"]).strftime("%d.%m.%Y %H:%M")
-
-    def zone_badge(zone):
-        cls = {"OVERBOUGHT":"zone-ob","OVERSOLD":"zone-os",
-               "Bullish":"zone-bull","Bearish":"zone-bear"}.get(zone, "")
-        return f'<span class="zone-badge {cls}">{zone}</span>'
-
-    def signal_cards(data, sig_type):
-        if not data:
-            return "<div class='empty'>Brak sygnalow w tym skanie</div>"
-        cards = ""
-        for r in sorted(data, key=lambda x: -(x.get("discount_52w") or 0)):
-            mc = "usa" if r["market"] == "USA" else "eu"
-            z  = r.get("zone","--")
-
-            sig_type = r.get("signal", "Strong BUY")
-            if sig_type == "Strong BUY":
-                tc, sl, sc = "linear-gradient(90deg,#ff6b00,#ffb800)", "STRONG BUY", "#ffb800"
-            else:
-                tc, sl, sc = "linear-gradient(90deg,#7b2ff7,#c471ed)", "TURNING UP", "#c471ed"
-
-            zc = {"OVERBOUGHT":"#ff4560","OVERSOLD":"#00e599",
-                  "Bullish":"#4da6ff","Bearish":"#ffa040"}.get(z,"#888")
-
-            disc = r.get("discount_52w")
-            disc_row = ""
-            if disc is not None:
-                disc_color = "#00e599" if disc >= 50 else "#ffb800" if disc >= 30 else "#888"
-                disc_row = (f'<div class="sc-row"><span>Discount vs 52W High</span>'
-                            f'<span style="color:{disc_color};font-weight:600">-{disc}%</span></div>')
-
-            cards += (
-                f'<div class="signal-card">'
-                f'<div style="position:absolute;top:0;left:0;right:0;height:3px;background:{tc}"></div>'
-                f'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
-                f'<div><div class="sc-ticker">{r["ticker"]}</div>'
-                f'<div class="sc-name">{r["name"]}</div></div>'
-                f'<span class="badge-{mc}">{r["market"]}</span></div>'
-                f'<div class="sc-price">{r["price"]} {r["currency"]}</div>'
-                f'<div class="sc-row"><span>Sygnal</span>'
-                f'<span style="color:{sc};font-weight:600">{sl}</span></div>'
-                f'{disc_row}'
-                f'<div class="sc-row"><span>Strefa SMI</span>'
-                f'<span style="color:{zc}">{z}</span></div>'
-                f'<div class="sc-row"><span>Sektor</span><span>{r["sector"]}</span></div>'
-                f'<div class="sc-row"><span>Market Cap</span>'
-                f'<span style="color:var(--accent)">{fmt_cap(r.get("market_cap_mln"))}</span></div>'
-                f'<div class="sc-row"><span>Wolumen avg</span>'
-                f'<span>{fmt_vol(r.get("volume_k"))}</span></div>'
-                f'<div class="sc-divider"></div>'
-                f'<div class="sc-row"><span>EPS TTM</span>'
-                f'<span style="color:var(--green)">{na(r.get("eps_ttm"))}</span></div>'
-                f'<div class="sc-row"><span>Sales TTM</span>'
-                f'<span style="color:var(--green)">{na(r.get("sales_ttm_mln"))} M</span></div>'
-                f'<div class="sc-row"><span>Quick Ratio</span>'
-                f'<span style="color:var(--green)">{na(r.get("quick_ratio"))}</span></div>'
-                f'<div class="sc-stoch">'
-                f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI tydz.</div>'
-                f'<div class="sc-stoch-val green">{r["smi"]}</div></div>'
-                f'<div class="sc-stoch-item"><div class="sc-stoch-label">SMI EMA</div>'
-                f'<div class="sc-stoch-val">{r["smi_ema"]}</div></div>'
-                f'</div></div>'
-            )
-        return f'<div class="cards-grid">{cards}</div>'
-
-    def table_rows(data):
-        if not data:
-            return "<tr><td colspan='14' style='text-align:center;color:#888;padding:2rem'>Brak wynikow</td></tr>"
-        data = sorted(data, key=lambda x: -(x.get("discount_52w") or 0))
-        html = ""
-        for r in data:
-            disc = r.get("discount_52w")
-            disc_str = f"-{disc}%" if disc is not None else "--"
-            disc_color = "#00e599" if (disc or 0) >= 50 else "#ffb800" if (disc or 0) >= 30 else "#888"
-            sig = r["signal"]
-            badge = ('<span class="badge-strong">STRONG</span>' if sig == "Strong BUY"
-                     else '<span class="badge-turning">TURN</span>')
-
-            html += f"""<tr>
-              <td><span class="ticker">{r['ticker']}</span>{badge}</td>
-              <td class="name-col">{r['name']}</td>
-              <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
-              <td>{r['sector']}</td>
-              <td class="num">{r['price']} {r['currency']}</td>
-              <td class="num" style="color:{disc_color};font-weight:600">{disc_str}</td>
-              <td class="num">{fmt_cap(r.get('market_cap_mln'))}</td>
-              <td class="num">{fmt_vol(r.get('volume_k'))}</td>
-              <td class="num smi-col">{r['smi']}</td>
-              <td class="num">{r['smi_ema']}</td>
-              <td>{zone_badge(r['zone'])}</td>
-              <td class="num">{na(r.get('eps_ttm'))}</td>
-              <td class="num">{na(r.get('sales_ttm_mln'))} M</td>
-              <td class="num">{na(r.get('quick_ratio'))}</td>
-            </tr>"""
-        return html
-
     strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
     turning_res = [r for r in results if r["signal"] == "Turning Up"]
 
@@ -588,141 +647,59 @@ def generate_html(meta, results):
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Stock Screener SMI - {dt}</title>
+<title>Stock Screener SMI – {dt}</title>
 <style>
-  :root {{
-    --bg:#0b0d1a; --bg2:#11142a; --bg3:#181c35; --border:#252840;
-    --text:#d0d4e8; --muted:#555d7a; --accent:#7c9ef0;
-    --green:#3ecf8e; --red:#ff4560; --orange:#ff6b00; --yellow:#ffb800;
-    --purple:#c471ed;
-  }}
-  *,*::before,*::after{{box-sizing:border-box;margin:0;padding:0}}
-  body{{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
-        background:var(--bg);color:var(--text);min-height:100vh}}
-  .page{{max-width:1600px;margin:0 auto;padding:2rem}}
-  h1{{font-size:1.5rem;font-weight:700;color:#fff;letter-spacing:-.3px}}
-  h2{{font-size:1.05rem;font-weight:600;color:#fff;margin-bottom:1rem}}
-  .subtitle{{font-size:.8rem;color:var(--muted);margin-top:.3rem}}
-
-  .stats-bar{{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.5rem 0}}
-  .stat{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
-         padding:.6rem 1.1rem;min-width:110px}}
-  .stat-val{{font-size:1.4rem;font-weight:700;color:#fff}}
-  .stat-val.green{{color:var(--green)}} .stat-val.orange{{color:var(--orange)}}
-  .stat-label{{font-size:.72rem;color:var(--muted);margin-top:.1rem}}
-
+{COMMON_CSS}
   .strategy-box{{background:var(--bg2);border:1px solid #ff6b00;border-radius:10px;
-                 padding:1rem 1.4rem;margin-bottom:1.5rem;font-size:.82rem;line-height:1.7}}
+                padding:1rem 1.4rem;font-size:.82rem;line-height:1.7}}
   .strategy-box strong{{color:var(--orange)}}
-  .strategy-box ul{{margin:.4rem 0 0 1.2rem;color:var(--text)}}
-
-  .section{{background:var(--bg2);border:1px solid var(--border);border-radius:12px;
-            padding:1.5rem;margin-bottom:1.5rem}}
-  .section-strong  {{border-color:#ff6b00;box-shadow:0 0 20px rgba(255,107,0,.08)}}
-  .section-turning {{border-color:#7b2ff7;box-shadow:0 0 20px rgba(196,113,237,.08)}}
-  .section-header{{display:flex;align-items:center;gap:.6rem;margin-bottom:1.2rem}}
-  .section-icon{{font-size:1.2rem}}
-
-  .cards-grid{{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1rem}}
-  .signal-card{{background:var(--bg3);border:1px solid var(--border);border-radius:10px;
-                padding:1.2rem;position:relative;overflow:hidden}}
-  .sc-ticker{{font-size:1.1rem;font-weight:700;color:#fff;letter-spacing:-.3px}}
-  .sc-name{{font-size:.75rem;color:var(--muted);margin-top:.1rem;
-            white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:180px}}
-  .sc-price{{font-size:1.3rem;font-weight:700;color:var(--accent);margin:.7rem 0}}
-  .sc-row{{display:flex;justify-content:space-between;font-size:.78rem;
-           padding:.25rem 0;border-bottom:1px solid var(--border)}}
-  .sc-row span:first-child{{color:var(--muted)}}
-  .sc-divider{{height:1px;background:var(--border);margin:.5rem 0}}
-  .sc-stoch{{display:flex;gap:.5rem;margin-top:.7rem}}
-  .sc-stoch-item{{flex:1;background:var(--bg2);border-radius:6px;padding:.4rem .6rem;text-align:center}}
-  .sc-stoch-label{{font-size:.65rem;color:var(--muted)}}
-  .sc-stoch-val{{font-size:.95rem;font-weight:600;color:var(--text)}}
-  .sc-stoch-val.green{{color:var(--green)}}
-  .empty{{color:var(--muted);text-align:center;padding:2rem;font-size:.9rem}}
-
-  .table-wrap{{overflow-x:auto}}
-  table{{width:100%;border-collapse:collapse;font-size:.8rem}}
-  th{{background:var(--bg3);color:var(--muted);font-weight:600;text-align:left;
-      padding:.6rem 1rem;border-bottom:1px solid var(--border);white-space:nowrap}}
-  td{{padding:.55rem 1rem;border-bottom:1px solid rgba(37,40,64,.6);vertical-align:middle}}
-  tr:hover td{{background:rgba(255,255,255,.02)}}
-  .num{{text-align:right;font-variant-numeric:tabular-nums}}
-  .name-col{{max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
-  .smi-col{{color:var(--green)}}
-  .ticker{{font-weight:600;color:#fff;margin-right:.3rem}}
-
-  .badge-strong{{background:#3d1500;color:var(--orange);font-size:.68rem;font-weight:700;
-                 padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
-  .badge-turning{{background:#1a0a2e;color:var(--purple);font-size:.68rem;font-weight:700;
-                  padding:.15rem .45rem;border-radius:3px;margin-left:.2rem}}
-  .badge-usa{{background:#0d1a2e;color:var(--accent);font-size:.72rem;
-              padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}}
-  .badge-eu {{background:#1a1a0d;color:var(--yellow);font-size:.72rem;
-              padding:.15rem .5rem;border-radius:4px;border:1px solid var(--border)}}
-
-  .zone-badge{{font-size:.72rem;padding:.15rem .5rem;border-radius:4px;font-weight:500}}
-  .zone-ob  {{background:#3d0010;color:#ff4560}}
-  .zone-os  {{background:#0b2318;color:var(--green)}}
-  .zone-bull{{background:#0d1a2e;color:var(--accent)}}
-  .zone-bear{{background:#1a1505;color:#ffa040}}
-
-  .report-nav{{display:flex;gap:.6rem;margin-bottom:1.75rem;flex-wrap:wrap}}
-  .nav-link{{background:var(--bg2);border:1px solid var(--border);border-radius:8px;
-             padding:.45rem 1.1rem;font-size:.83rem;color:var(--muted);text-decoration:none;
-             transition:color .15s,border-color .15s,background .15s}}
-  .nav-link:hover{{color:#fff;border-color:var(--accent)}}
-  .nav-link-active{{color:#fff;border-color:var(--accent);background:var(--bg3);
-                    pointer-events:none}}
-
-  @media(max-width:900px){{.page{{padding:1rem}} th,td{{padding:.45rem .6rem}}}}
+  .strategy-box ul{{margin:.4rem 0 0 1.2rem}}
 </style>
 </head>
 <body>
 <div class="page">
   <nav class="report-nav">
-    <a href="index.html" class="nav-link nav-link-active">&#9889; Screener g&#322;&#243;wny</a>
+    <a href="index.html"     class="nav-link">&#127968; Start</a>
+    <a href="screener.html"  class="nav-link nav-link-active">&#9889; Screener g&#322;&#243;wny</a>
     <a href="index_all.html" class="nav-link">&#128270; Full Scan</a>
   </nav>
-  <h1>Stock Screener &mdash; SMI Tygodniowy</h1>
+
+  <h1>Screener g&#322;&#243;wny &mdash; SMI Tygodniowy</h1>
   <p class="subtitle">Wygenerowano: {dt} &nbsp;|&nbsp; Czas: {meta['elapsed_min']} min &nbsp;|&nbsp; SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})</p>
 
-  <div class="strategy-box">
-    <strong>&#9881; Aktywna strategia wejść:</strong>
+  <div class="strategy-box" style="margin:1.5rem 0">
+    <strong>&#9881; Aktywna strategia:</strong>
     <ul>
-      <li>Sygnały <strong>Strong BUY</strong> i <strong>Turning Up</strong> (bez zwykłego BUY)</li>
-      <li>Kurs akcji min. <strong>{int(MIN_DISCOUNT_52W*100)}% poniżej 52-tygodniowego szczytu</strong> &mdash; głęboka korekta (deep discount)</li>
+      <li>Sygnaly <strong>Strong BUY</strong> i <strong>Turning Up</strong></li>
+      <li>Kurs min. <strong>{int(MIN_DISCOUNT_52W*100)}% ponizej 52W High</strong></li>
+      <li>EPS &gt; 0 &nbsp;|&nbsp; Quick Ratio &ge; {MIN_QUICK} &nbsp;|&nbsp; Cap &gt; {MIN_MARKET_CAP//1_000_000}M &nbsp;|&nbsp; Vol &gt; {MIN_VOLUME:,}</li>
     </ul>
   </div>
 
   <div class="stats-bar">
     <div class="stat"><div class="stat-val">{meta['total_scanned']}</div><div class="stat-label">Przeskanowano</div></div>
     <div class="stat"><div class="stat-val">{meta['weekly_signals']}</div><div class="stat-label">Sygnalow SMI</div></div>
-    <div class="stat"><div class="stat-val green">{meta['results_total']}</div><div class="stat-label">Po filtrach</div></div>
-    <div class="stat"><div class="stat-val orange">{meta['results_strong']}</div><div class="stat-label">Strong BUY</div></div>
-    <div class="stat"><div class="stat-val purple">{meta['results_turning']}</div><div class="stat-label">Turning Up</div></div>
+    <div class="stat"><div class="stat-val green">{meta['main_total']}</div><div class="stat-label">Po filtrach</div></div>
+    <div class="stat"><div class="stat-val orange">{len(strong_res)}</div><div class="stat-label">Strong BUY</div></div>
+    <div class="stat"><div class="stat-val purple">{len(turning_res)}</div><div class="stat-label">Turning Up</div></div>
   </div>
 
   <div class="section section-strong">
     <div class="section-header"><span class="section-icon">&#9889;</span>
       <h2>Strong BUY &mdash; {len(strong_res)} sygnalow</h2></div>
     <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      Crossover SMI &gt; EMA ze strefy wyprzedania (&lt;&minus;40) &nbsp;&bull;&nbsp;
-      Kurs &ge; {int(MIN_DISCOUNT_52W*100)}% poni&#380;ej 52W High &nbsp;&bull;&nbsp;
-      Sortowanie: najwi&#281;kszy discount najpierw
+      Crossover SMI &gt; EMA ze strefy wyprzedania (&lt;&minus;40)
     </p>
-    {signal_cards(strong_res, "Strong BUY")}
+    {render_cards(strong_res)}
   </div>
 
   <div class="section section-turning">
     <div class="section-header"><span class="section-icon">&#128260;</span>
       <h2>Turning Up &mdash; {len(turning_res)} sygnalow</h2></div>
     <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
-      SMI osiagnal lokalny dolek i zmienia kierunek na rosnacy &mdash; jeszcze ponizej EMA.
-      Wczesny sygnal przed potencjalnym crossoverem.
-      <strong style="color:var(--purple)">delta</strong> = odleglosc SMI od EMA (im mniejsza, tym blizej crossovera).
+      SMI osiagnal lokalny dolek, zmienia kierunek &mdash; jeszcze ponizej EMA
     </p>
-    {signal_cards(turning_res, "Turning Up")}
+    {render_cards(turning_res)}
   </div>
 
   <div class="section">
@@ -737,28 +714,118 @@ def generate_html(meta, results):
         <th class="num">SMI (W)</th><th class="num">EMA (W)</th><th>Strefa</th>
         <th class="num">EPS</th><th class="num">Sales</th><th class="num">QR</th>
       </tr></thead>
-      <tbody>{table_rows(results)}</tbody>
+      <tbody>{render_table_rows(results)}</tbody>
     </table>
     </div>
   </div>
-
-  <p style="font-size:.75rem;color:var(--muted);text-align:center;margin-top:1rem">
-    Strong BUY = crossover SMI &gt; EMA ze strefy &lt;&minus;40 &nbsp;|&nbsp;
-    Discount 52W = odleglosc od rocznego szczytu (min. {int(MIN_DISCOUNT_52W*100)}%)
-    <br>Fundamenty: Cap &gt; {MIN_MARKET_CAP//1_000_000}M | Vol &gt; {MIN_VOLUME:,} | EPS&gt;0 | Sales&gt;0 | QR&gt;{MIN_QUICK}
-  </p>
 </div>
 </body>
 </html>"""
 
-    os.makedirs(OUTPUT_DIR, exist_ok=True)
-    path = f"{OUTPUT_DIR}/index.html"
+    path = f"{OUTPUT_DIR}/screener.html"
     with open(path, "w", encoding="utf-8") as f:
         f.write(html)
-    print(f"Raport: {path}")
+    print(f"  Raport glowny: {path}")
 
 # ══════════════════════════════════════════════════════════════
-#  GLOWNA PETLA
+#  HTML – FULL SCAN
+# ══════════════════════════════════════════════════════════════
+
+def generate_html_full(meta, results):
+    dt = datetime.fromisoformat(meta["generated_at"]).strftime("%d.%m.%Y %H:%M")
+    strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
+    buy_res     = [r for r in results if r["signal"] == "BUY"]
+    turning_res = [r for r in results if r["signal"] == "Turning Up"]
+
+    html = f"""<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Full Scan SMI – {dt}</title>
+<style>
+{COMMON_CSS}
+  .info-box{{background:var(--bg2);border:1px solid #3ecf8e44}}
+  .info-box strong{{color:var(--green)}}
+</style>
+</head>
+<body>
+<div class="page">
+  <nav class="report-nav">
+    <a href="index.html"     class="nav-link">&#127968; Start</a>
+    <a href="screener.html"  class="nav-link">&#9889; Screener g&#322;&#243;wny</a>
+    <a href="index_all.html" class="nav-link nav-link-active">&#128270; Full Scan</a>
+  </nav>
+
+  <h1>Full Scan &mdash; SMI Tygodniowy <span style="font-size:.85rem;color:var(--green);font-weight:400">[bez filtrow fundamentalnych]</span></h1>
+  <p class="subtitle">Wygenerowano: {dt} &nbsp;|&nbsp; Czas: {meta['elapsed_min']} min &nbsp;|&nbsp; SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})</p>
+
+  <div class="info-box" style="margin:1.5rem 0;padding:.9rem 1.4rem;font-size:.82rem;line-height:1.7;border-radius:10px">
+    <strong>&#128270; Wszystkie sygnaly SMI</strong> (Strong BUY / BUY / Turning Up).
+    Filtr tylko: <strong>Cap &gt; {MIN_MARKET_CAP//1_000_000}M</strong> i <strong>Vol &gt; {MIN_VOLUME:,}</strong>.
+    EPS i QR wyswietlane informacyjnie (kolor).
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat"><div class="stat-val">{meta['total_scanned']}</div><div class="stat-label">Przeskanowano</div></div>
+    <div class="stat"><div class="stat-val">{meta['weekly_signals']}</div><div class="stat-label">Sygnalow SMI</div></div>
+    <div class="stat"><div class="stat-val green">{meta['full_total']}</div><div class="stat-label">Zebrano</div></div>
+    <div class="stat"><div class="stat-val orange">{len(strong_res)}</div><div class="stat-label">Strong BUY</div></div>
+    <div class="stat"><div class="stat-val blue">{len(buy_res)}</div><div class="stat-label">BUY</div></div>
+    <div class="stat"><div class="stat-val purple">{len(turning_res)}</div><div class="stat-label">Turning Up</div></div>
+  </div>
+
+  <div class="section section-strong">
+    <div class="section-header"><span class="section-icon">&#9889;</span>
+      <h2>Strong BUY &mdash; {len(strong_res)}</h2></div>
+    {render_cards(strong_res)}
+  </div>
+
+  <div class="section section-buy">
+    <div class="section-header"><span class="section-icon">&#9989;</span>
+      <h2>BUY &mdash; {len(buy_res)}</h2></div>
+    <p style="font-size:.8rem;color:var(--muted);margin-bottom:1rem">
+      Crossover SMI &gt; EMA ze strefy neutralnej lub byczej
+    </p>
+    {render_cards(buy_res)}
+  </div>
+
+  <div class="section section-turning">
+    <div class="section-header"><span class="section-icon">&#128260;</span>
+      <h2>Turning Up &mdash; {len(turning_res)}</h2></div>
+    {render_cards(turning_res)}
+  </div>
+
+  <div class="section">
+    <div class="section-header"><span class="section-icon">&#128203;</span>
+      <h2>Wszystkie wyniki &mdash; {len(results)}</h2></div>
+    <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Ticker</th><th>Nazwa</th><th>Rynek</th><th>Sektor</th>
+        <th class="num">Cena</th><th class="num">Discount 52W</th>
+        <th class="num">Cap</th><th class="num">Vol avg</th>
+        <th class="num">SMI (W)</th><th class="num">EMA (W)</th><th>Strefa</th>
+        <th class="num">EPS*</th><th class="num">Sales</th><th class="num">QR*</th>
+      </tr></thead>
+      <tbody>{render_table_rows(results)}</tbody>
+    </table>
+    </div>
+    <p style="font-size:.72rem;color:var(--muted);margin-top:.7rem">
+      * EPS/QR &mdash; dane informacyjne, nie filtruja wynikow.
+    </p>
+  </div>
+</div>
+</body>
+</html>"""
+
+    path = f"{OUTPUT_DIR}/index_all.html"
+    with open(path, "w", encoding="utf-8") as f:
+        f.write(html)
+    print(f"  Raport full scan: {path}")
+
+# ══════════════════════════════════════════════════════════════
+#  GŁÓWNA PĘTLA
 # ══════════════════════════════════════════════════════════════
 
 def run_screener():
@@ -768,101 +835,61 @@ def run_screener():
     print("=" * 60)
     print(f"SCREENER START: {t0.strftime('%Y-%m-%d %H:%M:%S')}")
     print(f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA}) | sygnal tygodniowy")
-    print(f"Strategia: tylko Strong BUY | discount >= {int(MIN_DISCOUNT_52W*100)}% vs 52W High")
-    print(f"Cap>{MIN_MARKET_CAP//1_000_000}M | Vol>{MIN_VOLUME:,} | EPS>0 | QR>{MIN_QUICK}")
+    print(f"Generuje: screener.html + index_all.html")
     print("=" * 60)
 
     print("\n[Tickery] Pobieranie list spolek...")
-    usa = list(set(get_sp500() + get_sp600() + get_russell2000()))
+    usa = list(set(get_sp500() + get_nasdaq() + get_nyse_amex()))
     eu  = list(set(get_european_indices()))
     ticker_market = [(t, "USA") for t in usa] + [(t, "EU") for t in eu]
     print(f"\nLacznie: {len(ticker_market)} ({len(usa)} USA, {len(eu)} EU)")
 
+    # Faza 1 – sygnały SMI (wszystkie 3 typy)
     weekly_signals = phase1_weekly_signals(ticker_market)
-    results        = phase2_meta_fundamentals(weekly_signals)
 
-    elapsed     = round((datetime.now() - t0).total_seconds() / 60, 1)
-    strong_res  = [r for r in results if r["signal"] == "Strong BUY"]
-    turning_res = [r for r in results if r["signal"] == "Turning Up"]
+    # Faza 2 – zbierz dane (raz, z filtrem płynności)
+    all_data = phase2_collect(weekly_signals)
+
+    # Filtrowanie do dwóch raportów
+    main_results = [r for r in all_data if filter_main(r)]
+    full_results = all_data   # filter_full = True dla wszystkich
+
+    elapsed = round((datetime.now() - t0).total_seconds() / 60, 1)
 
     meta = {
-        "generated_at":    datetime.now().isoformat(),
-        "elapsed_min":     elapsed,
-        "total_scanned":   len(ticker_market),
-        "weekly_signals":  len(weekly_signals),
-        "results_total":   len(results),
-        "results_strong":  len(strong_res),
-        "results_buy":     0,
-        "results_turning": len(turning_res),
-        "indicator":       f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})",
+        "generated_at":  datetime.now().isoformat(),
+        "elapsed_min":   elapsed,
+        "total_scanned": len(ticker_market),
+        "weekly_signals":len(weekly_signals),
+        "main_total":    len(main_results),
+        "full_total":    len(full_results),
+        "indicator":     f"SMI({SMI_LEN_K},{SMI_LEN_D},{SMI_LEN_EMA})",
     }
 
-    for fname, data in [("meta", meta), ("results", results),
-                        ("strong", strong_res), ("turning", turning_res)]:
+    # Zapis JSON / CSV
+    for fname, data in [
+        ("results",     full_results),
+        ("results_main",main_results),
+        ("meta",        meta),
+    ]:
         with open(f"{OUTPUT_DIR}/{fname}.json", "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
-    if results:
-        pd.DataFrame(results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
+    if full_results:
+        pd.DataFrame(full_results).to_csv(f"{OUTPUT_DIR}/results.csv", index=False)
+    if main_results:
+        pd.DataFrame(main_results).to_csv(f"{OUTPUT_DIR}/results_main.csv", index=False)
 
-    print(f"\nCzas: {elapsed} min")
-    print(f"Wyniki: {len(results)} | Strong BUY: {len(strong_res)} | Turning Up: {len(turning_res)}")
+    # Generuj oba raporty HTML
+    print("\n[HTML] Generowanie raportow...")
+    generate_html_main(meta, main_results)
+    generate_html_full(meta, full_results)
 
-    generate_html(meta, results)
-    print(f"\nWyniki w: {OUTPUT_DIR}/")
-    return results
+    print(f"\nCzas lacznie: {elapsed} min")
+    print(f"Screener glowny : {len(main_results)} wynikow")
+    print(f"Full Scan       : {len(full_results)} wynikow")
+    print(f"Wyniki w: {OUTPUT_DIR}/")
+    return main_results, full_results
 
 
 if __name__ == "__main__":
     run_screener()
-
-
-# ============================================================
-# WKLEJ TEN BLOK NA KONIEC SWOJEGO screener.py
-# (po tym jak budujesz listę wyników / results)
-# ============================================================
-
-import json
-import os
-from datetime import datetime, timezone
-
-def save_results_json(results: list[dict]) -> None:
-    """
-    Zapisuje wyniki screenera do data/screener_results.json
-    w formacie czytelnym dla Cowork equity-research plugin.
-    """
-
-    now_utc = datetime.now(timezone.utc)
-
-    payload = {
-        "scan_date":     now_utc.strftime("%Y-%m-%d"),
-        "scan_time_utc": now_utc.strftime("%H:%M"),
-        "total_signals": len(results),
-        "signals": []
-    }
-
-    for r in results:
-        payload["signals"].append({
-            "ticker":             r.get("ticker", ""),
-            "name":               r.get("name", r.get("shortName", "")),
-            "market":             r.get("market", "US"),
-            "currency":           r.get("currency", "USD"),
-            "price":              round(float(r.get("price", 0)), 2),
-            "signal_type":        r.get("signal", "Strong BUY"),
-            "smi_value":          round(float(r.get("smi", 0)), 2),
-            "discount_52w_pct":   r.get("discount_52w", None),
-            "high_52w":           r.get("high_52w", None),
-            "revenue_growth_yoy": round(float(r.get("revenue_growth_yoy", 0)), 2),
-            "revenue_qoq":        round(float(r.get("revenue_qoq", 0)), 2),
-            "net_income_qoq":     round(float(r.get("net_income_qoq", 0)), 2),
-            "market_cap":         r.get("marketCap", None),
-            "sector":             r.get("sector", ""),
-            "pe_ratio":           r.get("trailingPE", None),
-        })
-
-    os.makedirs("data", exist_ok=True)
-    output_path = os.path.join("data", "screener_results.json")
-
-    with open(output_path, "w", encoding="utf-8") as f:
-        json.dump(payload, f, indent=2, ensure_ascii=False)
-
-    print(f"[JSON] Zapisano {len(results)} sygnalow -> {output_path}")
