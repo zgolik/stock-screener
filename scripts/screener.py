@@ -1201,6 +1201,90 @@ def generate_html_index(meta):
     print(f"  Strona startowa: {path}")
 
 # ══════════════════════════════════════════════════════════════
+#  LISTY TRADINGVIEW
+# ══════════════════════════════════════════════════════════════
+
+# Mapowanie sufiksów Yahoo Finance → prefiksy giełd TradingView
+_TV_SUFFIX_MAP = {
+    ".DE":  "XETR",      # Deutsche Börse XETRA
+    ".PA":  "EURONEXT",  # Euronext Paris
+    ".L":   "LSE",       # London Stock Exchange
+    ".AS":  "EURONEXT",  # Euronext Amsterdam
+    ".MC":  "BME",       # Bolsa de Madrid
+    ".SW":  "SIX",       # SIX Swiss Exchange
+    ".MI":  "MIL",       # Borsa Italiana
+    ".ST":  "OM",        # Nasdaq Stockholm
+    ".OL":  "OSL",       # Oslo Børs
+    ".BR":  "EURONEXT",  # Euronext Brussels
+    ".WA":  "GPW",       # Giełda Papierów Wartościowych Warszawa
+}
+
+def _to_tv_ticker(yahoo_ticker: str) -> str:
+    """Konwertuje ticker Yahoo Finance na format TradingView (EXCHANGE:TICKER)."""
+    for suffix, exchange in _TV_SUFFIX_MAP.items():
+        if yahoo_ticker.endswith(suffix):
+            base = yahoo_ticker[: -len(suffix)]
+            return f"{exchange}:{base}"
+    # Brak sufiksu → ticker US, domyślna giełda rozpoznawana przez TV
+    return yahoo_ticker
+
+
+def generate_tradingview_lists(main_results: list, full_results: list) -> None:
+    """
+    Generuje dwa pliki watchlist dla TradingView:
+      results/tv_main.txt  – Screener główny (wszystkie filtry)
+      results/tv_all.txt   – Full Scan (tylko płynność)
+
+    Format pliku: jeden ticker na linię, EXCHANGE:TICKER
+    Import w TradingView: Watchlist → ⋮ → Import list
+    """
+    dt_str = datetime.now().strftime("%Y-%m-%d %H:%M UTC")
+
+    for label, data, filename in [
+        ("Screener główny", main_results, "tv_main.txt"),
+        ("Full Scan",       full_results, "tv_all.txt"),
+    ]:
+        # Sortuj: Strong BUY pierwsze, potem BUY, Turning Up; w ramach grupy wg discount
+        sorted_data = sorted(data, key=lambda x: (
+            {"Strong BUY": 0, "BUY": 1, "Turning Up": 2}.get(x["signal"], 9),
+            -(x.get("discount_52w") or 0),
+        ))
+
+        lines = [
+            f"### TradingView Watchlist – {label}",
+            f"### Wygenerowano: {dt_str}",
+            f"### Liczba tickerow: {len(sorted_data)}",
+            f"### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor",
+            "###",
+        ]
+
+        # Grupuj według sygnału
+        for sig_type in ("Strong BUY", "BUY", "Turning Up"):
+            group = [r for r in sorted_data if r["signal"] == sig_type]
+            if not group:
+                continue
+            lines.append(f"### ── {sig_type} ({len(group)}) ──")
+            for r in group:
+                tv     = _to_tv_ticker(r["ticker"])
+                disc   = f"-{r['discount_52w']}%" if r.get("discount_52w") is not None else "--"
+                sector = r.get("sector", "--")
+                lines.append(f"{tv}  ### {r['signal']} | {disc} | {sector}")
+
+        path = f"{OUTPUT_DIR}/{filename}"
+        with open(path, "w", encoding="utf-8") as f:
+            f.write("\n".join(lines) + "\n")
+
+        # Wersja "czysta" – sam ticker, bez komentarzy (dla starszych wersji TV)
+        clean_lines = [_to_tv_ticker(r["ticker"]) for r in sorted_data]
+        clean_path  = path.replace(".txt", "_clean.txt")
+        with open(clean_path, "w", encoding="utf-8") as f:
+            f.write("\n".join(clean_lines) + "\n")
+
+        print(f"  TradingView {label}: {path}  ({len(sorted_data)} tickerow)")
+        print(f"  TradingView {label} (clean): {clean_path}")
+
+
+# ══════════════════════════════════════════════════════════════
 #  GŁÓWNA PĘTLA
 # ══════════════════════════════════════════════════════════════
 
@@ -1254,6 +1338,9 @@ def run_screener():
     generate_html_main(meta, main_results)
     generate_html_full(meta, full_results)
     generate_html_index(meta)
+
+    print("\n[TV] Listy TradingView...")
+    generate_tradingview_lists(main_results, full_results)
 
     print(f"\nCzas lacznie: {elapsed} min")
     print(f"Screener glowny : {len(main_results)} wynikow")
