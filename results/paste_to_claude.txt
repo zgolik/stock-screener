@@ -9,7 +9,7 @@ Filtr wejścia: dyskonto ≥ 30% vs 52-tygodniowego szczytu + EPS>0 + QR>1 + Cap
 === METADANE SKANU ===
 Data:              2026-05-28
 Przeskanowano:     7152 spółek
-Sygnały SMI:       1046
+Sygnały SMI:       1035
 Po wszystkich filtrach: 0 (Strong BUY: 0, Turning Up: 0)
 
 === SYGNAŁY STRONG BUY ===
