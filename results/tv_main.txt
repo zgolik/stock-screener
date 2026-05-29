@@ -1,5 +1,17 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-05-28 17:54 UTC
-### Liczba tickerow: 0
+### Wygenerowano: 2026-05-29 10:42 UTC
+### Liczba tickerow: 10
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
+### ── Strong BUY (8) ──
+BRR  ### Strong BUY | -86.0% | --
+WING  ### Strong BUY | -59.4% | --
+KROS  ### Strong BUY | -49.5% | --
+AJG  ### Strong BUY | -42.3% | --
+RKT  ### Strong BUY | -40.9% | --
+MBC  ### Strong BUY | -36.1% | --
+CATX  ### Strong BUY | -34.3% | --
+DG  ### Strong BUY | -30.5% | --
+### ── Turning Up (2) ──
+NBP  ### Turning Up | -72.5% | --
+IAG  ### Turning Up | -30.2% | --
