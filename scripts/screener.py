@@ -186,6 +186,39 @@ def calc_smi(high, low, close, lk=10, ld=3, le=3):
     smi_ema = ema(smi, le)
     return smi, smi_ema
 
+def detect_bullish_divergence(close: pd.Series, smi: pd.Series,
+                               lookback: int = 14) -> tuple:
+    """
+    Wykrywa dywergencję byczą między ceną a SMI.
+    Zwraca (bool, opis).
+
+    Warunek klasyczny:
+      - Cena: low2 < low1  (nowy dołek cenowy)
+      - SMI:  smi2 > smi1  (wyższy dołek SMI = brak potwierdzenia)
+      gdzie indeks 1 = starszy dołek, 2 = nowszy dołek
+    """
+    if len(close) < lookback + 5 or len(smi) < lookback + 5:
+        return False, ""
+    c = close.values[-lookback:]
+    s = smi.values[-lookback:]
+    # Szukaj lokalnych minimów ceny (okno ±2 świece)
+    price_lows = []
+    for i in range(2, len(c) - 2):
+        if c[i] < c[i-1] and c[i] < c[i+1] and c[i] < c[i-2] and c[i] < c[i+2]:
+            price_lows.append((i, float(c[i]), float(s[i])))
+    if len(price_lows) < 2:
+        return False, ""
+    p1_idx, p1_price, p1_smi = price_lows[-2]
+    p2_idx, p2_price, p2_smi = price_lows[-1]
+    # Dywergencja bycza: cena niżej, SMI wyżej
+    if p2_price < p1_price and p2_smi > p1_smi:
+        delta_price = round((p2_price - p1_price) / p1_price * 100, 1)
+        delta_smi   = round(p2_smi - p1_smi, 1)
+        desc = f"div_bull (cena {delta_price}%, SMI +{delta_smi})"
+        return True, desc
+    return False, ""
+
+
 def smi_weekly_signal(smi, smi_ema):
     if len(smi) < 4:
         return None, None, None, "--"
@@ -256,10 +289,13 @@ def phase1_weekly_signals(ticker_market_list):
                                   SMI_LEN_K, SMI_LEN_D, SMI_LEN_EMA)
             sig, s_val, e_val, zone = smi_weekly_signal(smi, smi_e)
             if sig is not None:
+                div_bull, div_desc = detect_bullish_divergence(df["Close"], smi)
                 signals[ticker] = {
                     "market": market_map[ticker],
                     "smi": s_val, "smi_ema": e_val,
                     "zone": zone, "signal": sig,
+                    "divergence_bull": div_bull,
+                    "divergence_desc": div_desc,
                 }
         except Exception:
             pass
@@ -520,6 +556,8 @@ def _collect_one(symbol, weekly_data):
             "smi_ema":        weekly_data["smi_ema"],
             "zone":           weekly_data["zone"],
             "signal":         weekly_data["signal"],
+            "divergence_bull": weekly_data.get("divergence_bull", False),
+            "divergence_desc": weekly_data.get("divergence_desc", ""),
             "eps_ttm":        eps_ttm,
             "sales_ttm_mln":  sales,
             "quick_ratio":    qr,
@@ -547,6 +585,10 @@ def phase2_collect(weekly_signals):
             r = future.result()
             if r: results.append(r)
     print(f"      Zebrano danych: {len(results)}")
+    # Oblicz scoring techniczny i posortuj malejąco
+    for r in results:
+        r["tech_score"] = calc_tech_score(r)
+    results.sort(key=lambda x: x.get("tech_score", 0), reverse=True)
     return results
 
 # ══════════════════════════════════════════════════════════════
@@ -576,6 +618,46 @@ def filter_main(r):
         return False
     # ─────────────────────────────────────────────────────────
     return True
+
+# ══════════════════════════════════════════════════════════════
+#  SCORING TECHNICZNY
+# ══════════════════════════════════════════════════════════════
+
+def calc_tech_score(sig: dict) -> int:
+    """
+    Scoring techniczny 0–10.
+    Wyższy wynik = silniejszy sygnał wejścia.
+    """
+    score = 0
+    # Typ sygnału (maks 3 pkt)
+    signal_type = sig.get("signal", "")
+    if signal_type == "Strong BUY":
+        score += 3
+    elif signal_type == "BUY":
+        score += 1
+    # Strefa tygodniowego SMI (maks 2 pkt)
+    zone = sig.get("zone", "")
+    if zone == "OVERSOLD":
+        score += 2
+    elif zone == "Bearish":
+        score += 1
+    # Dywergencja bycza (+2 pkt — rzadka, bardzo wartościowa)
+    if sig.get("divergence_bull"):
+        score += 2
+    # Fundamenty (+2 pkt łącznie)
+    eps = sig.get("eps_ttm") or 0
+    qr  = sig.get("quick_ratio") or 0
+    if eps > 0:
+        score += 1
+    if qr >= 1.0:
+        score += 1
+    # ROIC i Gross Margin jako bonus (+1 pkt łącznie)
+    roic = sig.get("roic")
+    gm   = sig.get("gross_margin")
+    if roic is not None and roic >= MIN_ROIC:
+        score += 1
+    return min(score, 10)
+
 
 # ══════════════════════════════════════════════════════════════
 #  FORMATOWANIE
@@ -688,6 +770,16 @@ COMMON_CSS = """
   .zone-bull{background:#0d1a2e;color:var(--accent)}
   .zone-bear{background:#1a1505;color:#ffa040}
 
+  .badge-score-high  {background:#0b2318;color:#3ecf8e;font-size:.68rem;font-weight:700;
+                      padding:.15rem .45rem;border-radius:3px;margin-left:.3rem}
+  .badge-score-mid   {background:#0d1a2e;color:#7c9ef0;font-size:.68rem;font-weight:700;
+                      padding:.15rem .45rem;border-radius:3px;margin-left:.3rem}
+  .badge-score-low   {background:#1a1505;color:#ffa040;font-size:.68rem;font-weight:700;
+                      padding:.15rem .45rem;border-radius:3px;margin-left:.3rem}
+  .badge-div         {background:#1a0a2e;color:#c471ed;font-size:.68rem;font-weight:700;
+                      padding:.15rem .45rem;border-radius:3px;margin-left:.3rem;
+                      title:"Dywergencja bycza"}
+
   @media(max-width:900px){.page{padding:1rem} th,td{padding:.45rem .6rem}}
 """
 
@@ -706,6 +798,21 @@ def _zone_badge(zone):
     cls = {"OVERBOUGHT":"zone-ob","OVERSOLD":"zone-os",
            "Bullish":"zone-bull","Bearish":"zone-bear"}.get(zone,"")
     return f'<span class="zone-badge {cls}">{zone}</span>'
+
+def _score_badge(score):
+    if score is None: return ""
+    if score >= 7:
+        cls = "badge-score-high"
+    elif score >= 4:
+        cls = "badge-score-mid"
+    else:
+        cls = "badge-score-low"
+    return f'<span class="{cls}" title="Scoring techniczny">&#9733;{score}</span>'
+
+def _div_badge(has_div, desc=""):
+    if not has_div: return ""
+    title = desc or "Dywergencja bycza"
+    return f'<span class="badge-div" title="{title}">DIV</span>'
 
 def _color_ok(val, ok):
     """Zwraca kolor zielony/czerwony/szary w zależności czy warunek ok jest spełniony."""
@@ -766,7 +873,10 @@ def render_cards(data, show_quality=False):
             f'<div class="signal-card">'
             f'<div style="position:absolute;top:0;left:0;right:0;height:3px;background:{tc}"></div>'
             f'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
-            f'<div><div class="sc-ticker">{r["ticker"]}</div>'
+            f'<div><div class="sc-ticker">{r["ticker"]}'
+            f'{_score_badge(r.get("tech_score"))}'
+            f'{_div_badge(r.get("divergence_bull"), r.get("divergence_desc",""))}'
+            f'</div>'
             f'<div class="sc-name">{r["name"]}</div></div>'
             f'<span class="badge-{mc}">{r["market"]}</span></div>'
             f'<div class="sc-price">{na(r["price"])} {r["currency"]}</div>'
@@ -834,7 +944,7 @@ def render_table_rows(data, show_quality=False):
             )
 
         html += f"""<tr>
-          <td><span class="ticker">{r['ticker']}</span>{badge}</td>
+          <td><span class="ticker">{r['ticker']}</span>{badge}{_score_badge(r.get('tech_score'))}{_div_badge(r.get('divergence_bull'), r.get('divergence_desc',''))}</td>
           <td class="name-col">{r['name']}</td>
           <td><span class="badge-{'usa' if r['market']=='USA' else 'eu'}">{r['market']}</span></td>
           <td>{r['sector']}</td>
