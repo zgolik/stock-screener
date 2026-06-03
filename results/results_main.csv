@@ -1,6 +1,5 @@
-ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at
-ISSC,ISSC,USA,--,--,17.18,USD,30.94,44.5,307.5,629.3,-73.31,-71.46,OVERSOLD,Turning Up,,84.3,1.5,0.1872,0.374,0.4806,2026-06-03T16:01:10.813745
-CRCT,"Cricut, Inc.",USA,United States,Technology,4.14,USD,7.33,43.5,870.0,554.5,-21.0,-18.32,Bearish,Turning Up,0.34,708.8,1.8,0.6595,0.034,0.5508,2026-06-03T16:01:11.918743
-PEGA,Pegasystems Inc.,USA,United States,Technology,34.79,USD,68.1,48.9,5814.0,2140.1,-58.88,-59.39,OVERSOLD,Strong BUY,1.85,1745.8,1.33,0.4172,0.096,0.7586,2026-06-03T16:01:14.537496
-MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4132.5,495.7,-72.17,-75.51,OVERSOLD,Strong BUY,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T16:01:28.040281
-CHKP,Check Point Software Technologi,USA,Israel,Technology,136.32,USD,233.78,41.7,14181.1,1437.1,-20.93,-38.38,Bearish,Strong BUY,9.72,2725.4,2.05,0.2042,0.684,0.8672,2026-06-03T16:01:30.826013
+ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
+PEGA,Pegasystems Inc.,USA,United States,Technology,35.11,USD,68.1,48.4,5867.4,2140.1,-57.27,-58.59,OVERSOLD,Strong BUY,False,,1.85,1745.8,1.33,0.4172,0.096,0.7586,2026-06-03T20:15:51.170030,8
+MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4134.1,495.7,-72.23,-75.54,OVERSOLD,Strong BUY,False,,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T20:15:55.829201,8
+EXLS,"ExlService Holdings, Inc.",USA,United States,Technology,29.45,USD,48.54,39.3,4499.5,2327.3,-21.5,-20.56,Bearish,Turning Up,True,"div_bull (cena -6.1%, SMI +42.0)",1.57,2087.7,2.56,0.2032,0.442,0.3837,2026-06-03T20:15:44.047285,6
+ISSC,Innovative Solutions and Suppor,USA,United States,Industrials,16.91,USD,30.94,45.3,302.6,629.3,-74.24,-71.92,OVERSOLD,Turning Up,False,,0.95,84.3,1.5,0.1872,0.374,0.4806,2026-06-03T20:15:36.841352,5
