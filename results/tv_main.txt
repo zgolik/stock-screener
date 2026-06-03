@@ -1,11 +1,9 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-03 20:15 UTC
-### Liczba tickerow: 4
+### Wygenerowano: 2026-06-03 20:33 UTC
+### Liczba tickerow: 3
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (2) ──
+### ── Strong BUY (3) ──
+OPTU  ### Strong BUY | -63.8% | --
 MNSO  ### Strong BUY | -50.4% | Consumer Cyclical
-PEGA  ### Strong BUY | -48.4% | Technology
-### ── Turning Up (2) ──
-ISSC  ### Turning Up | -45.3% | Industrials
-EXLS  ### Turning Up | -39.3% | Technology
+RWAY  ### Strong BUY | -44.9% | --

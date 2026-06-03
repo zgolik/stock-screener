@@ -1,5 +1,4 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-PEGA,Pegasystems Inc.,USA,United States,Technology,35.11,USD,68.1,48.4,5867.4,2140.1,-57.27,-58.59,OVERSOLD,Strong BUY,False,,1.85,1745.8,1.33,0.4172,0.096,0.7586,2026-06-03T20:15:51.170030,8
-MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4134.1,495.7,-72.23,-75.54,OVERSOLD,Strong BUY,False,,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T20:15:55.829201,8
-EXLS,"ExlService Holdings, Inc.",USA,United States,Technology,29.45,USD,48.54,39.3,4499.5,2327.3,-21.5,-20.56,Bearish,Turning Up,True,"div_bull (cena -6.1%, SMI +42.0)",1.57,2087.7,2.56,0.2032,0.442,0.3837,2026-06-03T20:15:44.047285,6
-ISSC,Innovative Solutions and Suppor,USA,United States,Industrials,16.91,USD,30.94,45.3,302.6,629.3,-74.24,-71.92,OVERSOLD,Turning Up,False,,0.95,84.3,1.5,0.1872,0.374,0.4806,2026-06-03T20:15:36.841352,5
+MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4134.1,495.7,-72.35,-75.6,OVERSOLD,Strong BUY,False,,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T20:33:06.236793,8
+RWAY,Runway Growth Finance Corp.,USA,--,--,6.28,USD,11.4,44.9,266.7,665.8,-38.17,-48.67,Bearish,Strong BUY,True,"div_bull (cena -1.6%, SMI +8.9)",,47.3,,,0.928,,2026-06-03T20:33:05.656718,6
+OPTU,OPTU,USA,--,--,1.08,USD,2.98,63.8,422.8,5354.0,-62.98,-64.65,OVERSOLD,Strong BUY,False,,,,,,,,2026-06-03T20:33:17.119846,5
