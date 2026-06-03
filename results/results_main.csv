@@ -1,6 +1,6 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at
-RWAY,RWAY,USA,--,--,6.55,USD,11.4,42.5,278.4,667.7,-25.94,-42.55,Bearish,Strong BUY,,47.3,,,0.928,,2026-06-02T15:07:12.400023
-COUR,COUR,USA,--,--,5.57,USD,13.56,58.9,1596.0,5673.6,-43.03,-40.86,OVERSOLD,Turning Up,,757.5,2.51,,0.005,0.5457,2026-06-02T15:07:14.435104
-LFMD,LFMD,USA,--,--,4.78,USD,15.84,69.8,231.2,1238.4,20.38,24.14,Bullish,Turning Up,,194.1,1.18,,0.273,0.8572,2026-06-02T15:07:15.644146
-PSEC,PSEC,USA,--,--,2.43,USD,3.5,30.4,1220.0,5190.6,-30.58,-34.6,Bearish,Strong BUY,,-406.9,,,0.699,,2026-06-02T15:07:16.328256
-TIGR,UP Fintech Holding Limited,USA,Singapore,Financial Services,4.98,USD,13.55,63.2,889.0,4214.2,-50.89,-51.66,OVERSOLD,Strong BUY,0.93,612.1,1.12,1.7118,0.2,0.6933,2026-06-02T15:07:17.641139
+ISSC,ISSC,USA,--,--,17.18,USD,30.94,44.5,307.5,629.3,-73.31,-71.46,OVERSOLD,Turning Up,,84.3,1.5,0.1872,0.374,0.4806,2026-06-03T16:01:10.813745
+CRCT,"Cricut, Inc.",USA,United States,Technology,4.14,USD,7.33,43.5,870.0,554.5,-21.0,-18.32,Bearish,Turning Up,0.34,708.8,1.8,0.6595,0.034,0.5508,2026-06-03T16:01:11.918743
+PEGA,Pegasystems Inc.,USA,United States,Technology,34.79,USD,68.1,48.9,5814.0,2140.1,-58.88,-59.39,OVERSOLD,Strong BUY,1.85,1745.8,1.33,0.4172,0.096,0.7586,2026-06-03T16:01:14.537496
+MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4132.5,495.7,-72.17,-75.51,OVERSOLD,Strong BUY,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T16:01:28.040281
+CHKP,Check Point Software Technologi,USA,Israel,Technology,136.32,USD,233.78,41.7,14181.1,1437.1,-20.93,-38.38,Bearish,Strong BUY,9.72,2725.4,2.05,0.2042,0.684,0.8672,2026-06-03T16:01:30.826013

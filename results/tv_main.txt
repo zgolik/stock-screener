@@ -1,12 +1,12 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-02 15:07 UTC
+### Wygenerowano: 2026-06-03 16:01 UTC
 ### Liczba tickerow: 5
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (3) ──
-TIGR  ### Strong BUY | -63.2% | Financial Services
-RWAY  ### Strong BUY | -42.5% | --
-PSEC  ### Strong BUY | -30.4% | --
+MNSO  ### Strong BUY | -50.4% | Consumer Cyclical
+PEGA  ### Strong BUY | -48.9% | Technology
+CHKP  ### Strong BUY | -41.7% | Technology
 ### ── Turning Up (2) ──
-LFMD  ### Turning Up | -69.8% | --
-COUR  ### Turning Up | -58.9% | --
+ISSC  ### Turning Up | -44.5% | --
+CRCT  ### Turning Up | -43.5% | Technology
