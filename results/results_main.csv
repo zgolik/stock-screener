@@ -1,4 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.27,USD,26.74,50.4,4134.1,495.7,-72.35,-75.6,OVERSOLD,Strong BUY,False,,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-03T20:33:06.236793,8
-RWAY,Runway Growth Finance Corp.,USA,--,--,6.28,USD,11.4,44.9,266.7,665.8,-38.17,-48.67,Bearish,Strong BUY,True,"div_bull (cena -1.6%, SMI +8.9)",,47.3,,,0.928,,2026-06-03T20:33:05.656718,6
-OPTU,OPTU,USA,--,--,1.08,USD,2.98,63.8,422.8,5354.0,-62.98,-64.65,OVERSOLD,Strong BUY,False,,,,,,,,2026-06-03T20:33:17.119846,5
+MNSO,MINISO Group Holding Limited,USA,China,Consumer Cyclical,13.41,USD,26.74,49.8,4178.2,485.3,-71.38,-75.11,OVERSOLD,Strong BUY,False,,1.03,16994.0,1.55,0.4181,0.301,0.4494,2026-06-04T14:20:06.253656,8
+DPZ,DPZ,USA,--,--,310.8,USD,496.0,37.3,10337.8,957.2,-72.71,-73.3,OVERSOLD,Strong BUY,False,,,4940.0,1.5,0.7072,,0.3995,2026-06-04T14:19:49.984402,7
+PODD,PODD,USA,--,--,149.79,USD,354.88,57.8,10375.2,1270.4,-83.89,-84.82,OVERSOLD,Strong BUY,False,,,2708.1,2.15,0.1922,0.626,0.7163,2026-06-04T14:19:52.680274,7
+RMD,RMD,USA,--,--,193.49,USD,293.81,34.1,28067.0,1273.5,-71.45,-74.17,OVERSOLD,Strong BUY,False,,,5146.3,2.53,0.237,0.143,0.5936,2026-06-04T14:19:53.565635,7
+THO,THO,USA,--,--,76.3,USD,122.83,37.9,3971.9,760.1,-33.97,-47.29,Bearish,Strong BUY,True,"div_bull (cena -0.8%, SMI +2.0)",,,,,,,2026-06-04T14:20:09.930427,6
+ISSC,Innovative Solutions and Suppor,USA,United States,Industrials,17.32,USD,30.94,44.0,309.9,621.7,-73.25,-71.43,OVERSOLD,Turning Up,False,,0.95,84.3,1.5,0.1872,0.374,0.4806,2026-06-04T14:19:59.865575,5
+CIGI,Colliers International Group In,USA,Canada,Real Estate,97.58,USD,171.51,43.1,4986.7,307.1,-69.29,-66.38,OVERSOLD,Turning Up,True,"div_bull (cena -7.9%, SMI +10.1)",1.63,5558.5,,,,0.4005,2026-06-04T14:20:09.664898,5
+HDB,HDB,USA,--,--,24.16,USD,39.81,39.3,124001.5,9843.7,-69.37,-69.04,OVERSOLD,Turning Up,False,,,2371508.2,,,0.954,,2026-06-04T14:19:49.461360,2
