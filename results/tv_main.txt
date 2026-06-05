@@ -1,15 +1,23 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-04 14:20 UTC
-### Liczba tickerow: 8
+### Wygenerowano: 2026-06-05 14:05 UTC
+### Liczba tickerow: 16
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-PODD  ### Strong BUY | -57.8% | --
-MNSO  ### Strong BUY | -49.8% | Consumer Cyclical
-THO  ### Strong BUY | -37.9% | --
-DPZ  ### Strong BUY | -37.3% | --
-RMD  ### Strong BUY | -34.1% | --
-### ── Turning Up (3) ──
-ISSC  ### Turning Up | -44.0% | Industrials
-CIGI  ### Turning Up | -43.1% | Real Estate
-HDB  ### Turning Up | -39.3% | --
+### ── Strong BUY (7) ──
+PODD  ### Strong BUY | -56.8% | --
+CCC  ### Strong BUY | -54.4% | --
+MNSO  ### Strong BUY | -51.2% | --
+PEGA  ### Strong BUY | -49.0% | --
+RWAY  ### Strong BUY | -45.2% | --
+CHKP  ### Strong BUY | -41.8% | Technology
+DPZ  ### Strong BUY | -37.0% | --
+### ── Turning Up (9) ──
+EMBC  ### Turning Up | -78.0% | Healthcare
+LFMD  ### Turning Up | -69.2% | --
+COUR  ### Turning Up | -59.0% | --
+PINS  ### Turning Up | -46.3% | --
+LSE:AUTO  ### Turning Up | -44.0% | --
+CRCT  ### Turning Up | -42.2% | --
+ROP  ### Turning Up | -42.1% | --
+EXLS  ### Turning Up | -39.0% | --
+BDC  ### Turning Up | -31.3% | Technology
