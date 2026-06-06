@@ -1,23 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-05 14:05 UTC
-### Liczba tickerow: 16
+### Wygenerowano: 2026-06-06 13:19 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-PODD  ### Strong BUY | -56.8% | --
-CCC  ### Strong BUY | -54.4% | --
-MNSO  ### Strong BUY | -51.2% | --
-PEGA  ### Strong BUY | -49.0% | --
-RWAY  ### Strong BUY | -45.2% | --
-CHKP  ### Strong BUY | -41.8% | Technology
-DPZ  ### Strong BUY | -37.0% | --
-### ── Turning Up (9) ──
-EMBC  ### Turning Up | -78.0% | Healthcare
-LFMD  ### Turning Up | -69.2% | --
-COUR  ### Turning Up | -59.0% | --
-PINS  ### Turning Up | -46.3% | --
-LSE:AUTO  ### Turning Up | -44.0% | --
-CRCT  ### Turning Up | -42.2% | --
-ROP  ### Turning Up | -42.1% | --
-EXLS  ### Turning Up | -39.0% | --
-BDC  ### Turning Up | -31.3% | Technology
+### ── Strong BUY (2) ──
+MNSO  ### Strong BUY | -51.6% | --
+CHKP  ### Strong BUY | -41.5% | --
+### ── Turning Up (4) ──
+GSHD  ### Turning Up | -66.0% | Financial Services
+ISSC  ### Turning Up | -44.1% | Industrials
+CRCT  ### Turning Up | -43.5% | --
+RELX  ### Turning Up | -35.4% | Industrials
