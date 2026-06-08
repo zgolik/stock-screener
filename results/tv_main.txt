@@ -1,16 +1,11 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-07 12:52 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-06-08 15:01 UTC
+### Liczba tickerow: 4
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-SMPL  ### Strong BUY | -65.2% | --
-ZTS  ### Strong BUY | -53.1% | Healthcare
-MNSO  ### Strong BUY | -51.6% | Consumer Cyclical
-PEGA  ### Strong BUY | -49.0% | Technology
-MYGN  ### Strong BUY | -46.8% | --
-MLCO  ### Strong BUY | -43.8% | --
-### ── Turning Up (3) ──
-EMBC  ### Turning Up | -78.3% | Healthcare
-CRCT  ### Turning Up | -43.5% | --
-EXLS  ### Turning Up | -38.9% | Technology
+### ── Strong BUY (3) ──
+GSHD  ### Strong BUY | -66.8% | --
+RWAY  ### Strong BUY | -45.8% | --
+G  ### Strong BUY | -32.8% | --
+### ── Turning Up (1) ──
+MZTI  ### Turning Up | -43.7% | --
