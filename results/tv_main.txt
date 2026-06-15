@@ -1,25 +1,16 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-12 14:23 UTC
-### Liczba tickerow: 18
+### Wygenerowano: 2026-06-15 17:34 UTC
+### Liczba tickerow: 9
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-PICS  ### Strong BUY | -43.5% | --
-ISSC  ### Strong BUY | -39.4% | --
-HDB  ### Strong BUY | -39.3% | --
-CALM  ### Strong BUY | -36.9% | --
-AMPH  ### Strong BUY | -35.0% | --
-G  ### Strong BUY | -34.4% | --
-### ── Turning Up (12) ──
-BULL  ### Turning Up | -63.6% | --
-ZURA  ### Turning Up | -50.0% | --
-ITRG  ### Turning Up | -49.7% | --
-PAHC  ### Turning Up | -47.4% | --
-FSLY  ### Turning Up | -44.9% | --
-LRMR  ### Turning Up | -42.7% | --
-WGO  ### Turning Up | -42.3% | --
-IIIV  ### Turning Up | -40.8% | --
-LCTX  ### Turning Up | -39.0% | --
-TENX  ### Turning Up | -34.9% | --
-EVTC  ### Turning Up | -31.4% | --
-TBBK  ### Turning Up | -30.1% | --
+### ── Strong BUY (7) ──
+ADMA  ### Strong BUY | -60.6% | Healthcare
+SCZM  ### Strong BUY | -56.6% | Basic Materials
+HLNE  ### Strong BUY | -48.4% | Financial Services
+GFI  ### Strong BUY | -36.1% | Basic Materials
+RVLV  ### Strong BUY | -33.6% | Consumer Cyclical
+CDE  ### Strong BUY | -33.1% | --
+FSM  ### Strong BUY | -32.0% | Basic Materials
+### ── Turning Up (2) ──
+PYPL  ### Turning Up | -45.9% | Financial Services
+PDD  ### Turning Up | -39.8% | --
