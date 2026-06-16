@@ -1,163 +1,156 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-HLNE,Hamilton Lane Incorporated,USA,United States,Financial Services,83.11,USD,161.13,48.4,3631.7,887.2,-68.76,-69.48,OVERSOLD,Strong BUY,True,"div_bull (cena -7.7%, SMI +14.4)",False,,5.92,759.0,1.62,0.1707,0.389,0.6988,2026-06-15T17:34:10.979223,10
-VIPS,Vipshop Holdings Limited,USA,China,Consumer Cyclical,13.99,USD,21.08,33.6,6721.4,2412.8,-65.44,-66.83,OVERSOLD,Strong BUY,True,"div_bull (cena -3.1%, SMI +5.1)",False,,2.2,105919.5,1.11,0.2551,0.161,0.2312,2026-06-15T17:34:24.650791,10
-SCZM,Santacruz Silver Mining Ltd.,USA,Canada,Basic Materials,7.65,USD,17.65,56.6,709.5,569.6,-46.49,-47.63,OVERSOLD,Strong BUY,True,"div_bull (cena -21.6%, SMI +8.2)",False,,0.65,326.4,1.04,0.1918,0.29,0.3352,2026-06-15T17:34:25.618776,10
-FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,9.42,USD,13.85,32.0,2853.9,6326.9,-36.6,-36.59,Bearish,Strong BUY,True,"div_bull (cena -8.3%, SMI +0.5)",False,,1.08,947.1,2.5,0.1718,0.126,0.493,2026-06-15T17:34:33.181810,9
-CDE,CDE,USA,--,--,18.58,USD,27.77,33.1,19149.2,26555.7,-30.73,-37.63,Bearish,Strong BUY,True,"div_bull (cena -6.9%, SMI +8.7)",False,,,2070.1,1.66,0.1779,0.106,0.4447,2026-06-15T17:34:09.510723,8
-RVLV,"Revolve Group, Inc.",USA,United States,Consumer Cyclical,21.02,USD,31.68,33.6,1504.1,1081.4,-50.34,-53.07,OVERSOLD,Strong BUY,False,,False,,0.9,1225.7,1.71,0.2278,0.063,0.535,2026-06-15T17:34:18.175317,8
-GFI,Gold Fields Limited,USA,South Africa,Basic Materials,39.41,USD,61.64,36.1,35249.0,3399.9,-63.77,-66.22,OVERSOLD,Strong BUY,False,,False,,3.94,8751.3,1.33,0.2582,0.382,0.5529,2026-06-15T17:34:21.305023,8
-ADMA,ADMA Biologics Inc,USA,United States,Healthcare,8.27,USD,20.97,60.6,1915.6,6963.6,-68.53,-68.79,OVERSOLD,Strong BUY,False,,False,,0.68,510.2,3.74,0.3297,0.167,0.5739,2026-06-15T17:34:22.526738,8
-IDCC,"InterDigital, Inc.",USA,United States,Technology,290.83,USD,412.6,29.5,7516.5,443.9,-64.88,-70.35,OVERSOLD,Strong BUY,False,,False,,10.5,834.0,1.84,0.6969,0.443,0.8877,2026-06-15T17:34:28.156742,8
-BILI,Bilibili Inc.,USA,China,Communication Services,17.9,USD,36.4,50.8,7458.5,2912.2,-83.18,-84.42,OVERSOLD,Strong BUY,False,,False,,0.49,30347.8,1.34,0.128,0.628,0.3662,2026-06-15T17:34:10.502016,7
-KMT,Kennametal Inc.,USA,United States,Industrials,36.04,USD,43.81,17.7,2746.6,1321.0,-54.77,-57.99,OVERSOLD,Strong BUY,False,,False,,1.78,1966.8,1.19,0.059,0.501,0.3041,2026-06-15T17:34:13.459946,7
-OSIS,"OSI Systems, Inc.",USA,United States,Technology,223.39,USD,311.72,28.3,3682.1,314.7,-66.69,-68.05,OVERSOLD,Strong BUY,False,,False,,8.75,1713.2,1.46,0.1246,0.683,0.3427,2026-06-15T17:34:13.801080,7
-TW,Tradeweb Markets Inc.,USA,United States,Financial Services,101.15,USD,147.49,31.4,22053.3,1572.5,-59.53,-60.38,OVERSOLD,Strong BUY,False,,False,,4.05,2052.4,4.32,0.1195,0.021,0.6732,2026-06-15T17:34:15.375230,7
-FRPT,"Freshpet, Inc.",USA,United States,Consumer Defensive,54.76,USD,86.0,36.3,2691.1,1706.2,-56.5,-60.38,OVERSOLD,Strong BUY,False,,False,,3.81,1102.0,4.57,0.0532,0.41,0.408,2026-06-15T17:34:15.745818,7
-AU,AngloGold Ashanti PLC,USA,United States,Basic Materials,92.39,USD,129.14,28.5,46714.6,2820.6,-34.8,-33.7,Bearish,Strong BUY,False,,False,,6.81,9893.0,2.21,0.3003,0.282,0.4924,2026-06-15T17:34:16.673365,7
-WMS,"Advanced Drainage Systems, Inc.",USA,United States,Industrials,138.32,USD,179.32,22.9,10594.3,949.3,-50.9,-50.93,OVERSOLD,Strong BUY,False,,False,,5.45,3050.4,1.35,0.1284,0.928,0.3827,2026-06-15T17:34:18.602800,7
-RBLX,Roblox Corporation,USA,United States,Communication Services,45.61,USD,150.59,69.7,32655.8,10880.8,-65.0,-65.18,OVERSOLD,Strong BUY,True,"div_bull (cena -0.2%, SMI +8.2)",False,,-1.57,4890.6,0.96,-0.3821,4.57,0.7807,2026-06-15T17:34:19.433348,7
-ERII,"Energy Recovery, Inc.",USA,United States,Industrials,8.58,USD,18.32,53.2,442.3,1019.0,-75.97,-76.84,OVERSOLD,Strong BUY,False,,False,,0.37,135.0,9.04,0.1213,0.046,0.6514,2026-06-15T17:34:19.727853,7
-EXK,Endeavour Silver Corporation,USA,Canada,Basic Materials,9.07,USD,15.15,40.1,2686.8,8628.7,-37.55,-38.29,Bearish,Strong BUY,True,"div_bull (cena -13.0%, SMI +11.4)",False,,-0.06,467.5,1.3,0.0518,0.421,0.1763,2026-06-15T17:34:21.124919,7
-TM,Toyota Motor Corporation,USA,Japan,Consumer Cyclical,180.66,USD,248.9,27.4,235461.1,438.0,-73.09,-73.32,OVERSOLD,Strong BUY,False,,False,,18.39,50684952.0,1.12,0.0492,1.082,0.167,2026-06-15T17:34:23.432915,7
-SITE,"SiteOne Landscape Supply, Inc.",USA,United States,Industrials,107.71,USD,168.56,36.1,4772.7,804.1,-78.34,-78.38,OVERSOLD,Strong BUY,False,,False,,3.38,4704.8,1.2,0.0788,0.591,0.3476,2026-06-15T17:34:24.355162,7
-DRD,DRDGOLD Limited,USA,South Africa,Basic Materials,25.12,USD,39.37,36.2,2178.9,300.3,-66.74,-69.38,OVERSOLD,Strong BUY,False,,False,,1.56,6239.7,1.08,0.1474,0.004,0.29,2026-06-15T17:34:24.937896,7
-WGO,"Winnebago Industries, Inc.",USA,United States,Consumer Cyclical,29.61,USD,50.16,41.0,836.9,675.4,-53.16,-56.7,OVERSOLD,Strong BUY,False,,False,,1.47,2798.2,1.21,0.0295,0.473,0.1305,2026-06-15T17:34:27.612906,7
-LCID,"Lucid Group, Inc.",USA,United States,Consumer Cyclical,5.42,USD,33.7,83.9,2115.2,15340.2,-76.57,-78.6,OVERSOLD,Strong BUY,True,"div_bull (cena -18.2%, SMI +4.0)",False,,-13.14,1353.8,0.83,-0.7361,4.457,-0.9281,2026-06-15T17:34:28.614482,7
-IAG,Iamgold Corporation,USA,Canada,Basic Materials,17.86,USD,24.87,28.2,10321.6,6835.5,-39.89,-48.31,Bearish,Strong BUY,False,,False,,1.71,2852.8,1.22,0.1706,0.182,0.4228,2026-06-15T17:34:31.884645,7
-HII,"Huntington Ingalls Industries, ",USA,United States,Industrials,301.15,USD,460.0,34.5,11866.5,521.6,-83.85,-83.91,OVERSOLD,Strong BUY,False,,False,,15.39,12484.0,1.06,0.0533,0.576,0.127,2026-06-15T17:34:33.355334,7
-ODV,Osisko Development Corp.,USA,Canada,Basic Materials,2.76,USD,4.8,42.5,839.5,3241.4,-61.68,-62.77,OVERSOLD,Strong BUY,False,,False,,-0.39,35.5,1.42,-0.1055,0.212,0.6095,2026-06-15T17:34:12.015271,6
-BAM,Brookfield Asset Management Inc,USA,United States,Financial Services,48.69,USD,64.1,24.0,77747.5,3471.1,35.22,33.91,Bullish,BUY,True,"div_bull (cena -2.6%, SMI +3.7)",False,,1.56,4608.0,3.45,0.1849,0.446,0.702,2026-06-15T17:34:12.227018,6
-EXPE,"Expedia Group, Inc.",USA,United States,Consumer Cyclical,234.93,USD,303.8,22.7,28196.8,1680.3,-38.51,-38.63,Bearish,Strong BUY,False,,False,,11.31,14733.0,0.73,0.7425,4.996,0.9012,2026-06-15T17:34:12.604086,6
-ORI,Old Republic International Corp,USA,United States,Financial Services,38.76,USD,46.76,17.1,9441.4,1544.8,-40.17,-42.11,OVERSOLD,Strong BUY,False,,False,,4.06,9136.0,,0.0337,0.269,,2026-06-15T17:34:13.728101,6
-BRO,"Brown & Brown, Inc.",USA,United States,Financial Services,59.54,USD,111.1,46.4,20181.0,3270.6,-37.94,-47.14,Bearish,Strong BUY,False,,False,,3.07,5763.0,1.04,0.0567,0.631,0.4907,2026-06-15T17:34:13.877073,6
-PH,Parker-Hannifin Corporation,USA,United States,Industrials,929.75,USD,1034.96,10.2,117228.8,767.3,-31.28,-43.53,Bearish,Strong BUY,False,,False,,27.1,19850.0,0.71,0.1504,0.679,0.3685,2026-06-15T17:34:15.317598,6
-KEP,Korea Electric Power Corporatio,USA,South Korea,Utilities,13.65,USD,23.41,41.7,17532.0,903.1,-54.63,-59.88,OVERSOLD,Strong BUY,False,,False,,4.45,96567586.0,0.31,0.0547,2.759,0.1643,2026-06-15T17:34:16.188083,6
-EU,enCore Energy Corp.,USA,United States,Energy,1.51,USD,4.18,63.9,293.3,2690.5,-67.14,-69.52,OVERSOLD,Strong BUY,False,,False,,-0.14,43.2,7.64,-0.1791,0.494,0.2246,2026-06-15T17:34:17.264752,6
-MTG,MGIC Investment Corporation,USA,United States,Financial Services,25.86,USD,29.97,13.7,5470.2,1911.1,-59.17,-59.18,OVERSOLD,Strong BUY,False,,False,,3.15,1213.6,,0.1223,0.126,,2026-06-15T17:34:17.664367,6
-VERA,"Vera Therapeutics, Inc.",USA,United States,Healthcare,34.4,USD,56.05,38.6,2469.0,1162.3,-61.71,-64.06,OVERSOLD,Strong BUY,False,,False,,-5.54,0.0,13.64,-0.9661,0.128,,2026-06-15T17:34:20.051988,6
-LXEO,"Lexeo Therapeutics, Inc.",USA,United States,Healthcare,4.99,USD,10.99,54.6,391.8,842.3,-63.34,-63.93,OVERSOLD,Strong BUY,False,,False,,-1.12,0.0,11.21,-0.5784,0.032,,2026-06-15T17:34:21.970188,6
-UHS,"Universal Health Services, Inc.",USA,United States,Healthcare,144.78,USD,246.33,41.2,8764.5,933.7,-79.61,-80.11,OVERSOLD,Strong BUY,False,,False,,23.95,17364.8,0.98,0.1258,0.71,0.9045,2026-06-15T17:34:21.980924,6
-QXO,"QXO, Inc.",USA,United States,Industrials,16.68,USD,27.61,39.6,12101.7,14333.6,-71.45,-72.13,OVERSOLD,Strong BUY,False,,False,,-0.95,6842.2,2.61,-0.017,0.403,0.2299,2026-06-15T17:34:22.279072,6
-SCI,Service Corporation Internation,USA,United States,Consumer Cyclical,74.88,USD,88.67,15.6,10331.3,1411.3,-48.22,-52.26,OVERSOLD,Strong BUY,False,,False,,3.79,4309.2,0.5,0.041,3.184,0.2646,2026-06-15T17:34:24.012664,6
-BVN,Buenaventura Mining Company Inc,USA,Peru,Basic Materials,34.32,USD,44.67,23.2,8716.8,1444.1,-12.0,-13.6,Bearish,BUY,True,"div_bull (cena -4.9%, SMI +14.5)",False,,4.12,1731.6,1.88,0.0942,0.002,0.4518,2026-06-15T17:34:24.654081,6
-GEHC,GE HealthCare Technologies Inc.,USA,United States,Healthcare,65.19,USD,89.77,27.4,29654.4,4817.5,-37.24,-44.32,Bearish,Strong BUY,False,,False,,4.17,20625.0,1.13,0.0922,1.008,0.3999,2026-06-15T17:34:25.152682,6
-GXO,"GXO Logistics, Inc.",USA,United States,Industrials,49.9,USD,66.85,25.4,5740.9,1311.3,-45.18,-45.41,OVERSOLD,Strong BUY,False,,False,,1.12,13178.0,0.85,0.0282,1.962,0.1162,2026-06-15T17:34:28.955803,6
-GLDG,GoldMining Inc.,USA,Canada,Basic Materials,1.02,USD,2.27,54.8,219.3,2176.7,-59.93,-63.03,OVERSOLD,Strong BUY,False,,False,,-0.06,0.0,9.48,-0.0743,0.001,,2026-06-15T17:34:31.061597,6
-T,AT&T Inc.,USA,United States,Communication Services,23.35,USD,29.79,21.6,162278.5,40792.2,-65.36,-65.71,OVERSOLD,Strong BUY,False,,False,,3.04,125648.0,0.86,0.0622,1.403,0.5955,2026-06-15T17:34:32.419633,6
-MDT,Medtronic plc.,USA,--,--,80.26,USD,106.33,24.5,103051.0,9773.5,-29.51,-42.82,Bearish,Strong BUY,False,,False,,,33537.0,1.42,0.0712,0.594,0.6532,2026-06-15T17:34:10.281649,5
-SF,Stifel Financial Corporation,USA,--,--,74.03,USD,89.83,17.6,11355.6,1404.3,-42.08,-43.37,OVERSOLD,Strong BUY,False,,False,,,5463.6,,,0.256,,2026-06-15T17:34:10.291396,5
-PYPL,"PayPal Holdings, Inc.",USA,United States,Financial Services,43.04,USD,79.5,45.9,37969.3,15347.5,-65.94,-60.08,OVERSOLD,Turning Up,False,,False,,5.33,33172.0,1.29,0.2071,0.493,0.4662,2026-06-15T17:34:10.753220,5
-GIS,"General Mills, Inc.",USA,United States,Consumer Defensive,34.53,USD,54.18,36.3,18425.3,9834.5,-32.91,-49.38,Bearish,Strong BUY,False,,False,,4.09,19486.6,0.43,0.1055,1.663,0.3455,2026-06-15T17:34:12.853729,5
-TRX,TRX Gold Corporation,USA,Canada,Basic Materials,0.99,USD,2.8,64.6,322.4,3487.0,-77.58,-78.37,OVERSOLD,Strong BUY,False,,False,,-0.07,57.6,0.52,0.0933,0.049,0.4155,2026-06-15T17:34:14.508904,5
-RYAM,Rayonier Advanced Materials Inc,USA,United States,Basic Materials,9.03,USD,11.85,23.8,609.0,988.7,-47.71,-49.05,OVERSOLD,Strong BUY,False,,False,,-7.1,1466.4,0.92,0.0085,2.461,0.081,2026-06-15T17:34:14.952927,5
-RDNT,"RadNet, Inc.",USA,United States,Healthcare,58.56,USD,85.84,31.8,4605.0,811.2,-28.69,-40.32,Bearish,Strong BUY,False,,False,,-0.17,2040.2,1.76,0.0185,1.706,0.1154,2026-06-15T17:34:15.532383,5
-GCT,GigaCloud Technology Inc,USA,United States,Technology,34.53,USD,51.86,33.4,1257.1,740.5,-74.72,-70.24,OVERSOLD,Turning Up,False,,False,,3.95,1289.9,1.47,0.2573,0.967,0.2331,2026-06-15T17:34:16.415940,5
-CPNG,"Coupang, Inc.",USA,United States,Consumer Cyclical,16.97,USD,34.08,50.2,30453.3,23293.7,-59.72,-60.67,OVERSOLD,Strong BUY,False,,False,,-0.1,34534.0,0.79,0.112,1.003,0.2937,2026-06-15T17:34:17.337893,5
-PAX,Patria Investments Limited,USA,Cayman Islands,Financial Services,11.74,USD,17.8,34.0,1872.9,912.4,-34.31,-37.0,Bearish,Strong BUY,False,,False,,0.53,381.7,0.98,0.1367,0.325,0.8423,2026-06-15T17:34:20.435144,5
-ALSN,"Allison Transmission Holdings, ",USA,United States,Consumer Cyclical,120.56,USD,137.62,12.4,9998.8,871.4,-28.04,-28.91,Bearish,BUY,False,,False,,6.43,3010.0,4.17,0.1707,1.548,0.486,2026-06-15T17:34:20.773273,5
-ARQQ,Arqit Quantum Inc.,USA,United Kingdom,Technology,18.25,USD,62.0,70.6,317.7,461.4,-1.38,-7.5,Bearish,BUY,True,"div_bull (cena -9.0%, SMI +14.0)",False,,-3.03,0.5,2.69,,0.026,,2026-06-15T17:34:21.974932,5
-AEIS,"Advanced Energy Industries, Inc",USA,United States,Industrials,371.99,USD,397.44,6.4,14883.6,787.7,-8.16,-15.29,Bearish,BUY,False,,False,,4.82,1798.8,1.17,0.2093,0.498,0.3766,2026-06-15T17:34:22.977822,5
-FIS,Fidelity National Information S,USA,United States,Technology,39.28,USD,82.74,52.5,20303.0,6666.4,-72.51,-71.95,OVERSOLD,Turning Up,True,"div_bull (cena -3.6%, SMI +10.0)",False,,5.16,10677.0,0.59,0.0539,0.959,0.3686,2026-06-15T17:34:23.350827,5
-CG,The Carlyle Group Inc.,USA,United States,Financial Services,46.65,USD,69.85,33.2,16792.8,3281.5,-38.75,-42.87,Bearish,Strong BUY,False,,False,,1.46,3213.2,,,2.411,,2026-06-15T17:34:26.899225,5
-SON,Sonoco Products Company,USA,United States,Consumer Cyclical,50.83,USD,58.44,13.0,5026.0,1269.9,-35.61,-39.85,Bearish,Strong BUY,False,,False,,6.11,7518.8,0.6,0.0656,1.27,0.2094,2026-06-15T17:34:27.103630,5
-KRNT,Kornit Digital Ltd.,USA,Israel,Industrials,16.03,USD,22.06,27.3,743.1,333.1,-39.22,-37.5,Bearish,Strong BUY,False,,False,,-0.38,208.2,13.06,-0.0499,0.026,0.4432,2026-06-15T17:34:29.392471,5
-INTR,Inter & Co. Inc.,USA,Brazil,Financial Services,5.82,USD,10.36,43.9,2567.3,5288.1,-80.26,-80.03,OVERSOLD,Turning Up,True,"div_bull (cena -3.1%, SMI +2.0)",False,,0.62,8400.9,,,1.481,,2026-06-15T17:34:30.449826,5
-CNR,"Core Natural Resources, Inc.",USA,United States,Energy,87.56,USD,114.8,23.7,4413.7,883.4,-37.82,-46.12,Bearish,Strong BUY,False,,False,,-1.19,4164.8,1.15,-0.0291,0.123,-0.0003,2026-06-15T17:34:30.738885,5
-AMLX,"Amylyx Pharmaceuticals, Inc.",USA,United States,Healthcare,15.51,USD,18.6,16.7,1723.9,1152.0,-33.93,-37.72,Bearish,Strong BUY,False,,False,,-1.48,0.0,14.27,-1.8401,0.02,,2026-06-15T17:34:32.712222,5
-REZI,"Resideo Technologies, Inc.",USA,United States,Industrials,32.03,USD,45.29,29.3,4850.2,1285.6,-37.16,-37.03,Bearish,Strong BUY,False,,False,,-3.58,7472.0,1.14,0.1065,1.105,0.2939,2026-06-15T17:34:33.131609,5
-PDD,PDD,USA,--,--,83.87,USD,139.41,39.8,119380.3,8844.2,-73.17,-71.31,OVERSOLD,Turning Up,False,,False,,,431845.7,2.43,0.2478,0.013,0.5628,2026-06-15T17:34:09.092039,4
-DLO,DLO,USA,--,--,12.58,USD,16.78,25.0,3701.9,2263.4,-17.23,-20.56,Bearish,BUY,False,,False,,,1093.6,1.47,1.2704,0.159,0.3683,2026-06-15T17:34:09.732645,4
-PINS,"Pinterest, Inc.",USA,United States,Communication Services,20.94,USD,39.93,47.6,11729.7,18633.1,-10.79,-11.5,Bearish,BUY,False,,False,,0.48,4221.8,7.64,0.0737,0.055,0.8007,2026-06-15T17:34:10.487231,4
-ROAD,"Construction Partners, Inc.",USA,United States,Industrials,120.63,USD,151.0,20.1,6819.8,556.8,-43.66,-40.79,OVERSOLD,Turning Up,False,,False,,2.29,2812.4,1.34,0.0726,1.852,0.1561,2026-06-15T17:34:11.557553,4
-HAS,"Hasbro, Inc.",USA,United States,Consumer Cyclical,85.75,USD,106.98,19.8,12132.1,1876.2,-63.49,-55.98,OVERSOLD,Turning Up,False,,False,,-1.61,4701.3,1.24,0.3642,6.12,0.6458,2026-06-15T17:34:12.336550,4
-BCRX,"BioCryst Pharmaceuticals, Inc.",USA,United States,Healthcare,8.9,USD,10.47,15.0,2261.5,5145.8,-15.28,-15.63,Bearish,BUY,False,,False,,-1.77,874.8,2.03,1.4735,,0.9782,2026-06-15T17:34:13.537628,4
-WB,Weibo Corporation,USA,China,Communication Services,7.7,USD,12.96,40.5,1892.9,1301.8,-70.75,-68.04,OVERSOLD,Turning Up,False,,False,,1.43,1757.2,3.39,0.0947,0.486,0.7599,2026-06-15T17:34:16.102259,4
-JCAP,"Jefferson Capital, Inc.",USA,United States,Financial Services,16.33,USD,23.8,31.4,905.0,302.0,-72.18,-68.57,OVERSOLD,Turning Up,False,,False,,5.15,613.3,6.12,0.1075,2.959,0.7324,2026-06-15T17:34:18.207766,4
-AGI,Alamos Gold Inc.,USA,Canada,Basic Materials,37.67,USD,55.41,32.0,15820.1,3502.0,-64.8,-64.3,OVERSOLD,Turning Up,False,,False,,2.51,1808.8,1.6,0.1375,0.05,0.5525,2026-06-15T17:34:18.527792,4
-CION,CION Investment Corporation,USA,United States,Financial Services,7.04,USD,10.93,35.6,350.5,623.4,-33.18,-35.25,Bearish,Strong BUY,False,,False,,-0.04,-9.2,,,1.591,,2026-06-15T17:34:18.678147,4
-CMRE,Costamare Inc.,USA,Monaco,Industrials,16.41,USD,18.06,9.1,1981.3,436.4,-16.92,-20.48,Bearish,BUY,False,,False,,2.83,877.9,1.7,0.1218,0.726,0.5728,2026-06-15T17:34:20.563757,4
-EQX,Equinox Gold Corp.,USA,Canada,Basic Materials,11.19,USD,18.96,41.0,8826.2,10665.3,-61.34,-57.72,OVERSOLD,Turning Up,False,,False,,0.37,1817.2,1.27,0.0244,0.281,0.3533,2026-06-15T17:34:21.734464,4
-NDAQ,"Nasdaq, Inc.",USA,United States,Financial Services,91.54,USD,101.79,10.1,51772.4,3134.6,38.05,39.64,Bullish,Turning Up,True,"div_bull (cena -1.8%, SMI +8.1)",False,,3.32,8262.0,1.01,0.0901,0.774,0.4223,2026-06-15T17:34:25.804217,4
-PAHC,Phibro Animal Health Corporatio,USA,United States,Healthcare,31.97,USD,60.08,46.8,1296.9,367.0,-78.76,-76.26,OVERSOLD,Turning Up,False,,False,,2.33,1296.2,1.25,0.0785,2.666,0.3085,2026-06-15T17:34:26.695707,4
-BWXT,"BWX Technologies, Inc.",USA,United States,Industrials,195.51,USD,241.82,19.2,17911.6,1016.3,-56.95,-52.7,OVERSOLD,Turning Up,False,,False,,3.75,3198.4,2.25,0.0868,1.636,0.2291,2026-06-15T17:34:27.256340,4
-EXE,Expand Energy Corporation,USA,United States,Energy,88.91,USD,126.62,29.8,21269.8,3515.7,-77.63,-76.4,OVERSOLD,Turning Up,False,,False,,13.44,12189.0,1.01,0.0892,0.272,0.5085,2026-06-15T17:34:27.325278,4
-ICE,Intercontinental Exchange Inc.,USA,United States,Financial Services,141.09,USD,189.35,25.5,79785.3,3547.6,-71.28,-67.96,OVERSOLD,Turning Up,False,,False,,6.87,12640.0,1.02,0.0746,0.701,0.5616,2026-06-15T17:34:30.443165,4
-TEL,TE Connectivity plc,USA,Ireland,Technology,216.44,USD,252.56,14.3,63177.9,2574.3,-34.78,-37.03,Bearish,BUY,False,,False,,9.78,17262.0,1.03,0.1041,0.462,0.3522,2026-06-15T17:34:31.078102,4
-FSS,Federal Signal Corporation,USA,United States,Industrials,110.63,USD,132.89,16.7,6748.8,476.6,-42.34,-40.3,OVERSOLD,Turning Up,False,,False,,4.4,2180.5,1.35,0.1325,0.43,0.2895,2026-06-15T17:34:31.225773,4
-COF,Capital One Financial Corporati,USA,United States,Financial Services,195.66,USD,259.64,24.6,121760.9,4654.2,-25.22,-29.98,Bearish,BUY,False,,False,,3.25,53434.0,,,0.444,,2026-06-15T17:34:10.675428,3
-NAT,Nordic American Tankers Limited,USA,Bermuda,Energy,5.41,USD,6.34,14.7,1145.6,4127.9,-22.54,-21.62,Bearish,Turning Up,False,,False,,0.26,291.7,1.94,0.0375,0.952,0.1959,2026-06-15T17:34:10.683369,3
-NX,Quanex Building Products Corpor,USA,United States,Industrials,17.33,USD,22.98,24.6,795.9,426.5,-41.57,-35.85,OVERSOLD,Turning Up,False,,False,,-5.57,1837.6,1.14,0.0736,1.176,0.2717,2026-06-15T17:34:11.379095,3
-LYFT,"Lyft, Inc.",USA,United States,Technology,14.15,USD,25.54,44.6,5374.4,15383.6,-10.99,-11.16,Bearish,BUY,False,,False,,6.84,6316.3,0.65,-0.0279,0.39,0.4146,2026-06-15T17:34:12.561977,3
-LI,Li Auto Inc.,USA,China,Consumer Cyclical,14.44,USD,32.03,54.9,14551.9,4019.3,-73.89,-68.53,OVERSOLD,Turning Up,False,,False,,-0.27,112312.5,1.68,-0.0134,0.245,0.1868,2026-06-15T17:34:12.807143,3
-DOCN,"DigitalOcean Holdings, Inc.",USA,United States,Technology,182.28,USD,184.46,1.2,19023.5,4377.9,82.23,81.3,OVERBOUGHT,BUY,False,,False,,2.28,901.4,0.69,0.1629,,0.5986,2026-06-15T17:34:14.174394,3
-WLK,Westlake Corporation,USA,United States,Basic Materials,87.89,USD,124.23,29.3,11260.7,1121.9,-78.86,-75.28,OVERSOLD,Turning Up,False,,False,,-12.7,11170.0,1.65,-0.0134,0.729,0.0728,2026-06-15T17:34:15.857753,3
-GROY,Gold Royalty Corp.,USA,Canada,Basic Materials,3.02,USD,5.45,44.7,695.9,2210.5,-65.22,-65.03,OVERSOLD,Turning Up,False,,False,,0.0,15.6,4.88,0.002,0.0,0.7644,2026-06-15T17:34:16.567768,3
-LILAK,Liberty Latin America Ltd.,USA,Bermuda,Communication Services,7.91,USD,9.13,13.3,1594.1,806.8,-15.9,-16.37,Bearish,BUY,False,,False,,-2.48,4442.2,1.14,0.0646,15.072,0.6748,2026-06-15T17:34:16.940513,3
-OGS,"ONE Gas, Inc.",USA,United States,Utilities,78.14,USD,90.78,13.9,4904.3,561.0,-69.36,-65.91,OVERSOLD,Turning Up,False,,False,,4.43,2427.4,0.42,0.0514,0.981,0.3584,2026-06-15T17:34:18.041035,3
-ATO,Atmos Energy Corporation,USA,United States,Utilities,170.67,USD,192.51,11.3,28488.2,1265.2,-69.31,-65.26,OVERSOLD,Turning Up,False,,False,,8.12,4702.8,0.63,0.0474,0.686,0.5813,2026-06-15T17:34:18.321184,3
-ARVN,"Arvinas, Inc.",USA,United States,Healthcare,7.5,USD,14.51,48.3,483.9,888.0,-79.46,-79.38,OVERSOLD,Turning Up,False,,False,,-3.18,262.6,4.92,-0.274,0.021,,2026-06-15T17:34:18.391888,3
-AMD,"Advanced Micro Devices, Inc.",USA,United States,Technology,548.27,USD,546.44,-0.3,894009.4,37491.3,80.43,79.69,OVERBOUGHT,BUY,False,,False,,3.02,34639.0,2.01,0.0596,0.061,0.4952,2026-06-15T17:34:19.151978,3
-SNDK,Sandisk Corporation,USA,United States,Technology,2106.03,USD,2021.65,-4.2,311881.5,15359.6,85.03,82.42,OVERBOUGHT,BUY,False,,False,,29.31,7355.0,2.11,0.0503,0.222,0.3007,2026-06-15T17:34:19.319563,3
-TYRA,"Tyra Biosciences, Inc.",USA,United States,Healthcare,28.26,USD,40.65,30.5,1680.6,969.9,-64.29,-57.81,OVERSOLD,Turning Up,False,,False,,-2.18,0.0,14.67,-0.5605,0.022,,2026-06-15T17:34:19.848682,3
-STX,Seagate Technology Holdings PLC,USA,Singapore,Technology,997.28,USD,966.8,-3.2,223618.0,3933.0,82.12,82.05,OVERBOUGHT,BUY,False,,False,,10.52,9097.0,0.84,0.4147,,0.3518,2026-06-15T17:34:20.985103,3
-AAUC,Allied Gold Corporation,USA,Canada,Basic Materials,26.09,USD,32.2,19.0,3284.2,738.4,-64.79,-60.98,OVERSOLD,Turning Up,False,,False,,-1.06,1331.8,0.63,0.2784,0.417,0.3803,2026-06-15T17:34:23.057579,3
-ALB,Albemarle Corporation,USA,United States,Basic Materials,170.68,USD,221.0,22.8,20129.1,2099.6,-43.96,-39.88,OVERSOLD,Turning Up,False,,False,,-3.43,5142.7,1.57,0.0052,0.346,0.13,2026-06-15T17:34:23.222041,3
-SNDX,"Syndax Pharmaceuticals, Inc.",USA,United States,Healthcare,18.42,USD,25.59,28.0,1632.2,1660.8,-68.48,-66.68,OVERSOLD,Turning Up,False,,False,,-2.79,172.4,4.12,-0.7855,5.345,0.9596,2026-06-15T17:34:24.101785,3
-NFG,National Fuel Gas Company,USA,United States,Energy,77.13,USD,97.06,20.5,7330.1,821.4,-84.84,-83.01,OVERSOLD,Turning Up,False,,False,,7.4,2277.5,0.35,0.0921,0.915,0.4609,2026-06-15T17:34:25.433323,3
-HSLV,Highlander Silver Corp.,USA,Canada,Basic Materials,5.05,USD,6.97,27.5,1028.3,318.6,-48.98,-48.55,OVERSOLD,Turning Up,False,,False,,-0.1,0.0,28.86,-1.0959,0.0,,2026-06-15T17:34:25.750680,3
-WRBY,Warby Parker Inc.,USA,United States,Healthcare,26.67,USD,31.0,14.0,3273.4,2807.1,9.43,8.31,Bullish,BUY,False,,False,,0.01,871.9,2.05,-0.0101,0.634,0.5397,2026-06-15T17:34:27.026868,3
-ORIC,"Oric Pharmaceuticals, Inc.",USA,United States,Healthcare,8.2,USD,14.93,45.0,849.4,1893.4,-61.61,-60.06,OVERSOLD,Turning Up,False,,False,,-1.39,0.0,14.13,-0.3296,0.009,,2026-06-15T17:34:27.169983,3
-ACGL,Arch Capital Group Ltd.,USA,Bermuda,Financial Services,91.54,USD,103.39,11.5,31984.9,2261.6,-34.14,-36.34,Bearish,BUY,False,,False,,13.0,19294.0,,0.0555,0.113,,2026-06-15T17:34:28.362904,3
-AEE,Ameren Corporation,USA,United States,Utilities,109.86,USD,115.59,5.0,30403.9,1687.5,-16.73,-18.39,Bearish,BUY,False,,False,,5.56,8799.0,0.46,0.0416,1.48,0.474,2026-06-15T17:34:28.758034,3
-BHE,"Benchmark Electronics, Inc.",USA,United States,Technology,91.85,USD,91.2,-0.7,3295.3,429.7,85.29,83.3,OVERBOUGHT,BUY,False,,False,,0.94,2659.1,1.52,0.0474,0.281,0.1016,2026-06-15T17:34:29.083751,3
-BBD,Banco Bradesco Sa,USA,Brazil,Financial Services,3.47,USD,4.3,19.3,36680.4,32130.6,-65.21,-61.24,OVERSOLD,Turning Up,False,,False,,0.4,117814.2,,,2.515,,2026-06-15T17:34:29.949752,3
-ENTG,"Entegris, Inc.",USA,United States,Technology,165.21,USD,159.15,-3.8,25161.5,2797.7,36.47,27.75,Bullish,BUY,False,,False,,1.73,3196.6,2.04,0.1144,0.96,0.4442,2026-06-15T17:34:30.531472,3
-FORM,"FormFactor, Inc.",USA,United States,Technology,152.23,USD,159.09,4.3,11866.7,1825.0,22.86,20.91,Bullish,BUY,False,,False,,0.86,785.0,3.6,0.049,0.031,0.3934,2026-06-15T17:34:30.726163,3
-WELL,Welltower Inc.,USA,United States,Real Estate,214.37,USD,221.68,3.3,151326.9,3227.7,33.87,33.32,Bullish,BUY,False,,False,,2.08,10667.1,5.34,0.0058,0.507,0.3918,2026-06-15T17:34:30.743912,3
-INSM,Insmed Incorporated,USA,United States,Healthcare,98.17,USD,212.75,53.9,21277.5,3213.7,-81.52,-81.2,OVERSOLD,Turning Up,False,,False,,-5.76,606.4,3.54,-0.774,0.794,0.7973,2026-06-15T17:34:30.865691,3
-STTK,"Shattuck Labs, Inc.",USA,United States,Healthcare,4.77,USD,8.33,42.7,455.6,690.1,-47.72,-41.27,OVERSOLD,Turning Up,False,,False,,-0.56,1.0,11.7,-1.3663,0.029,,2026-06-15T17:34:30.924235,3
-DCTH,"Delcath Systems, Inc.",USA,United States,Healthcare,11.86,USD,15.57,23.8,409.4,411.7,38.76,35.34,Bullish,BUY,False,,False,,0.01,85.2,9.98,0.0073,0.008,0.8616,2026-06-15T17:34:31.216138,3
-SEM,Select Medical Holdings Corpora,USA,United States,Healthcare,16.67,USD,16.99,1.9,2067.9,1781.7,84.56,84.11,OVERBOUGHT,BUY,False,,False,,1.07,5452.8,1.04,0.0546,1.682,0.1154,2026-06-15T17:34:31.358335,3
-CGON,"CG Oncology, Inc.",USA,United States,Healthcare,60.33,USD,75.5,20.1,5321.3,1119.5,-47.61,-39.71,OVERSOLD,Turning Up,False,,False,,-2.34,4.0,24.58,-0.2069,0.009,-0.1502,2026-06-15T17:34:31.430812,3
-HRTG,"Heritage Insurance Holdings, In",USA,United States,Financial Services,22.62,USD,31.98,29.3,684.8,394.6,-63.41,-60.03,OVERSOLD,Turning Up,False,,False,,6.52,774.4,,0.1232,0.198,,2026-06-15T17:34:32.823621,3
-CAT,"Caterpillar, Inc.",USA,United States,Industrials,937.82,USD,946.83,1.0,431952.4,2515.7,72.31,69.85,OVERBOUGHT,BUY,False,,False,,20.12,67589.0,0.94,0.1629,2.033,0.3178,2026-06-15T17:34:33.280520,3
-MPWR,"Monolithic Power Systems, Inc.",USA,United States,Technology,1648.43,USD,1714.09,3.8,80986.1,637.1,56.43,58.69,OVERBOUGHT,Turning Up,False,,False,,14.04,2790.5,4.38,0.2168,0.006,0.5518,2026-06-15T17:34:33.476534,3
-IPSC,"Century Therapeutics, Inc.",USA,United States,Healthcare,2.32,USD,3.04,23.7,418.4,1131.2,-13.06,-13.26,Bearish,BUY,False,,False,,-1.14,109.2,5.97,-0.0737,0.274,,2026-06-15T17:34:33.612678,3
-NSSC,"NAPCO Security Technologies, In",USA,United States,Industrials,37.75,USD,48.12,21.6,1348.7,434.4,-59.18,-56.72,OVERSOLD,Turning Up,False,,False,,1.03,,,,,,2026-06-15T17:34:33.855179,3
-UTZ,UTZ,USA,--,--,7.23,USD,14.67,50.7,640.1,1900.8,-56.4,-56.2,OVERSOLD,Turning Up,False,,False,,,1438.8,0.82,0.0044,1.441,0.249,2026-06-15T17:34:09.596377,2
-BTBT,BTBT,USA,--,--,1.99,USD,4.55,56.2,695.2,22064.6,21.81,20.68,Bullish,BUY,False,,False,,,113.6,6.39,-0.0574,0.185,0.5387,2026-06-15T17:34:09.943831,2
-BTX,BlackRock Technology and Privat,USA,United States,Financial Services,9.35,USD,9.39,0.3,1091.8,759.1,80.78,80.67,OVERBOUGHT,BUY,False,,False,,0.37,11.5,,,0.0,,2026-06-15T17:34:10.198902,2
-MEI,"Methode Electronics, Inc.",USA,United States,Technology,12.31,USD,15.55,20.8,436.1,767.6,24.88,24.46,Bullish,BUY,False,,False,,-1.82,1048.1,1.57,-0.0247,0.495,0.1559,2026-06-15T17:34:10.828530,2
-SYNA,Synaptics Incorporated,USA,United States,Technology,141.75,USD,149.11,4.9,5476.9,872.6,69.91,69.79,OVERBOUGHT,BUY,False,,False,,-1.25,1074.3,2.26,-0.0165,0.631,0.4472,2026-06-15T17:34:11.892477,2
-NAVI,Navient Corporation,USA,United States,Financial Services,7.87,USD,16.07,51.0,739.7,1076.1,-41.03,-39.89,OVERSOLD,Turning Up,False,,False,,-0.62,610.0,,,18.828,,2026-06-15T17:34:13.039310,2
-CLDX,"Celldex Therapeutics, Inc.",USA,United States,Healthcare,31.58,USD,35.79,11.8,2478.8,934.5,-25.74,-19.11,Bearish,Turning Up,False,,False,,-4.27,1.5,10.49,-0.5712,0.004,,2026-06-15T17:34:13.805782,2
-WMT,Walmart Inc.,USA,United States,Consumer Defensive,120.83,USD,135.16,10.6,961574.7,20450.6,-32.93,-28.4,Bearish,Turning Up,False,,False,,2.84,713163.0,0.24,0.1354,0.674,0.2493,2026-06-15T17:34:15.658835,2
-PHVS,Pharvaris N.V.,USA,Switzerland,Healthcare,31.33,USD,33.33,6.0,2189.0,309.8,32.81,31.33,Bullish,BUY,False,,False,,-3.14,0.0,10.11,,0.003,,2026-06-15T17:34:15.945581,2
-RZLV,Rezolve AI PLC,USA,United Kingdom,Technology,2.75,USD,8.45,67.5,1096.7,17280.1,-19.74,-23.85,Bearish,BUY,False,,False,,-0.38,46.8,0.67,-0.3099,0.637,0.6598,2026-06-15T17:34:17.121428,2
-AEVA,"Aeva Technologies, Inc.",USA,United States,Technology,27.23,USD,38.8,29.8,1839.0,1945.4,55.57,54.71,OVERBOUGHT,BUY,False,,False,,-2.47,18.1,4.12,-1.7836,7.748,-0.0365,2026-06-15T17:34:17.911260,2
-IREN,IREN LIMITED,USA,Australia,Financial Services,62.03,USD,76.87,19.3,22166.4,43922.7,42.78,43.1,OVERBOUGHT,Turning Up,False,,False,,0.77,501.0,4.29,0.0092,0.531,0.6827,2026-06-15T17:34:19.948584,2
-AEP,American Electric Power Company,USA,United States,Utilities,129.88,USD,139.44,6.9,70665.6,3925.9,-25.69,-24.2,Bearish,Turning Up,False,,False,,6.76,21876.0,0.33,0.0515,1.59,0.6101,2026-06-15T17:34:21.605605,2
-CGNX,Cognex Corporation,USA,United States,Technology,66.3,USD,71.9,7.8,11033.6,2145.8,37.55,39.36,Bullish,Turning Up,False,,False,,0.85,994.4,3.05,0.0648,0.051,0.6692,2026-06-15T17:34:22.281624,2
-BKH,Black Hills Corporation,USA,United States,Utilities,74.07,USD,78.69,5.9,5638.4,1027.5,16.28,16.55,Bullish,Turning Up,False,,False,,3.84,2310.0,1.11,0.0472,1.229,0.3847,2026-06-15T17:34:23.212695,2
-VIA,"Via Transportation, Inc.",USA,United States,Technology,15.2,USD,56.31,73.0,1235.7,759.4,-27.64,-27.39,Bearish,Turning Up,False,,False,,-1.23,434.3,4.98,-0.2859,0.03,0.3955,2026-06-15T17:34:23.573077,2
-MRVL,"Marvell Technology, Inc.",USA,United States,Technology,302.97,USD,324.2,6.5,265266.3,34618.4,66.18,68.47,OVERBOUGHT,Turning Up,False,,False,,2.91,8194.6,1.58,0.0714,0.335,0.5102,2026-06-15T17:34:24.799155,2
-FG,"F&G Annuities & Life, Inc.",USA,United States,Financial Services,28.96,USD,36.7,21.1,3836.8,787.6,48.22,46.85,OVERBOUGHT,BUY,False,,False,,3.86,5429.0,,0.0042,0.471,,2026-06-15T17:34:25.057042,2
-STM,STMicroelectronics N.V.,USA,Netherlands,Technology,79.65,USD,81.42,2.2,70791.7,11678.6,81.19,81.27,OVERBOUGHT,Turning Up,False,,False,,0.16,11800.0,2.43,0.0087,0.132,0.3389,2026-06-15T17:34:26.867020,2
-ICHR,Ichor Holdings,USA,United States,Technology,89.82,USD,88.1,-1.9,3131.8,942.9,69.41,65.88,OVERBOUGHT,BUY,False,,False,,-1.48,947.7,1.38,-0.0549,0.241,0.0926,2026-06-15T17:34:27.628426,2
-PZZA,"Papa John's International, Inc.",USA,United States,Consumer Cyclical,33.65,USD,55.74,39.6,1107.2,1076.6,-25.84,-23.44,Bearish,Turning Up,False,,False,,0.83,2053.8,0.7,0.1098,,0.2073,2026-06-15T17:34:28.862629,2
-OGE,OGE Energy Corp,USA,United States,Utilities,48.0,USD,50.13,4.2,9906.0,1569.8,7.33,4.62,Bullish,BUY,False,,False,,2.25,3260.1,0.49,0.0506,1.137,0.4505,2026-06-15T17:34:30.109317,2
-HIO,Western Asset High Income Oppor,USA,United States,Financial Services,3.66,USD,4.05,9.6,348.1,333.4,39.57,37.73,Bullish,BUY,False,,False,,0.3,26.7,,,0.0,,2026-06-15T17:34:30.289850,2
-LDI,"loanDepot, Inc.",USA,United States,Financial Services,1.23,USD,5.05,75.6,667.1,2034.1,-74.09,-71.21,OVERSOLD,Turning Up,False,,False,,-0.35,896.6,,,21.143,,2026-06-15T17:34:32.770554,2
-ARCO,Arcos Dorados Holdings Inc.,USA,Uruguay,Consumer Cyclical,8.9,USD,9.75,8.8,1873.8,1235.5,-11.15,-8.17,Bearish,Turning Up,False,,False,,1.11,4678.3,0.95,0.0846,2.914,0.1227,2026-06-15T17:34:33.002685,2
-FIX,"Comfort Systems USA, Inc.",USA,United States,Industrials,1974.16,USD,2073.99,4.8,69458.7,419.8,50.2,52.61,OVERBOUGHT,Turning Up,False,,False,,34.55,,1.19,,0.197,,2026-06-15T17:34:34.020784,2
-HOG,HOG,USA,--,--,26.04,USD,31.25,16.7,2741.2,3089.0,51.67,51.73,OVERBOUGHT,Turning Up,False,,False,,,4473.2,1.83,0.1209,0.972,0.3002,2026-06-15T17:34:09.937689,1
-OEC,Orion S.A.,USA,Luxembourg,Basic Materials,8.1,USD,11.62,30.3,456.7,544.7,39.59,37.9,Bullish,BUY,False,,False,,-1.58,1806.7,0.59,0.0831,2.891,0.1991,2026-06-15T17:34:12.961036,1
-EG,"Everest Group, Ltd.",USA,Bermuda,Financial Services,341.21,USD,368.29,7.4,13502.4,359.8,5.27,9.94,Bullish,Turning Up,False,,False,,49.11,17218.0,,0.0281,0.232,,2026-06-15T17:34:13.316183,1
-AOSL,Alpha and Omega Semiconductor L,USA,United States,Technology,47.38,USD,54.34,12.8,1418.2,877.8,43.13,43.45,OVERBOUGHT,Turning Up,False,,False,,-3.6,696.2,1.34,-0.027,0.062,0.2313,2026-06-15T17:34:20.812481,1
-NRIX,"Nurix Therapeutics, Inc.",USA,United States,Healthcare,17.32,USD,22.5,23.0,1791.0,1669.5,16.51,20.17,Bullish,Turning Up,False,,False,,-3.17,84.0,7.02,-0.8054,0.103,,2026-06-15T17:34:25.490649,1
-WEST,Westrock Coffee Company,USA,United States,Consumer Defensive,9.11,USD,9.81,7.1,888.8,629.6,71.39,70.55,OVERBOUGHT,BUY,False,,False,,-0.74,1189.0,0.48,-0.0478,2.141,0.1268,2026-06-15T17:34:27.401967,1
-FDMT,"4D Molecular Therapeutics, Inc.",USA,United States,Healthcare,9.36,USD,12.34,24.1,489.6,757.3,-32.52,-28.43,Bearish,Turning Up,False,,False,,-2.57,,,,,,2026-06-15T17:34:33.921980,1
-ABNB,ABNB,USA,--,--,138.88,USD,147.25,5.7,82428.9,3641.0,-1.52,0.61,Bearish,Turning Up,False,,False,,,,,,,,2026-06-15T17:34:34.195254,1
-EGP,EGP,USA,--,--,205.95,USD,207.72,0.9,11070.6,352.0,63.48,62.55,OVERBOUGHT,BUY,False,,False,,,,,,,,2026-06-15T17:34:34.260191,1
-PLGO,PLGO,USA,--,--,23.17,USD,24.06,3.7,1981.0,439.7,51.25,49.33,OVERBOUGHT,BUY,False,,False,,,,,,,,2026-06-15T17:34:34.269120,1
-BTDR,Bitdeer Technologies Group,USA,Singapore,Technology,18.96,USD,27.8,31.8,4613.2,8824.1,59.75,60.07,OVERBOUGHT,Turning Up,False,,False,,-1.64,620.3,0.75,-0.1507,1.267,0.0983,2026-06-15T17:34:13.116623,0
+HLNE,HLNE,USA,--,--,87.22,USD,161.13,45.9,3811.3,889.2,-62.82,-66.51,OVERSOLD,Strong BUY,True,"div_bull (cena -7.7%, SMI +14.4)",False,,,759.0,1.62,0.1707,0.389,0.6988,2026-06-16T21:44:05.452271,9
+FSM,FSM,USA,--,--,9.69,USD,13.85,30.0,2935.7,6299.6,-32.47,-34.52,Bearish,Strong BUY,True,"div_bull (cena -8.3%, SMI +0.5)",False,,,947.1,2.5,0.1718,0.126,0.493,2026-06-16T21:43:51.116462,8
+WTW,WTW,USA,--,--,259.65,USD,352.79,26.4,24523.4,716.5,-39.93,-44.95,Bearish,Strong BUY,True,"div_bull (cena -11.3%, SMI +3.1)",False,,,9708.0,1.2,0.1525,0.865,0.4206,2026-06-16T21:43:57.928982,8
+AG,AG,USA,--,--,19.42,USD,32.04,39.4,9589.0,15157.0,-46.13,-50.1,OVERSOLD,Strong BUY,True,"div_bull (cena -14.3%, SMI +4.4)",False,,,1265.2,2.41,0.0543,0.112,0.3557,2026-06-16T21:43:58.897730,8
+CDE,CDE,USA,--,--,18.79,USD,27.77,32.3,19363.7,26698.0,-29.69,-37.11,Bearish,Strong BUY,True,"div_bull (cena -6.9%, SMI +8.7)",False,,,2070.1,1.66,0.1779,0.106,0.4447,2026-06-16T21:44:01.212100,8
+ATMU,ATMU,USA,--,--,51.67,USD,66.5,22.3,4220.0,1245.9,-55.7,-61.22,OVERSOLD,Strong BUY,False,,False,,,1764.3,1.66,0.2769,1.616,0.2824,2026-06-16T21:43:54.048850,7
+CNTN,CNTN,USA,--,--,3.3,USD,9.08,63.7,230.4,658.6,-18.3,-33.72,Bearish,Strong BUY,True,"div_bull (cena -23.8%, SMI +17.4)",False,,,0.0,5.29,-0.0344,0.005,,2026-06-16T21:44:06.594714,7
+GFI,GFI,USA,--,--,39.63,USD,61.64,35.7,35445.8,3397.0,-63.42,-66.05,OVERSOLD,Strong BUY,False,,False,,,8751.3,1.33,0.2582,0.382,0.5529,2026-06-16T21:44:07.562415,7
+GGG,GGG,USA,--,--,76.27,USD,95.69,20.3,12658.4,1296.2,-79.09,-82.38,OVERSOLD,Strong BUY,False,,False,,,2236.6,2.29,0.2277,0.019,0.5245,2026-06-16T21:44:08.357545,7
+HUBB,HUBB,USA,--,--,502.65,USD,565.5,11.1,26560.9,626.9,-42.42,-43.67,OVERSOLD,Strong BUY,False,,False,,,5844.6,1.0,0.1544,0.646,0.3532,2026-06-16T21:44:09.839001,7
+IDCC,IDCC,USA,--,--,287.15,USD,412.6,30.4,7421.4,445.5,-66.24,-71.04,OVERSOLD,Strong BUY,False,,False,,,834.0,1.84,0.6969,0.443,0.8877,2026-06-16T21:44:10.281035,7
+RCKT,RCKT,USA,--,--,2.8,USD,5.45,48.6,305.7,3127.8,-78.25,-79.93,OVERSOLD,Strong BUY,False,,False,,,0.0,6.38,-0.8107,0.09,,2026-06-16T21:43:48.401685,6
+OSIS,OSIS,USA,--,--,220.7,USD,311.72,29.2,3637.8,315.2,-68.11,-68.76,OVERSOLD,Strong BUY,False,,False,,,1713.2,1.46,0.1246,0.683,0.3427,2026-06-16T21:43:51.469592,6
+WPM,WPM,USA,--,--,128.24,USD,165.76,22.6,58237.0,2316.3,-39.42,-37.53,Bearish,Strong BUY,False,,False,,,2314.6,7.78,0.1754,0.001,0.7222,2026-06-16T21:43:52.535359,6
+AEM,AEM,USA,--,--,175.82,USD,255.24,31.1,87916.4,2593.6,-61.8,-65.5,OVERSOLD,Strong BUY,False,,False,,,11907.9,1.33,0.1446,0.013,0.5813,2026-06-16T21:43:53.935689,6
+FNV,FNV,USA,--,--,230.17,USD,285.67,19.4,44389.6,841.0,-61.95,-65.24,OVERSOLD,Strong BUY,False,,False,,,1822.8,7.98,0.1372,0.0,0.7391,2026-06-16T21:43:54.426616,6
+NG,NG,USA,--,--,8.33,USD,14.4,42.2,3655.0,3400.2,-61.78,-66.76,OVERSOLD,Strong BUY,False,,False,,,0.0,23.79,-0.1148,1.02,,2026-06-16T21:43:56.408262,6
+BMI,BMI,USA,--,--,135.38,USD,251.54,46.2,3951.1,578.8,-32.55,-42.52,Bearish,Strong BUY,False,,False,,,916.7,2.36,0.2307,0.0,0.4168,2026-06-16T21:43:57.068071,6
+TKC,TKC,USA,--,--,6.12,USD,7.18,14.8,5327.9,1346.6,-49.51,-52.37,OVERSOLD,Strong BUY,False,,False,,,218160.0,1.24,0.0876,0.558,0.2468,2026-06-16T21:43:58.600792,6
+ELE,ELE,USA,--,--,16.72,USD,26.96,38.0,1076.5,324.6,-58.25,-61.72,OVERSOLD,Strong BUY,False,,False,,,43.6,6.58,0.0044,0.001,0.6257,2026-06-16T21:43:59.121363,6
+ASM,ASM,USA,--,--,6.95,USD,11.99,42.0,1218.1,4874.9,-16.95,-17.51,Bearish,BUY,True,"div_bull (cena -11.2%, SMI +20.0)",False,,,92.2,3.69,0.1656,,0.5263,2026-06-16T21:44:01.143748,6
+CBRE,CBRE,USA,--,--,135.47,USD,174.27,22.3,39667.9,2230.8,-43.58,-47.13,OVERSOLD,Strong BUY,False,,False,,,40550.0,1.09,0.0621,1.125,0.1866,2026-06-16T21:44:04.163147,6
+VERA,VERA,USA,--,--,33.67,USD,56.05,39.9,2416.9,1147.4,-64.14,-65.28,OVERSOLD,Strong BUY,False,,False,,,0.0,13.64,-0.9661,0.128,,2026-06-16T21:44:05.329700,6
+BCC,BCC,USA,--,--,71.56,USD,95.0,24.7,2518.2,411.4,-50.5,-53.08,OVERSOLD,Strong BUY,False,,False,,,6404.6,1.74,0.0596,0.246,0.1646,2026-06-16T21:44:05.873216,6
+PEP,PEP,USA,--,--,146.12,USD,171.48,14.8,199737.4,6926.8,-55.42,-58.5,OVERSOLD,Strong BUY,False,,False,,,93925.0,0.67,0.1668,2.445,0.5415,2026-06-16T21:44:10.821786,6
+KT,KT,USA,--,--,18.76,USD,24.58,23.7,8979.7,1471.3,-68.58,-72.01,OVERSOLD,Strong BUY,False,,False,,,28253193.0,1.15,0.0711,0.612,0.6405,2026-06-16T21:44:11.193927,6
+KMT,KMT,USA,--,--,36.5,USD,43.81,16.7,2781.7,1306.3,-52.87,-57.04,OVERSOLD,Strong BUY,False,,False,,,1966.8,1.19,0.059,0.501,0.3041,2026-06-16T21:44:11.427178,6
+TTC,TTC,USA,--,--,90.72,USD,105.19,13.8,8639.2,829.9,-29.42,-36.91,Bearish,Strong BUY,False,,False,,,4510.4,0.86,0.1881,0.716,0.3336,2026-06-16T21:43:48.184513,5
+KNF,KNF,USA,--,--,82.08,USD,95.29,13.9,4658.4,606.9,-30.13,-30.46,Bearish,BUY,True,"div_bull (cena -2.3%, SMI +1.0)",False,,,3146.0,1.39,0.0669,0.742,0.1835,2026-06-16T21:43:49.062093,5
+EMBJ,EMBJ,USA,--,--,59.92,USD,80.75,25.8,10663.3,1698.9,-50.23,-51.57,OVERSOLD,Strong BUY,False,,False,,,7577.5,0.83,0.098,0.787,0.1753,2026-06-16T21:43:49.191015,5
+DOLE,DOLE,USA,--,--,14.36,USD,16.57,13.3,1366.5,974.1,-43.11,-44.71,OVERSOLD,Strong BUY,False,,False,,,9172.9,0.83,0.048,0.913,0.0779,2026-06-16T21:43:49.264047,5
+GBX,GBX,USA,--,--,49.33,USD,59.19,16.7,1526.2,454.0,-30.58,-35.45,Bearish,Strong BUY,False,,False,,,3240.2,1.58,0.067,1.198,0.1875,2026-06-16T21:43:51.217494,5
+LKQ,LKQ,USA,--,--,26.24,USD,39.77,34.0,6684.4,3011.2,-43.44,-43.96,OVERSOLD,Strong BUY,False,,False,,,13651.0,0.58,0.0693,0.774,0.3857,2026-06-16T21:43:51.686536,5
+DOCS,DOCS,USA,--,--,20.89,USD,76.51,72.7,3820.2,3856.1,-27.71,-27.4,Bearish,Turning Up,True,"div_bull (cena -9.9%, SMI +70.9)",False,,,644.9,6.09,0.2249,0.011,0.8909,2026-06-16T21:43:53.219836,5
+FSS,FSS,USA,--,--,112.7,USD,132.89,15.2,6875.0,471.7,-38.45,-38.36,Bearish,Strong BUY,False,,False,,,2180.5,1.35,0.1325,0.43,0.2895,2026-06-16T21:43:53.926966,5
+FERG,FERG,USA,--,--,234.8,USD,271.64,13.6,45536.6,1403.3,-37.41,-35.33,Bearish,Strong BUY,False,,False,,,30762.0,0.94,0.1866,1.023,0.3067,2026-06-16T21:43:55.439702,5
+SCI,SCI,USA,--,--,74.58,USD,88.67,15.9,10289.9,1417.5,-48.66,-52.47,OVERSOLD,Strong BUY,False,,False,,,4309.2,0.5,0.041,3.184,0.2646,2026-06-16T21:43:57.563339,5
+UHS,UHS,USA,--,--,146.9,USD,246.33,40.4,8892.8,920.3,-77.68,-79.15,OVERSOLD,Strong BUY,False,,False,,,17364.8,0.98,0.1258,0.71,0.9045,2026-06-16T21:43:58.005241,5
+ITW,ITW,USA,--,--,265.78,USD,303.16,12.3,76464.9,1315.6,-18.26,-35.11,Bearish,Strong BUY,False,,False,,,16044.0,0.89,0.3204,2.856,0.441,2026-06-16T21:43:58.748559,5
+DASH,DASH,USA,--,--,170.03,USD,285.5,40.4,74085.3,4623.5,-34.71,-33.6,Bearish,Strong BUY,False,,False,,,13717.0,1.41,0.0788,0.328,0.5088,2026-06-16T21:44:00.808618,5
+NTLA,NTLA,USA,--,--,14.55,USD,28.25,48.5,2033.0,5969.9,-32.94,-32.98,Bearish,Strong BUY,False,,False,,,67.7,5.08,-0.5978,0.139,,2026-06-16T21:44:01.440519,5
+GXO,GXO,USA,--,--,49.96,USD,66.85,25.3,5747.8,1318.6,-44.9,-45.27,OVERSOLD,Strong BUY,False,,False,,,13178.0,0.85,0.0282,1.962,0.1162,2026-06-16T21:44:02.108378,5
+SRE,SRE,USA,--,--,91.77,USD,101.04,9.2,59990.7,3505.2,-38.3,-42.61,Bearish,Strong BUY,False,,False,,,13702.0,1.57,0.0173,1.108,0.4661,2026-06-16T21:44:03.413505,5
+REZI,REZI,USA,--,--,32.25,USD,45.29,28.8,4883.5,1288.9,-36.43,-36.67,Bearish,Strong BUY,False,,False,,,7472.0,1.14,0.1065,1.105,0.2939,2026-06-16T21:44:06.501313,5
+CRK,CRK,USA,--,--,13.34,USD,31.17,57.2,3917.9,2505.5,-83.54,-85.5,OVERSOLD,Strong BUY,False,,False,,,1928.4,0.45,0.0506,1.098,0.2291,2026-06-16T21:44:06.781150,5
+BVN,BVN,USA,--,--,35.96,USD,44.67,19.5,9133.4,1421.3,-3.53,-9.36,Bearish,BUY,True,"div_bull (cena -4.9%, SMI +14.5)",False,,,1731.6,1.88,0.0942,0.002,0.4518,2026-06-16T21:44:07.181053,5
+ORBS,ORBS,USA,--,--,1.08,USD,83.12,98.7,419.1,25557.0,-34.62,-44.25,Bearish,Strong BUY,False,,False,,,33.0,13.18,-0.1345,0.046,0.0162,2026-06-16T21:44:08.630245,5
+EVTC,EVTC,USA,--,--,27.22,USD,37.78,28.0,1677.3,548.2,-27.92,-34.88,Bearish,Strong BUY,False,,False,,,931.8,2.07,0.1057,1.818,0.4965,2026-06-16T21:44:08.825722,5
+CPNG,CPNG,USA,--,--,18.03,USD,34.08,47.1,32365.0,23390.2,-52.26,-56.94,OVERSOLD,Strong BUY,False,,False,,,34534.0,0.79,0.112,1.003,0.2937,2026-06-16T21:44:09.614979,5
+AMLX,AMLX,USA,--,--,15.05,USD,18.6,19.1,1673.4,1185.8,-37.97,-39.74,Bearish,Strong BUY,False,,False,,,0.0,14.27,-1.8401,0.02,,2026-06-16T21:44:11.783337,5
+PAX,PAX,USA,--,--,11.62,USD,17.8,34.7,1853.7,907.5,-36.82,-38.25,Bearish,Strong BUY,False,,False,,,381.7,0.98,0.1367,0.325,0.8423,2026-06-16T21:43:47.888628,4
+PYPL,PYPL,USA,--,--,43.65,USD,79.5,45.1,38503.9,15481.7,-63.62,-58.92,OVERSOLD,Turning Up,False,,False,,,33172.0,1.29,0.2071,0.493,0.4662,2026-06-16T21:43:48.874718,4
+WCN,WCN,USA,--,--,157.07,USD,191.91,18.2,39908.5,1584.8,-32.55,-39.46,Bearish,Strong BUY,False,,False,,,9466.9,0.58,0.0729,1.107,0.4237,2026-06-16T21:43:51.693902,4
+HIG,HIG,USA,--,--,131.02,USD,144.5,9.3,35916.6,1581.9,-36.57,-38.52,Bearish,Strong BUY,False,,False,,,28071.0,,0.0465,0.23,,2026-06-16T21:43:59.939358,4
+DG,DG,USA,--,--,113.75,USD,158.23,28.1,25091.7,3522.7,-32.28,-46.47,Bearish,Strong BUY,False,,False,,,42724.4,0.22,0.0742,1.847,0.3066,2026-06-16T21:44:00.482318,4
+IBP,IBP,USA,--,--,217.86,USD,349.0,37.6,5869.3,429.9,-76.41,-75.95,OVERSOLD,Turning Up,False,,False,,,2970.8,2.44,0.2049,1.397,0.3397,2026-06-16T21:44:02.385210,4
+CMS,CMS,USA,--,--,74.03,USD,80.36,7.9,22869.3,3004.7,-26.6,-35.65,Bearish,Strong BUY,False,,False,,,8539.0,0.76,0.0386,2.067,0.4153,2026-06-16T21:44:02.737068,4
+AKBA,AKBA,USA,--,--,0.98,USD,4.08,75.9,264.0,3919.4,-67.77,-65.85,OVERSOLD,Turning Up,False,,False,,,236.2,1.46,0.8164,1.588,0.8329,2026-06-16T21:44:04.344520,4
+BMBL,BMBL,USA,--,--,3.06,USD,8.64,64.6,399.1,3426.6,-72.4,-64.41,OVERSOLD,Turning Up,False,,False,,,965.7,2.21,0.2164,1.052,0.7085,2026-06-16T21:44:04.548546,4
+CG,CG,USA,--,--,46.83,USD,69.85,33.0,16857.6,3265.8,-37.99,-42.49,Bearish,Strong BUY,False,,False,,,3213.2,,,2.411,,2026-06-16T21:44:04.745755,4
+CARG,CARG,USA,--,--,29.78,USD,39.42,24.5,2685.8,1308.2,-67.98,-60.25,OVERSOLD,Turning Up,False,,False,,,907.0,2.81,0.514,0.51,0.9278,2026-06-16T21:44:05.260252,4
+ORI,ORI,USA,--,--,39.09,USD,46.76,16.4,9520.5,1520.9,-37.91,-40.98,Bearish,Strong BUY,False,,False,,,9136.0,,0.0337,0.269,,2026-06-16T21:44:05.614136,4
+SON,SON,USA,--,--,51.22,USD,58.44,12.4,5064.1,1256.5,-33.9,-39.0,Bearish,Strong BUY,False,,False,,,7518.8,0.6,0.0656,1.27,0.2094,2026-06-16T21:44:07.716904,4
+CHDN,CHDN,USA,--,--,89.86,USD,118.46,24.1,6263.0,937.1,-39.64,-38.58,Bearish,Strong BUY,False,,False,,,2925.9,0.59,0.0814,5.089,0.3358,2026-06-16T21:44:09.405768,4
+BTG,BTG,USA,--,--,4.57,USD,6.29,27.3,6089.1,28962.8,-35.87,-31.52,Bearish,Turning Up,True,"div_bull (cena -4.1%, SMI +4.2)",False,,,3061.2,0.47,0.1583,0.166,0.5001,2026-06-16T21:44:10.425763,4
+CCK,CCK,USA,--,--,102.2,USD,116.62,12.4,11420.5,1103.8,-34.13,-50.14,Bearish,Strong BUY,False,,False,,,12365.0,0.66,0.1341,2.057,0.2203,2026-06-16T21:44:10.690838,4
+PH,PH,USA,--,--,938.51,USD,1034.96,9.3,118333.3,765.9,-29.05,-42.41,Bearish,Strong BUY,False,,False,,,19850.0,,,,0.3685,2026-06-16T21:44:12.792019,4
+PCVX,PCVX,USA,--,--,49.31,USD,65.0,24.1,7120.2,1431.7,-65.51,-61.48,OVERSOLD,Turning Up,False,,False,,,0.0,7.91,-0.2782,0.044,,2026-06-16T21:43:48.715692,3
+VRRM,VRRM,USA,--,--,5.02,USD,25.83,80.6,762.6,5157.9,-78.01,-77.2,OVERSOLD,Turning Up,False,,False,,,979.1,2.0,0.122,3.639,0.9225,2026-06-16T21:43:48.733562,3
+ARIS,ARIS,USA,--,--,17.33,USD,23.29,25.6,3576.9,1705.2,-42.06,-40.18,OVERSOLD,Turning Up,False,,False,,,927.7,1.58,0.0987,0.363,0.4961,2026-06-16T21:43:48.953827,3
+CART,CART,USA,--,--,44.21,USD,53.5,17.4,10390.7,3963.4,25.2,19.08,Bullish,BUY,False,,False,,,3742.0,2.4,0.1877,0.014,0.737,2026-06-16T21:43:50.160357,3
+USAS,USAS,USA,--,--,5.88,USD,10.5,44.0,1984.8,5637.4,-32.65,-33.59,Bearish,BUY,False,,False,,,117.9,1.66,-0.1315,0.251,0.1004,2026-06-16T21:43:50.523823,3
+CEG,CEG,USA,--,--,268.0,USD,412.7,35.1,95703.3,3411.8,-49.93,-42.93,OVERSOLD,Turning Up,False,,False,,,25533.0,1.31,0.0609,0.619,0.1838,2026-06-16T21:43:51.397616,3
+NXE,NXE,USA,--,--,10.62,USD,13.96,23.9,7029.5,6603.9,-52.97,-50.36,OVERSOLD,Turning Up,False,,False,,,0.0,1.82,-0.0864,0.32,,2026-06-16T21:43:51.545209,3
+NAT,NAT,USA,--,--,5.52,USD,6.34,12.9,1168.9,4087.5,-18.4,-19.55,Bearish,BUY,False,,False,,,291.7,1.94,0.0375,0.952,0.1959,2026-06-16T21:43:52.015643,3
+NRG,NRG,USA,--,--,132.1,USD,189.96,30.5,27871.3,2606.8,-65.06,-63.55,OVERSOLD,Turning Up,False,,False,,,30713.0,1.58,0.0903,9.888,0.1938,2026-06-16T21:43:52.324322,3
+DHT,DHT,USA,--,--,18.41,USD,20.55,10.4,2964.8,3503.4,-11.99,-21.86,Bearish,BUY,False,,False,,,498.4,2.47,0.1185,0.379,0.3831,2026-06-16T21:43:53.217796,3
+PAHC,PAHC,USA,--,--,31.87,USD,60.08,47.0,1292.8,367.1,-79.11,-76.44,OVERSOLD,Turning Up,False,,False,,,1296.2,1.25,0.0785,2.666,0.3085,2026-06-16T21:43:54.498793,3
+SBSW,SBSW,USA,--,--,10.76,USD,21.29,49.5,7783.5,5377.4,-53.21,-51.39,OVERSOLD,Turning Up,False,,False,,,129677.0,0.86,0.2547,1.111,0.2368,2026-06-16T21:43:54.565301,3
+MRX,MRX,USA,--,--,61.45,USD,63.71,3.5,4420.2,1093.3,69.35,68.92,OVERBOUGHT,BUY,False,,False,,,3629.8,1.07,1.0548,8.099,0.4699,2026-06-16T21:43:55.236249,3
+PTY,PTY,USA,--,--,11.89,USD,14.69,19.1,2520.5,1119.4,-0.24,1.63,Bearish,Turning Up,True,"div_bull (cena -1.1%, SMI +38.2)",False,,,275.3,,,0.115,,2026-06-16T21:43:55.353299,3
+BETR,BETR,USA,--,--,29.25,USD,94.06,68.9,551.9,529.3,-68.01,-65.72,OVERSOLD,Turning Up,False,,False,,,206.9,1.17,-0.9884,16.548,-0.1193,2026-06-16T21:43:55.664712,3
+TYRA,TYRA,USA,--,--,28.21,USD,40.65,30.6,1677.7,959.6,-64.49,-57.9,OVERSOLD,Turning Up,False,,False,,,0.0,14.67,-0.5605,0.022,,2026-06-16T21:43:57.063762,3
+PWP,PWP,USA,--,--,16.49,USD,25.92,36.4,1202.7,1137.7,-62.74,-56.15,OVERSOLD,Turning Up,False,,False,,,750.9,6.8,0.0904,,0.4332,2026-06-16T21:43:57.638714,3
+TM,TM,USA,--,--,178.19,USD,248.9,28.4,210995.7,440.4,-75.94,-74.74,OVERSOLD,Turning Up,False,,False,,,50684952.0,1.12,0.0492,1.082,0.167,2026-06-16T21:43:58.894712,3
+KRMN,KRMN,USA,--,--,51.7,USD,118.38,56.3,6851.6,2427.9,-84.56,-83.98,OVERSOLD,Turning Up,False,,False,,,471.5,3.17,0.0397,1.535,0.403,2026-06-16T21:43:59.252589,3
+ADEA,ADEA,USA,--,--,31.8,USD,34.34,7.4,3507.3,1860.7,23.29,21.7,Bullish,BUY,False,,False,,,443.4,3.75,0.1776,0.89,1.6936,2026-06-16T21:43:59.877522,3
+ROAD,ROAD,USA,--,--,122.01,USD,151.0,19.2,6897.8,566.8,-42.37,-40.15,OVERSOLD,Turning Up,False,,False,,,2812.4,1.34,0.0726,1.852,0.1561,2026-06-16T21:44:01.287286,3
+TEL,TEL,USA,--,--,217.0,USD,252.56,14.1,63341.4,2581.8,-34.16,-36.72,Bearish,BUY,False,,False,,,17262.0,1.03,0.1041,0.462,0.3522,2026-06-16T21:44:01.998995,3
+IMMX,IMMX,USA,--,--,8.74,USD,11.61,24.7,622.2,1029.3,-42.18,-36.84,OVERSOLD,Turning Up,False,,False,,,0.0,10.01,-37.3881,0.011,,2026-06-16T21:44:02.505114,3
+CCJ,CCJ,USA,--,--,107.88,USD,135.24,20.2,46985.3,3209.4,-46.95,-44.23,OVERSOLD,Turning Up,False,,False,,,3481.9,1.52,0.0581,0.144,0.2787,2026-06-16T21:44:02.735407,3
+UBER,UBER,USA,--,--,73.25,USD,101.99,28.2,149107.6,17619.3,-45.69,-43.17,OVERSOLD,Turning Up,False,,False,,,52017.0,1.14,0.1313,0.447,0.3975,2026-06-16T21:44:02.752816,3
+NIQ,NIQ,USA,--,--,8.38,USD,20.39,58.9,2473.2,1526.8,-80.96,-79.96,OVERSOLD,Turning Up,False,,False,,,4198.4,1.03,0.0291,3.92,0.5565,2026-06-16T21:44:05.779423,3
+HELP,HELP,USA,--,--,4.29,USD,9.83,56.4,214.0,981.2,-62.84,-62.34,OVERSOLD,Turning Up,False,,False,,,0.0,7.75,-1.1068,0.0,,2026-06-16T21:44:06.058719,3
+SGHC,SGHC,USA,--,--,13.65,USD,14.38,5.1,6935.2,3433.4,56.99,54.87,OVERBOUGHT,BUY,False,,False,,,2231.0,1.94,0.6996,0.101,0.528,2026-06-16T21:44:06.916971,3
+QTWO,QTWO,USA,--,--,45.13,USD,96.68,53.3,2825.2,798.0,-60.84,-57.29,OVERSOLD,Turning Up,False,,False,,,794.8,1.02,0.1144,0.524,0.5406,2026-06-16T21:44:07.123328,3
+AAUC,AAUC,USA,--,--,26.93,USD,32.2,16.4,3390.0,737.8,-60.2,-58.68,OVERSOLD,Turning Up,False,,False,,,1331.8,0.63,0.2784,0.417,0.3803,2026-06-16T21:44:08.059688,3
+ICE,ICE,USA,--,--,141.28,USD,189.35,25.4,79895.6,3563.8,-70.39,-67.51,OVERSOLD,Turning Up,False,,False,,,12640.0,1.02,0.0746,0.701,0.5616,2026-06-16T21:44:09.548338,3
+TPC,TPC,USA,--,--,76.19,USD,100.0,23.8,4022.2,513.7,-62.04,-55.7,OVERSOLD,Turning Up,False,,False,,,5543.0,1.27,0.1368,0.334,0.1168,2026-06-16T21:44:09.674017,3
+ORIC,ORIC,USA,--,--,8.31,USD,14.93,44.3,860.2,1887.8,-60.69,-59.6,OVERSOLD,Turning Up,False,,False,,,0.0,14.13,-0.3296,0.009,,2026-06-16T21:44:10.324683,3
+MBX,MBX,USA,--,--,40.09,USD,45.85,12.6,1908.2,615.3,-15.55,-23.03,Bearish,BUY,False,,False,,,0.0,24.62,-0.2632,0.002,,2026-06-16T21:44:11.107341,3
+CWK,CWK,USA,--,--,13.44,USD,17.4,22.8,3149.0,1695.4,-15.14,-16.59,Bearish,BUY,False,,False,,,10288.2,1.1,0.0824,1.532,0.1827,2026-06-16T21:44:11.906221,3
+BHP,BHP,USA,--,--,92.51,USD,93.7,1.3,235007.3,2860.8,59.7,57.17,OVERBOUGHT,BUY,False,,False,,,51262.0,1.11,0.1423,0.53,0.7165,2026-06-16T21:43:48.807114,2
+ICHR,ICHR,USA,--,--,85.77,USD,92.56,7.3,2990.5,954.8,63.86,63.1,OVERBOUGHT,BUY,False,,False,,,947.7,1.38,-0.0549,0.241,0.0926,2026-06-16T21:43:50.440275,2
+AYA,AYA,USA,--,--,21.05,USD,22.0,4.3,3017.5,331.9,32.91,30.59,Bullish,BUY,False,,False,,,202.1,1.65,0.0997,0.274,0.4115,2026-06-16T21:43:52.991369,2
+MNRO,MNRO,USA,--,--,16.0,USD,23.91,33.1,480.4,998.7,-27.98,-31.59,Bearish,BUY,False,,False,,,1157.2,0.16,0.0136,0.822,0.3502,2026-06-16T21:43:53.452946,2
+MITK,MITK,USA,--,--,17.07,USD,17.97,5.0,770.9,1034.6,36.4,35.17,Bullish,BUY,False,,False,,,179.7,1.19,0.1393,0.646,0.8509,2026-06-16T21:43:53.542797,2
+BBD,BBD,USA,--,--,3.46,USD,4.3,19.5,36574.7,31642.3,-66.49,-61.88,OVERSOLD,Turning Up,False,,False,,,117814.2,,,2.515,,2026-06-16T21:43:54.749657,2
+MIRM,MIRM,USA,--,--,101.55,USD,114.99,11.7,6192.6,948.8,-11.71,-8.88,Bearish,Turning Up,False,,False,,,521.3,2.55,-0.065,1.015,0.8077,2026-06-16T21:43:55.073545,2
+PHAT,PHAT,USA,--,--,10.43,USD,18.31,43.0,831.9,1213.8,-37.85,-35.07,Bearish,Turning Up,False,,False,,,175.1,1.69,,,0.8709,2026-06-16T21:43:55.223154,2
+ANIP,ANIP,USA,--,--,83.0,USD,99.5,16.6,1887.0,347.1,16.22,14.61,Bullish,BUY,False,,False,,,883.4,2.19,0.0758,1.141,0.6136,2026-06-16T21:43:56.364695,2
+OCUL,OCUL,USA,--,--,8.94,USD,16.44,45.6,1957.5,3011.1,-2.68,-1.68,Bearish,Turning Up,False,,False,,,52.0,15.32,-10.5648,0.118,0.8735,2026-06-16T21:43:57.354934,2
+MTCH,MTCH,USA,--,--,36.52,USD,39.2,6.8,8518.9,4600.3,22.28,27.12,Bullish,Turning Up,False,,False,,,3487.2,1.42,0.3088,,0.728,2026-06-16T21:43:59.866754,2
+KMPR,KMPR,USA,--,--,25.93,USD,65.32,60.3,1526.6,1089.8,-56.29,-53.64,OVERSOLD,Turning Up,False,,False,,,4782.9,,0.0133,0.352,,2026-06-16T21:44:00.858704,2
+QNST,QNST,USA,--,--,12.95,USD,17.13,24.4,743.9,789.8,3.58,-0.41,Bullish,BUY,False,,False,,,1093.7,1.51,0.031,0.042,0.1014,2026-06-16T21:44:02.443294,2
+DCTH,DCTH,USA,--,--,11.54,USD,15.41,25.1,398.4,413.6,33.42,32.68,Bullish,BUY,False,,False,,,85.2,9.98,0.0073,0.008,0.8616,2026-06-16T21:44:03.470357,2
+UTZ,UTZ,USA,--,--,7.24,USD,14.67,50.6,641.0,1902.0,-56.53,-56.26,OVERSOLD,Turning Up,False,,False,,,1438.8,0.82,0.0044,1.441,0.249,2026-06-16T21:44:04.084596,2
+ZWS,ZWS,USA,--,--,49.57,USD,53.76,7.8,8305.1,1047.2,-10.96,-7.91,Bearish,Turning Up,False,,False,,,1695.9,2.07,0.1022,0.345,0.451,2026-06-16T21:44:04.672800,2
+CLH,CLH,USA,--,--,290.62,USD,316.98,8.3,15358.1,531.9,-34.93,-29.91,Bearish,Turning Up,False,,False,,,6030.8,2.0,0.0881,1.106,0.3128,2026-06-16T21:44:04.908137,2
+CAT,CAT,USA,--,--,945.46,USD,946.83,0.1,435471.3,2522.1,71.26,69.33,OVERBOUGHT,BUY,False,,False,,,67589.0,0.94,0.1629,2.033,0.3178,2026-06-16T21:44:08.354844,2
+SABR,SABR,USA,--,--,1.98,USD,3.52,43.7,782.7,5916.1,-5.6,-5.38,Bearish,Turning Up,False,,False,,,2771.0,1.07,0.1183,,0.3078,2026-06-16T21:44:12.089273,2
+OPEN,OPEN,USA,--,--,4.75,USD,10.87,56.3,4582.5,36214.9,-43.36,-39.81,OVERSOLD,Turning Up,False,,False,,,4371.0,,,,0.0801,2026-06-16T21:44:12.667515,2
+BWXT,BWXT,USA,--,--,196.93,USD,241.82,18.6,18041.7,1006.1,-56.05,-52.25,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.810136,2
+REAX,REAX,USA,--,--,1.72,USD,5.41,68.2,369.1,2989.3,-79.31,-77.74,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.818161,2
+NMRK,NMRK,USA,--,--,15.32,USD,19.83,22.8,2719.7,1521.9,-24.2,-26.43,Bearish,BUY,False,,False,,,,,,,,2026-06-16T21:44:12.824797,2
+ALSN,ALSN,USA,--,--,121.03,USD,137.62,12.1,10037.7,870.6,-27.21,-28.5,Bearish,BUY,False,,False,,,,,,,,2026-06-16T21:44:12.846811,2
+COF,COF,USA,--,--,200.62,USD,259.64,22.7,124844.4,4675.4,-18.98,-26.87,Bearish,BUY,False,,False,,,,,,,,2026-06-16T21:44:12.857463,2
+EQX,EQX,USA,--,--,11.54,USD,18.96,39.1,9106.4,10735.8,-58.48,-56.29,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:14.508498,2
+ORLA,ORLA,USA,--,--,11.57,USD,21.98,47.4,4003.1,3200.4,-73.38,-72.67,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:14.543082,2
+DG.PA,DG.PA,EU,--,--,129.2,EUR,143.15,9.7,71584.5,945.3,-17.5,-19.1,Bearish,BUY,False,,False,,,,,,,,2026-06-16T21:44:15.519656,2
+BCAX,BCAX,USA,--,--,21.95,USD,24.25,9.5,1442.2,537.1,9.96,14.09,Bullish,Turning Up,False,,False,,,0.0,14.58,-0.5096,0.004,,2026-06-16T21:43:48.346126,1
+BX,BX,USA,--,--,127.87,USD,190.09,32.7,156290.6,6818.3,18.1,10.87,Bullish,BUY,False,,False,,,12410.0,,,1.536,,2026-06-16T21:43:51.051095,1
+RMAX,RMAX,USA,--,--,9.64,USD,11.62,17.0,204.7,691.4,26.65,27.42,Bullish,Turning Up,False,,False,,,291.6,1.69,0.0967,1.016,0.7502,2026-06-16T21:43:51.321365,1
+HIO,HIO,USA,--,--,3.66,USD,4.05,9.6,348.1,333.5,40.79,38.34,OVERBOUGHT,BUY,False,,False,,,26.7,,,0.0,,2026-06-16T21:43:54.267836,1
+INSW,INSW,USA,--,--,81.97,USD,92.66,11.5,4057.9,546.6,18.15,22.68,Bullish,Turning Up,False,,False,,,843.3,3.71,0.1249,0.285,0.4229,2026-06-16T21:43:57.430967,1
+IDA,IDA,USA,--,--,143.13,USD,149.73,4.4,7930.6,514.2,8.44,7.33,Bullish,BUY,False,,False,,,1813.0,0.68,0.0388,1.026,0.1979,2026-06-16T21:43:59.033090,1
+WDC,WDC,USA,--,--,681.08,USD,658.8,-3.4,234756.1,7789.0,70.78,71.44,OVERBOUGHT,Turning Up,False,,False,,,9520.0,0.84,0.3292,0.85,0.3878,2026-06-16T21:43:59.712948,1
+SYF,SYF,USA,--,--,75.29,USD,88.77,15.2,25325.3,3788.5,-1.24,-0.25,Bearish,Turning Up,False,,False,,,14981.0,,,0.906,,2026-06-16T21:43:59.976325,1
+ARDT,ARDT,USA,--,--,9.26,USD,15.48,40.2,1327.4,449.7,9.15,12.35,Bullish,Turning Up,False,,False,,,6324.3,1.85,0.074,,0.4085,2026-06-16T21:44:00.067679,1
+TBLA,TBLA,USA,--,--,5.04,USD,5.26,4.2,1377.6,2345.7,61.17,61.68,OVERBOUGHT,Turning Up,False,,False,,,1912.0,1.07,0.0455,0.214,0.2979,2026-06-16T21:44:00.548537,1
+OEC,OEC,USA,--,--,7.94,USD,11.62,31.7,447.7,543.4,36.81,36.51,Bullish,BUY,False,,False,,,1806.7,0.59,0.0831,2.891,0.1991,2026-06-16T21:44:00.556825,1
+BULL,BULL,USA,--,--,6.72,USD,18.32,63.3,3573.8,13676.4,22.55,22.99,Bullish,Turning Up,False,,False,,,571.0,1.33,0.07,0.076,0.7745,2026-06-16T21:44:05.322512,1
+WEST,WEST,USA,--,--,9.19,USD,9.81,6.3,896.6,632.7,72.17,70.94,OVERBOUGHT,BUY,False,,False,,,1189.0,0.48,-0.0478,2.141,0.1268,2026-06-16T21:44:06.922491,1
+OGE,OGE,USA,--,--,47.87,USD,50.13,4.5,9879.1,1560.6,5.48,3.7,Bullish,BUY,False,,False,,,3260.1,0.49,0.0506,1.137,0.4505,2026-06-16T21:44:07.793225,1
+IVR,IVR,USA,--,--,8.19,USD,9.5,13.8,804.3,2204.0,26.43,22.14,Bullish,BUY,False,,False,,,119.8,,,0.0,,2026-06-16T21:44:08.399949,1
+CBT,CBT,USA,--,--,88.31,USD,89.46,1.3,4558.7,424.5,65.57,63.19,OVERBOUGHT,BUY,False,,False,,,3713.0,,,,0.2532,2026-06-16T21:44:10.832597,1
+QSR,QSR,USA,--,--,76.29,USD,81.96,6.9,26471.4,3617.3,-21.14,-13.76,Bearish,Turning Up,False,,False,,,9434.0,0.91,0.0825,4.321,0.3385,2026-06-16T21:44:11.951620,1
+WMT,WMT,USA,--,--,121.03,USD,135.16,10.5,963166.3,20537.0,-33.07,-28.47,Bearish,Turning Up,False,,False,,,713163.0,0.24,0.1354,0.674,0.2493,2026-06-16T21:44:12.212511,1
+NI,NI,USA,--,--,47.72,USD,48.98,2.6,22878.8,4119.7,16.04,14.66,Bullish,BUY,False,,False,,,,,,,,2026-06-16T21:44:12.827582,1
+EMA,EMA,USA,--,--,52.55,USD,54.06,2.8,16075.0,383.5,18.76,21.4,Bullish,Turning Up,False,,False,,,8776.0,0.54,0.0504,1.604,0.4364,2026-06-16T21:43:48.187612,0
+ARR,ARR,USA,--,--,17.04,USD,19.31,11.8,2113.7,3085.5,54.07,55.01,OVERBOUGHT,Turning Up,False,,False,,,332.0,,,0.0,,2026-06-16T21:43:58.166383,0
+HSBC,HSBC,USA,--,--,94.45,USD,95.61,1.2,323929.7,1904.3,64.74,65.11,OVERBOUGHT,Turning Up,False,,False,,,66224.0,,,1.292,,2026-06-16T21:44:09.040248,0
+NBIS,NBIS,USA,--,--,265.1,USD,278.84,4.9,67308.4,18105.0,64.08,65.32,OVERBOUGHT,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.751689,0
+TTWO,TTWO,USA,--,--,229.97,USD,264.79,13.2,42697.8,2053.1,9.16,15.1,Bullish,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.776744,0
+HBM,HBM,USA,--,--,29.1,USD,32.15,9.5,11558.4,5756.6,32.68,33.34,Bullish,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.829512,0

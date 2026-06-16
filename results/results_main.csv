@@ -1,10 +1,12 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-HLNE,Hamilton Lane Incorporated,USA,United States,Financial Services,83.11,USD,161.13,48.4,3631.7,887.2,-68.76,-69.48,OVERSOLD,Strong BUY,True,"div_bull (cena -7.7%, SMI +14.4)",False,,5.92,759.0,1.62,0.1707,0.389,0.6988,2026-06-15T17:34:10.979223,10
-SCZM,Santacruz Silver Mining Ltd.,USA,Canada,Basic Materials,7.65,USD,17.65,56.6,709.5,569.6,-46.49,-47.63,OVERSOLD,Strong BUY,True,"div_bull (cena -21.6%, SMI +8.2)",False,,0.65,326.4,1.04,0.1918,0.29,0.3352,2026-06-15T17:34:25.618776,10
-FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,9.42,USD,13.85,32.0,2853.9,6326.9,-36.6,-36.59,Bearish,Strong BUY,True,"div_bull (cena -8.3%, SMI +0.5)",False,,1.08,947.1,2.5,0.1718,0.126,0.493,2026-06-15T17:34:33.181810,9
-CDE,CDE,USA,--,--,18.58,USD,27.77,33.1,19149.2,26555.7,-30.73,-37.63,Bearish,Strong BUY,True,"div_bull (cena -6.9%, SMI +8.7)",False,,,2070.1,1.66,0.1779,0.106,0.4447,2026-06-15T17:34:09.510723,8
-RVLV,"Revolve Group, Inc.",USA,United States,Consumer Cyclical,21.02,USD,31.68,33.6,1504.1,1081.4,-50.34,-53.07,OVERSOLD,Strong BUY,False,,False,,0.9,1225.7,1.71,0.2278,0.063,0.535,2026-06-15T17:34:18.175317,8
-GFI,Gold Fields Limited,USA,South Africa,Basic Materials,39.41,USD,61.64,36.1,35249.0,3399.9,-63.77,-66.22,OVERSOLD,Strong BUY,False,,False,,3.94,8751.3,1.33,0.2582,0.382,0.5529,2026-06-15T17:34:21.305023,8
-ADMA,ADMA Biologics Inc,USA,United States,Healthcare,8.27,USD,20.97,60.6,1915.6,6963.6,-68.53,-68.79,OVERSOLD,Strong BUY,False,,False,,0.68,510.2,3.74,0.3297,0.167,0.5739,2026-06-15T17:34:22.526738,8
-PYPL,"PayPal Holdings, Inc.",USA,United States,Financial Services,43.04,USD,79.5,45.9,37969.3,15347.5,-65.94,-60.08,OVERSOLD,Turning Up,False,,False,,5.33,33172.0,1.29,0.2071,0.493,0.4662,2026-06-15T17:34:10.753220,5
-PDD,PDD,USA,--,--,83.87,USD,139.41,39.8,119380.3,8844.2,-73.17,-71.31,OVERSOLD,Turning Up,False,,False,,,431845.7,2.43,0.2478,0.013,0.5628,2026-06-15T17:34:09.092039,4
+HLNE,HLNE,USA,--,--,87.22,USD,161.13,45.9,3811.3,889.2,-62.82,-66.51,OVERSOLD,Strong BUY,True,"div_bull (cena -7.7%, SMI +14.4)",False,,,759.0,1.62,0.1707,0.389,0.6988,2026-06-16T21:44:05.452271,9
+FSM,FSM,USA,--,--,9.69,USD,13.85,30.0,2935.7,6299.6,-32.47,-34.52,Bearish,Strong BUY,True,"div_bull (cena -8.3%, SMI +0.5)",False,,,947.1,2.5,0.1718,0.126,0.493,2026-06-16T21:43:51.116462,8
+CDE,CDE,USA,--,--,18.79,USD,27.77,32.3,19363.7,26698.0,-29.69,-37.11,Bearish,Strong BUY,True,"div_bull (cena -6.9%, SMI +8.7)",False,,,2070.1,1.66,0.1779,0.106,0.4447,2026-06-16T21:44:01.212100,8
+GFI,GFI,USA,--,--,39.63,USD,61.64,35.7,35445.8,3397.0,-63.42,-66.05,OVERSOLD,Strong BUY,False,,False,,,8751.3,1.33,0.2582,0.382,0.5529,2026-06-16T21:44:07.562415,7
+BMI,BMI,USA,--,--,135.38,USD,251.54,46.2,3951.1,578.8,-32.55,-42.52,Bearish,Strong BUY,False,,False,,,916.7,2.36,0.2307,0.0,0.4168,2026-06-16T21:43:57.068071,6
+DOCS,DOCS,USA,--,--,20.89,USD,76.51,72.7,3820.2,3856.1,-27.71,-27.4,Bearish,Turning Up,True,"div_bull (cena -9.9%, SMI +70.9)",False,,,644.9,6.09,0.2249,0.011,0.8909,2026-06-16T21:43:53.219836,5
+PYPL,PYPL,USA,--,--,43.65,USD,79.5,45.1,38503.9,15481.7,-63.62,-58.92,OVERSOLD,Turning Up,False,,False,,,33172.0,1.29,0.2071,0.493,0.4662,2026-06-16T21:43:48.874718,4
+PHAT,PHAT,USA,--,--,10.43,USD,18.31,43.0,831.9,1213.8,-37.85,-35.07,Bearish,Turning Up,False,,False,,,175.1,1.69,,,0.8709,2026-06-16T21:43:55.223154,2
+REAX,REAX,USA,--,--,1.72,USD,5.41,68.2,369.1,2989.3,-79.31,-77.74,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:12.818161,2
+EQX,EQX,USA,--,--,11.54,USD,18.96,39.1,9106.4,10735.8,-58.48,-56.29,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:14.508498,2
+ORLA,ORLA,USA,--,--,11.57,USD,21.98,47.4,4003.1,3200.4,-73.38,-72.67,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-16T21:44:14.543082,2

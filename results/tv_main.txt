@@ -1,16 +1,18 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-15 17:34 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-06-16 21:44 UTC
+### Liczba tickerow: 11
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-ADMA  ### Strong BUY | -60.6% | Healthcare
-SCZM  ### Strong BUY | -56.6% | Basic Materials
-HLNE  ### Strong BUY | -48.4% | Financial Services
-GFI  ### Strong BUY | -36.1% | Basic Materials
-RVLV  ### Strong BUY | -33.6% | Consumer Cyclical
-CDE  ### Strong BUY | -33.1% | --
-FSM  ### Strong BUY | -32.0% | Basic Materials
-### ── Turning Up (2) ──
-PYPL  ### Turning Up | -45.9% | Financial Services
-PDD  ### Turning Up | -39.8% | --
+### ── Strong BUY (5) ──
+BMI  ### Strong BUY | -46.2% | --
+HLNE  ### Strong BUY | -45.9% | --
+GFI  ### Strong BUY | -35.7% | --
+CDE  ### Strong BUY | -32.3% | --
+FSM  ### Strong BUY | -30.0% | --
+### ── Turning Up (6) ──
+DOCS  ### Turning Up | -72.7% | --
+REAX  ### Turning Up | -68.2% | --
+ORLA  ### Turning Up | -47.4% | --
+PYPL  ### Turning Up | -45.1% | --
+PHAT  ### Turning Up | -43.0% | --
+EQX  ### Turning Up | -39.1% | --
