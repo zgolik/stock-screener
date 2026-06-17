@@ -1,18 +1,20 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-16 21:44 UTC
-### Liczba tickerow: 11
+### Wygenerowano: 2026-06-17 19:46 UTC
+### Liczba tickerow: 13
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-BMI  ### Strong BUY | -46.2% | --
-HLNE  ### Strong BUY | -45.9% | --
-GFI  ### Strong BUY | -35.7% | --
-CDE  ### Strong BUY | -32.3% | --
-FSM  ### Strong BUY | -30.0% | --
-### ── Turning Up (6) ──
-DOCS  ### Turning Up | -72.7% | --
-REAX  ### Turning Up | -68.2% | --
-ORLA  ### Turning Up | -47.4% | --
-PYPL  ### Turning Up | -45.1% | --
-PHAT  ### Turning Up | -43.0% | --
-EQX  ### Turning Up | -39.1% | --
+### ── Strong BUY (6) ──
+VITL  ### Strong BUY | -79.2% | --
+NKE  ### Strong BUY | -44.7% | Consumer Cyclical
+LRMR  ### Strong BUY | -44.4% | --
+LMND  ### Strong BUY | -42.7% | --
+CDE  ### Strong BUY | -36.2% | --
+NU  ### Strong BUY | -32.3% | --
+### ── Turning Up (7) ──
+AVXL  ### Turning Up | -81.1% | --
+AKBA  ### Turning Up | -75.4% | --
+WVE  ### Turning Up | -72.8% | --
+TIGR  ### Turning Up | -65.3% | Financial Services
+CSAN  ### Turning Up | -54.5% | --
+DFIN  ### Turning Up | -40.1% | --
+TENX  ### Turning Up | -35.7% | --
