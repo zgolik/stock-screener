@@ -1,12 +1,22 @@
 name: Stock Screener SMI
+
 on:
   schedule:
-    - cron: '0 11 * * 1-5'
+    # Backup. Niezawodne odpalanie zrob przez zewnetrzny workflow_dispatch (cron-job.org).
+    # Minuta != 0 i nietypowa godzina = mniej zatloczony slot, mniejsze opoznienia.
+    - cron: '23 6 * * 1-5'
   workflow_dispatch:
+
 permissions:
   contents: write
   pages: write
   id-token: write
+
+# Zapobiega kolizji rownoleglych deployow Pages.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   run-screener:
     runs-on: ubuntu-latest
@@ -25,7 +35,9 @@ jobs:
           cache: 'pip'
 
       - name: Install dependencies
-        run: pip install yfinance pandas numpy requests
+        # Piny zakresowe = stabilnosc (yfinance czesto psuje sie miedzy wydaniami).
+        # Jak potwierdzisz konkretna dzialajaca wersje, ustaw ja na sztywno (np. yfinance==0.2.65).
+        run: pip install "yfinance>=0.2.40,<0.3" "pandas>=2.0,<3" "numpy<2.1" requests
 
       - name: Run screener
         run: python scripts/screener.py
@@ -35,12 +47,17 @@ jobs:
       - name: Save dated copy of results
         run: |
           DATE=$(date -u +'%Y-%m-%d')
-          cp results/results_main.json results/results_main_${DATE}.json
+          cp results/results_main.json "results/results_main_${DATE}.json"
           echo "✅ Saved results_main_${DATE}.json"
-          # Usun pliki starsze niz 30 dni zeby repo nie uroslo za bardzo
-          find results/ -name 'results_main_*.json' \
-            ! -name "results_main_${DATE}.json" \
-            -mtime +30 -delete && echo "🗑️ Pruned old dated files" || true
+          # Przycinanie po DACIE Z NAZWY pliku, nie po mtime.
+          # (actions/checkout resetuje mtime plikow do "teraz" -> -mtime +30 nigdy nie trafia)
+          CUTOFF=$(date -u -d '30 days ago' +'%Y-%m-%d')
+          for f in results/results_main_*.json; do
+            d=$(echo "$f" | grep -oE '[0-9]{4}-[0-9]{2}-[0-9]{2}' | head -1)
+            if [ -n "$d" ] && [ "$d" \< "$CUTOFF" ]; then
+              rm "$f" && echo "🗑️ Pruned $f"
+            fi
+          done
 
       - name: Verify output
         run: |
@@ -55,7 +72,14 @@ jobs:
           done
           FULL=$(python3 -c "import json; print(len(json.load(open('results/results.json'))))")
           MAIN=$(python3 -c "import json; print(len(json.load(open('results/results_main.json'))))")
-          echo "✅ Full Scan: ${FULL} | Screener glowny: ${MAIN} | Dated file: OK"
+          # Kontrola jakosci danych: ile rekordow bez sektora (objaw awarii/rate-limitu yfinance)
+          NULLSEC=$(python3 -c "import json; d=json.load(open('results/results_main.json')); print(sum(1 for x in d if x.get('sector') in (None,'','--')))")
+          echo "✅ Full Scan: ${FULL} | Screener glowny: ${MAIN} | Bez sektora: ${NULLSEC}/${MAIN}"
+          # Twardy blad tylko gdy WSZYSTKIE rekordy bez sektora = dane sa smieciowe, nie commituj.
+          if [ "$MAIN" -gt 0 ] && [ "$NULLSEC" -ge "$MAIN" ]; then
+            echo "BLAD: wszystkie rekordy bez sektora - prawdopodobnie awaria yfinance. Przerywam."
+            exit 1
+          fi
 
       - name: Generate Claude prompt file
         run: |
@@ -66,9 +90,18 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add results/
-          git diff --staged --quiet || \
+          if git diff --staged --quiet; then
+            echo "Brak zmian do commitu"
+          else
             git commit -m "📊 SMI scan $(date -u +'%Y-%m-%d %H:%M UTC')"
-          git push
+            # Odporny push: rebase + retry na wypadek wyscigu z innym commitem.
+            for i in 1 2 3; do
+              if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" && git push; then
+                echo "Push OK (proba $i)"; break
+              fi
+              echo "Push retry $i..."; sleep 5
+            done
+          fi
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
