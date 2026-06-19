@@ -1,23 +1,22 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-18 11:36 UTC
-### Liczba tickerow: 16
+### Wygenerowano: 2026-06-19 17:43 UTC
+### Liczba tickerow: 15
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (11) ──
-VITL  ### Strong BUY | -79.6% | Consumer Defensive
-WVE  ### Strong BUY | -72.6% | --
-GOTU  ### Strong BUY | -60.4% | --
-NMRA  ### Strong BUY | -58.1% | --
-SCZM  ### Strong BUY | -57.6% | --
-BMI  ### Strong BUY | -46.5% | Technology
-LMND  ### Strong BUY | -42.7% | --
-AQST  ### Strong BUY | -41.3% | --
-GFI  ### Strong BUY | -36.9% | --
-NU  ### Strong BUY | -32.1% | --
-FSM  ### Strong BUY | -31.9% | --
-### ── Turning Up (5) ──
-AVXL  ### Turning Up | -80.9% | --
-HLNE  ### Turning Up | -49.5% | Financial Services
-ASM  ### Turning Up | -43.0% | --
-DFIN  ### Turning Up | -40.5% | --
-TENX  ### Turning Up | -35.4% | --
+### ── Strong BUY (9) ──
+BRBR  ### Strong BUY | -84.5% | --
+GOTU  ### Strong BUY | -60.0% | --
+NMRA  ### Strong BUY | -58.6% | --
+NKE  ### Strong BUY | -43.6% | --
+LMND  ### Strong BUY | -41.1% | --
+RKT  ### Strong BUY | -40.8% | --
+GERN  ### Strong BUY | -37.3% | --
+FSM  ### Strong BUY | -33.1% | --
+RVLV  ### Strong BUY | -31.2% | --
+### ── Turning Up (6) ──
+OCGN  ### Turning Up | -54.5% | --
+PFSI  ### Turning Up | -48.6% | --
+PAHC  ### Turning Up | -47.0% | --
+DFIN  ### Turning Up | -40.9% | --
+PHAT  ### Turning Up | -40.6% | --
+TENX  ### Turning Up | -34.7% | --
