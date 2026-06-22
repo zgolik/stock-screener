@@ -1,22 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-19 17:43 UTC
-### Liczba tickerow: 15
+### Wygenerowano: 2026-06-22 17:54 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (9) ──
-BRBR  ### Strong BUY | -84.5% | --
-GOTU  ### Strong BUY | -60.0% | --
-NMRA  ### Strong BUY | -58.6% | --
-NKE  ### Strong BUY | -43.6% | --
-LMND  ### Strong BUY | -41.1% | --
-RKT  ### Strong BUY | -40.8% | --
-GERN  ### Strong BUY | -37.3% | --
-FSM  ### Strong BUY | -33.1% | --
-RVLV  ### Strong BUY | -31.2% | --
-### ── Turning Up (6) ──
-OCGN  ### Turning Up | -54.5% | --
-PFSI  ### Turning Up | -48.6% | --
-PAHC  ### Turning Up | -47.0% | --
-DFIN  ### Turning Up | -40.9% | --
-PHAT  ### Turning Up | -40.6% | --
-TENX  ### Turning Up | -34.7% | --
+### ── Strong BUY (4) ──
+IVVD  ### Strong BUY | -69.4% | --
+TIGR  ### Strong BUY | -64.8% | Financial Services
+HLNE  ### Strong BUY | -49.5% | Financial Services
+ALEC  ### Strong BUY | -46.3% | --
+### ── Turning Up (2) ──
+FUTU  ### Turning Up | -49.9% | Financial Services
+PYPL  ### Turning Up | -46.9% | Financial Services
