@@ -1,7 +1,11 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-HLNE,Hamilton Lane Incorporated,USA,United States,Financial Services,81.44,USD,161.13,49.5,3558.9,913.8,-68.63,-69.47,OVERSOLD,Strong BUY,True,"div_bull (cena -5.9%, SMI +0.9)",False,,5.92,759.0,1.62,0.1707,0.389,0.6988,2026-06-22T17:54:00.900035,10
-TIGR,UP Fintech Holding Limited,USA,Singapore,Financial Services,4.76,USD,13.55,64.8,851.5,4649.7,-56.97,-57.2,OVERSOLD,Strong BUY,False,,False,,0.61,,,,,,2026-06-22T17:54:06.669982,6
-PYPL,"PayPal Holdings, Inc.",USA,United States,Financial Services,42.25,USD,79.5,46.9,37269.0,15636.6,-68.32,-64.91,OVERSOLD,Turning Up,False,,False,,5.33,33172.0,1.29,0.2071,0.493,0.4662,2026-06-22T17:53:56.132366,5
-FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,101.51,USD,202.53,49.9,14231.1,3407.7,-59.58,-58.36,OVERSOLD,Turning Up,False,,False,,9.06,22846.9,1.19,0.3851,0.437,0.8712,2026-06-22T17:54:02.937521,5
-ALEC,ALEC,USA,--,--,1.83,USD,3.4,46.3,202.6,657.7,-58.25,-59.22,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-22T17:54:06.618214,5
-IVVD,IVVD,USA,--,--,0.94,USD,3.07,69.4,276.7,3959.9,-68.61,-69.73,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-22T17:54:06.674070,5
+GSHD,GSHD,USA,--,--,39.01,USD,106.84,63.5,923.4,475.5,-63.81,-65.81,OVERSOLD,Strong BUY,True,"div_bull (cena -15.1%, SMI +17.7)",False,,,365.3,,0.1715,,,2026-06-22T21:29:34.884747,8
+KROS,KROS,USA,--,--,10.98,USD,22.55,51.3,217.3,359.2,-32.1,-37.76,Bearish,Strong BUY,True,"div_bull (cena -3.3%, SMI +14.4)",False,,,244.1,15.45,2.1191,0.056,,2026-06-22T21:29:50.629361,8
+AG,AG,USA,--,--,17.72,USD,32.04,44.7,8749.6,14814.6,-53.51,-53.89,OVERSOLD,Strong BUY,True,"div_bull (cena -14.3%, SMI +4.4)",False,,,,,,,,2026-06-22T21:29:55.744118,7
+FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,99.97,USD,202.53,50.6,14015.2,3407.7,-60.5,-58.82,OVERSOLD,Turning Up,False,,False,,9.06,22846.9,1.19,0.3851,0.437,0.8712,2026-06-22T21:29:52.505773,5
+GETY,GETY,USA,--,--,1.15,USD,3.21,64.2,481.8,1883.8,-25.47,-26.11,Bearish,Strong BUY,False,,True,,,,,,,,2026-06-22T21:29:55.690234,5
+CRVS,CRVS,USA,--,--,12.56,USD,26.95,53.4,1056.2,1490.0,-73.44,-73.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-22T21:29:57.430670,5
+JANX,JANX,USA,--,--,14.34,USD,35.34,59.4,874.5,1034.3,-40.45,-40.47,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-22T21:29:57.439757,5
+PYPL,PYPL,USA,--,--,42.34,USD,79.5,46.7,37348.3,15636.6,-67.64,-64.57,OVERSOLD,Turning Up,False,,False,,,33172.0,1.29,0.2071,0.493,0.4662,2026-06-22T21:29:40.554436,4
+ITRI,ITRI,USA,--,--,81.76,USD,142.0,42.4,3625.2,845.2,-69.37,-68.7,OVERSOLD,Turning Up,False,,False,,,2367.2,1.56,0.1649,0.739,0.3769,2026-06-22T21:29:47.594204,4
+ARLO,ARLO,USA,--,--,13.22,USD,19.94,33.7,1435.8,1281.3,-58.46,-55.22,OVERSOLD,Turning Up,False,,False,,,529.3,1.27,,0.053,0.4399,2026-06-22T21:29:43.362134,3
