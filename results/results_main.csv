@@ -1,14 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-GSHD,GSHD,USA,--,--,41.0,USD,106.84,61.6,970.5,471.6,-59.55,-63.67,OVERSOLD,Strong BUY,True,"div_bull (cena -15.1%, SMI +17.7)",False,,,365.3,,0.1715,,,2026-06-23T14:08:06.948004,8
-KROS,KROS,USA,--,--,11.27,USD,22.55,50.0,223.1,327.0,-28.33,-35.87,Bearish,Strong BUY,True,"div_bull (cena -3.3%, SMI +14.4)",False,,,244.1,15.45,2.1191,0.056,,2026-06-23T14:08:11.490310,8
-BBOT,BBOT,USA,--,--,7.95,USD,14.87,46.5,636.9,419.4,-44.04,-44.81,OVERSOLD,Strong BUY,True,"div_bull (cena -8.8%, SMI +12.1)",False,,,,12.34,,0.007,,2026-06-23T14:08:30.323129,8
-TENX,TENX,USA,--,--,12.76,USD,18.38,30.6,338.5,682.9,-48.51,-53.89,OVERSOLD,Strong BUY,False,,False,,,0.0,14.56,,0.005,,2026-06-23T14:08:08.760057,6
-SABS,SABS,USA,--,--,3.98,USD,6.6,39.6,304.7,794.1,-34.25,-46.44,Bearish,Strong BUY,True,"div_bull (cena -4.0%, SMI +7.6)",False,,,,,,,,2026-06-23T14:08:36.610368,6
-NMRA,NMRA,USA,--,--,1.54,USD,3.65,57.7,286.3,2050.9,-39.78,-51.77,Bearish,Strong BUY,False,,False,,,0.0,5.87,,0.53,,2026-06-23T14:08:05.797226,5
-TARA,TARA,USA,--,--,4.18,USD,7.82,46.6,234.7,697.7,-61.86,-62.77,OVERSOLD,Strong BUY,False,,False,,,0.0,,,,,2026-06-23T14:08:30.400135,5
-TIGR,TIGR,USA,--,--,4.73,USD,13.55,65.1,845.3,4595.3,-58.15,-57.79,OVERSOLD,Turning Up,False,,False,,,612.1,1.12,1.7118,0.2,0.6933,2026-06-23T14:08:13.519375,4
-JKHY,JKHY,USA,--,--,126.49,USD,193.39,34.6,8987.2,1372.4,-77.43,-77.35,OVERSOLD,Turning Up,False,,False,,,,1.27,,0.07,,2026-06-23T14:08:12.496633,3
-EIKN,EIKN,USA,--,--,10.14,USD,17.4,41.7,548.7,313.3,-36.11,-34.73,Bearish,Turning Up,True,"div_bull (cena -2.8%, SMI +56.7)",False,,,,,,,,2026-06-23T14:08:28.690561,3
-KMPR,KMPR,USA,--,--,25.61,USD,65.32,60.8,1507.8,962.9,-58.15,-56.97,OVERSOLD,Turning Up,False,,False,,,,,,0.352,,2026-06-23T14:08:35.648435,2
-ALXO,ALXO,USA,--,--,1.69,USD,2.66,36.5,227.4,1134.6,-41.15,-37.18,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-23T14:08:36.633182,2
-ITRI,ITRI,USA,--,--,81.1,USD,142.0,42.9,3595.9,808.0,-70.85,-69.44,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-23T14:08:36.650311,2
+VITL,"Vital Farms, Inc.",USA,United States,Consumer Defensive,10.84,USD,53.12,79.6,464.4,3274.3,-31.25,-41.41,Bearish,Strong BUY,True,"div_bull (cena -31.0%, SMI +7.4)",False,,1.04,759.4,1.61,0.1843,0.152,0.3762,2026-06-23T17:38:38.968909,9
+IRWD,IRWD,USA,--,--,3.85,USD,5.78,33.4,633.8,2191.2,-38.89,-36.67,Bearish,Strong BUY,False,,False,,,296.2,1.13,,,1.3864,2026-06-23T17:38:30.917573,5
+ITRI,"Itron, Inc.",USA,United States,Technology,81.58,USD,142.0,42.5,3617.4,808.0,-69.76,-68.9,OVERSOLD,Turning Up,False,,False,,6.26,2367.2,1.56,0.1649,0.739,0.3769,2026-06-23T17:38:44.246415,5
+JKHY,"Jack Henry & Associates, Inc.",USA,United States,Technology,125.75,USD,193.39,35.0,8934.6,1372.4,-78.48,-77.88,OVERSOLD,Turning Up,False,,False,,7.16,2375.3,1.27,0.1838,0.07,0.4271,2026-06-23T17:38:44.802967,5
+SRPT,SRPT,USA,--,--,17.56,USD,25.32,30.7,1853.4,3164.8,-55.3,-57.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-23T17:38:50.201293,5
+PALI,"Palisade Bio, Inc.",USA,United States,Healthcare,1.98,USD,2.86,30.9,343.2,3667.8,-54.87,-51.28,OVERSOLD,Turning Up,False,,False,,0.12,0.0,28.95,,0.001,,2026-06-23T17:38:38.228131,4
+KYTX,KYTX,USA,--,--,8.42,USD,13.67,38.4,511.9,948.4,-61.14,-56.7,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-23T17:38:50.238808,2

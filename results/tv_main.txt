@@ -1,20 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-23 14:08 UTC
-### Liczba tickerow: 13
+### Wygenerowano: 2026-06-23 17:38 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-GSHD  ### Strong BUY | -61.6% | --
-NMRA  ### Strong BUY | -57.7% | --
-KROS  ### Strong BUY | -50.0% | --
-TARA  ### Strong BUY | -46.6% | --
-BBOT  ### Strong BUY | -46.5% | --
-SABS  ### Strong BUY | -39.6% | --
-TENX  ### Strong BUY | -30.6% | --
-### ── Turning Up (6) ──
-TIGR  ### Turning Up | -65.1% | --
-KMPR  ### Turning Up | -60.8% | --
-ITRI  ### Turning Up | -42.9% | --
-EIKN  ### Turning Up | -41.7% | --
-ALXO  ### Turning Up | -36.5% | --
-JKHY  ### Turning Up | -34.6% | --
+### ── Strong BUY (3) ──
+VITL  ### Strong BUY | -79.6% | Consumer Defensive
+IRWD  ### Strong BUY | -33.4% | --
+SRPT  ### Strong BUY | -30.7% | --
+### ── Turning Up (4) ──
+ITRI  ### Turning Up | -42.5% | Technology
+KYTX  ### Turning Up | -38.4% | --
+JKHY  ### Turning Up | -35.0% | Technology
+PALI  ### Turning Up | -30.9% | Healthcare
