@@ -1,8 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-VITL,"Vital Farms, Inc.",USA,United States,Consumer Defensive,10.84,USD,53.12,79.6,464.4,3274.3,-31.25,-41.41,Bearish,Strong BUY,True,"div_bull (cena -31.0%, SMI +7.4)",False,,1.04,759.4,1.61,0.1843,0.152,0.3762,2026-06-23T17:38:38.968909,9
-IRWD,IRWD,USA,--,--,3.85,USD,5.78,33.4,633.8,2191.2,-38.89,-36.67,Bearish,Strong BUY,False,,False,,,296.2,1.13,,,1.3864,2026-06-23T17:38:30.917573,5
-ITRI,"Itron, Inc.",USA,United States,Technology,81.58,USD,142.0,42.5,3617.4,808.0,-69.76,-68.9,OVERSOLD,Turning Up,False,,False,,6.26,2367.2,1.56,0.1649,0.739,0.3769,2026-06-23T17:38:44.246415,5
-JKHY,"Jack Henry & Associates, Inc.",USA,United States,Technology,125.75,USD,193.39,35.0,8934.6,1372.4,-78.48,-77.88,OVERSOLD,Turning Up,False,,False,,7.16,2375.3,1.27,0.1838,0.07,0.4271,2026-06-23T17:38:44.802967,5
-SRPT,SRPT,USA,--,--,17.56,USD,25.32,30.7,1853.4,3164.8,-55.3,-57.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-23T17:38:50.201293,5
-PALI,"Palisade Bio, Inc.",USA,United States,Healthcare,1.98,USD,2.86,30.9,343.2,3667.8,-54.87,-51.28,OVERSOLD,Turning Up,False,,False,,0.12,0.0,28.95,,0.001,,2026-06-23T17:38:38.228131,4
-KYTX,KYTX,USA,--,--,8.42,USD,13.67,38.4,511.9,948.4,-61.14,-56.7,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-23T17:38:50.238808,2
+GSHD,GSHD,USA,--,--,42.07,USD,106.84,60.6,995.8,470.8,-56.41,-62.11,OVERSOLD,Strong BUY,True,"div_bull (cena -15.1%, SMI +17.7)",False,,,365.3,,0.1715,,,2026-06-24T17:43:50.007555,8
+VITL,VITL,USA,--,--,11.05,USD,53.12,79.2,473.5,3260.1,-29.61,-40.59,Bearish,Strong BUY,True,"div_bull (cena -31.0%, SMI +7.4)",False,,,759.4,1.61,0.1843,0.152,0.3762,2026-06-24T17:43:51.472157,8
+DFIN,"Donnelley Financial Solutions, ",USA,United States,Technology,41.17,USD,66.25,37.9,1028.5,306.6,-65.76,-67.66,OVERSOLD,Strong BUY,False,,False,,1.37,767.0,1.02,0.1978,0.409,0.6344,2026-06-24T17:43:59.439513,8
+IRWD,IRWD,USA,--,--,3.94,USD,5.78,31.8,648.6,2168.7,-36.2,-35.32,Bearish,Strong BUY,False,,False,,,296.2,1.13,,,1.3864,2026-06-24T17:43:54.548794,5
+RKT,RKT,USA,--,--,15.01,USD,24.36,38.4,42455.6,25764.5,-29.28,-39.16,Bearish,Strong BUY,False,,False,,,,,,,,2026-06-24T17:44:02.914829,4
+FVRR,Fiverr International Ltd.,USA,Israel,Communication Services,10.56,USD,30.66,65.6,379.5,892.9,-54.97,-52.76,OVERSOLD,Turning Up,False,,False,,0.77,430.9,,,,0.8157,2026-06-24T17:44:02.849729,3
+LDI,LDI,USA,--,--,1.2,USD,5.05,76.2,651.4,1882.2,-77.0,-75.07,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-24T17:44:02.899955,2
+KYTX,KYTX,USA,--,--,8.46,USD,13.67,38.1,514.3,947.3,-60.9,-56.58,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-24T17:44:02.936515,2

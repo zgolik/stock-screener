@@ -1,14 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-23 17:38 UTC
-### Liczba tickerow: 7
+### Wygenerowano: 2026-06-24 17:44 UTC
+### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (3) ──
-VITL  ### Strong BUY | -79.6% | Consumer Defensive
-IRWD  ### Strong BUY | -33.4% | --
-SRPT  ### Strong BUY | -30.7% | --
-### ── Turning Up (4) ──
-ITRI  ### Turning Up | -42.5% | Technology
-KYTX  ### Turning Up | -38.4% | --
-JKHY  ### Turning Up | -35.0% | Technology
-PALI  ### Turning Up | -30.9% | Healthcare
+### ── Strong BUY (5) ──
+VITL  ### Strong BUY | -79.2% | --
+GSHD  ### Strong BUY | -60.6% | --
+RKT  ### Strong BUY | -38.4% | --
+DFIN  ### Strong BUY | -37.9% | Technology
+IRWD  ### Strong BUY | -31.8% | --
+### ── Turning Up (3) ──
+LDI  ### Turning Up | -76.2% | --
+FVRR  ### Turning Up | -65.6% | Communication Services
+KYTX  ### Turning Up | -38.1% | --
