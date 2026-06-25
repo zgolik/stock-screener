@@ -1,9 +1,6 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-GSHD,GSHD,USA,--,--,42.07,USD,106.84,60.6,995.8,470.8,-56.41,-62.11,OVERSOLD,Strong BUY,True,"div_bull (cena -15.1%, SMI +17.7)",False,,,365.3,,0.1715,,,2026-06-24T17:43:50.007555,8
-VITL,VITL,USA,--,--,11.05,USD,53.12,79.2,473.5,3260.1,-29.61,-40.59,Bearish,Strong BUY,True,"div_bull (cena -31.0%, SMI +7.4)",False,,,759.4,1.61,0.1843,0.152,0.3762,2026-06-24T17:43:51.472157,8
-DFIN,"Donnelley Financial Solutions, ",USA,United States,Technology,41.17,USD,66.25,37.9,1028.5,306.6,-65.76,-67.66,OVERSOLD,Strong BUY,False,,False,,1.37,767.0,1.02,0.1978,0.409,0.6344,2026-06-24T17:43:59.439513,8
-IRWD,IRWD,USA,--,--,3.94,USD,5.78,31.8,648.6,2168.7,-36.2,-35.32,Bearish,Strong BUY,False,,False,,,296.2,1.13,,,1.3864,2026-06-24T17:43:54.548794,5
-RKT,RKT,USA,--,--,15.01,USD,24.36,38.4,42455.6,25764.5,-29.28,-39.16,Bearish,Strong BUY,False,,False,,,,,,,,2026-06-24T17:44:02.914829,4
-FVRR,Fiverr International Ltd.,USA,Israel,Communication Services,10.56,USD,30.66,65.6,379.5,892.9,-54.97,-52.76,OVERSOLD,Turning Up,False,,False,,0.77,430.9,,,,0.8157,2026-06-24T17:44:02.849729,3
-LDI,LDI,USA,--,--,1.2,USD,5.05,76.2,651.4,1882.2,-77.0,-75.07,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-24T17:44:02.899955,2
-KYTX,KYTX,USA,--,--,8.46,USD,13.67,38.1,514.3,947.3,-60.9,-56.58,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-24T17:44:02.936515,2
+GSHD,GSHD,USA,--,--,43.46,USD,106.84,59.3,1028.7,470.8,-52.8,-60.3,OVERSOLD,Strong BUY,True,"div_bull (cena -15.1%, SMI +17.7)",False,,,365.3,,0.1715,,,2026-06-25T18:45:52.516189,8
+IRWD,IRWD,USA,--,--,3.83,USD,5.78,33.7,630.5,2170.0,-39.74,-37.09,Bearish,Strong BUY,False,,False,,,296.2,1.13,,,1.3864,2026-06-25T18:45:45.067699,5
+CAST,CAST,USA,--,--,8.82,USD,33.0,73.3,364.6,9018.7,-13.04,-43.36,Bearish,Strong BUY,False,,False,,,0.5,4.14,,,0.3365,2026-06-25T18:45:45.226130,5
+DFIN,DFIN,USA,--,--,40.33,USD,66.25,39.1,1007.7,306.6,-68.27,-68.91,OVERSOLD,Strong BUY,False,,False,,,767.0,,,,0.6344,2026-06-25T18:46:06.634608,5
+RXST,RXST,USA,--,--,5.24,USD,13.65,61.6,217.1,816.6,-72.56,-72.15,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-25T18:46:06.877357,2
