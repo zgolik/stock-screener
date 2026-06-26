@@ -1,12 +1,25 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-25 18:46 UTC
-### Liczba tickerow: 5
+### Wygenerowano: 2026-06-26 17:31 UTC
+### Liczba tickerow: 18
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-CAST  ### Strong BUY | -73.3% | --
-GSHD  ### Strong BUY | -59.3% | --
-DFIN  ### Strong BUY | -39.1% | --
-IRWD  ### Strong BUY | -33.7% | --
-### ── Turning Up (1) ──
-RXST  ### Turning Up | -61.6% | --
+### ── Strong BUY (7) ──
+PTLO  ### Strong BUY | -62.6% | --
+SANA  ### Strong BUY | -48.5% | --
+BFAM  ### Strong BUY | -46.7% | Consumer Cyclical
+OCGN  ### Strong BUY | -46.1% | --
+DFIN  ### Strong BUY | -39.5% | Technology
+ABT  ### Strong BUY | -31.4% | --
+NU  ### Strong BUY | -30.1% | --
+### ── Turning Up (11) ──
+DOCS  ### Turning Up | -73.0% | --
+MNTN  ### Turning Up | -72.0% | --
+GETY  ### Turning Up | -70.7% | --
+IMRX  ### Turning Up | -54.9% | --
+LULU  ### Turning Up | -54.4% | --
+WAY  ### Turning Up | -52.6% | --
+TCOM  ### Turning Up | -48.8% | --
+NFLX  ### Turning Up | -44.7% | --
+DMRA  ### Turning Up | -39.1% | --
+CNMD  ### Turning Up | -38.0% | --
+PWP  ### Turning Up | -36.7% | --
