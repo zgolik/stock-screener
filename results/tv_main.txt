@@ -1,25 +1,20 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-26 17:31 UTC
-### Liczba tickerow: 18
+### Wygenerowano: 2026-06-29 14:15 UTC
+### Liczba tickerow: 13
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (7) ──
-PTLO  ### Strong BUY | -62.6% | --
-SANA  ### Strong BUY | -48.5% | --
-BFAM  ### Strong BUY | -46.7% | Consumer Cyclical
-OCGN  ### Strong BUY | -46.1% | --
-DFIN  ### Strong BUY | -39.5% | Technology
-ABT  ### Strong BUY | -31.4% | --
-NU  ### Strong BUY | -30.1% | --
-### ── Turning Up (11) ──
-DOCS  ### Turning Up | -73.0% | --
-MNTN  ### Turning Up | -72.0% | --
-GETY  ### Turning Up | -70.7% | --
-IMRX  ### Turning Up | -54.9% | --
-LULU  ### Turning Up | -54.4% | --
-WAY  ### Turning Up | -52.6% | --
-TCOM  ### Turning Up | -48.8% | --
-NFLX  ### Turning Up | -44.7% | --
-DMRA  ### Turning Up | -39.1% | --
-CNMD  ### Turning Up | -38.0% | --
-PWP  ### Turning Up | -36.7% | --
+TTD  ### Strong BUY | -79.0% | --
+CMPX  ### Strong BUY | -69.4% | --
+COUR  ### Strong BUY | -57.8% | --
+GSHD  ### Strong BUY | -55.3% | --
+AGBK  ### Strong BUY | -40.8% | Financial Services
+MQ  ### Strong BUY | -39.3% | --
+YALA  ### Strong BUY | -39.1% | Technology
+### ── Turning Up (6) ──
+PEGA  ### Turning Up | -54.7% | Technology
+NCNO  ### Turning Up | -53.2% | --
+TTAN  ### Turning Up | -41.7% | --
+FSCO  ### Turning Up | -36.1% | Financial Services
+RLX  ### Turning Up | -34.9% | --
+IRD  ### Turning Up | -30.8% | --

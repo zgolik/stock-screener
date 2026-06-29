@@ -7,142 +7,131 @@ Turning Up  = SMI osiągnął lokalne dno i odbija, jeszcze poniżej EMA (wczesn
 Filtr wejścia: dyskonto ≥ 30% vs 52-tygodniowego szczytu + EPS>0 + QR>1 + Cap>200M
 
 === METADANE SKANU ===
-Data:              2026-06-26
-Przeskanowano:     7123 spółek
-Sygnały SMI:       1104
-Po wszystkich filtrach: 195 (Strong BUY: 67, Turning Up: 59)
+Data:              2026-06-29
+Przeskanowano:     7106 spółek
+Sygnały SMI:       800
+Po wszystkich filtrach: 157 (Strong BUY: 60, Turning Up: 55)
 
 === SYGNAŁY STRONG BUY ===
-(posortowane od największego dyskonta; 67 spółek)
-  AIIO   | AIIO                         | --                   |     4.14 USD | dyskonto -92.6% | cap 577.2M | SMI -39.33 / EMA -44.5 | strefa Bearish      | EPS None | QR 0.06
-  VOR    | VOR                          | --                   |    15.27 USD | dyskonto -76.8% | cap 827.4M | SMI -33.09 / EMA -35.28 | strefa Bearish      | EPS None | QR 18.2
-  CAST   | FreeCast, Inc.               | Communication Servic |     7.75 USD | dyskonto -76.5% | cap 320.4M | SMI -18.56 / EMA -46.12 | strefa Bearish      | EPS -0.33 | QR 4.14
-  TRX    | TRX                          | --                   |     0.89 USD | dyskonto -68.3% | cap 289.4M | SMI -79.04 / EMA -79.89 | strefa OVERSOLD     | EPS None | QR 0.52
-  PTLO   | PTLO                         | --                   |     4.62 USD | dyskonto -62.6% | cap 334.8M | SMI -60.82 / EMA -63.39 | strefa OVERSOLD     | EPS None | QR None
-  ATEC   | ATEC                         | --                   |      9.1 USD | dyskonto -60.9% | cap 1399.5M | SMI -34.33 / EMA -44.38 | strefa Bearish      | EPS None | QR 1.28
-  NIQ    | NIQ Global Intelligence plc  | --                   |     8.59 USD | dyskonto -57.9% | cap 2535.2M | SMI -79.38 / EMA -79.96 | strefa OVERSOLD     | EPS None | QR 1.03
-  CRVS   | Corvus Pharmaceuticals, Inc. | Healthcare           |    13.09 USD | dyskonto -51.4% | cap 1100.7M | SMI -70.56 / EMA -72.47 | strefa OVERSOLD     | EPS -0.55 | QR 6.21
-  XNET   | Xunlei Limited               | Technology           |     5.37 USD | dyskonto -51.3% | cap 341.8M | SMI -45.26 / EMA -45.89 | strefa OVERSOLD     | EPS 13.51 | QR 1.92
-  INSM   | INSM                         | --                   |   105.66 USD | dyskonto -50.3% | cap 22902.1M | SMI -75.19 / EMA -78.65 | strefa OVERSOLD     | EPS None | QR 3.54
-  SANA   | SANA                         | --                   |     3.37 USD | dyskonto -48.5% | cap 937.8M | SMI -38.29 / EMA -44.62 | strefa Bearish      | EPS None | QR None
-  CHYM   | Chime Financial, Inc.        | Technology           |    20.14 USD | dyskonto -47.9% | cap 7671.8M | SMI -50.44 / EMA -55.33 | strefa OVERSOLD     | EPS -4.14 | QR 4.53
-  BFAM   | Bright Horizons Family Solut | Consumer Cyclical    |    69.65 USD | dyskonto -46.7% | cap 3664.1M | SMI -47.47 / EMA -52.52 | strefa OVERSOLD     | EPS 3.32 | QR None
-  OCGN   | OCGN                         | --                   |     1.47 USD | dyskonto -46.1% | cap 497.6M | SMI -71.7 / EMA -77.75 | strefa OVERSOLD     | EPS None | QR None
-  VTEX   | VTEX                         | Technology           |      3.9 USD | dyskonto -42.7% | cap 665.7M | SMI -38.55 / EMA -39.19 | strefa Bearish      | EPS 0.13 | QR 3.04
-  BWIN   | The Baldwin Insurance Group, | Financial Services   |    25.88 USD | dyskonto -40.7% | cap 2523.0M | SMI -23.79 / EMA -43.82 | strefa Bearish      | EPS -0.69 | QR 1.16
-  DFIN   | Donnelley Financial Solution | Technology           |    40.06 USD | dyskonto -39.5% | cap 1000.9M | SMI -68.61 / EMA -69.08 | strefa OVERSOLD     | EPS 1.37 | QR 1.02
-  HLF    | Herbalife Ltd.               | Consumer Defensive   |    12.37 USD | dyskonto -39.4% | cap 1282.4M | SMI -75.05 / EMA -76.85 | strefa OVERSOLD     | EPS 2.28 | QR 0.62
-  RKT    | Rocket Companies, Inc.       | Financial Services   |    14.95 USD | dyskonto -38.6% | cap 42314.1M | SMI -30.16 / EMA -39.6 | strefa Bearish      | EPS -0.03 | QR None
-  POOL   | Pool Corporation             | Industrials          |   212.02 USD | dyskonto -38.5% | cap 7726.8M | SMI -33.14 / EMA -45.2 | strefa Bearish      | EPS 10.89 | QR 0.59
-  OPFI   | OPFI                         | --                   |     9.29 USD | dyskonto -38.2% | cap 793.3M | SMI -38.43 / EMA -38.91 | strefa Bearish      | EPS None | QR 7.44
-  IIIV   | i3 Verticals, Inc.           | Technology           |    21.04 USD | dyskonto -38.1% | cap 411.3M | SMI -35.25 / EMA -39.02 | strefa Bearish      | EPS 0.11 | QR 1.91
-  KNSL   | Kinsale Capital Group, Inc.  | Financial Services   |   323.57 USD | dyskonto -36.9% | cap 7462.4M | SMI -37.85 / EMA -45.99 | strefa Bearish      | EPS 22.7 | QR None
-  ORIC   | ORIC                         | --                   |     9.43 USD | dyskonto -36.8% | cap 976.2M | SMI -43.09 / EMA -50.89 | strefa OVERSOLD     | EPS None | QR 14.13
-  CAG    | CAG                          | --                   |    13.94 USD | dyskonto -34.8% | cap 6669.4M | SMI -37.31 / EMA -52.12 | strefa Bearish      | EPS None | QR 0.24
-  HELP   | Cybin Inc.                   | Healthcare           |     6.47 USD | dyskonto -34.2% | cap 322.8M | SMI -12.49 / EMA -35.48 | strefa Bearish      | EPS -4.3 | QR 7.75
-  GIS    | General Mills, Inc.          | Consumer Defensive   |    36.06 USD | dyskonto -33.4% | cap 19244.5M | SMI -11.05 / EMA -32.69 | strefa Bearish      | EPS 4.09 | QR 0.43
-  LKQ    | LKQ                          | --                   |    26.73 USD | dyskonto -32.8% | cap 6810.6M | SMI -42.0 / EMA -43.64 | strefa OVERSOLD     | EPS None | QR 0.58
-  ABT    | ABT                          | --                   |    94.32 USD | dyskonto -31.4% | cap 164287.8M | SMI -25.9 / EMA -41.16 | strefa Bearish      | EPS None | QR None
-  NU     | NU                           | --                   |    13.27 USD | dyskonto -30.1% | cap 64491.0M | SMI -37.74 / EMA -45.46 | strefa Bearish      | EPS None | QR None
-  STTK   | Shattuck Labs, Inc.          | Healthcare           |     5.82 USD | dyskonto -30.1% | cap 555.9M | SMI -32.78 / EMA -36.43 | strefa Bearish      | EPS -0.56 | QR 11.7
-  EXE    | Expand Energy Corporation    | Energy               |    89.68 USD | dyskonto -29.2% | cap 21454.0M | SMI -78.5 / EMA -78.55 | strefa OVERSOLD     | EPS 13.44 | QR 1.01
-  RVLV   | RVLV                         | --                   |    23.11 USD | dyskonto -27.1% | cap 1653.6M | SMI -30.36 / EMA -40.85 | strefa Bearish      | EPS None | QR 1.71
-  AVTX   | Avalo Therapeutics, Inc.     | Healthcare           |    17.79 USD | dyskonto -26.7% | cap 935.1M | SMI -46.52 / EMA -47.83 | strefa OVERSOLD     | EPS -5.57 | QR 8.14
-  IIIN   | Insteel Industries, Inc.     | Industrials          |    30.64 USD | dyskonto -26.4% | cap 595.3M | SMI -22.28 / EMA -35.87 | strefa Bearish      | EPS 2.17 | QR 1.88
-  EVMN   | Evommune, Inc.               | Healthcare           |    24.42 USD | dyskonto -26.4% | cap 879.7M | SMI -48.52 / EMA -53.69 | strefa OVERSOLD     | EPS -2.11 | QR 8.57
-  WTW    | Willis Towers Watson Public  | Financial Services   |    262.7 USD | dyskonto -25.5% | cap 24811.5M | SMI -39.21 / EMA -43.0 | strefa Bearish      | EPS 17.03 | QR 1.2
-  FNV    | Franco-Nevada Corporation    | Basic Materials      |    216.4 USD | dyskonto -24.3% | cap 41733.0M | SMI -65.88 / EMA -67.81 | strefa OVERSOLD     | EPS 7.1 | QR 7.98
-  VERA   | VERA                         | --                   |    42.66 USD | dyskonto -23.9% | cap 3062.3M | SMI -25.85 / EMA -44.4 | strefa Bearish      | EPS None | QR 13.64
-  GXO    | GXO                          | --                   |    51.23 USD | dyskonto -23.4% | cap 5893.9M | SMI -42.63 / EMA -45.05 | strefa OVERSOLD     | EPS None | QR 0.85
-  ATR    | AptarGroup, Inc.             | Healthcare           |   126.15 USD | dyskonto -23.2% | cap 8051.3M | SMI -20.47 / EMA -38.53 | strefa Bearish      | EPS 5.84 | QR 1.16
-  NX     | Quanex Building Products Cor | Industrials          |    17.68 USD | dyskonto -23.1% | cap 812.0M | SMI -39.77 / EMA -38.69 | strefa Bearish      | EPS -5.57 | QR 1.14
-  PMT    | PMT                          | --                   |    10.63 USD | dyskonto -23.0% | cap 927.0M | SMI -63.2 / EMA -66.11 | strefa OVERSOLD     | EPS None | QR None
-  AR     | AR                           | --                   |     35.4 USD | dyskonto -22.6% | cap 10969.7M | SMI -69.32 / EMA -70.61 | strefa OVERSOLD     | EPS None | QR 0.55
-  EQT    | EQT                          | --                   |     53.0 USD | dyskonto -22.3% | cap 33150.3M | SMI -78.51 / EMA -80.34 | strefa OVERSOLD     | EPS None | QR 0.76
-  UFPI   | UFP Industries, Inc.         | Basic Materials      |    92.14 USD | dyskonto -21.9% | cap 5204.1M | SMI -21.68 / EMA -39.9 | strefa Bearish      | EPS 4.59 | QR 3.13
-  VVR    | VVR                          | --                   |     2.99 USD | dyskonto -21.8% | cap 461.0M | SMI -37.91 / EMA -37.13 | strefa Bearish      | EPS None | QR None
-  TIMB   | TIM S.A.                     | Communication Servic |     22.1 USD | dyskonto -21.7% | cap 10557.9M | SMI -79.01 / EMA -79.81 | strefa OVERSOLD     | EPS 1.72 | QR 0.86
-  EMBJ   | Embraer S.A.                 | Industrials          |    63.29 USD | dyskonto -21.6% | cap 11263.0M | SMI -29.01 / EMA -39.75 | strefa Bearish      | EPS 1.71 | QR 0.83
-  HRTG   | HRTG                         | --                   |    25.16 USD | dyskonto -21.3% | cap 761.7M | SMI -47.19 / EMA -52.83 | strefa OVERSOLD     | EPS None | QR None
-  GILD   | GILD                         | --                   |   126.72 USD | dyskonto -19.4% | cap 157331.7M | SMI -55.75 / EMA -56.66 | strefa OVERSOLD     | EPS None | QR 1.4
-  VLTO   | VLTO                         | --                   |    88.89 USD | dyskonto -19.3% | cap 21831.3M | SMI -19.78 / EMA -32.35 | strefa Bearish      | EPS None | QR 1.52
-  BDX    | Becton, Dickinson and Compan | Healthcare           |    155.1 USD | dyskonto -17.2% | cap 42737.7M | SMI -21.84 / EMA -35.89 | strefa Bearish      | EPS 5.74 | QR 0.64
-  SLDE   | Slide Insurance Holdings, In | Financial Services   |    18.54 USD | dyskonto -16.3% | cap 2123.9M | SMI -31.28 / EMA -28.82 | strefa Bearish      | EPS 3.64 | QR None
-  IMMX   | Immix Biopharma, Inc.        | Healthcare           |     9.79 USD | dyskonto -15.7% | cap 696.9M | SMI -23.43 / EMA -30.21 | strefa Bearish      | EPS -0.92 | QR 10.01
-  AQN    | AQN                          | --                   |     6.01 USD | dyskonto -15.5% | cap 4625.7M | SMI -43.2 / EMA -45.35 | strefa OVERSOLD     | EPS None | QR 0.82
-  JLL    | JLL                          | --                   |   309.83 USD | dyskonto -14.7% | cap 14374.4M | SMI -42.27 / EMA -44.92 | strefa OVERSOLD     | EPS None | QR 1.11
-  ORI    | Old Republic International C | Financial Services   |    40.83 USD | dyskonto -12.7% | cap 9944.3M | SMI -18.84 / EMA -30.71 | strefa Bearish      | EPS 4.06 | QR None
-  AZN    | AZN                          | --                   |   189.33 USD | dyskonto -11.0% | cap 293624.7M | SMI -51.18 / EMA -55.51 | strefa OVERSOLD     | EPS None | QR 0.72
-  AWK    | AWK                          | --                   |   131.57 USD | dyskonto -11.0% | cap 25692.1M | SMI -28.73 / EMA -42.89 | strefa Bearish      | EPS None | QR 0.44
-  BALL   | Ball Corporation             | Consumer Cyclical    |    61.59 USD | dyskonto -9.8% | cap 16398.1M | SMI -19.02 / EMA -37.67 | strefa Bearish      | EPS 3.43 | QR 0.75
-  XENE   | Xenon Pharmaceuticals Inc.   | Healthcare           |    58.06 USD | dyskonto -9.2% | cap 5612.4M | SMI -26.69 / EMA -33.26 | strefa Bearish      | EPS -4.7 | QR 13.42
-  PCRX   | PCRX                         | --                   |    25.31 USD | dyskonto -8.4% | cap 995.7M | SMI -38.71 / EMA -42.8 | strefa Bearish      | EPS None | QR 3.28
-  IDYA   | IDYA                         | --                   |    36.29 USD | dyskonto -7.6% | cap 3493.8M | SMI -24.08 / EMA -45.68 | strefa Bearish      | EPS None | QR 11.34
-  MTG    | MGIC Investment Corporation  | Financial Services   |    27.69 USD | dyskonto -7.6% | cap 5857.2M | SMI -34.21 / EMA -46.21 | strefa Bearish      | EPS 3.15 | QR None
-  PPL    | PPL                          | --                   |    37.17 USD | dyskonto -7.3% | cap 27961.1M | SMI -39.15 / EMA -47.47 | strefa Bearish      | EPS None | QR 0.74
-  CTVA   | CTVA                         | --                   |    81.78 USD | dyskonto -4.5% | cap 54696.1M | SMI -21.21 / EMA -30.54 | strefa Bearish      | EPS None | QR 0.96
+(posortowane od największego dyskonta; 60 spółek)
+  TTD    | TTD                          | --                   |    19.19 USD | dyskonto -79.0% | cap 9023.7M | SMI -61.8 / EMA -62.95 | strefa OVERSOLD     | EPS None | QR None
+  AKBA   | AKBA                         | --                   |     1.09 USD | dyskonto -73.3% | cap 292.4M | SMI -38.15 / EMA -46.66 | strefa Bearish      | EPS None | QR 1.46
+  IVVD   | IVVD                         | --                   |     0.89 USD | dyskonto -71.0% | cap 262.4M | SMI -67.96 / EMA -69.42 | strefa OVERSOLD     | EPS None | QR 7.24
+  LU     | Lufax Holding Ltd            | Financial Services   |     1.33 USD | dyskonto -71.0% | cap 1148.4M | SMI -83.81 / EMA -84.39 | strefa OVERSOLD     | EPS -0.36 | QR None
+  TRX    | TRX Gold Corporation         | Basic Materials      |     0.83 USD | dyskonto -70.2% | cap 271.3M | SMI -80.07 / EMA -80.47 | strefa OVERSOLD     | EPS -0.07 | QR 0.52
+  CMPX   | CMPX                         | --                   |     2.11 USD | dyskonto -69.4% | cap 379.1M | SMI -76.69 / EMA -79.33 | strefa OVERSOLD     | EPS None | QR None
+  Z      | Zillow Group, Inc.           | Communication Servic |    31.02 USD | dyskonto -67.0% | cap 7097.4M | SMI -83.98 / EMA -84.29 | strefa OVERSOLD     | EPS 0.25 | QR -2.64
+  NUS    | NUS                          | --                   |     5.25 USD | dyskonto -64.1% | cap 254.9M | SMI -79.72 / EMA -80.73 | strefa OVERSOLD     | EPS None | QR 1.4
+  TRI    | Thomson Reuters Corp         | Industrials          |    83.69 USD | dyskonto -61.7% | cap 36533.9M | SMI -50.29 / EMA -50.7 | strefa OVERSOLD     | EPS 3.47 | QR 0.64
+  NABL   | NABL                         | --                   |     3.78 USD | dyskonto -58.2% | cap 712.1M | SMI -60.2 / EMA -63.36 | strefa OVERSOLD     | EPS None | QR 1.19
+  COUR   | COUR                         | --                   |     5.72 USD | dyskonto -57.8% | cap 1639.4M | SMI -31.35 / EMA -38.87 | strefa Bearish      | EPS None | QR 2.51
+  TRUP   | TRUP                         | --                   |    25.56 USD | dyskonto -55.4% | cap 1114.9M | SMI -22.31 / EMA -38.28 | strefa Bearish      | EPS None | QR 1.69
+  GSHD   | GSHD                         | --                   |    47.81 USD | dyskonto -55.3% | cap 1131.7M | SMI -15.49 / EMA -35.96 | strefa Bearish      | EPS None | QR None
+  FIS    | FIS                          | --                   |    39.41 USD | dyskonto -52.4% | cap 20370.2M | SMI -76.04 / EMA -76.59 | strefa OVERSOLD     | EPS None | QR 0.59
+  BL     | BlackLine, Inc.              | Technology           |    28.45 USD | dyskonto -52.2% | cap 1669.2M | SMI -36.95 / EMA -40.69 | strefa Bearish      | EPS 0.42 | QR 1.47
+  SSTK   | Shutterstock, Inc.           | Communication Servic |    14.31 USD | dyskonto -51.5% | cap 525.9M | SMI -47.37 / EMA -51.74 | strefa OVERSOLD     | EPS -0.62 | QR 0.54
+  BSY    | BSY                          | --                   |    30.36 USD | dyskonto -48.8% | cap 9223.3M | SMI -50.98 / EMA -51.68 | strefa OVERSOLD     | EPS None | QR 0.56
+  CHYM   | CHYM                         | --                   |    20.21 USD | dyskonto -47.7% | cap 7700.4M | SMI -29.08 / EMA -41.87 | strefa Bearish      | EPS None | QR 4.53
+  MAZE   | Maze Therapeutics, Inc.      | Healthcare           |     28.4 USD | dyskonto -47.1% | cap 1571.8M | SMI -16.88 / EMA -39.82 | strefa Bearish      | EPS -2.35 | QR 15.5
+  OIS    | OIS                          | --                   |     8.03 USD | dyskonto -44.6% | cap 483.4M | SMI -78.93 / EMA -80.48 | strefa OVERSOLD     | EPS None | QR 1.17
+  CHRS   | CHRS                         | --                   |     1.47 USD | dyskonto -44.0% | cap 226.0M | SMI -64.05 / EMA -65.35 | strefa OVERSOLD     | EPS None | QR 1.43
+  SABS   | SABS                         | --                   |     3.82 USD | dyskonto -42.1% | cap 292.1M | SMI -34.48 / EMA -42.07 | strefa Bearish      | EPS None | QR 9.46
+  AGBK   | AGI Inc                      | Financial Services   |     7.22 USD | dyskonto -40.8% | cap 1155.5M | SMI -26.21 / EMA -36.44 | strefa Bearish      | EPS 1.05 | QR None
+  RCKT   | RCKT                         | --                   |     3.23 USD | dyskonto -40.7% | cap 352.7M | SMI -26.96 / EMA -42.27 | strefa Bearish      | EPS None | QR 6.38
+  MQ     | MQ                           | --                   |     4.28 USD | dyskonto -39.3% | cap 1812.7M | SMI -24.82 / EMA -36.37 | strefa Bearish      | EPS None | QR 1.65
+  YALA   | Yalla Group Limited          | Technology           |     5.66 USD | dyskonto -39.1% | cap 859.4M | SMI -63.82 / EMA -67.42 | strefa OVERSOLD     | EPS 0.79 | QR None
+  RERE   | RERE                         | --                   |     4.01 USD | dyskonto -38.1% | cap 887.1M | SMI -62.02 / EMA -66.38 | strefa OVERSOLD     | EPS None | QR 1.93
+  XRAY   | XRAY                         | --                   |    10.82 USD | dyskonto -36.7% | cap 2168.5M | SMI -31.56 / EMA -41.97 | strefa Bearish      | EPS None | QR 1.03
+  ORIC   | Oric Pharmaceuticals, Inc.   | Healthcare           |     9.51 USD | dyskonto -36.3% | cap 983.9M | SMI -19.89 / EMA -35.03 | strefa Bearish      | EPS -1.39 | QR 14.13
+  BGS    | B&G Foods, Inc.              | Consumer Defensive   |     4.09 USD | dyskonto -35.8% | cap 332.4M | SMI -70.63 / EMA -71.58 | strefa OVERSOLD     | EPS -0.96 | QR 1.43
+  PSEC   | Prospect Capital Corporation | Financial Services   |     2.31 USD | dyskonto -34.0% | cap 1157.3M | SMI -38.6 / EMA -42.32 | strefa Bearish      | EPS -0.37 | QR None
+  FDP    | FDP                          | --                   |    29.22 USD | dyskonto -33.0% | cap 1390.2M | SMI -84.09 / EMA -84.8 | strefa OVERSOLD     | EPS None | QR 1.06
+  TSLX   | TSLX                         | --                   |    16.98 USD | dyskonto -32.5% | cap 1613.4M | SMI -58.87 / EMA -62.34 | strefa OVERSOLD     | EPS None | QR None
+  TTEK   | TTEK                         | --                   |    29.28 USD | dyskonto -32.1% | cap 7598.9M | SMI -35.63 / EMA -43.27 | strefa Bearish      | EPS None | QR 1.18
+  TM     | Toyota Motor Corporation     | Consumer Cyclical    |   170.62 USD | dyskonto -31.5% | cap 202032.0M | SMI -78.92 / EMA -78.98 | strefa OVERSOLD     | EPS 18.25 | QR 1.12
+  EXE    | EXE                          | --                   |    88.47 USD | dyskonto -30.1% | cap 21164.6M | SMI -79.56 / EMA -79.71 | strefa OVERSOLD     | EPS None | QR 1.01
+  GPOR   | GPOR                         | --                   |   166.09 USD | dyskonto -26.4% | cap 2984.6M | SMI -80.47 / EMA -83.07 | strefa OVERSOLD     | EPS None | QR 0.68
+  WU     | WU                           | --                   |     7.64 USD | dyskonto -26.2% | cap 2387.0M | SMI -61.56 / EMA -65.11 | strefa OVERSOLD     | EPS None | QR 1.13
+  CMCSA  | Comcast Corporation          | Communication Servic |    25.52 USD | dyskonto -25.7% | cap 91181.1M | SMI -68.17 / EMA -76.34 | strefa OVERSOLD     | EPS 5.1 | QR 0.88
+  WEX    | WEX                          | --                   |   138.99 USD | dyskonto -25.6% | cap 4818.4M | SMI -61.26 / EMA -63.72 | strefa OVERSOLD     | EPS None | QR 1.05
+  TPL    | TPL                          | --                   |   409.61 USD | dyskonto -25.1% | cap 28252.6M | SMI -38.7 / EMA -50.59 | strefa Bearish      | EPS None | QR None
+  VFC    | VFC                          | --                   |    16.85 USD | dyskonto -24.3% | cap 6613.0M | SMI -44.62 / EMA -45.51 | strefa OVERSOLD     | EPS None | QR 1.21
+  TYRA   | Tyra Biosciences, Inc.       | Healthcare           |    30.97 USD | dyskonto -23.8% | cap 1841.8M | SMI -30.81 / EMA -41.27 | strefa Bearish      | EPS -2.18 | QR 14.67
+  XPRO   | Expro Group Holdings N.V.    | Energy               |    14.35 USD | dyskonto -23.4% | cap 1626.7M | SMI -52.2 / EMA -53.72 | strefa OVERSOLD     | EPS 0.32 | QR 1.79
+  NRG    | NRG Energy, Inc.             | Utilities            |   146.43 USD | dyskonto -22.9% | cap 30894.5M | SMI -20.99 / EMA -36.63 | strefa Bearish      | EPS 0.91 | QR 1.58
+  NAMS   | NAMS                         | --                   |    32.66 USD | dyskonto -22.6% | cap 3818.1M | SMI -39.65 / EMA -38.84 | strefa Bearish      | EPS None | QR None
+  STOK   | Stoke Therapeutics, Inc.     | Healthcare           |    31.71 USD | dyskonto -21.2% | cap 1975.0M | SMI -29.01 / EMA -37.89 | strefa Bearish      | EPS -2.86 | QR 5.28
+  SBS    | Companhia de saneamento Basi | Utilities            |     5.76 USD | dyskonto -19.5% | cap 20216.7M | SMI -61.8 / EMA -65.87 | strefa OVERSOLD     | EPS 0.49 | QR 1.12
+  BBD    | Banco Bradesco Sa            | Financial Services   |     3.46 USD | dyskonto -19.5% | cap 36574.7M | SMI -65.28 / EMA -66.37 | strefa OVERSOLD     | EPS 0.4 | QR None
+  SNDX   | Syndax Pharmaceuticals, Inc. | Healthcare           |    20.87 USD | dyskonto -18.4% | cap 1849.3M | SMI -19.83 / EMA -36.78 | strefa Bearish      | EPS -2.79 | QR 4.12
+  PERI   | PERI                         | --                   |      9.4 USD | dyskonto -17.8% | cap 388.5M | SMI -30.95 / EMA -38.55 | strefa Bearish      | EPS None | QR 2.76
+  PRAA   | PRAA                         | --                   |    18.72 USD | dyskonto -17.0% | cap 714.1M | SMI -24.63 / EMA -34.66 | strefa Bearish      | EPS None | QR None
+  TAK    | Takeda Pharmaceutical Compan | --                   |    15.97 USD | dyskonto -15.5% | cap 50461.2M | SMI -37.75 / EMA -47.33 | strefa Bearish      | EPS None | QR 0.6
+  ITUB   | Itau Unibanco Banco Holding  | Financial Services   |     8.16 USD | dyskonto -14.9% | cap 89993.6M | SMI -37.36 / EMA -47.77 | strefa Bearish      | EPS 0.79 | QR None
+  SCI    | Service Corporation Internat | Consumer Cyclical    |    75.58 USD | dyskonto -14.8% | cap 10427.8M | SMI -39.47 / EMA -45.17 | strefa Bearish      | EPS 3.79 | QR 0.5
+  CARG   | CarGurus, Inc.               | Consumer Cyclical    |    33.65 USD | dyskonto -14.6% | cap 3034.3M | SMI -26.4 / EMA -40.12 | strefa Bearish      | EPS 1.9 | QR 2.81
+  LBTYK  | Liberty Global Ltd.          | Communication Servic |    11.23 USD | dyskonto -14.4% | cap 3796.8M | SMI -39.64 / EMA -33.46 | strefa Bearish      | EPS -16.06 | QR 1.08
+  PRDO   | Perdoceo Education Corporati | Consumer Defensive   |    33.22 USD | dyskonto -13.7% | cap 2083.0M | SMI -36.27 / EMA -37.65 | strefa Bearish      | EPS 2.62 | QR 5.03
+  EPRT   | EPRT                         | --                   |    30.42 USD | dyskonto -12.4% | cap 6577.1M | SMI -47.44 / EMA -49.92 | strefa OVERSOLD     | EPS None | QR 6.6
+  AZN    | AstraZeneca PLC              | Healthcare           |   189.02 USD | dyskonto -11.1% | cap 293144.0M | SMI -28.98 / EMA -42.65 | strefa Bearish      | EPS 6.63 | QR None
 
 === SYGNAŁY TURNING UP ===
-(SMI jeszcze poniżej EMA — wczesny sygnał; 59 spółek)
-  UPB    | Upstream Bio, Inc.           | Healthcare           |     6.51 USD | dyskonto -80.7% | cap 354.3M | SMI -77.74 / EMA -74.45 | strefa OVERSOLD     | EPS -2.9 | QR 26.15
-  LDI    | loanDepot, Inc.              | Financial Services   |      1.2 USD | dyskonto -76.3% | cap 648.1M | SMI -77.32 / EMA -75.23 | strefa OVERSOLD     | EPS -0.35 | QR None
-  DOCS   | DOCS                         | --                   |    20.64 USD | dyskonto -73.0% | cap 3773.6M | SMI -29.5 / EMA -29.02 | strefa Bearish      | EPS None | QR None
-  MNTN   | MNTN                         | --                   |     8.95 USD | dyskonto -72.0% | cap 661.6M | SMI -40.66 / EMA -39.22 | strefa OVERSOLD     | EPS None | QR None
-  GETY   | GETY                         | --                   |     0.94 USD | dyskonto -70.7% | cap 394.2M | SMI -42.99 / EMA -34.87 | strefa OVERSOLD     | EPS None | QR None
-  TRI    | TRI                          | --                   |    83.47 USD | dyskonto -61.8% | cap 36437.9M | SMI -54.7 / EMA -51.44 | strefa OVERSOLD     | EPS None | QR 0.64
-  IMRX   | IMRX                         | --                   |     4.55 USD | dyskonto -54.9% | cap 294.4M | SMI -62.16 / EMA -57.62 | strefa OVERSOLD     | EPS None | QR None
-  BILI   | Bilibili Inc.                | Communication Servic |    16.47 USD | dyskonto -54.8% | cap 6864.6M | SMI -87.1 / EMA -86.77 | strefa OVERSOLD     | EPS 0.49 | QR 1.34
-  LULU   | LULU                         | --                   |   115.07 USD | dyskonto -54.4% | cap 13066.6M | SMI -75.27 / EMA -74.79 | strefa OVERSOLD     | EPS None | QR 1.36
-  PRIM   | Primoris Services Corporatio | Industrials          |    95.84 USD | dyskonto -53.4% | cap 5199.8M | SMI -65.16 / EMA -62.66 | strefa OVERSOLD     | EPS 4.53 | QR 1.26
-  WAY    | WAY                          | --                   |    19.67 USD | dyskonto -52.6% | cap 3773.0M | SMI -67.53 / EMA -67.52 | strefa OVERSOLD     | EPS None | QR None
-  TCOM   | TCOM                         | --                   |    40.44 USD | dyskonto -48.8% | cap 25462.1M | SMI -78.16 / EMA -73.32 | strefa OVERSOLD     | EPS None | QR None
-  BBOT   | BridgeBio Oncology Therapeut | Healthcare           |     7.82 USD | dyskonto -47.4% | cap 626.4M | SMI -46.99 / EMA -46.29 | strefa OVERSOLD     | EPS -1.92 | QR None
-  ALKT   | Alkami Technology, Inc.      | Technology           |    16.34 USD | dyskonto -47.1% | cap 1748.7M | SMI -43.16 / EMA -36.79 | strefa OVERSOLD     | EPS -0.47 | QR 2.09
-  VEEV   | Veeva Systems Inc.           | Healthcare           |   168.93 USD | dyskonto -45.6% | cap 27442.4M | SMI -34.16 / EMA -31.63 | strefa Bearish      | EPS 5.64 | QR 4.89
-  NFLX   | NFLX                         | --                   |    74.13 USD | dyskonto -44.7% | cap 312146.1M | SMI -85.23 / EMA -81.36 | strefa OVERSOLD     | EPS None | QR 1.19
-  GTN    | GTN                          | --                   |     3.79 USD | dyskonto -41.1% | cap 389.4M | SMI -85.65 / EMA -82.34 | strefa OVERSOLD     | EPS None | QR 1.27
-  VNDA   | Vanda Pharmaceuticals Inc.   | Healthcare           |     5.91 USD | dyskonto -40.5% | cap 355.7M | SMI -81.62 / EMA -81.4 | strefa OVERSOLD     | EPS -4.06 | QR 2.38
-  LCII   | LCI Industries               | Consumer Cyclical    |    95.97 USD | dyskonto -39.9% | cap 2330.7M | SMI -76.64 / EMA -74.98 | strefa OVERSOLD     | EPS 8.16 | QR 1.14
-  DMRA   | DMRA                         | --                   |    23.35 USD | dyskonto -39.1% | cap 1437.6M | SMI -25.79 / EMA -20.48 | strefa Bearish      | EPS None | QR 12.98
-  BILL   | BILL                         | --                   |    35.12 USD | dyskonto -38.6% | cap 3497.8M | SMI -59.27 / EMA -56.1 | strefa OVERSOLD     | EPS None | QR 1.58
-  CNMD   | CNMD                         | --                   |     35.1 USD | dyskonto -38.0% | cap 1057.0M | SMI -41.88 / EMA -39.81 | strefa OVERSOLD     | EPS None | QR None
-  PWP    | PWP                          | --                   |    16.41 USD | dyskonto -36.7% | cap 1196.9M | SMI -64.98 / EMA -61.59 | strefa OVERSOLD     | EPS None | QR None
-  BGS    | BGS                          | --                   |     4.11 USD | dyskonto -35.6% | cap 333.6M | SMI -74.89 / EMA -72.93 | strefa OVERSOLD     | EPS None | QR 1.43
-  FDP    | FDP                          | --                   |    28.74 USD | dyskonto -34.1% | cap 1367.1M | SMI -85.83 / EMA -85.67 | strefa OVERSOLD     | EPS None | QR 1.06
-  DRVN   | DRVN                         | --                   |    13.77 USD | dyskonto -30.2% | cap 2271.4M | SMI 18.19 / EMA 20.99 | strefa Bullish      | EPS None | QR 0.67
-  ZBRA   | Zebra Technologies Corporati | Technology           |   249.87 USD | dyskonto -29.1% | cap 11902.2M | SMI 16.68 / EMA 17.33 | strefa Bullish      | EPS 8.28 | QR 0.58
-  EDU    | New Oriental Education & Tec | Consumer Defensive   |    46.25 USD | dyskonto -28.8% | cap 7710.4M | SMI -82.97 / EMA -82.59 | strefa OVERSOLD     | EPS 2.7 | QR 1.55
-  OPRT   | Oportun Financial Corporatio | Financial Services   |      5.7 USD | dyskonto -28.4% | cap 260.7M | SMI -0.95 / EMA -0.06 | strefa Bearish      | EPS 0.37 | QR None
-  PAGS   | PagSeguro Digital Ltd.       | Technology           |     9.06 USD | dyskonto -26.4% | cap 2533.8M | SMI -69.17 / EMA -67.52 | strefa OVERSOLD     | EPS 1.41 | QR 1.36
-  DT     | Dynatrace, Inc.              | Technology           |    42.59 USD | dyskonto -26.0% | cap 12414.0M | SMI 53.71 / EMA 55.41 | strefa OVERBOUGHT   | EPS 0.54 | QR 1.35
-  JBIO   | JBIO                         | --                   |    21.38 USD | dyskonto -23.6% | cap 1301.2M | SMI -31.46 / EMA -23.65 | strefa Bearish      | EPS None | QR 21.09
-  REGN   | REGN                         | --                   |   632.95 USD | dyskonto -22.9% | cap 66357.3M | SMI -67.9 / EMA -67.88 | strefa OVERSOLD     | EPS None | QR None
-  SBS    | SBS                          | --                   |     5.75 USD | dyskonto -19.7% | cap 20164.1M | SMI -73.38 / EMA -70.6 | strefa OVERSOLD     | EPS None | QR 1.12
-  TENB   | Tenable Holdings, Inc.       | Technology           |    29.76 USD | dyskonto -16.6% | cap 3281.7M | SMI 60.89 / EMA 61.28 | strefa OVERBOUGHT   | EPS -0.1 | QR 0.95
-  AN     | AN                           | --                   |   191.12 USD | dyskonto -16.5% | cap 6395.2M | SMI -35.02 / EMA -33.73 | strefa Bearish      | EPS None | QR None
-  KURA   | KURA                         | --                   |    10.48 USD | dyskonto -16.1% | cap 930.4M | SMI 2.08 / EMA 3.99 | strefa Bullish      | EPS None | QR 6.05
-  ELPC   | Companhia Paranaense de Ener | Utilities            |    11.82 USD | dyskonto -13.7% | cap 8775.1M | SMI -33.3 / EMA -31.33 | strefa Bearish      | EPS 0.7 | QR 0.97
-  PRDO   | PRDO                         | --                   |    33.26 USD | dyskonto -13.6% | cap 2085.5M | SMI -41.43 / EMA -39.32 | strefa OVERSOLD     | EPS None | QR 5.03
-  IMXI   | International Money Express, | Technology           |    14.02 USD | dyskonto -12.1% | cap 421.9M | SMI -58.26 / EMA -55.38 | strefa OVERSOLD     | EPS 0.85 | QR 2.51
-  EPRT   | Essential Properties Realty  | Real Estate          |    30.88 USD | dyskonto -11.1% | cap 6677.7M | SMI -51.42 / EMA -50.72 | strefa OVERSOLD     | EPS 1.27 | QR 6.6
-  BMY    | BMY                          | --                   |    56.99 USD | dyskonto -9.4% | cap 116367.4M | SMI -31.28 / EMA -29.76 | strefa Bearish      | EPS None | QR 1.14
-  MFA    | MFA Financial, Inc.          | Real Estate          |     9.71 USD | dyskonto -8.1% | cap 991.3M | SMI -32.73 / EMA -31.94 | strefa Bearish      | EPS 0.88 | QR None
-  CGNX   | Cognex Corporation           | Technology           |    66.14 USD | dyskonto -8.0% | cap 11007.0M | SMI 37.99 / EMA 38.54 | strefa Bullish      | EPS 0.85 | QR 3.05
-  DLR    | DLR                          | --                   |   192.43 USD | dyskonto -7.5% | cap 67621.1M | SMI -19.86 / EMA -15.91 | strefa Bearish      | EPS None | QR 1.1
-  LINC   | Lincoln Educational Services | Consumer Defensive   |    49.49 USD | dyskonto -7.5% | cap 1569.7M | SMI 28.95 / EMA 29.39 | strefa Bullish      | EPS 0.72 | QR 0.82
-  CTRE   | CareTrust REIT, Inc.         | Real Estate          |    40.33 USD | dyskonto -6.4% | cap 9528.7M | SMI -23.9 / EMA -16.17 | strefa Bearish      | EPS 1.58 | QR 1.54
-  KGS    | Kodiak Gas Services, Inc.    | Energy               |    74.07 USD | dyskonto -4.6% | cap 7475.6M | SMI 25.93 / EMA 27.75 | strefa Bullish      | EPS 0.76 | QR 0.57
-  PPLI   | PPLI                         | --                   |    44.28 USD | dyskonto -4.4% | cap 3293.9M | SMI 15.48 / EMA 17.79 | strefa Bullish      | EPS None | QR 2.7
-  ECPG   | ECPG                         | --                   |    89.03 USD | dyskonto -3.9% | cap 1908.8M | SMI 12.14 / EMA 12.32 | strefa Bullish      | EPS None | QR 1.04
-  XMAX   | XMAX, Inc.                   | Consumer Cyclical    |     8.56 USD | dyskonto -3.1% | cap 544.4M | SMI 45.36 / EMA 47.41 | strefa OVERBOUGHT   | EPS -0.14 | QR 4.02
-  OZK    | OZK                          | --                   |    51.97 USD | dyskonto -3.1% | cap 5673.4M | SMI 54.63 / EMA 56.24 | strefa OVERBOUGHT   | EPS None | QR None
-  TRP    | TRP                          | --                   |    69.47 USD | dyskonto -2.8% | cap 72371.5M | SMI 54.7 / EMA 54.81 | strefa OVERBOUGHT   | EPS None | QR 0.56
-  OII    | OII                          | --                   |    39.44 USD | dyskonto -1.9% | cap 3934.5M | SMI 27.91 / EMA 28.47 | strefa Bullish      | EPS None | QR 1.72
-  FR     | FR                           | --                   |     63.4 USD | dyskonto -1.9% | cap 8405.0M | SMI 37.09 / EMA 37.23 | strefa Bullish      | EPS None | QR None
-  ATEX   | Anterix Inc.                 | Communication Servic |     86.5 USD | dyskonto -1.8% | cap 1636.1M | SMI 75.2 / EMA 77.55 | strefa OVERBOUGHT   | EPS 4.83 | QR 3.33
-  DEA    | Easterly Government Properti | Real Estate          |    24.53 USD | dyskonto -1.6% | cap 1139.4M | SMI 56.32 / EMA 58.62 | strefa OVERBOUGHT   | EPS 0.22 | QR 0.23
-  MPLT   | MapLight Therapeutics, Inc.  | Healthcare           |     32.9 USD | dyskonto -1.1% | cap 1491.9M | SMI 32.65 / EMA 33.92 | strefa Bullish      | EPS -4.41 | QR 20.01
-  BB     | BlackBerry Limited           | Technology           |    11.28 USD | dyskonto --3.2% | cap 6610.8M | SMI 62.94 / EMA 63.99 | strefa OVERBOUGHT   | EPS 0.1 | QR 2.12
+(SMI jeszcze poniżej EMA — wczesny sygnał; 55 spółek)
+  WIX    | Wix.com Ltd.                 | Technology           |    45.24 USD | dyskonto -76.3% | cap 1893.3M | SMI -81.92 / EMA -80.9 | strefa OVERSOLD     | EPS -0.72 | QR 1.19
+  KD     | Kyndryl Holdings, Inc.       | Technology           |    11.52 USD | dyskonto -73.9% | cap 2540.4M | SMI -59.23 / EMA -58.06 | strefa OVERSOLD     | EPS 0.85 | QR 0.88
+  INTU   | Intuit Inc.                  | Technology           |   274.46 USD | dyskonto -66.3% | cap 75075.0M | SMI -80.8 / EMA -78.75 | strefa OVERSOLD     | EPS 16.38 | QR 1.36
+  VFF    | Village Farms International, | Consumer Defensive   |     1.86 USD | dyskonto -62.8% | cap 226.0M | SMI -90.24 / EMA -89.46 | strefa OVERSOLD     | EPS 0.22 | QR 1.93
+  KRMN   | Karman Holdings Inc.         | Industrials          |    46.59 USD | dyskonto -60.6% | cap 6174.4M | SMI -85.51 / EMA -85.49 | strefa OVERSOLD     | EPS 0.23 | QR 3.17
+  LAW    | CS Disco, Inc.               | Technology           |     3.78 USD | dyskonto -58.5% | cap 242.4M | SMI -54.03 / EMA -50.54 | strefa OVERSOLD     | EPS -0.68 | QR 3.78
+  CHWY   | CHWY                         | --                   |    19.23 USD | dyskonto -55.8% | cap 7871.2M | SMI -74.92 / EMA -73.98 | strefa OVERSOLD     | EPS None | QR None
+  PEGA   | Pegasystems Inc.             | Technology           |    30.87 USD | dyskonto -54.7% | cap 5158.9M | SMI -71.24 / EMA -71.13 | strefa OVERSOLD     | EPS 1.85 | QR 1.33
+  SMMT   | Summit Therapeutics Inc.     | Healthcare           |    14.13 USD | dyskonto -54.4% | cap 10967.2M | SMI -79.31 / EMA -78.61 | strefa OVERSOLD     | EPS -1.59 | QR 9.87
+  GWRE   | GWRE                         | --                   |    124.5 USD | dyskonto -54.3% | cap 10365.4M | SMI -50.1 / EMA -46.11 | strefa OVERSOLD     | EPS None | QR 2.77
+  SYM    | SYM                          | --                   |    41.04 USD | dyskonto -53.3% | cap 5220.9M | SMI -78.64 / EMA -76.46 | strefa OVERSOLD     | EPS None | QR 1.0
+  NCNO   | NCNO                         | --                   |    15.88 USD | dyskonto -53.2% | cap 1739.7M | SMI -41.52 / EMA -41.03 | strefa OVERSOLD     | EPS None | QR None
+  LDOS   | Leidos Holdings, Inc.        | Technology           |   102.87 USD | dyskonto -50.0% | cap 12939.6M | SMI -90.36 / EMA -89.42 | strefa OVERSOLD     | EPS 10.93 | QR 1.58
+  CATX   | Perspective Therapeutics, In | Healthcare           |     3.12 USD | dyskonto -49.4% | cap 355.8M | SMI -80.03 / EMA -79.34 | strefa OVERSOLD     | EPS -1.41 | QR 5.13
+  CMRC   | CMRC                         | --                   |     2.97 USD | dyskonto -46.4% | cap 245.1M | SMI -44.44 / EMA -43.0 | strefa OVERSOLD     | EPS None | QR 1.98
+  DXC    | DXC                          | --                   |     8.97 USD | dyskonto -45.5% | cap 1453.0M | SMI -60.67 / EMA -59.04 | strefa OVERSOLD     | EPS None | QR 1.36
+  DOX    | Amdocs Limited               | Technology           |    52.05 USD | dyskonto -44.3% | cap 5525.8M | SMI -77.68 / EMA -75.49 | strefa OVERSOLD     | EPS 5.01 | QR 1.17
+  AUGO   | AUGO                         | --                   |    61.74 USD | dyskonto -44.0% | cap 5154.9M | SMI -60.01 / EMA -58.39 | strefa OVERSOLD     | EPS None | QR 0.75
+  WB     | WB                           | --                   |     7.28 USD | dyskonto -43.9% | cap 1787.3M | SMI -83.41 / EMA -80.81 | strefa OVERSOLD     | EPS None | QR 3.39
+  HLLY   | Holley Inc.                  | Consumer Cyclical    |     2.55 USD | dyskonto -43.2% | cap 306.3M | SMI -66.93 / EMA -66.5 | strefa OVERSOLD     | EPS 0.2 | QR 0.96
+  GTLB   | GitLab Inc.                  | Technology           |    29.78 USD | dyskonto -43.1% | cap 5030.7M | SMI 29.42 / EMA 32.03 | strefa Bullish      | EPS -0.15 | QR 2.54
+  EFX    | EFX                          | --                   |   158.87 USD | dyskonto -42.4% | cap 19164.6M | SMI -64.62 / EMA -63.8 | strefa OVERSOLD     | EPS None | QR 0.6
+  TTAN   | TTAN                         | --                   |     69.9 USD | dyskonto -41.7% | cap 6668.3M | SMI -2.16 / EMA -2.14 | strefa Bearish      | EPS None | QR None
+  HII    | HII                          | --                   |   281.02 USD | dyskonto -38.9% | cap 11073.3M | SMI -88.31 / EMA -87.78 | strefa OVERSOLD     | EPS None | QR 1.06
+  ADSK   | ADSK                         | --                   |   201.29 USD | dyskonto -38.8% | cap 42500.4M | SMI -64.0 / EMA -57.23 | strefa OVERSOLD     | EPS None | QR 0.85
+  TUYA   | TUYA                         | --                   |     1.84 USD | dyskonto -36.3% | cap 1125.0M | SMI -76.46 / EMA -72.43 | strefa OVERSOLD     | EPS None | QR 9.34
+  FSCO   | FSCO                         | Financial Services   |     4.89 USD | dyskonto -36.1% | cap 989.1M | SMI -23.74 / EMA -17.82 | strefa Bearish      | EPS 0.76 | QR None
+  RLX    | RLX                          | --                   |     1.85 USD | dyskonto -34.9% | cap 2261.3M | SMI -67.19 / EMA -66.11 | strefa OVERSOLD     | EPS None | QR None
+  HRB    | H&R Block, Inc.              | Consumer Cyclical    |    37.51 USD | dyskonto -34.8% | cap 4754.8M | SMI 47.52 / EMA 48.18 | strefa OVERBOUGHT   | EPS 5.59 | QR 0.9
+  OTF    | OTF                          | --                   |     10.6 USD | dyskonto -34.1% | cap 4906.3M | SMI -52.1 / EMA -50.48 | strefa OVERSOLD     | EPS None | QR None
+  LAND   | Gladstone Land Corporation   | Real Estate          |     8.65 USD | dyskonto -33.5% | cap 372.9M | SMI -78.86 / EMA -78.61 | strefa OVERSOLD     | EPS -0.78 | QR 1.08
+  RWT    | Redwood Trust, Inc.          | Real Estate          |     4.76 USD | dyskonto -31.6% | cap 596.7M | SMI -65.26 / EMA -61.87 | strefa OVERSOLD     | EPS -0.8 | QR None
+  IRD    | IRD                          | --                   |     4.02 USD | dyskonto -30.8% | cap 331.9M | SMI -64.02 / EMA -61.37 | strefa OVERSOLD     | EPS None | QR 6.43
+  BXSL   | Blackstone Secured Lending F | Financial Services   |    24.25 USD | dyskonto -26.1% | cap 5643.0M | SMI -14.62 / EMA -13.8 | strefa Bearish      | EPS 1.91 | QR None
+  CF     | CF Industries Holdings, Inc. | Basic Materials      |   106.68 USD | dyskonto -24.9% | cap 16389.2M | SMI -68.38 / EMA -64.23 | strefa OVERSOLD     | EPS 11.1 | QR 2.93
+  FCN    | FCN                          | --                   |   151.75 USD | dyskonto -19.8% | cap 4574.4M | SMI -48.25 / EMA -46.43 | strefa OVERSOLD     | EPS None | QR 1.56
+  OCSL   | Oaktree Specialty Lending Co | Financial Services   |    11.85 USD | dyskonto -19.8% | cap 1043.8M | SMI -30.77 / EMA -26.59 | strefa Bearish      | EPS 0.59 | QR None
+  UGP    | UGP                          | --                   |     5.06 USD | dyskonto -18.4% | cap 5411.1M | SMI -57.76 / EMA -53.49 | strefa OVERSOLD     | EPS None | QR None
+  CEPT   | CEPT                         | --                   |     11.5 USD | dyskonto -18.1% | cap 351.7M | SMI -29.78 / EMA -22.84 | strefa Bearish      | EPS None | QR None
+  TRTX   | TPG RE Finance Trust, Inc.   | Real Estate          |     8.39 USD | dyskonto -14.9% | cap 648.2M | SMI 43.42 / EMA 43.63 | strefa OVERBOUGHT   | EPS 0.64 | QR None
+  DY     | DY                           | --                   |   488.41 USD | dyskonto -13.8% | cap 14661.4M | SMI 12.53 / EMA 15.69 | strefa Bullish      | EPS None | QR 2.61
+  GRMN   | Garmin Ltd.                  | --                   |   236.07 USD | dyskonto -13.6% | cap 45527.6M | SMI -49.36 / EMA -49.34 | strefa OVERSOLD     | EPS None | QR 2.6
+  NET    | Cloudflare, Inc.             | Technology           |    240.8 USD | dyskonto -13.0% | cap 85471.2M | SMI 18.86 / EMA 19.75 | strefa Bullish      | EPS -0.26 | QR None
+  DDOG   | Datadog, Inc.                | Technology           |   246.45 USD | dyskonto -11.6% | cap 87726.4M | SMI 52.43 / EMA 55.39 | strefa OVERBOUGHT   | EPS 0.38 | QR 3.38
+  SOLV   | Solventum Corporation        | Healthcare           |    79.23 USD | dyskonto -10.2% | cap 13720.6M | SMI 49.9 / EMA 50.61 | strefa OVERBOUGHT   | EPS 8.17 | QR 0.89
+  SAIC   | Science Applications Interna | Technology           |    111.7 USD | dyskonto -9.5% | cap 4722.3M | SMI 26.56 / EMA 28.56 | strefa Bullish      | EPS 8.89 | QR 1.2
+  OUST   | Ouster, Inc.                 | Technology           |     47.2 USD | dyskonto -8.3% | cap 3005.4M | SMI 56.67 / EMA 57.77 | strefa OVERBOUGHT   | EPS -0.93 | QR 3.59
+  ULS    | ULS                          | --                   |    99.49 USD | dyskonto -7.5% | cap 20053.5M | SMI 15.17 / EMA 18.03 | strefa Bullish      | EPS None | QR None
+  SUN    | Sunoco LP                    | Energy               |    67.51 USD | dyskonto -7.4% | cap 12719.7M | SMI -14.14 / EMA -12.22 | strefa Bearish      | EPS 3.92 | QR 0.78
+  CRWD   | CrowdStrike Holdings, Inc.   | Technology           |   735.08 USD | dyskonto -6.4% | cap 187124.2M | SMI 60.89 / EMA 61.54 | strefa OVERBOUGHT   | EPS -0.14 | QR 1.77
+  SIRI   | SIRI                         | --                   |    28.72 USD | dyskonto -4.6% | cap 9666.0M | SMI 40.66 / EMA 42.36 | strefa OVERBOUGHT   | EPS None | QR 0.3
+  MPC    | MPC                          | --                   |    261.2 USD | dyskonto -4.1% | cap 76253.9M | SMI 44.1 / EMA 45.89 | strefa OVERBOUGHT   | EPS None | QR 0.74
+  UNP    | UNP                          | --                   |   272.83 USD | dyskonto -2.5% | cap 161982.8M | SMI 35.95 / EMA 38.26 | strefa Bullish      | EPS None | QR 0.75
+  IRDM   | IRDM                         | --                   |    52.54 USD | dyskonto -2.4% | cap 5555.5M | SMI 40.46 / EMA 44.46 | strefa OVERBOUGHT   | EPS None | QR None
+  FRT    | Federal Realty Investment Tr | Real Estate          |    125.0 USD | dyskonto -1.1% | cap 10798.6M | SMI 75.11 / EMA 75.85 | strefa OVERBOUGHT   | EPS 5.77 | QR 1.04
 
 === OCZEKIWANA STRUKTURA RAPORTU ===
 1. Kontekst rynkowy — co ilość/rozkład sygnałów mówi o sentymencie
