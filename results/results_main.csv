@@ -1,14 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-AGBK,AGI Inc,USA,Brazil,Financial Services,7.22,USD,12.21,40.8,1155.5,524.3,-26.21,-36.44,Bearish,Strong BUY,True,"div_bull (cena -1.6%, SMI +1.2)",False,,1.05,6466.2,,,0.511,,2026-06-29T14:15:31.825827,7
-YALA,Yalla Group Limited,USA,United Arab Emirates,Technology,5.66,USD,9.29,39.1,859.4,325.9,-63.82,-67.42,OVERSOLD,Strong BUY,False,,False,,0.79,,,,,,2026-06-29T14:15:39.047204,6
-COUR,COUR,USA,--,--,5.72,USD,13.56,57.8,1639.4,6807.8,-31.35,-38.87,Bearish,Strong BUY,False,,False,,,757.5,2.51,,0.005,0.5457,2026-06-29T14:15:20.899441,5
-PEGA,Pegasystems Inc.,USA,United States,Technology,30.87,USD,68.1,54.7,5158.9,2206.6,-71.24,-71.13,OVERSOLD,Turning Up,False,,False,,1.85,1745.8,1.33,0.4172,0.096,0.7586,2026-06-29T14:15:37.088576,5
-TTD,TTD,USA,--,--,19.19,USD,91.45,79.0,9023.7,20263.1,-61.8,-62.95,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-29T14:15:42.145898,5
-MQ,MQ,USA,--,--,4.28,USD,7.04,39.3,1812.7,4136.5,-24.82,-36.37,Bearish,Strong BUY,False,,False,,,,1.65,,0.021,,2026-06-29T14:15:42.857108,5
-CMPX,CMPX,USA,--,--,2.11,USD,6.88,69.4,379.1,7920.1,-76.69,-79.33,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-29T14:15:43.329469,5
-FSCO,FSCO,USA,United States,Financial Services,4.89,USD,7.65,36.1,989.1,1120.6,-23.74,-17.82,Bearish,Turning Up,True,"div_bull (cena -1.8%, SMI +16.4)",False,,0.76,163.6,,,0.198,,2026-06-29T14:15:34.139223,4
-GSHD,GSHD,USA,--,--,47.81,USD,106.84,55.3,1131.7,482.1,-15.49,-35.96,Bearish,Strong BUY,False,,False,,,,,,,,2026-06-29T14:15:43.193285,4
-IRD,IRD,USA,--,--,4.02,USD,5.81,30.8,331.9,948.5,-64.02,-61.37,OVERSOLD,Turning Up,False,,False,,,14.2,6.43,,0.074,,2026-06-29T14:15:17.301398,3
-NCNO,NCNO,USA,--,--,15.88,USD,33.92,53.2,1739.7,3906.3,-41.52,-41.03,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-29T14:15:39.019924,2
-RLX,RLX,USA,--,--,1.85,USD,2.84,34.9,2261.3,2519.1,-67.19,-66.11,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-29T14:15:43.402878,2
-TTAN,TTAN,USA,--,--,69.9,USD,119.99,41.7,6668.3,1455.7,-2.16,-2.14,Bearish,Turning Up,False,,False,,,961.0,,,,0.7011,2026-06-29T14:15:41.776818,1
+UPWK,UPWK,USA,--,--,8.36,USD,22.84,63.4,1032.6,4116.0,-55.58,-55.99,OVERSOLD,Strong BUY,True,"div_bull (cena -1.5%, SMI +20.1)",False,,,787.8,1.46,0.2744,0.589,0.7782,2026-06-29T18:42:42.223437,9
+MNSO,MNSO,USA,--,--,11.93,USD,26.74,55.4,3715.1,557.9,-75.89,-76.76,OVERSOLD,Strong BUY,False,,False,,,16994.0,1.55,0.4181,0.301,0.4494,2026-06-29T18:42:47.687921,7
+AGBK,AGBK,USA,--,--,7.25,USD,12.21,40.6,1159.5,524.3,-25.57,-36.12,Bearish,Strong BUY,True,"div_bull (cena -1.6%, SMI +1.2)",False,,,6466.2,,,0.511,,2026-06-29T18:42:47.210961,6
+GSHD,"Goosehead Insurance, Inc.",USA,United States,Financial Services,47.65,USD,106.84,55.4,1127.8,482.1,-15.62,-36.03,Bearish,Strong BUY,False,,False,,1.14,365.3,,0.1715,,,2026-06-29T18:43:00.090873,6
+COUR,COUR,USA,--,--,5.7,USD,13.56,58.0,1630.8,6807.8,-34.29,-40.34,Bearish,Strong BUY,False,,False,,,757.5,2.51,,0.005,0.5457,2026-06-29T18:42:49.756789,5
+IRD,IRD,USA,--,--,3.98,USD,5.81,31.5,328.6,948.5,-64.13,-61.43,OVERSOLD,Turning Up,False,,False,,,14.2,6.43,,0.074,,2026-06-29T18:42:41.915844,3
+MOMO,MOMO,USA,--,--,5.74,USD,9.22,37.7,848.1,735.2,-47.87,-44.44,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-29T18:43:00.512820,2
+PD,PD,USA,--,--,9.43,USD,18.0,47.6,722.4,2339.7,32.19,32.95,Bullish,Turning Up,False,,False,,,,,,,,2026-06-29T18:43:00.598735,0

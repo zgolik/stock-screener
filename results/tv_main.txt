@@ -1,20 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-06-29 14:15 UTC
-### Liczba tickerow: 13
+### Wygenerowano: 2026-06-29 18:43 UTC
+### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-TTD  ### Strong BUY | -79.0% | --
-CMPX  ### Strong BUY | -69.4% | --
-COUR  ### Strong BUY | -57.8% | --
-GSHD  ### Strong BUY | -55.3% | --
-AGBK  ### Strong BUY | -40.8% | Financial Services
-MQ  ### Strong BUY | -39.3% | --
-YALA  ### Strong BUY | -39.1% | Technology
-### ── Turning Up (6) ──
-PEGA  ### Turning Up | -54.7% | Technology
-NCNO  ### Turning Up | -53.2% | --
-TTAN  ### Turning Up | -41.7% | --
-FSCO  ### Turning Up | -36.1% | Financial Services
-RLX  ### Turning Up | -34.9% | --
-IRD  ### Turning Up | -30.8% | --
+### ── Strong BUY (5) ──
+UPWK  ### Strong BUY | -63.4% | --
+COUR  ### Strong BUY | -58.0% | --
+MNSO  ### Strong BUY | -55.4% | --
+GSHD  ### Strong BUY | -55.4% | Financial Services
+AGBK  ### Strong BUY | -40.6% | --
+### ── Turning Up (3) ──
+PD  ### Turning Up | -47.6% | --
+MOMO  ### Turning Up | -37.7% | --
+IRD  ### Turning Up | -31.5% | --
