@@ -1,9 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-UPWK,UPWK,USA,--,--,8.36,USD,22.84,63.4,1032.6,4116.0,-55.58,-55.99,OVERSOLD,Strong BUY,True,"div_bull (cena -1.5%, SMI +20.1)",False,,,787.8,1.46,0.2744,0.589,0.7782,2026-06-29T18:42:42.223437,9
-MNSO,MNSO,USA,--,--,11.93,USD,26.74,55.4,3715.1,557.9,-75.89,-76.76,OVERSOLD,Strong BUY,False,,False,,,16994.0,1.55,0.4181,0.301,0.4494,2026-06-29T18:42:47.687921,7
-AGBK,AGBK,USA,--,--,7.25,USD,12.21,40.6,1159.5,524.3,-25.57,-36.12,Bearish,Strong BUY,True,"div_bull (cena -1.6%, SMI +1.2)",False,,,6466.2,,,0.511,,2026-06-29T18:42:47.210961,6
-GSHD,"Goosehead Insurance, Inc.",USA,United States,Financial Services,47.65,USD,106.84,55.4,1127.8,482.1,-15.62,-36.03,Bearish,Strong BUY,False,,False,,1.14,365.3,,0.1715,,,2026-06-29T18:43:00.090873,6
-COUR,COUR,USA,--,--,5.7,USD,13.56,58.0,1630.8,6807.8,-34.29,-40.34,Bearish,Strong BUY,False,,False,,,757.5,2.51,,0.005,0.5457,2026-06-29T18:42:49.756789,5
-IRD,IRD,USA,--,--,3.98,USD,5.81,31.5,328.6,948.5,-64.13,-61.43,OVERSOLD,Turning Up,False,,False,,,14.2,6.43,,0.074,,2026-06-29T18:42:41.915844,3
-MOMO,MOMO,USA,--,--,5.74,USD,9.22,37.7,848.1,735.2,-47.87,-44.44,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-29T18:43:00.512820,2
-PD,PD,USA,--,--,9.43,USD,18.0,47.6,722.4,2339.7,32.19,32.95,Bullish,Turning Up,False,,False,,,,,,,,2026-06-29T18:43:00.598735,0
+PDD,PDD Holdings Inc.,USA,Ireland,Consumer Cyclical,76.45,USD,139.41,45.2,108818.7,8849.7,-77.13,-77.25,OVERSOLD,Strong BUY,False,,False,,9.49,431845.7,2.43,0.2478,0.013,0.5628,2026-06-30T17:43:35.967863,8
+YALA,Yalla Group Limited,USA,United Arab Emirates,Technology,5.53,USD,9.29,40.4,840.4,325.8,-66.84,-68.93,OVERSOLD,Strong BUY,False,,False,,0.79,341.9,9.02,0.4269,0.002,0.6727,2026-06-30T17:43:39.230970,8
+UPWK,Upwork Inc.,USA,United States,Communication Services,8.27,USD,22.84,63.8,1021.5,4090.3,-56.59,-56.49,OVERSOLD,Turning Up,True,"div_bull (cena -1.5%, SMI +20.1)",False,,0.81,787.8,1.46,0.2744,0.589,0.7782,2026-06-30T17:43:42.227971,7
+FIGR,"Figure Technology Solutions, In",USA,United States,Financial Services,30.42,USD,78.0,61.0,6724.8,4076.5,-68.2,-63.73,OVERSOLD,Turning Up,False,,False,,0.82,434.5,2.2,0.3772,0.769,0.9321,2026-06-30T17:43:30.356233,5
+COTY,COTY,USA,--,--,2.17,USD,5.33,59.2,1915.0,10823.1,-55.31,-56.61,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-06-30T17:43:51.150027,5
+GWRE,GWRE,USA,--,--,122.1,USD,272.6,55.2,10165.6,1689.9,-51.7,-46.91,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-06-30T17:43:51.110877,2
+CNNE,CNNE,USA,--,--,14.51,USD,21.96,33.9,637.6,517.2,49.04,49.64,OVERBOUGHT,Turning Up,False,,False,,,,,,,,2026-06-30T17:43:50.986408,0
