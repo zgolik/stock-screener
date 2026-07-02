@@ -1,27 +1,17 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-01 17:40 UTC
-### Liczba tickerow: 20
+### Wygenerowano: 2026-07-02 17:25 UTC
+### Liczba tickerow: 10
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (11) ──
-UPB  ### Strong BUY | -78.6% | --
-UPWK  ### Strong BUY | -61.4% | Communication Services
-PEGA  ### Strong BUY | -54.0% | Technology
-GSHD  ### Strong BUY | -52.4% | --
-CHYM  ### Strong BUY | -44.6% | --
-DXC  ### Strong BUY | -41.0% | --
-PDD  ### Strong BUY | -40.9% | Consumer Cyclical
-PSEC  ### Strong BUY | -33.9% | --
-OTF  ### Strong BUY | -33.8% | --
-LOPE  ### Strong BUY | -32.8% | Consumer Defensive
-PALI  ### Strong BUY | -30.8% | Healthcare
-### ── Turning Up (9) ──
-GLOB  ### Turning Up | -66.7% | --
-GWRE  ### Turning Up | -52.2% | --
-FUTU  ### Turning Up | -50.7% | --
-FSLY  ### Turning Up | -45.5% | --
-EXLS  ### Turning Up | -42.4% | Technology
-AUGO  ### Turning Up | -42.4% | --
-BX  ### Turning Up | -37.0% | --
-ESRT  ### Turning Up | -34.2% | --
-HLI  ### Turning Up | -34.0% | --
+### ── Strong BUY (7) ──
+TTD  ### Strong BUY | -79.0% | --
+TASK  ### Strong BUY | -72.6% | --
+CHWY  ### Strong BUY | -52.0% | --
+GSHD  ### Strong BUY | -50.0% | --
+OFIX  ### Strong BUY | -42.6% | --
+CDE  ### Strong BUY | -38.7% | --
+VYGR  ### Strong BUY | -31.2% | --
+### ── Turning Up (3) ──
+FSCO  ### Turning Up | -35.2% | --
+ARLO  ### Turning Up | -34.3% | --
+HLI  ### Turning Up | -33.9% | --
