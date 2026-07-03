@@ -1,17 +1,42 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-02 17:25 UTC
-### Liczba tickerow: 10
+### Wygenerowano: 2026-07-03 14:10 UTC
+### Liczba tickerow: 35
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-TTD  ### Strong BUY | -79.0% | --
-TASK  ### Strong BUY | -72.6% | --
-CHWY  ### Strong BUY | -52.0% | --
-GSHD  ### Strong BUY | -50.0% | --
-OFIX  ### Strong BUY | -42.6% | --
-CDE  ### Strong BUY | -38.7% | --
-VYGR  ### Strong BUY | -31.2% | --
-### ── Turning Up (3) ──
-FSCO  ### Turning Up | -35.2% | --
-ARLO  ### Turning Up | -34.3% | --
-HLI  ### Turning Up | -33.9% | --
+### ── Strong BUY (24) ──
+LU  ### Strong BUY | -69.4% | --
+CSGP  ### Strong BUY | -69.2% | --
+CMPX  ### Strong BUY | -67.0% | --
+COTY  ### Strong BUY | -56.8% | --
+PEGA  ### Strong BUY | -54.4% | Technology
+KVYO  ### Strong BUY | -54.0% | --
+CHWY  ### Strong BUY | -52.1% | --
+HUYA  ### Strong BUY | -51.7% | --
+GSHD  ### Strong BUY | -49.7% | Financial Services
+FIS  ### Strong BUY | -49.4% | --
+NCNO  ### Strong BUY | -47.7% | --
+CHYM  ### Strong BUY | -46.0% | --
+PAHC  ### Strong BUY | -44.6% | --
+PTC  ### Strong BUY | -43.3% | --
+SSP  ### Strong BUY | -42.1% | --
+AGBK  ### Strong BUY | -41.8% | --
+CPRT  ### Strong BUY | -40.1% | --
+NFLX  ### Strong BUY | -40.0% | Communication Services
+TRMB  ### Strong BUY | -39.4% | --
+CDE  ### Strong BUY | -37.7% | Basic Materials
+NNDM  ### Strong BUY | -37.5% | --
+ZNTL  ### Strong BUY | -35.8% | --
+RLX  ### Strong BUY | -32.0% | --
+TSLX  ### Strong BUY | -31.3% | --
+### ── Turning Up (11) ──
+FISV  ### Turning Up | -70.3% | --
+INFY  ### Turning Up | -62.8% | Technology
+FIGR  ### Turning Up | -56.5% | --
+ZS  ### Turning Up | -56.3% | --
+XPEV  ### Turning Up | -53.7% | --
+INTR  ### Turning Up | -47.2% | --
+ASM  ### Turning Up | -45.2% | --
+PI  ### Turning Up | -42.7% | --
+PCTY  ### Turning Up | -41.8% | --
+BRZE  ### Turning Up | -36.2% | --
+FSCO  ### Turning Up | -35.3% | Financial Services
