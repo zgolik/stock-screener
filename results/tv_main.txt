@@ -1,42 +1,32 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-03 14:10 UTC
-### Liczba tickerow: 35
+### Wygenerowano: 2026-07-03 16:22 UTC
+### Liczba tickerow: 25
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (24) ──
-LU  ### Strong BUY | -69.4% | --
+### ── Strong BUY (15) ──
+TLRY  ### Strong BUY | -80.1% | --
+NAGE  ### Strong BUY | -72.9% | --
 CSGP  ### Strong BUY | -69.2% | --
-CMPX  ### Strong BUY | -67.0% | --
-COTY  ### Strong BUY | -56.8% | --
-PEGA  ### Strong BUY | -54.4% | Technology
-KVYO  ### Strong BUY | -54.0% | --
-CHWY  ### Strong BUY | -52.1% | --
-HUYA  ### Strong BUY | -51.7% | --
-GSHD  ### Strong BUY | -49.7% | Financial Services
-FIS  ### Strong BUY | -49.4% | --
-NCNO  ### Strong BUY | -47.7% | --
+CHTR  ### Strong BUY | -67.5% | --
+LBRDK  ### Strong BUY | -66.2% | --
+OPEN  ### Strong BUY | -54.9% | --
+NABL  ### Strong BUY | -54.5% | --
+IMRX  ### Strong BUY | -48.5% | --
+PCOR  ### Strong BUY | -46.6% | --
 CHYM  ### Strong BUY | -46.0% | --
-PAHC  ### Strong BUY | -44.6% | --
 PTC  ### Strong BUY | -43.3% | --
-SSP  ### Strong BUY | -42.1% | --
-AGBK  ### Strong BUY | -41.8% | --
-CPRT  ### Strong BUY | -40.1% | --
-NFLX  ### Strong BUY | -40.0% | Communication Services
-TRMB  ### Strong BUY | -39.4% | --
-CDE  ### Strong BUY | -37.7% | Basic Materials
-NNDM  ### Strong BUY | -37.5% | --
-ZNTL  ### Strong BUY | -35.8% | --
-RLX  ### Strong BUY | -32.0% | --
+MH  ### Strong BUY | -41.7% | --
+CDE  ### Strong BUY | -37.7% | --
+VIPS  ### Strong BUY | -37.1% | --
 TSLX  ### Strong BUY | -31.3% | --
-### ── Turning Up (11) ──
-FISV  ### Turning Up | -70.3% | --
-INFY  ### Turning Up | -62.8% | Technology
-FIGR  ### Turning Up | -56.5% | --
-ZS  ### Turning Up | -56.3% | --
-XPEV  ### Turning Up | -53.7% | --
-INTR  ### Turning Up | -47.2% | --
-ASM  ### Turning Up | -45.2% | --
+### ── Turning Up (10) ──
+VERX  ### Turning Up | -65.0% | --
+INFY  ### Turning Up | -62.8% | --
+LAW  ### Turning Up | -57.4% | --
+ORLA  ### Turning Up | -53.7% | --
+JMIA  ### Turning Up | -52.1% | --
+PSKY  ### Turning Up | -50.2% | --
+DOX  ### Turning Up | -44.6% | --
 PI  ### Turning Up | -42.7% | --
-PCTY  ### Turning Up | -41.8% | --
-BRZE  ### Turning Up | -36.2% | --
-FSCO  ### Turning Up | -35.3% | Financial Services
+STN  ### Turning Up | -38.8% | --
+PLTR  ### Turning Up | -37.7% | --
