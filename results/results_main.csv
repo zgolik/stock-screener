@@ -1,16 +1,13 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-INFY,Infosys Limited,USA,India,Technology,11.01,USD,30.0,63.3,44558.5,19038.2,-64.02,-65.46,OVERSOLD,Strong BUY,False,,False,,0.8,20158.0,1.98,0.3503,0.099,0.3016,2026-07-06T16:54:21.665187,8
-ISSC,Innovative Solutions and Suppor,USA,United States,Industrials,18.86,USD,30.94,39.0,337.5,497.0,-29.84,-40.69,Bearish,Strong BUY,False,,False,,0.95,84.3,1.5,0.1872,0.374,0.4806,2026-07-06T16:54:14.945939,7
-ADMA,ADMA Biologics Inc,USA,United States,Healthcare,9.05,USD,20.46,55.8,2096.4,5226.8,-36.9,-46.96,Bearish,Strong BUY,False,,False,,0.68,510.2,3.74,0.3297,0.167,0.5739,2026-07-06T16:54:19.229379,7
-DFIN,"Donnelley Financial Solutions, ",USA,United States,Technology,45.96,USD,66.25,30.6,1148.2,320.9,-21.86,-39.25,Bearish,Strong BUY,False,,False,,1.37,767.0,1.02,0.1978,0.471,0.6344,2026-07-06T16:54:22.209156,7
-IAG,IAG,USA,--,--,16.44,USD,24.87,33.9,9505.2,6236.6,-36.84,-41.34,Bearish,Strong BUY,False,,False,,,2852.8,1.02,0.1706,0.182,0.4228,2026-07-06T16:54:09.364652,6
-EXLS,"ExlService Holdings, Inc.",USA,United States,Technology,27.31,USD,47.11,42.0,4172.5,2647.2,-52.54,-52.05,OVERSOLD,Turning Up,False,,False,,1.57,2087.7,2.56,0.2032,0.442,0.3837,2026-07-06T16:54:19.705357,5
-FISV,FISV,USA,--,--,51.83,USD,175.92,70.5,27638.6,7344.8,-56.93,-59.87,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-06T16:54:28.215131,5
-TRI,Thomson Reuters Corp,USA,Canada,Industrials,88.29,USD,218.42,59.6,38542.0,1996.5,-28.98,-38.07,Bearish,Strong BUY,False,,False,,3.48,,,,,,2026-07-06T16:54:28.216646,5
-MNSO,MNSO,USA,--,--,11.86,USD,26.74,55.6,3540.2,564.9,-74.55,-76.72,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-06T16:54:30.866352,5
-BMNR,BMNR,USA,--,--,15.83,USD,134.48,88.2,9016.4,38750.7,-68.55,-71.5,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-06T16:54:30.873658,5
-LRN,"Stride, Inc.",USA,United States,Consumer Defensive,91.51,USD,171.17,46.5,3891.7,804.8,-17.02,-15.89,Bearish,Turning Up,False,,False,,6.39,2405.3,5.27,0.2629,0.372,0.3924,2026-07-06T16:54:27.166281,4
-PAYC,"Paycom Software, Inc.",USA,United States,Technology,139.23,USD,248.95,44.1,6491.9,1012.6,3.1,4.97,Bullish,Turning Up,False,,False,,8.64,2051.7,1.09,0.2232,0.052,0.8317,2026-07-06T16:54:18.490671,3
-GAP,GAP,USA,--,--,19.22,USD,29.36,34.5,6918.8,7916.6,-71.81,-69.38,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-06T16:54:28.214209,2
-TTGT,TTGT,USA,--,--,4.17,USD,9.0,53.7,301.5,534.1,-71.47,-69.87,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-06T16:54:28.239233,2
-KC,KC,USA,--,--,9.2,USD,18.52,50.3,2755.7,1400.0,-87.09,-84.72,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-06T16:54:30.867916,2
+UPWK,Upwork Inc.,USA,United States,Communication Services,9.02,USD,22.84,60.5,1113.5,4066.8,-33.76,-42.45,Bearish,Strong BUY,True,"div_bull (cena -1.5%, SMI +20.1)",False,,0.81,787.8,1.46,0.2744,0.589,0.7782,2026-07-06T18:34:41.009591,9
+INFY,Infosys Limited,USA,India,Technology,10.97,USD,30.0,63.4,44396.5,19038.2,-64.8,-65.85,OVERSOLD,Strong BUY,False,,False,,0.8,20158.0,1.98,0.3503,0.099,0.3016,2026-07-06T18:34:27.660264,8
+BRBR,"BellRing Brands, Inc.",USA,United States,Consumer Defensive,13.19,USD,59.1,77.7,1534.3,5401.3,-25.86,-42.38,Bearish,Strong BUY,False,,False,,1.29,2316.6,1.18,0.456,,0.3326,2026-07-06T18:34:24.805420,7
+ITRI,"Itron, Inc.",USA,United States,Technology,87.87,USD,142.0,38.1,3896.0,788.3,-21.71,-39.77,Bearish,Strong BUY,False,,False,,6.26,2367.2,1.56,0.1649,0.739,0.3769,2026-07-06T18:34:24.861064,7
+G,Genpact Limited,USA,Bermuda,Technology,29.07,USD,48.64,40.2,4927.6,2959.1,-54.57,-54.51,OVERSOLD,Turning Up,True,"div_bull (cena -2.2%, SMI +31.4)",False,,3.26,5079.9,1.66,0.1699,0.692,0.3604,2026-07-06T18:34:28.464210,7
+ADMA,ADMA Biologics Inc,USA,United States,Healthcare,9.06,USD,20.46,55.7,2101.0,5226.8,-36.77,-46.89,Bearish,Strong BUY,False,,False,,0.68,510.2,3.74,0.3297,0.167,0.5739,2026-07-06T18:34:29.699754,7
+IAG,IAG,USA,--,--,16.59,USD,24.87,33.3,9591.9,6236.6,-35.88,-40.86,Bearish,Strong BUY,False,,False,,,2852.8,1.02,0.1706,0.182,0.4228,2026-07-06T18:34:21.680418,6
+EXLS,"ExlService Holdings, Inc.",USA,United States,Technology,27.25,USD,47.11,42.2,4163.3,2647.2,-53.31,-52.43,OVERSOLD,Turning Up,False,,False,,1.57,2087.7,2.56,0.2032,0.442,0.3837,2026-07-06T18:34:27.825977,5
+FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,98.92,USD,202.53,51.2,13868.0,3528.1,-62.8,-62.41,OVERSOLD,Turning Up,False,,False,,9.05,22846.9,1.19,0.3851,0.437,0.8712,2026-07-06T18:34:32.602068,5
+YMM,Full Truck Alliance Co. Ltd.,USA,China,Technology,8.66,USD,14.07,38.4,9062.7,8526.8,-29.31,-38.35,Bearish,Strong BUY,False,,False,,0.59,,,,,,2026-07-06T18:34:41.326223,5
+MOMO,MOMO,USA,--,--,6.01,USD,9.22,34.9,887.2,719.1,-25.02,-33.26,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-06T18:34:41.360543,4
+ECC,ECC,USA,--,--,3.88,USD,7.83,50.5,512.3,1052.7,-21.92,-18.51,Bearish,Turning Up,False,,False,,,,,,,,2026-07-06T18:34:41.364621,1

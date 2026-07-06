@@ -1,22 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-06 16:54 UTC
-### Liczba tickerow: 15
+### Wygenerowano: 2026-07-06 18:34 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (9) ──
-BMNR  ### Strong BUY | -88.2% | --
-FISV  ### Strong BUY | -70.5% | --
-INFY  ### Strong BUY | -63.3% | Technology
-TRI  ### Strong BUY | -59.6% | Industrials
-ADMA  ### Strong BUY | -55.8% | Healthcare
-MNSO  ### Strong BUY | -55.6% | --
-ISSC  ### Strong BUY | -39.0% | Industrials
-IAG  ### Strong BUY | -33.9% | --
-DFIN  ### Strong BUY | -30.6% | Technology
-### ── Turning Up (6) ──
-TTGT  ### Turning Up | -53.7% | --
-KC  ### Turning Up | -50.3% | --
-LRN  ### Turning Up | -46.5% | Consumer Defensive
-PAYC  ### Turning Up | -44.1% | Technology
-EXLS  ### Turning Up | -42.0% | Technology
-GAP  ### Turning Up | -34.5% | --
+### ── Strong BUY (8) ──
+BRBR  ### Strong BUY | -77.7% | Consumer Defensive
+INFY  ### Strong BUY | -63.4% | Technology
+UPWK  ### Strong BUY | -60.5% | Communication Services
+ADMA  ### Strong BUY | -55.7% | Healthcare
+YMM  ### Strong BUY | -38.4% | Technology
+ITRI  ### Strong BUY | -38.1% | Technology
+MOMO  ### Strong BUY | -34.9% | --
+IAG  ### Strong BUY | -33.3% | --
+### ── Turning Up (4) ──
+FUTU  ### Turning Up | -51.2% | Financial Services
+ECC  ### Turning Up | -50.5% | --
+EXLS  ### Turning Up | -42.2% | Technology
+G  ### Turning Up | -40.2% | Technology
