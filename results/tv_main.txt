@@ -1,32 +1,22 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-03 16:22 UTC
-### Liczba tickerow: 25
+### Wygenerowano: 2026-07-06 16:54 UTC
+### Liczba tickerow: 15
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (15) ──
-TLRY  ### Strong BUY | -80.1% | --
-NAGE  ### Strong BUY | -72.9% | --
-CSGP  ### Strong BUY | -69.2% | --
-CHTR  ### Strong BUY | -67.5% | --
-LBRDK  ### Strong BUY | -66.2% | --
-OPEN  ### Strong BUY | -54.9% | --
-NABL  ### Strong BUY | -54.5% | --
-IMRX  ### Strong BUY | -48.5% | --
-PCOR  ### Strong BUY | -46.6% | --
-CHYM  ### Strong BUY | -46.0% | --
-PTC  ### Strong BUY | -43.3% | --
-MH  ### Strong BUY | -41.7% | --
-CDE  ### Strong BUY | -37.7% | --
-VIPS  ### Strong BUY | -37.1% | --
-TSLX  ### Strong BUY | -31.3% | --
-### ── Turning Up (10) ──
-VERX  ### Turning Up | -65.0% | --
-INFY  ### Turning Up | -62.8% | --
-LAW  ### Turning Up | -57.4% | --
-ORLA  ### Turning Up | -53.7% | --
-JMIA  ### Turning Up | -52.1% | --
-PSKY  ### Turning Up | -50.2% | --
-DOX  ### Turning Up | -44.6% | --
-PI  ### Turning Up | -42.7% | --
-STN  ### Turning Up | -38.8% | --
-PLTR  ### Turning Up | -37.7% | --
+### ── Strong BUY (9) ──
+BMNR  ### Strong BUY | -88.2% | --
+FISV  ### Strong BUY | -70.5% | --
+INFY  ### Strong BUY | -63.3% | Technology
+TRI  ### Strong BUY | -59.6% | Industrials
+ADMA  ### Strong BUY | -55.8% | Healthcare
+MNSO  ### Strong BUY | -55.6% | --
+ISSC  ### Strong BUY | -39.0% | Industrials
+IAG  ### Strong BUY | -33.9% | --
+DFIN  ### Strong BUY | -30.6% | Technology
+### ── Turning Up (6) ──
+TTGT  ### Turning Up | -53.7% | --
+KC  ### Turning Up | -50.3% | --
+LRN  ### Turning Up | -46.5% | Consumer Defensive
+PAYC  ### Turning Up | -44.1% | Technology
+EXLS  ### Turning Up | -42.0% | Technology
+GAP  ### Turning Up | -34.5% | --
