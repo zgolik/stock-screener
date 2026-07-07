@@ -1,13 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-UPWK,Upwork Inc.,USA,United States,Communication Services,9.02,USD,22.84,60.5,1113.5,4066.8,-33.76,-42.45,Bearish,Strong BUY,True,"div_bull (cena -1.5%, SMI +20.1)",False,,0.81,787.8,1.46,0.2744,0.589,0.7782,2026-07-06T18:34:41.009591,9
-INFY,Infosys Limited,USA,India,Technology,10.97,USD,30.0,63.4,44396.5,19038.2,-64.8,-65.85,OVERSOLD,Strong BUY,False,,False,,0.8,20158.0,1.98,0.3503,0.099,0.3016,2026-07-06T18:34:27.660264,8
-BRBR,"BellRing Brands, Inc.",USA,United States,Consumer Defensive,13.19,USD,59.1,77.7,1534.3,5401.3,-25.86,-42.38,Bearish,Strong BUY,False,,False,,1.29,2316.6,1.18,0.456,,0.3326,2026-07-06T18:34:24.805420,7
-ITRI,"Itron, Inc.",USA,United States,Technology,87.87,USD,142.0,38.1,3896.0,788.3,-21.71,-39.77,Bearish,Strong BUY,False,,False,,6.26,2367.2,1.56,0.1649,0.739,0.3769,2026-07-06T18:34:24.861064,7
-G,Genpact Limited,USA,Bermuda,Technology,29.07,USD,48.64,40.2,4927.6,2959.1,-54.57,-54.51,OVERSOLD,Turning Up,True,"div_bull (cena -2.2%, SMI +31.4)",False,,3.26,5079.9,1.66,0.1699,0.692,0.3604,2026-07-06T18:34:28.464210,7
-ADMA,ADMA Biologics Inc,USA,United States,Healthcare,9.06,USD,20.46,55.7,2101.0,5226.8,-36.77,-46.89,Bearish,Strong BUY,False,,False,,0.68,510.2,3.74,0.3297,0.167,0.5739,2026-07-06T18:34:29.699754,7
-IAG,IAG,USA,--,--,16.59,USD,24.87,33.3,9591.9,6236.6,-35.88,-40.86,Bearish,Strong BUY,False,,False,,,2852.8,1.02,0.1706,0.182,0.4228,2026-07-06T18:34:21.680418,6
-EXLS,"ExlService Holdings, Inc.",USA,United States,Technology,27.25,USD,47.11,42.2,4163.3,2647.2,-53.31,-52.43,OVERSOLD,Turning Up,False,,False,,1.57,2087.7,2.56,0.2032,0.442,0.3837,2026-07-06T18:34:27.825977,5
-FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,98.92,USD,202.53,51.2,13868.0,3528.1,-62.8,-62.41,OVERSOLD,Turning Up,False,,False,,9.05,22846.9,1.19,0.3851,0.437,0.8712,2026-07-06T18:34:32.602068,5
-YMM,Full Truck Alliance Co. Ltd.,USA,China,Technology,8.66,USD,14.07,38.4,9062.7,8526.8,-29.31,-38.35,Bearish,Strong BUY,False,,False,,0.59,,,,,,2026-07-06T18:34:41.326223,5
-MOMO,MOMO,USA,--,--,6.01,USD,9.22,34.9,887.2,719.1,-25.02,-33.26,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-06T18:34:41.360543,4
-ECC,ECC,USA,--,--,3.88,USD,7.83,50.5,512.3,1052.7,-21.92,-18.51,Bearish,Turning Up,False,,False,,,,,,,,2026-07-06T18:34:41.364621,1
+G,G,USA,--,--,29.81,USD,48.64,38.7,5053.0,2966.9,-50.74,-52.59,OVERSOLD,Strong BUY,True,"div_bull (cena -2.2%, SMI +31.4)",False,,,5079.9,1.66,0.1699,0.692,0.3604,2026-07-07T18:44:21.283870,9
+HLI,"Houlihan Lokey, Inc.",USA,United States,Financial Services,140.59,USD,211.78,33.6,9708.7,686.5,-46.79,-48.48,OVERSOLD,Strong BUY,False,,False,,6.23,2617.5,1.5,0.2447,0.21,0.385,2026-07-07T18:44:33.483690,8
+EXLS,EXLS,USA,--,--,28.07,USD,47.11,40.4,4288.6,2665.8,-47.79,-49.67,OVERSOLD,Strong BUY,False,,False,,,2087.7,2.56,0.2032,0.442,0.3837,2026-07-07T18:44:10.127208,7
+ACN,ACN,USA,--,--,143.52,USD,307.77,53.4,87826.1,7764.2,-53.56,-53.24,OVERSOLD,Turning Up,True,"div_bull (cena -24.2%, SMI +22.3)",False,,,69673.0,1.42,0.2463,0.262,0.3191,2026-07-07T18:44:12.996420,6
+PYPL,PYPL,USA,--,--,45.78,USD,79.5,42.4,40387.2,15408.8,-30.42,-41.55,Bearish,Strong BUY,False,,False,,,33172.0,1.29,0.2071,0.493,0.4662,2026-07-07T18:44:22.190869,6
+ARLO,ARLO,USA,--,--,13.31,USD,19.94,33.2,1446.1,1335.7,-63.58,-63.27,OVERSOLD,Turning Up,False,,False,,,529.3,1.27,,0.053,0.4399,2026-07-07T18:44:17.446162,3

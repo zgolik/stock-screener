@@ -1,19 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-06 18:34 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-07-07 18:44 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-BRBR  ### Strong BUY | -77.7% | Consumer Defensive
-INFY  ### Strong BUY | -63.4% | Technology
-UPWK  ### Strong BUY | -60.5% | Communication Services
-ADMA  ### Strong BUY | -55.7% | Healthcare
-YMM  ### Strong BUY | -38.4% | Technology
-ITRI  ### Strong BUY | -38.1% | Technology
-MOMO  ### Strong BUY | -34.9% | --
-IAG  ### Strong BUY | -33.3% | --
-### ── Turning Up (4) ──
-FUTU  ### Turning Up | -51.2% | Financial Services
-ECC  ### Turning Up | -50.5% | --
-EXLS  ### Turning Up | -42.2% | Technology
-G  ### Turning Up | -40.2% | Technology
+### ── Strong BUY (4) ──
+PYPL  ### Strong BUY | -42.4% | --
+EXLS  ### Strong BUY | -40.4% | --
+G  ### Strong BUY | -38.7% | --
+HLI  ### Strong BUY | -33.6% | Financial Services
+### ── Turning Up (2) ──
+ACN  ### Turning Up | -53.4% | --
+ARLO  ### Turning Up | -33.2% | --
