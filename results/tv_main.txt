@@ -1,22 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-09 18:23 UTC
-### Liczba tickerow: 15
+### Wygenerowano: 2026-07-10 17:33 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (12) ──
-BMNR  ### Strong BUY | -79.4% | --
-BRBR  ### Strong BUY | -79.2% | --
-FISV  ### Strong BUY | -70.0% | --
-TIGR  ### Strong BUY | -65.1% | --
-INFY  ### Strong BUY | -62.9% | --
-FIGR  ### Strong BUY | -57.9% | --
-JMIA  ### Strong BUY | -52.8% | --
-PYPL  ### Strong BUY | -43.2% | --
-EXLS  ### Strong BUY | -41.8% | --
-ISSC  ### Strong BUY | -40.4% | --
-PLTR  ### Strong BUY | -38.3% | --
-CG  ### Strong BUY | -37.0% | --
-### ── Turning Up (3) ──
-MNDY  ### Turning Up | -73.7% | --
-ACN  ### Turning Up | -52.7% | --
-NOW  ### Turning Up | -48.7% | --
+### ── Strong BUY (6) ──
+INFY  ### Strong BUY | -63.6% | Technology
+FIGR  ### Strong BUY | -59.6% | --
+ALT  ### Strong BUY | -52.7% | --
+ITRI  ### Strong BUY | -40.0% | --
+PLTR  ### Strong BUY | -39.1% | Technology
+PALI  ### Strong BUY | -31.8% | --
+### ── Turning Up (1) ──
+TUYA  ### Turning Up | -36.8% | --
