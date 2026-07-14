@@ -1,25 +1,17 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-13 18:15 UTC
-### Liczba tickerow: 18
+### Wygenerowano: 2026-07-14 12:11 UTC
+### Liczba tickerow: 10
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (13) ──
-FUTU  ### Strong BUY | -52.7% | Financial Services
-KVYO  ### Strong BUY | -52.3% | --
-HLNE  ### Strong BUY | -49.8% | Financial Services
-GEVO  ### Strong BUY | -49.3% | --
-LULU  ### Strong BUY | -48.9% | --
-CNDT  ### Strong BUY | -48.7% | --
-HLLY  ### Strong BUY | -43.0% | --
-PLTR  ### Strong BUY | -37.6% | --
-JRVR  ### Strong BUY | -36.3% | --
-LCII  ### Strong BUY | -36.2% | --
-LXU  ### Strong BUY | -34.6% | --
-VIPS  ### Strong BUY | -33.8% | --
-INR  ### Strong BUY | -33.4% | --
-### ── Turning Up (5) ──
-TIGR  ### Turning Up | -66.2% | --
-TEAM  ### Turning Up | -54.0% | --
-PSKY  ### Turning Up | -53.6% | --
-TU  ### Turning Up | -36.9% | --
-PTON  ### Turning Up | -34.7% | --
+### ── Strong BUY (7) ──
+TIGR  ### Strong BUY | -66.1% | --
+ACN  ### Strong BUY | -52.4% | --
+FUTU  ### Strong BUY | -52.4% | Financial Services
+EXLS  ### Strong BUY | -39.5% | Technology
+PLTR  ### Strong BUY | -37.3% | Technology
+LCII  ### Strong BUY | -36.1% | Consumer Cyclical
+RLX  ### Strong BUY | -30.6% | Consumer Defensive
+### ── Turning Up (3) ──
+BUR  ### Turning Up | -71.0% | --
+NIO  ### Turning Up | -38.5% | --
+FIZZ  ### Turning Up | -34.9% | Consumer Defensive
