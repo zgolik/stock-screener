@@ -1,4 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-ARLO,"Arlo Technologies, Inc.",USA,United States,Industrials,13.19,USD,19.94,33.9,1432.6,1338.3,-60.39,-62.56,OVERSOLD,Strong BUY,False,,False,,0.28,529.3,1.27,,0.053,0.4399,2026-07-15T12:19:06.424439,7
-PDD,PDD Holdings Inc.,USA,Ireland,Consumer Cyclical,83.91,USD,139.41,39.8,119437.2,8982.7,-38.59,-49.95,Bearish,Strong BUY,False,,False,,9.49,431845.7,2.43,0.2478,0.013,0.5628,2026-07-15T12:19:12.812571,7
-HLI,"Houlihan Lokey, Inc.",USA,United States,Financial Services,136.93,USD,211.78,35.3,9456.3,741.0,-53.84,-53.01,OVERSOLD,Turning Up,False,,False,,6.42,2617.5,1.5,0.2447,0.21,0.385,2026-07-15T12:19:08.963979,5
+ACN,ACN,USA,--,--,137.01,USD,291.09,52.9,83844.9,7799.5,-55.13,-55.3,OVERSOLD,Strong BUY,True,"div_bull (cena -24.2%, SMI +22.3)",False,,,,1.42,,0.262,,2026-07-15T13:40:54.022312,8
+FUTU,FUTU,USA,--,--,100.8,USD,202.53,50.2,14131.6,3512.4,-61.07,-62.13,OVERSOLD,Strong BUY,False,,False,,,22846.9,1.19,0.3851,0.437,0.8712,2026-07-15T13:40:36.866751,7
+PLTR,Palantir Technologies Inc.,USA,United States,Technology,134.9,USD,207.52,35.0,323385.4,43312.7,-30.63,-37.53,Bearish,Strong BUY,False,,False,,0.9,4475.4,7.11,0.2213,0.031,0.8237,2026-07-15T13:40:46.567343,7
+CGC,CGC,USA,--,--,0.97,USD,2.38,59.3,409.0,8857.1,-64.52,-64.89,OVERSOLD,Strong BUY,False,,False,,,,2.64,,0.4,,2026-07-15T13:40:53.338440,6
+TASK,TASK,USA,--,--,5.91,USD,18.39,67.8,541.6,634.8,-38.45,-54.95,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,,,,,,,2026-07-15T13:40:54.741160,6
+HLI,"Houlihan Lokey, Inc.",USA,United States,Financial Services,138.21,USD,211.78,34.7,9544.7,741.0,-53.84,-53.01,OVERSOLD,Turning Up,False,,False,,6.22,2617.5,1.5,0.2447,0.21,0.385,2026-07-15T13:40:41.671828,5
+NKTR,NKTR,USA,--,--,64.9,USD,109.0,40.5,2192.7,1159.7,-36.89,-47.33,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-15T13:40:52.852906,4
+CE,CE,USA,--,--,47.67,USD,70.7,32.6,5227.1,1883.1,-73.24,-72.49,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-15T13:40:49.306259,2

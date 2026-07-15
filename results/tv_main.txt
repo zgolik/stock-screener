@@ -1,10 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-15 12:19 UTC
-### Liczba tickerow: 3
+### Wygenerowano: 2026-07-15 13:40 UTC
+### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (2) ──
-PDD  ### Strong BUY | -39.8% | Consumer Cyclical
-ARLO  ### Strong BUY | -33.9% | Industrials
-### ── Turning Up (1) ──
-HLI  ### Turning Up | -35.3% | Financial Services
+### ── Strong BUY (6) ──
+TASK  ### Strong BUY | -67.8% | --
+CGC  ### Strong BUY | -59.3% | --
+ACN  ### Strong BUY | -52.9% | --
+FUTU  ### Strong BUY | -50.2% | --
+NKTR  ### Strong BUY | -40.5% | --
+PLTR  ### Strong BUY | -35.0% | Technology
+### ── Turning Up (2) ──
+HLI  ### Turning Up | -34.7% | Financial Services
+CE  ### Turning Up | -32.6% | --
