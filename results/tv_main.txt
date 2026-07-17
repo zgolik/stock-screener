@@ -1,19 +1,12 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-16 12:23 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-07-17 12:16 UTC
+### Liczba tickerow: 5
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (11) ──
-NBP  ### Strong BUY | -72.8% | --
-TASK  ### Strong BUY | -67.5% | Technology
-OLMA  ### Strong BUY | -67.4% | --
-ACN  ### Strong BUY | -52.9% | Technology
-KVYO  ### Strong BUY | -52.0% | --
-FUTU  ### Strong BUY | -50.9% | Financial Services
-HLNE  ### Strong BUY | -46.8% | --
-MAT  ### Strong BUY | -38.3% | --
-ARLO  ### Strong BUY | -35.6% | --
-CG  ### Strong BUY | -34.0% | Financial Services
-VET  ### Strong BUY | -33.9% | --
+### ── Strong BUY (4) ──
+TASK  ### Strong BUY | -67.5% | --
+ACN  ### Strong BUY | -50.3% | --
+PPC  ### Strong BUY | -42.6% | --
+ARLO  ### Strong BUY | -34.4% | Industrials
 ### ── Turning Up (1) ──
-NMFC  ### Turning Up | -34.8% | --
+DUOL  ### Turning Up | -72.4% | Technology

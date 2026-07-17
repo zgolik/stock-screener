@@ -1,13 +1,6 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-ACN,Accenture plc,USA,Ireland,Technology,137.02,USD,291.09,52.9,83848.3,8003.2,-55.19,-55.33,OVERSOLD,Strong BUY,True,"div_bull (cena -24.2%, SMI +22.3)",False,,12.52,69673.0,1.42,0.2463,0.262,0.3191,2026-07-16T12:22:42.203404,10
-TASK,"TaskUs, Inc.",USA,United States,Technology,5.97,USD,18.39,67.5,546.7,624.0,-38.14,-54.79,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,1.13,1183.5,3.12,0.1563,0.496,0.3778,2026-07-16T12:22:52.187526,9
-HLNE,HLNE,USA,--,--,85.79,USD,161.13,46.8,3748.8,986.2,-30.82,-44.6,Bearish,Strong BUY,True,"div_bull (cena -8.0%, SMI +3.8)",False,,,759.0,1.62,0.1707,0.389,0.6988,2026-07-16T12:22:35.788499,8
-FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,99.37,USD,202.53,50.9,13931.1,3514.6,-60.31,-61.75,OVERSOLD,Strong BUY,False,,False,,9.05,22846.9,1.19,0.3851,0.437,0.8712,2026-07-16T12:22:42.098875,8
-ARLO,ARLO,USA,--,--,12.84,USD,19.94,35.6,1394.6,1336.7,-64.39,-64.57,OVERSOLD,Strong BUY,False,,False,,,529.3,1.27,,0.053,0.4399,2026-07-16T12:22:35.714760,6
-CG,The Carlyle Group Inc.,USA,United States,Financial Services,46.11,USD,69.85,34.0,16598.4,3505.9,-31.12,-41.43,Bearish,Strong BUY,False,,False,,1.46,3213.2,,,,,2026-07-16T12:22:55.992633,5
-VET,VET,USA,--,--,9.79,USD,14.82,33.9,1499.8,1461.4,-76.39,-79.21,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-16T12:22:56.143328,5
-MAT,MAT,USA,--,--,13.86,USD,22.48,38.3,4027.3,4708.1,-49.9,-52.81,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-16T12:22:59.634040,5
-OLMA,OLMA,USA,--,--,11.82,USD,36.26,67.4,1032.4,1429.0,-30.66,-41.87,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-16T12:22:58.003302,4
-KVYO,KVYO,USA,--,--,17.63,USD,36.76,52.0,5276.3,6631.2,-23.72,-39.39,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-16T12:22:58.023262,4
-NBP,NBP,USA,--,--,1.85,USD,6.79,72.8,213.9,867.9,-33.38,-46.59,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-16T12:22:59.601904,4
-NMFC,NMFC,USA,--,--,7.11,USD,10.9,34.8,671.6,643.3,-60.72,-59.05,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-16T12:22:56.097928,2
+ACN,ACN,USA,--,--,144.61,USD,291.09,50.3,88492.9,8078.5,-50.14,-52.81,OVERSOLD,Strong BUY,True,"div_bull (cena -24.2%, SMI +22.3)",True,,,69673.0,1.42,0.2463,0.262,0.3191,2026-07-17T12:16:27.891035,10
+ARLO,"Arlo Technologies, Inc.",USA,United States,Industrials,13.08,USD,19.94,34.4,1420.6,1332.5,-61.65,-63.19,OVERSOLD,Strong BUY,False,,False,,0.28,529.3,1.27,,0.053,0.4399,2026-07-17T12:16:37.238354,7
+TASK,TASK,USA,--,--,5.97,USD,18.39,67.5,546.7,607.3,-38.14,-54.79,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,,,,,,,2026-07-17T12:16:51.006694,6
+PPC,PPC,USA,--,--,29.01,USD,50.56,42.6,6902.1,1529.7,-37.91,-47.99,Bearish,Strong BUY,True,"div_bull (cena -0.9%, SMI +18.7)",False,,,,,,,,2026-07-17T12:16:53.909963,6
+DUOL,"Duolingo, Inc.",USA,United States,Technology,128.94,USD,468.0,72.4,6007.7,1600.5,41.81,42.4,OVERBOUGHT,Turning Up,False,,False,,8.74,1037.6,2.61,0.335,0.07,0.7223,2026-07-17T12:16:45.623759,3
