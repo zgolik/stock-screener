@@ -1,10 +1,10 @@
 {
-  "generated_at": "2026-07-20T07:24:15.768668",
-  "elapsed_min": 6.6,
+  "generated_at": "2026-07-20T13:12:08.791305",
+  "elapsed_min": 12.0,
   "total_scanned": 7107,
   "weekly_signals": 881,
-  "main_total": 14,
-  "full_total": 188,
+  "main_total": 13,
+  "full_total": 197,
   "indicator": "SMI(10,3,3)",
   "market_direction": {
     "usa_above_sma50w": true,

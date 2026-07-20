@@ -1,21 +1,20 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-20 07:24 UTC
-### Liczba tickerow: 14
+### Wygenerowano: 2026-07-20 13:12 UTC
+### Liczba tickerow: 13
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (12) ──
-CSGP  ### Strong BUY | -69.4% | --
+### ── Strong BUY (8) ──
 TIGR  ### Strong BUY | -66.0% | --
-GLOB  ### Strong BUY | -65.8% | --
-ZS  ### Strong BUY | -55.5% | --
-OLLI  ### Strong BUY | -53.1% | --
-ACN  ### Strong BUY | -50.7% | --
+FUTU  ### Strong BUY | -53.0% | Financial Services
 RWAY  ### Strong BUY | -50.2% | --
-GEVO  ### Strong BUY | -45.1% | --
-MZTI  ### Strong BUY | -43.9% | --
-MAT  ### Strong BUY | -36.4% | --
-HLI  ### Strong BUY | -33.9% | --
-DOW  ### Strong BUY | -30.0% | --
-### ── Turning Up (2) ──
-BHC  ### Turning Up | -44.4% | --
-GTE  ### Turning Up | -32.3% | --
+HLNE  ### Strong BUY | -46.7% | --
+PTC  ### Strong BUY | -43.4% | Technology
+G  ### Strong BUY | -36.5% | --
+PLTR  ### Strong BUY | -36.2% | Technology
+EGHT  ### Strong BUY | -34.7% | --
+### ── Turning Up (5) ──
+SOC  ### Turning Up | -86.3% | --
+LI  ### Turning Up | -60.5% | --
+FIZZ  ### Turning Up | -35.1% | Consumer Defensive
+NMFC  ### Turning Up | -34.0% | --
+BKE  ### Turning Up | -31.2% | Consumer Cyclical
