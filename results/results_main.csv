@@ -1,6 +1,15 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-ACN,ACN,USA,--,--,144.61,USD,291.09,50.3,88492.9,8078.5,-50.14,-52.81,OVERSOLD,Strong BUY,True,"div_bull (cena -24.2%, SMI +22.3)",True,,,69673.0,1.42,0.2463,0.262,0.3191,2026-07-17T12:16:27.891035,10
-ARLO,"Arlo Technologies, Inc.",USA,United States,Industrials,13.08,USD,19.94,34.4,1420.6,1332.5,-61.65,-63.19,OVERSOLD,Strong BUY,False,,False,,0.28,529.3,1.27,,0.053,0.4399,2026-07-17T12:16:37.238354,7
-TASK,TASK,USA,--,--,5.97,USD,18.39,67.5,546.7,607.3,-38.14,-54.79,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,,,,,,,2026-07-17T12:16:51.006694,6
-PPC,PPC,USA,--,--,29.01,USD,50.56,42.6,6902.1,1529.7,-37.91,-47.99,Bearish,Strong BUY,True,"div_bull (cena -0.9%, SMI +18.7)",False,,,,,,,,2026-07-17T12:16:53.909963,6
-DUOL,"Duolingo, Inc.",USA,United States,Technology,128.94,USD,468.0,72.4,6007.7,1600.5,41.81,42.4,OVERBOUGHT,Turning Up,False,,False,,8.74,1037.6,2.61,0.335,0.07,0.7223,2026-07-17T12:16:45.623759,3
+ACN,ACN,USA,--,--,143.57,USD,291.09,50.7,87856.5,8176.5,-50.83,-53.15,OVERSOLD,Strong BUY,True,"div_bull (cena -24.2%, SMI +22.3)",True,,,69673.0,1.42,0.2463,0.262,0.3191,2026-07-20T07:24:04.999164,10
+HLI,HLI,USA,--,--,140.01,USD,211.78,33.9,9669.0,760.8,-48.02,-50.1,OVERSOLD,Strong BUY,False,,True,,,2617.5,1.5,0.2447,0.21,0.385,2026-07-20T07:23:52.758601,8
+OLLI,OLLI,USA,--,--,66.51,USD,141.74,53.1,4020.7,2097.1,-65.68,-66.12,OVERSOLD,Strong BUY,True,"div_bull (cena -2.3%, SMI +16.1)",True,,,,,,,,2026-07-20T07:24:15.334924,8
+TIGR,TIGR,USA,--,--,4.61,USD,13.55,66.0,823.8,4466.7,-58.28,-58.51,OVERSOLD,Strong BUY,False,,False,,,612.1,1.12,1.7118,0.2,0.6933,2026-07-20T07:23:45.890059,7
+MZTI,MZTI,USA,--,--,107.14,USD,190.96,43.9,2938.0,367.3,-37.3,-45.8,Bearish,Strong BUY,True,"div_bull (cena -4.9%, SMI +2.3)",True,,,,,,,,2026-07-20T07:24:15.484955,7
+RWAY,RWAY,USA,--,--,5.63,USD,11.3,50.2,239.1,664.2,-64.15,-67.15,OVERSOLD,Strong BUY,False,,True,,,47.3,,,0.928,,2026-07-20T07:23:57.856371,6
+CSGP,CSGP,USA,--,--,29.78,USD,97.43,69.4,12160.8,7591.4,-65.24,-70.07,OVERSOLD,Strong BUY,False,,True,,,,,,,,2026-07-20T07:24:12.880546,6
+MAT,MAT,USA,--,--,14.3,USD,22.48,36.4,4155.1,4799.0,-40.88,-48.31,OVERSOLD,Strong BUY,False,,True,,,,,,,,2026-07-20T07:24:15.633514,6
+DOW,DOW,USA,--,--,29.92,USD,42.74,30.0,21564.6,12014.3,-72.12,-74.61,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-20T07:24:12.845491,5
+GLOB,GLOB,USA,--,--,32.23,USD,94.35,65.8,1391.7,1992.8,-60.73,-61.72,OVERSOLD,Strong BUY,False,,False,,,2454.9,,,,0.35,2026-07-20T07:24:12.960589,5
+GEVO,GEVO,USA,--,--,1.63,USD,2.97,45.1,396.8,3359.7,-69.45,-75.59,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-20T07:24:15.537672,5
+ZS,ZS,USA,--,--,149.94,USD,336.99,55.5,24246.7,4532.7,-37.8,-41.28,Bearish,Strong BUY,False,,False,,,2673.1,,,,0.7687,2026-07-20T07:24:08.529465,4
+GTE,GTE,USA,--,--,6.59,USD,9.74,32.3,233.0,332.9,-67.73,-65.19,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-20T07:24:12.854028,2
+BHC,BHC,USA,--,--,4.83,USD,8.69,44.4,1803.9,2224.9,-66.3,-64.84,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-20T07:24:12.892411,2

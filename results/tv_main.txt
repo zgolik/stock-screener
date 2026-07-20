@@ -1,12 +1,21 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-17 12:16 UTC
-### Liczba tickerow: 5
+### Wygenerowano: 2026-07-20 07:24 UTC
+### Liczba tickerow: 14
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-TASK  ### Strong BUY | -67.5% | --
-ACN  ### Strong BUY | -50.3% | --
-PPC  ### Strong BUY | -42.6% | --
-ARLO  ### Strong BUY | -34.4% | Industrials
-### ── Turning Up (1) ──
-DUOL  ### Turning Up | -72.4% | Technology
+### ── Strong BUY (12) ──
+CSGP  ### Strong BUY | -69.4% | --
+TIGR  ### Strong BUY | -66.0% | --
+GLOB  ### Strong BUY | -65.8% | --
+ZS  ### Strong BUY | -55.5% | --
+OLLI  ### Strong BUY | -53.1% | --
+ACN  ### Strong BUY | -50.7% | --
+RWAY  ### Strong BUY | -50.2% | --
+GEVO  ### Strong BUY | -45.1% | --
+MZTI  ### Strong BUY | -43.9% | --
+MAT  ### Strong BUY | -36.4% | --
+HLI  ### Strong BUY | -33.9% | --
+DOW  ### Strong BUY | -30.0% | --
+### ── Turning Up (2) ──
+BHC  ### Turning Up | -44.4% | --
+GTE  ### Turning Up | -32.3% | --
