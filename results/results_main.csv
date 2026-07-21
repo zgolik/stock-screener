@@ -1,14 +1,5 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-PTC,PTC Inc.,USA,United States,Technology,124.37,USD,219.69,43.4,14365.5,1737.3,-38.66,-44.89,Bearish,Strong BUY,True,"div_bull (cena -16.7%, SMI +21.6)",False,,10.41,2739.2,1.12,0.1532,0.358,0.8376,2026-07-20T13:11:47.914889,9
-HLNE,HLNE,USA,--,--,85.85,USD,161.13,46.7,3751.4,988.5,-30.71,-44.54,Bearish,Strong BUY,True,"div_bull (cena -8.0%, SMI +3.8)",False,,,759.0,1.62,0.1707,0.389,0.6988,2026-07-20T13:11:46.728841,8
-G,Genpact Limited,USA,--,--,30.89,USD,48.64,36.5,5236.1,2901.7,-38.77,-46.25,Bearish,Strong BUY,True,"div_bull (cena -2.2%, SMI +31.4)",False,,,5079.9,1.66,0.1699,0.692,0.3604,2026-07-20T13:11:47.734217,8
-TIGR,TIGR,USA,--,--,4.61,USD,13.55,66.0,823.8,4466.7,-58.28,-58.51,OVERSOLD,Strong BUY,False,,False,,,612.1,1.12,1.7118,0.2,0.6933,2026-07-20T13:11:39.433939,7
-FIZZ,National Beverage Corp.,USA,United States,Consumer Defensive,31.07,USD,47.85,35.1,2908.5,431.0,-14.43,-10.4,Bearish,Turning Up,True,"div_bull (cena -4.0%, SMI +51.6)",True,,1.96,1180.6,3.68,0.4788,0.093,0.3704,2026-07-20T13:11:57.435524,7
-PLTR,Palantir Technologies Inc.,USA,United States,Technology,132.38,USD,207.52,36.2,317356.2,42413.1,-31.87,-38.15,Bearish,Strong BUY,False,,False,,0.89,4475.4,7.11,0.2213,0.031,0.8237,2026-07-20T13:11:57.602309,7
-FUTU,Futu Holdings Limited,USA,Hong Kong,Financial Services,95.1,USD,202.53,53.0,13332.5,3512.5,-62.9,-63.04,OVERSOLD,Strong BUY,False,,False,,9.05,22846.9,,,,0.8712,2026-07-20T13:12:03.094301,6
-EGHT,EGHT,USA,--,--,1.88,USD,2.88,34.7,266.6,1855.4,-52.95,-54.19,OVERSOLD,Strong BUY,False,,True,,,,,,,,2026-07-20T13:12:06.469845,6
-RWAY,RWAY,USA,--,--,5.63,USD,11.3,50.2,239.1,664.2,-64.15,-67.15,OVERSOLD,Strong BUY,False,,True,,,,,,,,2026-07-20T13:12:08.545031,6
-BKE,"Buckle, Inc. (The)",USA,United States,Consumer Cyclical,42.47,USD,61.69,31.2,2188.0,489.6,-73.82,-73.37,OVERSOLD,Turning Up,False,,False,,4.36,1297.8,1.3,0.3932,0.904,0.4899,2026-07-20T13:11:58.844324,5
-LI,LI,USA,--,--,12.39,USD,31.36,60.5,12292.0,4308.5,-88.13,-87.83,OVERSOLD,Turning Up,False,,True,,,,1.68,,0.245,,2026-07-20T13:12:05.094450,4
-SOC,SOC,USA,--,--,4.35,USD,31.74,86.3,833.9,8358.6,-80.88,-78.26,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-07-20T13:12:06.465231,3
-NMFC,NMFC,USA,--,--,7.11,USD,10.78,34.0,671.6,632.1,-60.72,-59.05,OVERSOLD,Turning Up,False,,False,,,14.8,,,,,2026-07-20T13:12:05.437496,2
+TW,TW,USA,--,--,100.52,USD,147.49,31.8,21916.0,1724.1,-34.66,-41.98,Bearish,Strong BUY,True,"div_bull (cena -6.6%, SMI +0.8)",False,,,,,,,,2026-07-21T12:29:07.058421,6
+LIFE,LIFE,USA,--,--,18.5,USD,32.5,43.1,1165.4,526.4,-44.11,-45.69,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-21T12:29:07.099544,5
+FINV,FINV,USA,--,--,4.81,USD,10.04,52.1,1135.6,881.5,-46.72,-44.91,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-21T12:29:07.000204,2
+MSTR,MSTR,USA,--,--,97.82,USD,433.94,77.5,35468.3,20558.6,-74.03,-73.35,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-21T12:29:07.116294,2
