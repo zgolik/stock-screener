@@ -1,5 +1,10 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-TW,TW,USA,--,--,100.52,USD,147.49,31.8,21916.0,1724.1,-34.66,-41.98,Bearish,Strong BUY,True,"div_bull (cena -6.6%, SMI +0.8)",False,,,,,,,,2026-07-21T12:29:07.058421,6
-LIFE,LIFE,USA,--,--,18.5,USD,32.5,43.1,1165.4,526.4,-44.11,-45.69,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-21T12:29:07.099544,5
-FINV,FINV,USA,--,--,4.81,USD,10.04,52.1,1135.6,881.5,-46.72,-44.91,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-21T12:29:07.000204,2
-MSTR,MSTR,USA,--,--,97.82,USD,433.94,77.5,35468.3,20558.6,-74.03,-73.35,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-21T12:29:07.116294,2
+TASK,TASK,USA,--,--,5.84,USD,18.39,68.2,534.8,603.3,-19.09,-37.62,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,,1183.5,3.12,0.1563,0.496,0.3778,2026-07-22T12:30:34.455489,8
+GEMI,GEMI,USA,--,--,4.77,USD,45.89,89.6,603.1,1945.9,-59.44,-63.68,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-22T12:30:42.362553,5
+LI,LI,USA,--,--,12.21,USD,31.1,60.7,12113.4,4359.6,-86.0,-86.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-22T12:30:54.105567,5
+WPM,WPM,USA,--,--,109.96,USD,165.76,33.7,49935.6,2069.4,-66.87,-64.32,OVERSOLD,Turning Up,False,,False,,,2314.6,7.78,0.1754,0.001,0.7222,2026-07-22T12:30:22.952957,4
+SMR,SMR,USA,--,--,8.71,USD,57.42,84.8,3014.6,33537.3,-68.0,-61.98,OVERSOLD,Turning Up,False,,False,,,31.5,,,,0.3631,2026-07-22T12:30:38.537258,2
+XNDU,XNDU,USA,--,--,10.92,USD,42.44,74.3,3259.7,4939.4,-83.71,-82.68,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:42.605414,2
+GILT,GILT,USA,--,--,11.64,USD,20.93,44.4,878.5,862.4,-84.49,-82.06,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:55.370604,2
+CCOI,CCOI,USA,--,--,12.7,USD,50.37,74.8,636.0,1362.5,-83.1,-82.97,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:57.233624,2
+ECC,ECC,USA,--,--,3.71,USD,7.77,52.3,490.5,1012.3,-25.89,-24.44,Bearish,Turning Up,False,,False,,,-126.0,,,,,2026-07-22T12:31:02.681184,1

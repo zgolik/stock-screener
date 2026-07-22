@@ -1,11 +1,16 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-21 12:29 UTC
-### Liczba tickerow: 4
+### Wygenerowano: 2026-07-22 12:31 UTC
+### Liczba tickerow: 9
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (2) ──
-LIFE  ### Strong BUY | -43.1% | --
-TW  ### Strong BUY | -31.8% | --
-### ── Turning Up (2) ──
-MSTR  ### Turning Up | -77.5% | --
-FINV  ### Turning Up | -52.1% | --
+### ── Strong BUY (3) ──
+GEMI  ### Strong BUY | -89.6% | --
+TASK  ### Strong BUY | -68.2% | --
+LI  ### Strong BUY | -60.7% | --
+### ── Turning Up (6) ──
+SMR  ### Turning Up | -84.8% | --
+CCOI  ### Turning Up | -74.8% | --
+XNDU  ### Turning Up | -74.3% | --
+ECC  ### Turning Up | -52.3% | --
+GILT  ### Turning Up | -44.4% | --
+WPM  ### Turning Up | -33.7% | --
