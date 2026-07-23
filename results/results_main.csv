@@ -1,10 +1,15 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-TASK,TASK,USA,--,--,5.84,USD,18.39,68.2,534.8,603.3,-19.09,-37.62,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",False,,,1183.5,3.12,0.1563,0.496,0.3778,2026-07-22T12:30:34.455489,8
-GEMI,GEMI,USA,--,--,4.77,USD,45.89,89.6,603.1,1945.9,-59.44,-63.68,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-22T12:30:42.362553,5
-LI,LI,USA,--,--,12.21,USD,31.1,60.7,12113.4,4359.6,-86.0,-86.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-22T12:30:54.105567,5
-WPM,WPM,USA,--,--,109.96,USD,165.76,33.7,49935.6,2069.4,-66.87,-64.32,OVERSOLD,Turning Up,False,,False,,,2314.6,7.78,0.1754,0.001,0.7222,2026-07-22T12:30:22.952957,4
-SMR,SMR,USA,--,--,8.71,USD,57.42,84.8,3014.6,33537.3,-68.0,-61.98,OVERSOLD,Turning Up,False,,False,,,31.5,,,,0.3631,2026-07-22T12:30:38.537258,2
-XNDU,XNDU,USA,--,--,10.92,USD,42.44,74.3,3259.7,4939.4,-83.71,-82.68,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:42.605414,2
-GILT,GILT,USA,--,--,11.64,USD,20.93,44.4,878.5,862.4,-84.49,-82.06,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:55.370604,2
-CCOI,CCOI,USA,--,--,12.7,USD,50.37,74.8,636.0,1362.5,-83.1,-82.97,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-22T12:30:57.233624,2
-ECC,ECC,USA,--,--,3.71,USD,7.77,52.3,490.5,1012.3,-25.89,-24.44,Bearish,Turning Up,False,,False,,,-126.0,,,,,2026-07-22T12:31:02.681184,1
+TASK,"TaskUs, Inc.",USA,United States,Technology,5.85,USD,18.39,68.2,535.7,630.3,-18.88,-37.52,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +0.9)",True,,1.13,1183.5,3.12,0.1563,0.496,0.3778,2026-07-23T12:33:35.579885,10
+CDE,"Coeur Mining, Inc.",USA,United States,Basic Materials,15.84,USD,27.77,43.0,16323.7,30308.5,-54.06,-51.62,OVERSOLD,Turning Up,True,"div_bull (cena -6.9%, SMI +8.9)",True,,1.28,2070.1,1.66,0.1779,0.106,0.4447,2026-07-23T12:33:25.709307,8
+SCZM,Santacruz Silver Mining Ltd.,USA,Canada,Basic Materials,6.76,USD,17.65,61.7,626.9,513.1,-64.52,-64.68,OVERSOLD,Strong BUY,False,,False,,0.67,326.4,1.04,0.1918,0.29,0.3352,2026-07-23T12:33:44.630524,8
+XXI,"Twenty One Capital, Inc.",USA,United States,Financial Services,5.02,USD,31.2,83.9,1741.0,1358.6,-72.83,-73.24,OVERSOLD,Strong BUY,False,,True,,,,47.62,,0.141,,2026-07-23T12:33:33.979045,7
+FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,8.61,USD,13.85,37.8,2608.5,5150.1,-62.29,-60.43,OVERSOLD,Turning Up,False,,False,,1.08,947.1,2.5,0.1718,0.126,0.493,2026-07-23T12:33:23.203567,5
+IAG,Iamgold Corporation,USA,Canada,Basic Materials,15.15,USD,24.87,39.1,8756.7,5810.0,-58.69,-55.79,OVERSOLD,Turning Up,False,,False,,1.71,2852.8,1.22,0.1706,0.182,0.4228,2026-07-23T12:33:26.401489,5
+PLAB,"Photronics, Inc.",USA,United States,Technology,31.24,USD,56.0,44.2,1842.0,1504.6,-79.89,-77.94,OVERSOLD,Turning Up,False,,False,,2.71,849.3,4.99,0.1557,0.005,0.353,2026-07-23T12:33:33.366288,5
+GFI,Gold Fields Limited,USA,South Africa,Basic Materials,33.6,USD,61.64,45.5,30052.5,3531.9,-67.81,-67.0,OVERSOLD,Turning Up,False,,False,,3.94,8751.3,1.33,0.2582,0.382,0.5529,2026-07-23T12:33:48.215008,5
+KGC,Kinross Gold Corporation,USA,Canada,Basic Materials,24.24,USD,39.11,38.0,28945.2,8336.5,-71.77,-70.46,OVERSOLD,Turning Up,False,,False,,2.35,7051.1,1.37,0.2693,0.086,0.527,2026-07-23T12:33:48.404355,5
+TRX,TRX,USA,--,--,0.85,USD,2.8,69.6,278.4,2365.1,-73.63,-78.44,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-23T12:33:48.678790,5
+NKLR,NKLR,USA,--,--,5.34,USD,21.91,75.6,590.1,383.4,-54.56,-56.31,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-23T12:33:48.769237,5
+RNO.PA,RNO.PA,EU,--,--,26.38,EUR,37.97,30.5,7646.0,1406.2,-51.64,-52.02,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-23T12:33:51.191065,5
+ONDS,ONDS,USA,--,--,8.0,USD,15.28,47.6,4558.7,83191.0,-79.64,-78.34,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-07-23T12:33:48.683948,3
+DSY.PA,DSY.PA,EU,--,--,18.59,EUR,33.16,43.9,24427.2,2338.1,-24.92,-24.66,Bearish,Turning Up,False,,False,,,,,,,,2026-07-23T12:33:51.156276,1
