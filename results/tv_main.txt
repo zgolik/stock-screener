@@ -1,21 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-23 12:33 UTC
-### Liczba tickerow: 14
+### Wygenerowano: 2026-07-24 12:22 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-XXI  ### Strong BUY | -83.9% | Financial Services
-NKLR  ### Strong BUY | -75.6% | --
-TRX  ### Strong BUY | -69.6% | --
-TASK  ### Strong BUY | -68.2% | Technology
-SCZM  ### Strong BUY | -61.7% | Basic Materials
-EURONEXT:RNO  ### Strong BUY | -30.5% | --
-### ── Turning Up (8) ──
-ONDS  ### Turning Up | -47.6% | --
-GFI  ### Turning Up | -45.5% | Basic Materials
-PLAB  ### Turning Up | -44.2% | Technology
-EURONEXT:DSY  ### Turning Up | -43.9% | --
-CDE  ### Turning Up | -43.0% | Basic Materials
-IAG  ### Turning Up | -39.1% | Basic Materials
-KGC  ### Turning Up | -38.0% | Basic Materials
-FSM  ### Turning Up | -37.8% | Basic Materials
+### ── Strong BUY (3) ──
+TASK  ### Strong BUY | -70.9% | --
+LIFE  ### Strong BUY | -41.4% | --
+BKE  ### Strong BUY | -31.9% | --
+### ── Turning Up (4) ──
+SCZM  ### Turning Up | -64.3% | --
+PLAB  ### Turning Up | -44.7% | Technology
+WPM  ### Turning Up | -33.6% | --
+B  ### Turning Up | -32.1% | --
