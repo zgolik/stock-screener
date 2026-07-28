@@ -1,19 +1,20 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-27 13:43 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-07-28 12:40 UTC
+### Liczba tickerow: 13
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (8) ──
-LTBR  ### Strong BUY | -74.4% | --
-SCZM  ### Strong BUY | -63.8% | Basic Materials
-OGC  ### Strong BUY | -44.3% | Basic Materials
-CPRT  ### Strong BUY | -42.7% | Industrials
-FSM  ### Strong BUY | -37.9% | Basic Materials
-ARLO  ### Strong BUY | -32.3% | Industrials
-WPM  ### Strong BUY | -32.0% | Basic Materials
-B  ### Strong BUY | -31.5% | Basic Materials
-### ── Turning Up (4) ──
-ITRG  ### Turning Up | -55.3% | --
-CHA  ### Turning Up | -52.4% | Consumer Cyclical
+LULU  ### Strong BUY | -47.9% | Consumer Cyclical
+OGC  ### Strong BUY | -44.2% | Basic Materials
+TCOM  ### Strong BUY | -43.3% | --
+CPRT  ### Strong BUY | -40.6% | Industrials
+KGC  ### Strong BUY | -38.8% | Basic Materials
+FSM  ### Strong BUY | -38.2% | Basic Materials
+LOPE  ### Strong BUY | -35.1% | Consumer Defensive
+B  ### Strong BUY | -31.7% | Basic Materials
+### ── Turning Up (5) ──
+KTOS  ### Turning Up | -63.1% | Industrials
+PDYN  ### Turning Up | -51.8% | --
 GFI  ### Turning Up | -46.6% | Basic Materials
-CDE  ### Turning Up | -44.8% | Basic Materials
+MIR  ### Turning Up | -44.3% | --
+AVPT  ### Turning Up | -35.8% | Technology

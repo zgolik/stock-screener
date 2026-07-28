@@ -1,13 +1,14 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-CPRT,"Copart, Inc.",USA,United States,Industrials,28.71,USD,50.11,42.7,26580.0,11115.5,-72.1,-74.02,OVERSOLD,Strong BUY,True,"div_bull (cena -14.8%, SMI +1.2)",False,,1.61,4647.0,8.36,0.2091,0.011,0.4518,2026-07-27T13:43:07.770935,10
-WPM,Wheaton Precious Metals Corp,USA,Canada,Basic Materials,112.74,USD,165.76,32.0,51198.1,2056.6,-56.39,-59.88,OVERSOLD,Strong BUY,False,,False,,3.96,2314.6,7.78,0.1754,0.001,0.7222,2026-07-27T13:42:38.892365,8
-OGC,OceanaGold Corporation,USA,Canada,Basic Materials,24.15,USD,43.33,44.3,5372.1,374.6,-68.74,-69.51,OVERSOLD,Strong BUY,False,,False,,3.28,1893.2,1.02,0.2451,0.022,0.4635,2026-07-27T13:42:41.782268,8
-B,Barrick Mining Corporation,USA,Canada,Basic Materials,37.46,USD,54.69,31.5,62915.5,11710.2,-55.24,-58.47,OVERSOLD,Strong BUY,False,,False,,3.69,16956.0,2.33,0.1572,0.196,0.5126,2026-07-27T13:42:42.952003,8
-SCZM,Santacruz Silver Mining Ltd.,USA,Canada,Basic Materials,6.39,USD,17.65,63.8,592.6,512.1,-66.1,-66.76,OVERSOLD,Strong BUY,False,,False,,0.65,326.4,1.04,0.1918,0.29,0.3352,2026-07-27T13:42:45.997621,8
-FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,8.6,USD,13.85,37.9,2606.6,5219.4,-58.19,-59.56,OVERSOLD,Strong BUY,False,,False,,1.08,947.1,2.5,0.1718,0.126,0.493,2026-07-27T13:42:50.922156,8
-ARLO,"Arlo Technologies, Inc.",USA,United States,Industrials,13.5,USD,19.94,32.3,1466.1,1331.1,-36.47,-46.69,Bearish,Strong BUY,False,,False,,0.28,529.3,1.27,,0.053,0.4399,2026-07-27T13:42:40.805449,6
-CDE,"Coeur Mining, Inc.",USA,United States,Basic Materials,15.34,USD,27.77,44.8,15808.4,31022.4,-59.38,-57.01,OVERSOLD,Turning Up,False,,False,,1.24,2070.1,1.66,0.1779,0.106,0.4447,2026-07-27T13:42:47.508078,5
-LTBR,LTBR,USA,--,--,8.02,USD,31.34,74.4,263.4,901.7,-80.16,-81.77,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-27T13:43:02.534619,5
-CHA,Chagee Holdings Limited,USA,China,Consumer Cyclical,11.39,USD,23.9,52.4,2171.8,675.8,-3.48,-0.98,Bearish,Turning Up,False,,False,,0.74,12907.4,3.03,0.9821,0.174,0.4584,2026-07-27T13:43:10.295862,4
-GFI,Gold Fields Limited,USA,South Africa,Basic Materials,32.89,USD,61.64,46.6,29417.4,3549.9,-70.0,-69.26,OVERSOLD,Turning Up,False,,False,,3.94,,,,,,2026-07-27T13:43:02.393630,3
-ITRG,ITRG,USA,--,--,2.17,USD,4.87,55.3,441.0,2998.7,-69.81,-69.42,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-27T13:43:02.300923,2
+CPRT,"Copart, Inc.",USA,United States,Industrials,29.79,USD,50.11,40.6,27579.9,11439.8,-65.09,-70.51,OVERSOLD,Strong BUY,True,"div_bull (cena -14.8%, SMI +1.2)",False,,1.72,4647.0,8.36,0.2091,0.011,0.4518,2026-07-28T12:39:50.979046,10
+LULU,lululemon athletica inc.,USA,Canada,Consumer Cyclical,117.83,USD,225.98,47.9,13380.1,3582.9,-33.58,-40.15,Bearish,Strong BUY,True,"div_bull (cena -6.2%, SMI +6.5)",False,,12.35,11102.6,1.36,0.3274,0.362,0.566,2026-07-28T12:39:51.636654,9
+FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,8.56,USD,13.85,38.2,2593.3,5256.3,-58.55,-59.74,OVERSOLD,Strong BUY,False,,False,,1.08,947.1,2.5,0.1718,0.126,0.493,2026-07-28T12:39:49.161825,8
+OGC,OceanaGold Corporation,USA,Canada,Basic Materials,24.17,USD,43.33,44.2,5376.6,373.6,-67.76,-69.02,OVERSOLD,Strong BUY,False,,False,,3.28,1893.2,1.02,0.2451,0.022,0.4635,2026-07-28T12:40:00.525852,8
+LOPE,"Grand Canyon Education, Inc.",USA,United States,Consumer Defensive,144.86,USD,223.04,35.1,3840.9,338.3,-49.46,-54.11,OVERSOLD,Strong BUY,False,,False,,8.0,1106.1,3.65,0.304,0.144,0.5319,2026-07-28T12:40:02.180884,8
+KGC,Kinross Gold Corporation,USA,Canada,Basic Materials,23.92,USD,39.11,38.8,28563.1,8223.5,-70.56,-71.01,OVERSOLD,Strong BUY,False,,False,,2.35,7051.1,1.37,0.2693,0.086,0.527,2026-07-28T12:40:03.171151,8
+B,Barrick Mining Corporation,USA,Canada,Basic Materials,37.38,USD,54.69,31.7,62781.1,11668.3,-55.24,-58.47,OVERSOLD,Strong BUY,False,,False,,3.71,16956.0,2.33,0.1572,0.196,0.5126,2026-07-28T12:40:05.581609,8
+GFI,Gold Fields Limited,USA,South Africa,Basic Materials,32.91,USD,61.64,46.6,29435.3,3562.7,-70.34,-69.43,OVERSOLD,Turning Up,False,,False,,3.97,8751.3,1.33,0.2582,0.382,0.5529,2026-07-28T12:39:59.690304,5
+KTOS,Kratos Defense & Security Solut,USA,United States,Industrials,49.45,USD,134.0,63.1,9272.9,4794.4,-73.85,-72.37,OVERSOLD,Turning Up,True,"div_bull (cena -2.5%, SMI +1.0)",False,,0.17,,,,,,2026-07-28T12:40:06.407923,5
+TCOM,TCOM,USA,--,--,44.77,USD,78.99,43.3,28191.9,3206.3,-27.25,-39.93,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-28T12:40:06.244883,4
+MIR,MIR,USA,--,--,16.85,USD,30.28,44.3,4122.4,4088.3,-44.23,-40.78,OVERSOLD,Turning Up,True,"div_bull (cena -3.6%, SMI +7.5)",False,,,,,,,,2026-07-28T12:40:06.246628,4
+AVPT,"AvePoint, Inc.",USA,United States,Technology,12.81,USD,19.95,35.8,2715.9,2384.1,53.62,53.79,OVERBOUGHT,Turning Up,False,,False,,0.2,419.5,2.28,0.832,0.021,0.7406,2026-07-28T12:39:55.984979,3
+PDYN,PDYN,USA,--,--,5.17,USD,10.73,51.8,244.3,1895.3,-81.53,-77.96,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-28T12:40:06.466530,2
