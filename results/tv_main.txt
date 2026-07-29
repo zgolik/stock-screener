@@ -1,20 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-28 12:40 UTC
-### Liczba tickerow: 13
+### Wygenerowano: 2026-07-29 13:05 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-LULU  ### Strong BUY | -47.9% | Consumer Cyclical
-OGC  ### Strong BUY | -44.2% | Basic Materials
-TCOM  ### Strong BUY | -43.3% | --
-CPRT  ### Strong BUY | -40.6% | Industrials
-KGC  ### Strong BUY | -38.8% | Basic Materials
-FSM  ### Strong BUY | -38.2% | Basic Materials
-LOPE  ### Strong BUY | -35.1% | Consumer Defensive
-B  ### Strong BUY | -31.7% | Basic Materials
-### ── Turning Up (5) ──
-KTOS  ### Turning Up | -63.1% | Industrials
-PDYN  ### Turning Up | -51.8% | --
-GFI  ### Turning Up | -46.6% | Basic Materials
-MIR  ### Turning Up | -44.3% | --
-AVPT  ### Turning Up | -35.8% | Technology
+### ── Strong BUY (9) ──
+TTD  ### Strong BUY | -79.3% | Communication Services
+SCZM  ### Strong BUY | -63.4% | Basic Materials
+INFY  ### Strong BUY | -58.8% | Technology
+OGC  ### Strong BUY | -44.4% | Basic Materials
+YALA  ### Strong BUY | -41.6% | Technology
+WPM  ### Strong BUY | -33.9% | Basic Materials
+TRMB  ### Strong BUY | -33.3% | --
+B  ### Strong BUY | -32.9% | Basic Materials
+TDS  ### Strong BUY | -30.8% | Communication Services
+### ── Turning Up (3) ──
+SIGA  ### Turning Up | -65.3% | Healthcare
+CHA  ### Turning Up | -51.3% | Consumer Cyclical
+AU  ### Turning Up | -38.9% | Basic Materials
