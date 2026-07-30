@@ -1,19 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-29 13:05 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-07-30 12:30 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (9) ──
-TTD  ### Strong BUY | -79.3% | Communication Services
-SCZM  ### Strong BUY | -63.4% | Basic Materials
-INFY  ### Strong BUY | -58.8% | Technology
-OGC  ### Strong BUY | -44.4% | Basic Materials
-YALA  ### Strong BUY | -41.6% | Technology
-WPM  ### Strong BUY | -33.9% | Basic Materials
-TRMB  ### Strong BUY | -33.3% | --
-B  ### Strong BUY | -32.9% | Basic Materials
-TDS  ### Strong BUY | -30.8% | Communication Services
-### ── Turning Up (3) ──
-SIGA  ### Turning Up | -65.3% | Healthcare
-CHA  ### Turning Up | -51.3% | Consumer Cyclical
-AU  ### Turning Up | -38.9% | Basic Materials
+### ── Strong BUY (6) ──
+AVXL  ### Strong BUY | -80.4% | --
+BUR  ### Strong BUY | -70.5% | --
+SCZM  ### Strong BUY | -64.2% | --
+OGC  ### Strong BUY | -44.1% | --
+LIFE  ### Strong BUY | -39.0% | --
+WPM  ### Strong BUY | -34.0% | --
+### ── Turning Up (1) ──
+MSTR  ### Turning Up | -77.5% | --

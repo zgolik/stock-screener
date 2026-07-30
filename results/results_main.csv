@@ -1,13 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-OGC,OceanaGold Corporation,USA,Canada,Basic Materials,24.11,USD,43.33,44.4,5363.2,376.9,-68.04,-69.16,OVERSOLD,Strong BUY,False,,True,,3.28,1893.2,1.02,0.2451,0.022,0.4635,2026-07-29T13:05:29.516061,9
-SCZM,Santacruz Silver Mining Ltd.,USA,Canada,Basic Materials,6.46,USD,17.65,63.4,599.1,516.0,-64.56,-65.99,OVERSOLD,Strong BUY,False,,False,,0.65,326.4,1.04,0.1918,0.29,0.3352,2026-07-29T13:04:53.131677,8
-YALA,Yalla Group Limited,USA,United Arab Emirates,Technology,5.43,USD,9.29,41.6,824.4,313.8,-63.43,-65.22,OVERSOLD,Strong BUY,False,,False,,0.79,341.9,9.02,0.4269,0.002,0.6727,2026-07-29T13:05:01.821735,8
-WPM,Wheaton Precious Metals Corp,USA,Canada,Basic Materials,109.58,USD,165.76,33.9,49763.0,2034.1,-60.77,-62.07,OVERSOLD,Strong BUY,False,,False,,3.96,2314.6,7.78,0.1754,0.001,0.7222,2026-07-29T13:05:09.099259,8
-TTD,"The Trade Desk, Inc.",USA,United States,Communication Services,18.91,USD,91.45,79.3,8889.7,19118.7,-54.36,-55.38,OVERSOLD,Strong BUY,False,,False,,0.88,2896.3,1.61,0.1779,0.176,0.7863,2026-07-29T13:05:10.693847,8
-B,Barrick Mining Corporation,USA,Canada,Basic Materials,36.69,USD,54.69,32.9,61622.3,11550.9,-58.37,-60.04,OVERSOLD,Strong BUY,False,,False,,3.64,16956.0,2.33,0.1572,0.196,0.5126,2026-07-29T13:05:23.957513,8
-INFY,Infosys Limited,USA,India,Technology,12.35,USD,30.0,58.8,50019.0,21575.4,-26.28,-40.39,Bearish,Strong BUY,False,,True,,0.81,20158.0,1.98,0.3503,0.099,0.3016,2026-07-29T13:05:25.238733,8
-SIGA,SIGA Technologies Inc.,USA,United States,Healthcare,3.34,USD,9.62,65.3,239.6,622.8,-78.01,-76.36,OVERSOLD,Turning Up,False,,True,,0.28,94.6,9.1,0.3905,0.003,0.6859,2026-07-29T13:05:07.463917,6
-TDS,"Telephone and Data Systems, Inc",USA,United States,Communication Services,34.0,USD,49.12,30.8,3870.9,1112.1,-81.2,-82.05,OVERSOLD,Strong BUY,False,,False,,1.72,1228.2,,,,0.5902,2026-07-29T13:05:37.918283,6
-AU,AngloGold Ashanti PLC,USA,United States,Basic Materials,78.95,USD,129.14,38.9,39928.7,2935.6,-66.73,-64.66,OVERSOLD,Turning Up,False,,False,,6.81,9893.0,2.21,0.3003,0.282,0.4924,2026-07-29T13:04:51.095213,5
-CHA,Chagee Holdings Limited,USA,China,Consumer Cyclical,11.64,USD,23.9,51.3,2220.5,676.1,-0.32,0.6,Bearish,Turning Up,False,,False,,0.74,12907.4,3.03,0.9821,0.174,0.4584,2026-07-29T13:04:56.706058,4
-TRMB,TRMB,USA,--,--,58.38,USD,87.5,33.3,13609.1,2941.5,-16.77,-36.38,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-29T13:05:38.577565,4
+OGC,OGC,USA,--,--,24.24,USD,43.33,44.1,5392.1,384.9,-67.44,-68.86,OVERSOLD,Strong BUY,False,,True,,,1893.2,1.02,0.2451,0.022,0.4635,2026-07-30T12:30:01.985920,8
+AVXL,AVXL,USA,--,--,2.49,USD,12.68,80.4,230.8,1199.6,-63.09,-65.46,OVERSOLD,Strong BUY,True,"div_bull (cena -4.4%, SMI +7.6)",False,,,0.0,11.6,,0.0,,2026-07-30T12:30:07.323664,8
+WPM,WPM,USA,--,--,109.46,USD,165.76,34.0,49708.5,2023.7,-60.93,-62.15,OVERSOLD,Strong BUY,False,,False,,,2314.6,7.78,0.1754,0.001,0.7222,2026-07-30T12:30:04.405156,7
+SCZM,SCZM,USA,--,--,6.31,USD,17.65,64.2,585.2,513.1,-66.49,-66.95,OVERSOLD,Strong BUY,False,,False,,,326.4,1.04,0.1918,0.29,0.3352,2026-07-30T12:30:08.648864,7
+BUR,BUR,USA,--,--,4.17,USD,14.14,70.5,913.5,2588.5,-61.62,-62.55,OVERSOLD,Strong BUY,False,,False,,,193.8,,,0.875,,2026-07-30T12:30:19.274970,5
+LIFE,LIFE,USA,--,--,19.84,USD,32.5,39.0,1249.8,552.4,-30.08,-37.88,Bearish,Strong BUY,False,,False,,,387.6,,,,0.9826,2026-07-30T12:30:21.332729,4
+MSTR,MSTR,USA,--,--,93.33,USD,414.36,77.5,34095.3,20214.6,-76.2,-75.51,OVERSOLD,Turning Up,False,,False,,,477.2,,,,0.6869,2026-07-30T12:30:21.297464,2
