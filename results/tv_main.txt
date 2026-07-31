@@ -1,14 +1,30 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-30 12:30 UTC
-### Liczba tickerow: 7
+### Wygenerowano: 2026-07-31 12:57 UTC
+### Liczba tickerow: 23
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-AVXL  ### Strong BUY | -80.4% | --
-BUR  ### Strong BUY | -70.5% | --
-SCZM  ### Strong BUY | -64.2% | --
-OGC  ### Strong BUY | -44.1% | --
-LIFE  ### Strong BUY | -39.0% | --
-WPM  ### Strong BUY | -34.0% | --
-### ── Turning Up (1) ──
-MSTR  ### Turning Up | -77.5% | --
+### ── Strong BUY (11) ──
+DQ  ### Strong BUY | -66.9% | --
+AVEX  ### Strong BUY | -62.4% | --
+INFY  ### Strong BUY | -60.2% | Technology
+ONDS  ### Strong BUY | -50.4% | Technology
+LULU  ### Strong BUY | -47.1% | Consumer Cyclical
+YALA  ### Strong BUY | -42.1% | Technology
+PNR  ### Strong BUY | -41.9% | --
+TCOM  ### Strong BUY | -41.2% | --
+PAHC  ### Strong BUY | -39.3% | --
+FSM  ### Strong BUY | -36.7% | Basic Materials
+AU  ### Strong BUY | -36.2% | Basic Materials
+### ── Turning Up (12) ──
+SMR  ### Turning Up | -85.0% | --
+EH  ### Turning Up | -74.4% | --
+DUOL  ### Turning Up | -71.5% | Technology
+SIGA  ### Turning Up | -66.2% | Healthcare
+CRCL  ### Turning Up | -66.2% | --
+AI  ### Turning Up | -61.8% | --
+SGML  ### Turning Up | -59.2% | --
+ITRG  ### Turning Up | -55.6% | Basic Materials
+CATX  ### Turning Up | -51.5% | --
+ALB  ### Turning Up | -46.7% | --
+PD  ### Turning Up | -40.0% | --
+DNN  ### Turning Up | -34.1% | --
