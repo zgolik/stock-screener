@@ -1,30 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-07-31 12:57 UTC
-### Liczba tickerow: 23
+### Wygenerowano: 2026-08-03 13:42 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (11) ──
-DQ  ### Strong BUY | -66.9% | --
-AVEX  ### Strong BUY | -62.4% | --
-INFY  ### Strong BUY | -60.2% | Technology
-ONDS  ### Strong BUY | -50.4% | Technology
-LULU  ### Strong BUY | -47.1% | Consumer Cyclical
-YALA  ### Strong BUY | -42.1% | Technology
-PNR  ### Strong BUY | -41.9% | --
-TCOM  ### Strong BUY | -41.2% | --
-PAHC  ### Strong BUY | -39.3% | --
-FSM  ### Strong BUY | -36.7% | Basic Materials
-AU  ### Strong BUY | -36.2% | Basic Materials
-### ── Turning Up (12) ──
-SMR  ### Turning Up | -85.0% | --
-EH  ### Turning Up | -74.4% | --
-DUOL  ### Turning Up | -71.5% | Technology
-SIGA  ### Turning Up | -66.2% | Healthcare
-CRCL  ### Turning Up | -66.2% | --
-AI  ### Turning Up | -61.8% | --
-SGML  ### Turning Up | -59.2% | --
-ITRG  ### Turning Up | -55.6% | Basic Materials
-CATX  ### Turning Up | -51.5% | --
-ALB  ### Turning Up | -46.7% | --
-PD  ### Turning Up | -40.0% | --
-DNN  ### Turning Up | -34.1% | --
+### ── Strong BUY (5) ──
+BYND  ### Strong BUY | -92.4% | --
+EMBC  ### Strong BUY | -75.0% | Healthcare
+BUR  ### Strong BUY | -70.1% | --
+TIGR  ### Strong BUY | -64.6% | Financial Services
+PLAB  ### Strong BUY | -46.7% | Technology
+### ── Turning Up (1) ──
+NKE  ### Turning Up | -46.5% | Consumer Cyclical

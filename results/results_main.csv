@@ -1,24 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-LULU,lululemon athletica inc.,USA,Canada,Consumer Cyclical,119.48,USD,225.98,47.1,13567.4,3555.2,-31.3,-39.01,Bearish,Strong BUY,True,"div_bull (cena -6.2%, SMI +6.5)",False,,12.35,11102.6,1.36,0.3274,0.362,0.566,2026-07-31T12:57:06.577253,9
-FSM,Fortuna Mining Corp.,USA,Canada,Basic Materials,8.77,USD,13.85,36.7,2656.9,5316.3,-54.71,-57.82,OVERSOLD,Strong BUY,False,,False,,1.13,947.1,2.5,0.1718,0.126,0.493,2026-07-31T12:56:59.053061,8
-YALA,Yalla Group Limited,USA,United Arab Emirates,Technology,5.38,USD,9.29,42.1,816.8,314.1,-64.81,-65.92,OVERSOLD,Strong BUY,False,,False,,0.79,341.9,9.02,0.4269,0.002,0.6727,2026-07-31T12:57:02.215934,8
-INFY,Infosys Limited,USA,India,Technology,11.95,USD,30.0,60.2,48399.0,21934.4,-32.91,-43.71,Bearish,Strong BUY,False,,True,,0.81,20158.0,1.98,0.3503,0.099,0.3016,2026-07-31T12:57:15.864187,8
-AU,AngloGold Ashanti PLC,USA,United States,Basic Materials,82.33,USD,129.14,36.2,41638.1,2924.6,-60.99,-61.78,OVERSOLD,Strong BUY,False,,False,,6.81,9893.0,2.21,0.3003,0.282,0.4924,2026-07-31T12:57:16.525779,8
-PNR,PNR,USA,--,--,66.17,USD,113.95,41.9,10693.4,2657.7,-36.23,-41.72,Bearish,Strong BUY,True,"div_bull (cena -11.8%, SMI +39.1)",True,,,4176.0,,,,0.4048,2026-07-31T12:57:21.933813,7
-SIGA,SIGA Technologies Inc.,USA,United States,Healthcare,3.25,USD,9.62,66.2,233.1,633.7,-80.85,-77.78,OVERSOLD,Turning Up,False,,True,,0.27,94.6,9.1,0.3905,0.003,0.6859,2026-07-31T12:57:05.638251,6
-ONDS,Ondas Inc,USA,United States,Technology,7.58,USD,15.28,50.4,4319.4,85443.0,-75.6,-77.32,OVERSOLD,Strong BUY,False,,False,,0.09,50.7,,,,0.3973,2026-07-31T12:57:16.727237,6
-ITRG,Integra Resources Corp.,USA,Canada,Basic Materials,2.16,USD,4.87,55.6,438.0,3032.7,-70.71,-69.87,OVERSOLD,Turning Up,False,,False,,0.04,243.9,1.94,0.1509,0.118,0.3876,2026-07-31T12:57:08.721885,5
-DQ,DQ,USA,--,--,12.11,USD,36.59,66.9,819.4,911.7,-86.88,-87.77,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-31T12:57:19.100988,5
-TCOM,TCOM,USA,--,--,46.48,USD,78.99,41.2,29268.7,3322.9,-20.92,-36.76,Bearish,Strong BUY,False,,True,,,,,,,,2026-07-31T12:57:21.981324,5
-AVEX,AVEX,USA,--,--,15.91,USD,42.34,62.4,898.4,2331.0,-86.82,-86.93,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-07-31T12:57:22.048424,5
-PAHC,PAHC,USA,--,--,36.45,USD,60.08,39.3,1478.6,358.8,-28.71,-45.48,Bearish,Strong BUY,False,,False,,,,,,,,2026-07-31T12:57:16.872588,4
-DNN,DNN,USA,--,--,2.92,USD,4.43,34.1,2642.6,24286.8,-54.92,-53.55,OVERSOLD,Turning Up,True,"div_bull (cena -6.9%, SMI +7.6)",False,,,,,,,,2026-07-31T12:57:20.241023,4
-DUOL,"Duolingo, Inc.",USA,United States,Technology,133.6,USD,468.0,71.5,6224.8,1514.4,41.46,42.41,OVERBOUGHT,Turning Up,False,,False,,8.34,1037.6,2.61,0.335,0.07,0.7223,2026-07-31T12:57:12.899808,3
-ALB,ALB,USA,--,--,117.76,USD,221.0,46.7,13888.0,2282.3,-89.46,-87.29,OVERSOLD,Turning Up,False,,False,,,,1.57,,0.346,,2026-07-31T12:57:20.485856,3
-SGML,SGML,USA,--,--,9.98,USD,24.48,59.2,1118.4,2614.0,-87.5,-84.86,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-31T12:57:18.996720,2
-SMR,SMR,USA,--,--,8.6,USD,57.42,85.0,2976.5,32818.7,-70.69,-67.57,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-31T12:57:19.035323,2
-EH,EH,USA,--,--,5.18,USD,20.2,74.4,392.9,1105.8,-93.19,-91.86,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-31T12:57:19.065280,2
-CATX,CATX,USA,--,--,2.99,USD,6.16,51.5,341.0,1748.1,-71.94,-71.24,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-31T12:57:20.191233,2
-CRCL,CRCL,USA,--,--,64.24,USD,189.92,66.2,15968.5,15103.2,-87.67,-86.97,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-07-31T12:57:20.242405,2
-AI,AI,USA,--,--,9.07,USD,23.76,61.8,1409.9,6259.0,-58.74,-51.54,OVERSOLD,Turning Up,False,,False,,,250.3,,,,0.3092,2026-07-31T12:57:21.977501,2
-PD,PD,USA,--,--,10.37,USD,17.29,40.0,794.9,2020.3,44.37,45.55,OVERBOUGHT,Turning Up,False,,False,,,492.5,,,,0.8495,2026-07-31T12:57:21.836058,0
+PLAB,"Photronics, Inc.",USA,United States,Technology,29.83,USD,56.0,46.7,1758.9,1504.5,-76.47,-78.05,OVERSOLD,Strong BUY,False,,False,,2.71,849.3,4.99,0.1557,0.005,0.353,2026-08-03T13:42:25.053051,8
+TIGR,UP Fintech Holding Limited,USA,Singapore,Financial Services,4.8,USD,13.55,64.6,857.8,4400.1,-34.99,-42.47,Bearish,Strong BUY,False,,False,,0.61,612.1,1.12,1.7118,0.2,0.6933,2026-08-03T13:42:12.773006,7
+EMBC,Embecta Corp.,USA,United States,Healthcare,3.88,USD,15.55,75.0,230.2,2545.8,-35.82,-52.19,Bearish,Strong BUY,False,,False,,1.89,1080.4,1.73,0.3435,,0.6264,2026-08-03T13:42:30.818875,7
+BUR,BUR,USA,--,--,4.22,USD,14.14,70.1,924.5,2548.6,-58.31,-60.95,OVERSOLD,Strong BUY,False,,False,,,193.8,,,0.875,,2026-08-03T13:42:08.791773,5
+BYND,BYND,USA,--,--,0.59,USD,7.69,92.4,302.1,36711.9,-77.97,-80.53,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-03T13:42:32.310641,5
+NKE,"Nike, Inc.",USA,United States,Consumer Cyclical,42.87,USD,80.17,46.5,63597.6,23052.9,-25.22,-22.71,Bearish,Turning Up,False,,False,,2.1,46398.0,1.36,0.1654,0.742,0.4291,2026-08-03T13:42:21.331293,4
