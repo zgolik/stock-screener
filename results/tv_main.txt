@@ -1,22 +1,11 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-04 13:01 UTC
-### Liczba tickerow: 15
+### Wygenerowano: 2026-08-05 12:55 UTC
+### Liczba tickerow: 4
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (9) ──
-AVXL  ### Strong BUY | -74.8% | --
-XNDU  ### Strong BUY | -73.4% | --
-BUR  ### Strong BUY | -69.9% | --
-TIGR  ### Strong BUY | -64.1% | --
-PLAY  ### Strong BUY | -58.7% | --
-FUTU  ### Strong BUY | -47.1% | --
-GFI  ### Strong BUY | -44.9% | --
-BTG  ### Strong BUY | -38.8% | --
-UROY  ### Strong BUY | -38.2% | --
-### ── Turning Up (6) ──
-RVI  ### Turning Up | -64.7% | --
-KLAR  ### Turning Up | -58.3% | --
-IONQ  ### Turning Up | -54.1% | --
-SOFI  ### Turning Up | -44.9% | --
-CDE  ### Turning Up | -44.0% | --
-KGC  ### Turning Up | -40.1% | --
+### ── Strong BUY (3) ──
+MSTR  ### Strong BUY | -76.4% | --
+GFI  ### Strong BUY | -44.7% | --
+NMFC  ### Strong BUY | -30.2% | --
+### ── Turning Up (1) ──
+BKSY  ### Turning Up | -51.9% | --
