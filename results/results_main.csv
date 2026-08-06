@@ -1,5 +1,10 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-GFI,GFI,USA,--,--,34.11,USD,61.64,44.7,30508.6,3600.4,-66.02,-68.19,OVERSOLD,Strong BUY,False,,False,,,8751.3,1.33,0.2582,0.382,0.5529,2026-08-05T12:55:19.354311,7
-NMFC,NMFC,USA,--,--,7.48,USD,10.71,30.2,706.5,629.6,-49.11,-57.3,OVERSOLD,Strong BUY,False,,False,,,14.8,,,,,2026-08-05T12:55:29.826209,5
-MSTR,MSTR,USA,--,--,97.65,USD,414.36,76.4,35673.5,20069.4,-72.0,-73.76,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-05T12:55:29.934265,5
-BKSY,BKSY,USA,--,--,25.41,USD,52.88,51.9,1039.8,2012.3,-79.91,-79.78,OVERSOLD,Turning Up,False,,False,,,106.6,,,,0.6687,2026-08-05T12:55:29.803245,2
+TTD,"The Trade Desk, Inc.",USA,United States,Communication Services,18.96,USD,91.45,79.3,8913.3,19177.1,-54.7,-56.58,OVERSOLD,Strong BUY,True,"div_bull (cena -5.9%, SMI +9.4)",False,,0.88,2896.3,1.61,0.1779,0.176,0.7863,2026-08-06T12:59:40.599027,10
+PEGA,Pegasystems Inc.,USA,United States,Technology,31.81,USD,68.1,53.3,5229.7,2632.8,-30.91,-41.91,Bearish,Strong BUY,True,"div_bull (cena -10.8%, SMI +15.4)",False,,1.76,1745.8,1.33,0.4172,0.096,0.7586,2026-08-06T12:59:31.755247,9
+GFI,Gold Fields Limited,USA,South Africa,Basic Materials,37.29,USD,61.64,39.5,33352.9,3655.8,-52.86,-61.61,OVERSOLD,Strong BUY,False,,False,,3.94,8751.3,1.33,0.2582,0.382,0.5529,2026-08-06T12:59:25.886620,8
+AU,AngloGold Ashanti PLC,USA,United States,Basic Materials,88.6,USD,129.14,31.4,44811.2,3078.4,-43.92,-53.73,OVERSOLD,Strong BUY,False,,False,,7.46,9893.0,2.21,0.3003,0.282,0.4924,2026-08-06T12:59:32.724537,8
+PDYN,PDYN,USA,--,--,5.97,USD,10.73,44.4,282.0,1831.7,-69.69,-73.65,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-06T12:59:43.886857,5
+NFGC,NFGC,USA,--,--,1.54,USD,3.59,57.1,591.5,1523.2,-76.64,-77.96,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-06T12:59:43.892967,5
+TPB,"Turning Point Brands, Inc.",USA,United States,Consumer Defensive,83.71,USD,146.9,43.0,1678.3,438.3,-20.8,-19.81,Bearish,Turning Up,False,,False,,2.3,463.1,4.12,0.1677,0.872,0.5708,2026-08-06T12:59:31.728953,4
+IAUX,IAUX,USA,--,--,1.51,USD,2.24,32.6,1301.7,10533.1,-33.96,-41.49,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-06T12:59:43.930254,4
+SOFI,"SoFi Technologies, Inc.",USA,United States,Financial Services,18.25,USD,32.73,44.2,23548.2,79264.8,-0.58,0.65,Bearish,Turning Up,False,,False,,0.49,3613.4,,,0.184,,2026-08-06T12:59:35.120116,2
