@@ -1,16 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-06 12:59 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-08-07 11:49 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-TTD  ### Strong BUY | -79.3% | Communication Services
-NFGC  ### Strong BUY | -57.1% | --
-PEGA  ### Strong BUY | -53.3% | Technology
-PDYN  ### Strong BUY | -44.4% | --
-GFI  ### Strong BUY | -39.5% | Basic Materials
-IAUX  ### Strong BUY | -32.6% | --
-AU  ### Strong BUY | -31.4% | Basic Materials
-### ── Turning Up (2) ──
-SOFI  ### Turning Up | -44.2% | Financial Services
-TPB  ### Turning Up | -43.0% | Consumer Defensive
+### ── Strong BUY (5) ──
+ITRG  ### Strong BUY | -50.5% | Basic Materials
+FBRT  ### Strong BUY | -35.4% | Real Estate
+KGC  ### Strong BUY | -34.5% | Basic Materials
+LOPE  ### Strong BUY | -33.3% | Consumer Defensive
+ARIS  ### Strong BUY | -32.5% | Basic Materials
+### ── Turning Up (1) ──
+RMBS  ### Turning Up | -43.9% | Technology
