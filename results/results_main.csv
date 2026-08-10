@@ -1,7 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-LOPE,"Grand Canyon Education, Inc.",USA,United States,Consumer Defensive,148.74,USD,223.04,33.3,3876.9,347.2,-32.33,-43.24,Bearish,Strong BUY,True,"div_bull (cena -1.2%, SMI +17.1)",False,,8.28,1106.1,3.65,0.304,0.144,0.5319,2026-08-07T11:48:47.001381,9
-KGC,Kinross Gold Corporation,USA,Canada,Basic Materials,25.62,USD,39.11,34.5,30391.5,8247.0,-61.48,-67.34,OVERSOLD,Strong BUY,False,,False,,2.63,7051.1,1.37,0.2693,0.086,0.527,2026-08-07T11:48:47.966424,8
-FBRT,"Franklin BSP Realty Trust, Inc.",USA,United States,Real Estate,7.65,USD,11.84,35.4,635.3,1176.9,-54.48,-55.47,OVERSOLD,Strong BUY,False,,True,,0.44,501.0,,,,0.4245,2026-08-07T11:48:57.779740,7
-ARIS,Aris Mining Corporation,USA,Canada,Basic Materials,15.72,USD,23.29,32.5,3245.1,1482.2,-55.48,-60.02,OVERSOLD,Strong BUY,False,,False,,1.41,927.7,,,,0.4961,2026-08-07T11:48:57.716576,6
-ITRG,Integra Resources Corp.,USA,Canada,Basic Materials,2.41,USD,4.87,50.5,488.7,3069.7,-58.97,-65.35,OVERSOLD,Strong BUY,False,,False,,0.04,243.9,,,,0.3876,2026-08-07T11:48:57.736861,6
-RMBS,"Rambus, Inc.",USA,United States,Technology,97.68,USD,174.1,43.9,10594.5,2967.7,-74.76,-69.35,OVERSOLD,Turning Up,False,,False,,2.18,707.6,7.84,0.1735,0.018,0.7959,2026-08-07T11:48:44.440843,5
+AVXL,AVXL,USA,--,--,3.34,USD,11.7,71.5,309.5,1246.6,-5.28,-32.09,Bearish,Strong BUY,True,"div_bull (cena -4.4%, SMI +7.6)",False,,,0.0,11.6,,0.0,,2026-08-10T11:50:26.841510,7
+CBIO,CBIO,USA,--,--,16.84,USD,27.41,38.6,625.5,345.3,-59.5,-60.81,OVERSOLD,Strong BUY,False,,False,,,10.8,6.56,,0.008,,2026-08-10T11:50:33.798445,6
+FUTU,FUTU,USA,--,--,109.02,USD,202.53,46.2,15284.0,3550.3,-27.6,-40.3,Bearish,Strong BUY,False,,False,,,22846.9,1.19,0.3851,0.437,0.8712,2026-08-10T11:50:38.124862,6
+RWAY,RWAY,USA,--,--,6.84,USD,11.14,38.6,286.7,666.0,-18.22,-41.86,Bearish,Strong BUY,False,,True,,,47.3,,,0.928,,2026-08-10T11:50:39.721968,5
+RC,RC,USA,--,--,1.71,USD,4.47,61.7,308.2,1584.5,-47.64,-54.68,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-10T11:50:48.757040,5
+IREN,IREN,USA,--,--,41.23,USD,76.87,46.4,14734.7,48204.7,-61.9,-61.95,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-10T11:50:48.760378,5
+RMBS,RMBS,USA,--,--,101.52,USD,174.1,41.7,11011.0,2963.8,-72.49,-68.21,OVERSOLD,Turning Up,False,,False,,,707.6,7.84,0.1625,0.018,0.7959,2026-08-10T11:50:34.322625,4

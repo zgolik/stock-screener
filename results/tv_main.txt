@@ -1,13 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-07 11:49 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-08-10 11:50 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-ITRG  ### Strong BUY | -50.5% | Basic Materials
-FBRT  ### Strong BUY | -35.4% | Real Estate
-KGC  ### Strong BUY | -34.5% | Basic Materials
-LOPE  ### Strong BUY | -33.3% | Consumer Defensive
-ARIS  ### Strong BUY | -32.5% | Basic Materials
+### ── Strong BUY (6) ──
+AVXL  ### Strong BUY | -71.5% | --
+RC  ### Strong BUY | -61.7% | --
+IREN  ### Strong BUY | -46.4% | --
+FUTU  ### Strong BUY | -46.2% | --
+CBIO  ### Strong BUY | -38.6% | --
+RWAY  ### Strong BUY | -38.6% | --
 ### ── Turning Up (1) ──
-RMBS  ### Turning Up | -43.9% | Technology
+RMBS  ### Turning Up | -41.7% | --
