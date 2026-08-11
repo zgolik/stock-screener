@@ -1,8 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-AVXL,AVXL,USA,--,--,3.34,USD,11.7,71.5,309.5,1246.6,-5.28,-32.09,Bearish,Strong BUY,True,"div_bull (cena -4.4%, SMI +7.6)",False,,,0.0,11.6,,0.0,,2026-08-10T11:50:26.841510,7
-CBIO,CBIO,USA,--,--,16.84,USD,27.41,38.6,625.5,345.3,-59.5,-60.81,OVERSOLD,Strong BUY,False,,False,,,10.8,6.56,,0.008,,2026-08-10T11:50:33.798445,6
-FUTU,FUTU,USA,--,--,109.02,USD,202.53,46.2,15284.0,3550.3,-27.6,-40.3,Bearish,Strong BUY,False,,False,,,22846.9,1.19,0.3851,0.437,0.8712,2026-08-10T11:50:38.124862,6
-RWAY,RWAY,USA,--,--,6.84,USD,11.14,38.6,286.7,666.0,-18.22,-41.86,Bearish,Strong BUY,False,,True,,,47.3,,,0.928,,2026-08-10T11:50:39.721968,5
-RC,RC,USA,--,--,1.71,USD,4.47,61.7,308.2,1584.5,-47.64,-54.68,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-10T11:50:48.757040,5
-IREN,IREN,USA,--,--,41.23,USD,76.87,46.4,14734.7,48204.7,-61.9,-61.95,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-10T11:50:48.760378,5
-RMBS,RMBS,USA,--,--,101.52,USD,174.1,41.7,11011.0,2963.8,-72.49,-68.21,OVERSOLD,Turning Up,False,,False,,,707.6,7.84,0.1625,0.018,0.7959,2026-08-10T11:50:34.322625,4
+NXT,Nextpower Inc.,USA,United States,Technology,102.91,USD,163.13,36.9,15614.5,3278.6,-69.26,-73.96,OVERSOLD,Strong BUY,False,,False,,3.87,3559.4,2.22,0.3154,0.063,0.3259,2026-08-11T11:42:09.878180,8
+OGC,OceanaGold Corporation,USA,Canada,Basic Materials,28.52,USD,43.33,34.2,6344.2,420.6,-8.18,-31.6,Bearish,Strong BUY,False,,False,,3.82,1893.2,1.02,0.2451,0.022,0.4635,2026-08-11T11:42:13.093516,7
+XXI,"Twenty One Capital, Inc.",USA,United States,Consumer Defensive,4.58,USD,30.43,84.9,1588.4,1449.9,-77.94,-79.29,OVERSOLD,Strong BUY,False,,False,,,,47.62,,0.141,,2026-08-11T11:42:24.172668,6
+RVI,Robinhood Ventures Fund I,USA,United States,Financial Services,28.22,USD,77.39,63.5,768.9,679.0,-82.05,-82.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:15.556034,5
+CELC,CELC,USA,--,--,90.79,USD,151.02,39.9,4427.5,1546.7,-60.46,-62.4,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:28.917492,5
+RILY,RILY,USA,--,--,7.27,USD,11.24,35.3,292.3,892.9,-65.38,-67.96,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.772474,5
+METC,METC,USA,--,--,10.18,USD,57.8,82.4,645.3,1778.5,-75.62,-78.6,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.791524,5
+QBTS,QBTS,USA,--,--,20.19,USD,46.75,56.8,7519.6,30093.0,-54.26,-56.48,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.842187,5
