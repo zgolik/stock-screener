@@ -1,14 +1,10 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-11 11:42 UTC
-### Liczba tickerow: 8
+### Wygenerowano: 2026-08-12 11:46 UTC
+### Liczba tickerow: 4
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-XXI  ### Strong BUY | -84.9% | Consumer Defensive
-METC  ### Strong BUY | -82.4% | --
-RVI  ### Strong BUY | -63.5% | Financial Services
-QBTS  ### Strong BUY | -56.8% | --
-CELC  ### Strong BUY | -39.9% | --
-NXT  ### Strong BUY | -36.9% | Technology
-RILY  ### Strong BUY | -35.3% | --
-OGC  ### Strong BUY | -34.2% | Basic Materials
+### ── Strong BUY (4) ──
+BUR  ### Strong BUY | -69.3% | --
+CDZI  ### Strong BUY | -49.0% | --
+NFLX  ### Strong BUY | -41.0% | --
+ASM  ### Strong BUY | -38.4% | Basic Materials

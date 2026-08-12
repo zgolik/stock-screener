@@ -1,9 +1,5 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-NXT,Nextpower Inc.,USA,United States,Technology,102.91,USD,163.13,36.9,15614.5,3278.6,-69.26,-73.96,OVERSOLD,Strong BUY,False,,False,,3.87,3559.4,2.22,0.3154,0.063,0.3259,2026-08-11T11:42:09.878180,8
-OGC,OceanaGold Corporation,USA,Canada,Basic Materials,28.52,USD,43.33,34.2,6344.2,420.6,-8.18,-31.6,Bearish,Strong BUY,False,,False,,3.82,1893.2,1.02,0.2451,0.022,0.4635,2026-08-11T11:42:13.093516,7
-XXI,"Twenty One Capital, Inc.",USA,United States,Consumer Defensive,4.58,USD,30.43,84.9,1588.4,1449.9,-77.94,-79.29,OVERSOLD,Strong BUY,False,,False,,,,47.62,,0.141,,2026-08-11T11:42:24.172668,6
-RVI,Robinhood Ventures Fund I,USA,United States,Financial Services,28.22,USD,77.39,63.5,768.9,679.0,-82.05,-82.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:15.556034,5
-CELC,CELC,USA,--,--,90.79,USD,151.02,39.9,4427.5,1546.7,-60.46,-62.4,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:28.917492,5
-RILY,RILY,USA,--,--,7.27,USD,11.24,35.3,292.3,892.9,-65.38,-67.96,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.772474,5
-METC,METC,USA,--,--,10.18,USD,57.8,82.4,645.3,1778.5,-75.62,-78.6,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.791524,5
-QBTS,QBTS,USA,--,--,20.19,USD,46.75,56.8,7519.6,30093.0,-54.26,-56.48,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-11T11:42:31.842187,5
+ASM,Avino Silver & Gold Mines Ltd.,USA,Canada,Basic Materials,7.38,USD,11.99,38.4,1289.8,3959.9,-2.48,-25.78,Bearish,Strong BUY,False,,False,,0.22,92.2,3.69,0.1656,,0.5263,2026-08-12T11:46:26.934277,7
+NFLX,NFLX,USA,--,--,74.79,USD,126.71,41.0,311421.1,42959.8,-35.61,-47.23,Bearish,Strong BUY,False,,False,,,45183.0,1.19,0.3233,0.543,0.4849,2026-08-12T11:46:23.256978,6
+CDZI,CDZI,USA,--,--,3.55,USD,6.96,49.0,298.5,977.2,-55.17,-59.06,OVERSOLD,Strong BUY,False,,False,,,16.3,,,,0.3157,2026-08-12T11:46:35.553281,5
+BUR,Burford Capital Limited,USA,--,--,4.34,USD,14.14,69.3,953.0,2228.9,-24.35,-37.96,Bearish,Strong BUY,False,,False,,,193.8,,,0.875,,2026-08-12T11:46:24.436718,4
