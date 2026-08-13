@@ -1,5 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-ASM,Avino Silver & Gold Mines Ltd.,USA,Canada,Basic Materials,7.38,USD,11.99,38.4,1289.8,3959.9,-2.48,-25.78,Bearish,Strong BUY,False,,False,,0.22,92.2,3.69,0.1656,,0.5263,2026-08-12T11:46:26.934277,7
-NFLX,NFLX,USA,--,--,74.79,USD,126.71,41.0,311421.1,42959.8,-35.61,-47.23,Bearish,Strong BUY,False,,False,,,45183.0,1.19,0.3233,0.543,0.4849,2026-08-12T11:46:23.256978,6
-CDZI,CDZI,USA,--,--,3.55,USD,6.96,49.0,298.5,977.2,-55.17,-59.06,OVERSOLD,Strong BUY,False,,False,,,16.3,,,,0.3157,2026-08-12T11:46:35.553281,5
-BUR,Burford Capital Limited,USA,--,--,4.34,USD,14.14,69.3,953.0,2228.9,-24.35,-37.96,Bearish,Strong BUY,False,,False,,,193.8,,,0.875,,2026-08-12T11:46:24.436718,4
+RMBS,RMBS,USA,--,--,101.01,USD,174.1,42.0,10955.7,2951.7,-67.18,-67.7,OVERSOLD,Strong BUY,False,,False,,,707.6,7.84,0.1735,0.018,0.7959,2026-08-13T11:45:29.083809,7
+NVAX,NVAX,USA,--,--,7.96,USD,11.97,33.5,1313.0,4191.7,-66.58,-65.22,OVERSOLD,Turning Up,False,,False,,,1123.5,2.1,1.1521,,0.935,2026-08-13T11:45:14.335287,4
+NB,NB,USA,--,--,5.22,USD,12.58,58.5,760.0,3611.1,-23.8,-41.9,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:35.520575,4
+CDE,CDE,USA,--,--,18.8,USD,27.77,32.3,19325.2,34620.9,-10.41,-30.79,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:35.549255,4
+ASM,ASM,USA,--,--,7.14,USD,11.99,40.5,1247.8,3961.2,-8.29,-28.68,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:37.760290,4
+RKT,RKT,USA,--,--,14.05,USD,24.36,42.3,39784.6,30093.4,-26.25,-23.9,Bearish,Turning Up,False,,False,,,6257.0,,,0.68,,2026-08-13T11:45:22.331048,1
