@@ -1,13 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-13 11:45 UTC
+### Wygenerowano: 2026-08-14 11:44 UTC
 ### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (4) ──
-NB  ### Strong BUY | -58.5% | --
-RMBS  ### Strong BUY | -42.0% | --
-ASM  ### Strong BUY | -40.5% | --
-CDE  ### Strong BUY | -32.3% | --
+WOLF  ### Strong BUY | -61.0% | --
+DXYZ  ### Strong BUY | -56.2% | --
+ITRG  ### Strong BUY | -44.4% | --
+RMBS  ### Strong BUY | -42.9% | --
 ### ── Turning Up (2) ──
-RKT  ### Turning Up | -42.3% | --
-NVAX  ### Turning Up | -33.5% | --
+SWMR  ### Turning Up | -48.4% | --
+ARI  ### Turning Up | -38.5% | --

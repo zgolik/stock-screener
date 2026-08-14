@@ -1,7 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-RMBS,RMBS,USA,--,--,101.01,USD,174.1,42.0,10955.7,2951.7,-67.18,-67.7,OVERSOLD,Strong BUY,False,,False,,,707.6,7.84,0.1735,0.018,0.7959,2026-08-13T11:45:29.083809,7
-NVAX,NVAX,USA,--,--,7.96,USD,11.97,33.5,1313.0,4191.7,-66.58,-65.22,OVERSOLD,Turning Up,False,,False,,,1123.5,2.1,1.1521,,0.935,2026-08-13T11:45:14.335287,4
-NB,NB,USA,--,--,5.22,USD,12.58,58.5,760.0,3611.1,-23.8,-41.9,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:35.520575,4
-CDE,CDE,USA,--,--,18.8,USD,27.77,32.3,19325.2,34620.9,-10.41,-30.79,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:35.549255,4
-ASM,ASM,USA,--,--,7.14,USD,11.99,40.5,1247.8,3961.2,-8.29,-28.68,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-13T11:45:37.760290,4
-RKT,RKT,USA,--,--,14.05,USD,24.36,42.3,39784.6,30093.4,-26.25,-23.9,Bearish,Turning Up,False,,False,,,6257.0,,,0.68,,2026-08-13T11:45:22.331048,1
+ITRG,ITRG,USA,--,--,2.71,USD,4.87,44.4,549.5,3223.6,-15.8,-37.06,Bearish,Strong BUY,False,,True,,,243.9,1.94,0.1509,0.118,0.3876,2026-08-14T11:44:36.602443,7
+RMBS,RMBS,USA,--,--,99.33,USD,174.1,42.9,10773.5,2948.4,-68.19,-68.2,OVERSOLD,Strong BUY,False,,False,,,707.6,7.84,0.1735,0.018,0.7959,2026-08-14T11:44:39.006168,7
+WOLF,WOLF,USA,--,--,31.51,USD,80.82,61.0,1637.6,6273.3,-66.7,-67.9,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-14T11:44:32.172243,5
+DXYZ,DXYZ,USA,--,--,31.92,USD,72.87,56.2,972.5,3471.3,-73.44,-80.09,OVERSOLD,Strong BUY,False,,False,,,48.0,,,0.0,,2026-08-14T11:44:37.250923,5
+SWMR,SWMR,USA,--,--,42.99,USD,83.3,48.4,466.8,476.7,-67.12,-64.51,OVERSOLD,Turning Up,False,,False,,,0.3,7.92,,,0.4122,2026-08-14T11:44:27.546475,3
+ARI,ARI,USA,--,--,6.91,USD,11.24,38.5,885.9,4000.6,-83.52,-81.32,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-08-14T11:44:47.135927,3
