@@ -1,16 +1,8 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-17 11:21 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-08-18 11:21 UTC
+### Liczba tickerow: 2
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-XXI  ### Strong BUY | -82.3% | --
-HL  ### Strong BUY | -46.2% | --
-CTGO  ### Strong BUY | -41.2% | --
-LPL  ### Strong BUY | -40.0% | --
-NFLX  ### Strong BUY | -38.3% | --
-CPRT  ### Strong BUY | -36.9% | --
-OGC  ### Strong BUY | -34.0% | --
-### ── Turning Up (2) ──
-SIGA  ### Turning Up | -68.3% | --
-DOCN  ### Turning Up | -30.7% | --
+### ── Strong BUY (2) ──
+BCAR  ### Strong BUY | -47.9% | --
+PLAB  ### Strong BUY | -40.0% | Technology
