@@ -1,145 +1,136 @@
 ### TradingView Watchlist – Full Scan
-### Wygenerowano: 2026-08-18 11:21 UTC
-### Liczba tickerow: 137
+### Wygenerowano: 2026-08-19 11:24 UTC
+### Liczba tickerow: 128
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (69) ──
-SMR  ### Strong BUY | -84.0% | Industrials
-LTBR  ### Strong BUY | -74.0% | Industrials
-ASPI  ### Strong BUY | -72.3% | Basic Materials
-BXBL  ### Strong BUY | -71.6% | Consumer Cyclical
-RGTI  ### Strong BUY | -67.9% | Technology
-LAES  ### Strong BUY | -66.7% | Technology
-DQ  ### Strong BUY | -61.1% | Technology
-ABR  ### Strong BUY | -60.3% | Real Estate
-CSIQ  ### Strong BUY | -57.2% | Technology
-RUN  ### Strong BUY | -56.2% | Technology
-ATOM  ### Strong BUY | -56.2% | Technology
-ALNY  ### Strong BUY | -54.7% | Healthcare
-NFGC  ### Strong BUY | -53.8% | Basic Materials
-WRD  ### Strong BUY | -51.6% | Technology
-RBBN  ### Strong BUY | -50.9% | Technology
-BCAR  ### Strong BUY | -47.9% | --
-UUUU  ### Strong BUY | -47.0% | Energy
-RCAT  ### Strong BUY | -44.4% | Industrials
-SITE  ### Strong BUY | -43.3% | --
-WRN  ### Strong BUY | -43.0% | Basic Materials
-PATK  ### Strong BUY | -42.9% | Consumer Cyclical
-ONDS  ### Strong BUY | -41.1% | Technology
-PLAB  ### Strong BUY | -40.0% | Technology
-PDYN  ### Strong BUY | -39.7% | Technology
-OPTX  ### Strong BUY | -39.6% | Technology
-AGI  ### Strong BUY | -38.7% | Basic Materials
-VTS  ### Strong BUY | -38.7% | Energy
-TTMI  ### Strong BUY | -37.0% | Technology
-WLK  ### Strong BUY | -37.0% | Basic Materials
-BTU  ### Strong BUY | -37.0% | Energy
-AMKR  ### Strong BUY | -36.6% | --
-CBIO  ### Strong BUY | -36.2% | Healthcare
-PKX  ### Strong BUY | -36.1% | --
-ASLE  ### Strong BUY | -35.3% | Industrials
-MWH  ### Strong BUY | -34.8% | Utilities
-LGN  ### Strong BUY | -34.7% | Industrials
-MAIR  ### Strong BUY | -33.6% | Industrials
-STAA  ### Strong BUY | -32.8% | Healthcare
-DUOT  ### Strong BUY | -32.7% | Technology
-NVAX  ### Strong BUY | -32.6% | Healthcare
-IONS  ### Strong BUY | -32.4% | Healthcare
-NVMI  ### Strong BUY | -31.7% | Technology
-SSYS  ### Strong BUY | -31.0% | Technology
-CIEN  ### Strong BUY | -30.2% | Technology
-IFRX  ### Strong BUY | -29.8% | Healthcare
-PFLT  ### Strong BUY | -29.5% | Financial Services
-MDA  ### Strong BUY | -28.6% | Industrials
-SHEN  ### Strong BUY | -27.3% | Communication Services
-CCJ  ### Strong BUY | -27.1% | --
-ASO  ### Strong BUY | -26.2% | Consumer Cyclical
-AKAM  ### Strong BUY | -25.7% | Technology
-GNRC  ### Strong BUY | -25.4% | Industrials
-MCHP  ### Strong BUY | -24.2% | Technology
-SNDK  ### Strong BUY | -24.1% | --
-HLIT  ### Strong BUY | -24.0% | Technology
-LTRX  ### Strong BUY | -24.0% | Technology
-VAL  ### Strong BUY | -23.7% | Energy
-RIG  ### Strong BUY | -23.4% | Energy
-LBTYA  ### Strong BUY | -23.3% | Communication Services
-STZ  ### Strong BUY | -22.7% | Consumer Defensive
-ICL  ### Strong BUY | -21.7% | Basic Materials
-DAN  ### Strong BUY | -20.8% | Consumer Cyclical
-ESI  ### Strong BUY | -20.4% | Basic Materials
-HTHT  ### Strong BUY | -17.7% | --
-WMT  ### Strong BUY | -15.4% | --
-KGS  ### Strong BUY | -14.9% | Energy
-BG  ### Strong BUY | -14.8% | Consumer Defensive
-TKO  ### Strong BUY | -14.0% | Communication Services
-ADI  ### Strong BUY | -12.5% | Technology
-### ── BUY (67) ──
-UPST  ### BUY | -61.3% | --
-TEM  ### BUY | -50.5% | --
-XRX  ### BUY | -30.9% | Industrials
-FTAI  ### BUY | -29.7% | Industrials
-LSPD  ### BUY | -25.4% | Technology
-OUST  ### BUY | -24.5% | --
-AGYS  ### BUY | -23.4% | --
-CTKB  ### BUY | -23.3% | Healthcare
-BOOT  ### BUY | -21.9% | Consumer Cyclical
-SHAZ  ### BUY | -21.1% | Technology
-GVA  ### BUY | -21.0% | Industrials
-ORC  ### BUY | -20.6% | Real Estate
-PTY  ### BUY | -20.5% | --
-APPS  ### BUY | -20.2% | Technology
-LADR  ### BUY | -17.1% | Real Estate
-CECO  ### BUY | -16.9% | --
-VC  ### BUY | -16.5% | Consumer Cyclical
-COHU  ### BUY | -16.1% | Technology
-SNY  ### BUY | -15.7% | --
-MSDL  ### BUY | -15.5% | Financial Services
-DSL  ### BUY | -14.9% | Financial Services
-ALGN  ### BUY | -14.6% | --
-HOG  ### BUY | -13.5% | --
-TH  ### BUY | -13.3% | Industrials
-STX  ### BUY | -13.1% | Technology
-GDOT  ### BUY | -12.7% | Financial Services
-ABUS  ### BUY | -12.5% | Healthcare
-MITK  ### BUY | -12.0% | Technology
-SRRK  ### BUY | -11.0% | Healthcare
-THRM  ### BUY | -10.4% | Consumer Cyclical
-AGNC  ### BUY | -10.2% | Real Estate
-LYTS  ### BUY | -9.5% | Technology
-KN  ### BUY | -9.2% | Technology
-SW  ### BUY | -9.2% | Consumer Cyclical
-QLYS  ### BUY | -9.0% | Technology
-BC  ### BUY | -8.8% | --
-BKU  ### BUY | -8.2% | Financial Services
-XYZ  ### BUY | -7.6% | Technology
-BKH  ### BUY | -6.7% | Utilities
-KYMR  ### BUY | -6.6% | --
-C  ### BUY | -6.4% | Financial Services
-MSGE  ### BUY | -6.1% | Communication Services
-NWE  ### BUY | -5.8% | Utilities
-EW  ### BUY | -5.7% | Healthcare
-VRTX  ### BUY | -5.6% | Healthcare
-HNGE  ### BUY | -5.6% | Healthcare
-INVH  ### BUY | -5.4% | Real Estate
-KRP  ### BUY | -5.3% | Energy
-MRX  ### BUY | -5.2% | Financial Services
-OSCR  ### BUY | -5.2% | Healthcare
-MANU  ### BUY | -4.7% | Communication Services
-FROG  ### BUY | -4.6% | Technology
-NAD  ### BUY | -4.5% | Financial Services
-PHVS  ### BUY | -4.4% | Healthcare
-VOYA  ### BUY | -3.6% | Financial Services
-BCS  ### BUY | -3.1% | Financial Services
-RF  ### BUY | -2.4% | Financial Services
-ZION  ### BUY | -2.4% | --
-CBSH  ### BUY | -2.0% | Financial Services
-VLY  ### BUY | -1.7% | --
-ARMK  ### BUY | -1.4% | Industrials
-RY  ### BUY | -1.1% | Financial Services
-TD  ### BUY | -0.9% | Financial Services
-IMVT  ### BUY | -0.4% | Healthcare
-AIR  ### BUY | -0.2% | Industrials
-OGN  ### BUY | -0.1% | Healthcare
-TALK  ### BUY | -0.0% | Healthcare
-### ── Turning Up (1) ──
-EURONEXT:ASML  ### Turning Up | -9.7% | --
+### ── Strong BUY (47) ──
+ZJYL  ### Strong BUY | -82.1% | --
+RGTI  ### Strong BUY | -69.5% | Technology
+LAES  ### Strong BUY | -68.5% | Technology
+DQ  ### Strong BUY | -62.0% | Technology
+ABR  ### Strong BUY | -61.0% | Real Estate
+NFGC  ### Strong BUY | -54.3% | --
+ALNY  ### Strong BUY | -53.9% | Healthcare
+AVEX  ### Strong BUY | -53.0% | Industrials
+WRD  ### Strong BUY | -52.2% | --
+SATL  ### Strong BUY | -52.2% | Industrials
+STRO  ### Strong BUY | -49.7% | --
+UUUU  ### Strong BUY | -49.5% | Energy
+CHRS  ### Strong BUY | -48.8% | --
+RCAT  ### Strong BUY | -45.7% | Industrials
+CRMD  ### Strong BUY | -45.4% | Healthcare
+IREN  ### Strong BUY | -45.4% | Financial Services
+WRN  ### Strong BUY | -44.6% | Basic Materials
+OPTX  ### Strong BUY | -44.2% | --
+PDYN  ### Strong BUY | -41.5% | Technology
+CXDO  ### Strong BUY | -41.4% | --
+ONDS  ### Strong BUY | -40.7% | Technology
+AGI  ### Strong BUY | -40.6% | --
+LGN  ### Strong BUY | -40.6% | Industrials
+VTS  ### Strong BUY | -39.4% | --
+CBIO  ### Strong BUY | -39.1% | Healthcare
+BTU  ### Strong BUY | -38.8% | Energy
+NEXT  ### Strong BUY | -38.6% | Energy
+PKX  ### Strong BUY | -38.3% | Basic Materials
+AGRO  ### Strong BUY | -38.3% | --
+ALM  ### Strong BUY | -36.1% | Basic Materials
+GRRR  ### Strong BUY | -35.3% | Technology
+STAA  ### Strong BUY | -31.3% | Healthcare
+MDA  ### Strong BUY | -31.1% | Industrials
+SNDK  ### Strong BUY | -30.9% | Technology
+IBM  ### Strong BUY | -30.0% | Technology
+CCJ  ### Strong BUY | -29.0% | Energy
+HLIT  ### Strong BUY | -28.0% | --
+TRLV  ### Strong BUY | -27.0% | Healthcare
+WMG  ### Strong BUY | -25.7% | Communication Services
+DUOT  ### Strong BUY | -24.1% | Technology
+SQM  ### Strong BUY | -24.0% | --
+RIG  ### Strong BUY | -24.0% | Energy
+RUM  ### Strong BUY | -23.1% | Communication Services
+DAN  ### Strong BUY | -22.2% | --
+KGS  ### Strong BUY | -19.1% | --
+ENS  ### Strong BUY | -17.9% | Industrials
+BG  ### Strong BUY | -15.2% | Consumer Defensive
+### ── BUY (54) ──
+TEM  ### BUY | -52.7% | --
+GRAL  ### BUY | -40.3% | --
+GDDY  ### BUY | -36.3% | Technology
+FTAI  ### BUY | -34.6% | Industrials
+OUST  ### BUY | -32.6% | Technology
+TMUS  ### BUY | -30.1% | Communication Services
+SHAZ  ### BUY | -29.4% | Technology
+CTKB  ### BUY | -24.4% | Healthcare
+GVA  ### BUY | -23.2% | Industrials
+AGYS  ### BUY | -22.9% | Technology
+ALXO  ### BUY | -21.8% | Healthcare
+CCCC  ### BUY | -19.1% | --
+VIR  ### BUY | -18.6% | Healthcare
+VC  ### BUY | -18.2% | Consumer Cyclical
+LADR  ### BUY | -16.9% | Real Estate
+TH  ### BUY | -16.2% | --
+MSDL  ### BUY | -15.4% | --
+TSHA  ### BUY | -15.2% | --
+SNY  ### BUY | -14.6% | Healthcare
+DTIL  ### BUY | -14.4% | --
+NGG  ### BUY | -13.2% | --
+HOG  ### BUY | -12.9% | Consumer Cyclical
+XERS  ### BUY | -12.2% | --
+YPF  ### BUY | -11.8% | --
+GMRS  ### BUY | -11.7% | --
+AGNC  ### BUY | -10.4% | Real Estate
+ABUS  ### BUY | -10.0% | Healthcare
+ASML  ### BUY | -9.8% | --
+CMPS  ### BUY | -9.7% | Healthcare
+ELV  ### BUY | -8.7% | --
+HPK  ### BUY | -8.3% | Energy
+BKU  ### BUY | -8.3% | Financial Services
+LOAR  ### BUY | -8.1% | --
+C  ### BUY | -7.0% | Financial Services
+QLYS  ### BUY | -6.7% | Technology
+KYMR  ### BUY | -6.7% | --
+WTTR  ### BUY | -6.5% | Energy
+KRP  ### BUY | -5.6% | Energy
+EW  ### BUY | -5.5% | Healthcare
+HNGE  ### BUY | -5.3% | Healthcare
+AM  ### BUY | -4.8% | --
+MRX  ### BUY | -4.7% | Financial Services
+TBBB  ### BUY | -4.3% | Consumer Defensive
+KURA  ### BUY | -4.0% | Healthcare
+MANU  ### BUY | -3.8% | --
+VRTX  ### BUY | -3.3% | Healthcare
+AIR  ### BUY | -3.2% | Industrials
+TRGP  ### BUY | -2.4% | Energy
+VLY  ### BUY | -2.2% | --
+ARGX  ### BUY | -1.7% | Healthcare
+JNJ  ### BUY | -1.4% | Healthcare
+RPRX  ### BUY | -1.2% | Healthcare
+DK  ### BUY | -1.0% | Energy
+SLAB  ### BUY | -0.9% | Technology
+### ── Turning Up (27) ──
+EBS  ### Turning Up | -66.9% | Healthcare
+BAK  ### Turning Up | -63.5% | Basic Materials
+ECX  ### Turning Up | -59.6% | Consumer Cyclical
+PLNT  ### Turning Up | -53.3% | Consumer Cyclical
+MAZE  ### Turning Up | -45.7% | Healthcare
+IQMX  ### Turning Up | -35.1% | --
+ALLT  ### Turning Up | -34.0% | Technology
+RGNX  ### Turning Up | -31.6% | Healthcare
+NVCT  ### Turning Up | -28.6% | Healthcare
+ZBIO  ### Turning Up | -28.5% | Healthcare
+MU  ### Turning Up | -25.0% | Technology
+CHRN  ### Turning Up | -21.6% | Technology
+NVCR  ### Turning Up | -19.6% | Healthcare
+HYT  ### Turning Up | -13.3% | Financial Services
+KEX  ### Turning Up | -11.4% | Industrials
+ARW  ### Turning Up | -10.0% | --
+BBCQ  ### Turning Up | -9.8% | Financial Services
+DT  ### Turning Up | -7.6% | Technology
+WEC  ### Turning Up | -7.4% | Utilities
+RLI  ### Turning Up | -7.1% | Financial Services
+DFTX  ### Turning Up | -7.1% | Healthcare
+PCG  ### Turning Up | -7.0% | Utilities
+ADM  ### Turning Up | -6.8% | Consumer Defensive
+TNET  ### Turning Up | -4.4% | --
+CORT  ### Turning Up | -3.4% | Healthcare
+ABBV  ### Turning Up | -3.2% | Healthcare
+CCO  ### Turning Up | -2.9% | Communication Services

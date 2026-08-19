@@ -1,8 +1,8 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-18 11:21 UTC
+### Wygenerowano: 2026-08-19 11:24 UTC
 ### Liczba tickerow: 2
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (2) ──
-BCAR  ### Strong BUY | -47.9% | --
-PLAB  ### Strong BUY | -40.0% | Technology
+NFGC  ### Strong BUY | -54.3% | --
+CRMD  ### Strong BUY | -45.4% | Healthcare
