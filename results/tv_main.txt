@@ -1,16 +1,11 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-20 11:24 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-08-21 11:25 UTC
+### Liczba tickerow: 4
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-SIGA  ### Strong BUY | -67.1% | --
-PLAB  ### Strong BUY | -45.2% | --
-PATK  ### Strong BUY | -41.1% | --
-VTS  ### Strong BUY | -38.0% | --
-CBIO  ### Strong BUY | -36.8% | --
-ALM  ### Strong BUY | -33.7% | Basic Materials
-### ── Turning Up (3) ──
-PROK  ### Turning Up | -57.5% | --
-STLA  ### Turning Up | -55.6% | --
-CHKP  ### Turning Up | -37.2% | --
+### ── Strong BUY (3) ──
+GEMI  ### Strong BUY | -91.0% | --
+NFGC  ### Strong BUY | -51.3% | --
+PLAB  ### Strong BUY | -45.5% | Technology
+### ── Turning Up (1) ──
+LRN  ### Turning Up | -50.9% | Consumer Defensive

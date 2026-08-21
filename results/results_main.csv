@@ -1,10 +1,5 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-SIGA,SIGA,USA,--,--,3.11,USD,9.45,67.1,223.5,648.6,-78.57,-80.22,OVERSOLD,Strong BUY,False,,False,,,94.6,9.1,0.3905,0.003,0.6859,2026-08-20T11:24:17.034138,7
-PLAB,PLAB,USA,--,--,30.7,USD,56.0,45.2,1810.2,1516.1,-36.91,-49.95,Bearish,Strong BUY,False,,False,,,849.3,4.99,0.1557,0.005,0.353,2026-08-20T11:24:21.682830,6
-ALM,Almonty Industries Inc.,USA,United States,Basic Materials,16.18,USD,24.41,33.7,4667.6,6226.5,-27.74,-42.28,Bearish,Strong BUY,False,,True,,0.23,,,,,,2026-08-20T11:24:32.422559,6
-PATK,PATK,USA,--,--,87.44,USD,148.5,41.1,2808.4,615.9,-33.67,-40.07,Bearish,Strong BUY,True,"div_bull (cena -0.2%, SMI +2.5)",False,,,,,,,,2026-08-20T11:24:33.767977,6
-CBIO,CBIO,USA,--,--,17.32,USD,27.41,36.8,643.3,328.9,-22.73,-37.11,Bearish,Strong BUY,False,,False,,,10.8,6.56,,0.008,,2026-08-20T11:24:18.188298,5
-VTS,VTS,USA,--,--,16.82,USD,27.15,38.0,708.2,520.3,-18.12,-35.75,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-20T11:24:32.409817,4
-CHKP,CHKP,USA,--,--,132.35,USD,210.66,37.2,13513.0,1299.0,9.13,9.37,Bullish,Turning Up,False,,False,,,2725.4,2.05,0.2042,0.684,0.8672,2026-08-20T11:24:28.168556,2
-STLA,STLA,USA,--,--,5.43,USD,12.22,55.6,20456.6,20117.7,-75.19,-75.08,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-20T11:24:32.438401,2
-PROK,PROK,USA,--,--,1.48,USD,3.48,57.5,303.7,1223.2,-70.34,-66.33,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-20T11:24:33.717489,2
+PLAB,"Photronics, Inc.",USA,United States,Technology,30.52,USD,56.0,45.5,1799.6,1524.3,-37.56,-50.28,Bearish,Strong BUY,False,,False,,2.7,849.3,4.99,0.1557,0.005,0.353,2026-08-21T11:25:14.880824,7
+LRN,"Stride, Inc.",USA,United States,Consumer Defensive,84.07,USD,171.17,50.9,3493.9,938.3,-50.92,-50.53,OVERSOLD,Turning Up,False,,False,,7.13,2518.1,5.81,0.2484,0.334,0.3775,2026-08-21T11:25:24.252644,5
+GEMI,GEMI,USA,--,--,4.14,USD,45.89,91.0,536.8,1698.4,-56.05,-62.07,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-21T11:25:35.146432,5
+NFGC,NFGC,USA,--,--,1.75,USD,3.59,51.3,672.6,1552.6,-12.82,-35.74,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-21T11:25:35.072915,4
