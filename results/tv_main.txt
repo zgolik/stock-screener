@@ -1,11 +1,8 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-21 11:25 UTC
-### Liczba tickerow: 4
+### Wygenerowano: 2026-08-24 11:27 UTC
+### Liczba tickerow: 2
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (3) ──
-GEMI  ### Strong BUY | -91.0% | --
-NFGC  ### Strong BUY | -51.3% | --
-PLAB  ### Strong BUY | -45.5% | Technology
-### ── Turning Up (1) ──
-LRN  ### Turning Up | -50.9% | Consumer Defensive
+### ── Turning Up (2) ──
+DGXX  ### Turning Up | -55.8% | --
+INOD  ### Turning Up | -48.7% | Technology

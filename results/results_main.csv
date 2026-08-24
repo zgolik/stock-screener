@@ -1,5 +1,3 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-PLAB,"Photronics, Inc.",USA,United States,Technology,30.52,USD,56.0,45.5,1799.6,1524.3,-37.56,-50.28,Bearish,Strong BUY,False,,False,,2.7,849.3,4.99,0.1557,0.005,0.353,2026-08-21T11:25:14.880824,7
-LRN,"Stride, Inc.",USA,United States,Consumer Defensive,84.07,USD,171.17,50.9,3493.9,938.3,-50.92,-50.53,OVERSOLD,Turning Up,False,,False,,7.13,2518.1,5.81,0.2484,0.334,0.3775,2026-08-21T11:25:24.252644,5
-GEMI,GEMI,USA,--,--,4.14,USD,45.89,91.0,536.8,1698.4,-56.05,-62.07,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-08-21T11:25:35.146432,5
-NFGC,NFGC,USA,--,--,1.75,USD,3.59,51.3,672.6,1552.6,-12.82,-35.74,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-21T11:25:35.072915,4
+INOD,Innodata Inc.,USA,United States,Technology,64.21,USD,125.14,48.7,2207.7,1440.0,-70.66,-67.77,OVERSOLD,Turning Up,False,,False,,1.29,251.7,2.68,0.8645,0.041,0.3953,2026-08-24T11:27:25.622758,5
+DGXX,DGXX,USA,--,--,4.07,USD,9.2,55.8,412.7,5968.5,-71.44,-69.85,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-24T11:27:26.878814,2
