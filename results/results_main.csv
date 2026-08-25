@@ -1,3 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-INOD,Innodata Inc.,USA,United States,Technology,64.21,USD,125.14,48.7,2207.7,1440.0,-70.66,-67.77,OVERSOLD,Turning Up,False,,False,,1.29,251.7,2.68,0.8645,0.041,0.3953,2026-08-24T11:27:25.622758,5
-DGXX,DGXX,USA,--,--,4.07,USD,9.2,55.8,412.7,5968.5,-71.44,-69.85,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-24T11:27:26.878814,2
+JMIA,JMIA,USA,--,--,6.49,USD,14.72,55.9,808.4,1832.6,-30.47,-41.81,Bearish,Strong BUY,True,"div_bull (cena -7.9%, SMI +3.6)",False,,,188.9,1.04,,0.446,0.5387,2026-08-25T11:22:09.246583,7
+LRN,LRN,USA,--,--,85.07,USD,171.17,50.3,3535.5,938.2,-43.24,-46.73,OVERSOLD,Strong BUY,False,,False,,,2518.1,5.81,0.2484,0.334,0.3775,2026-08-25T11:22:13.733750,7
+NAGE,NAGE,USA,--,--,3.21,USD,10.52,69.5,254.0,741.3,-38.76,-48.71,Bearish,Strong BUY,False,,False,,,129.4,3.83,0.6251,0.037,0.6428,2026-08-25T11:22:00.677717,6
+NKE,NKE,USA,--,--,40.75,USD,79.51,48.7,60452.6,24204.8,-47.89,-45.44,OVERSOLD,Turning Up,False,,False,,,46398.0,1.36,0.1654,0.742,0.4291,2026-08-25T11:22:01.071051,4
+NMG,NMG,USA,--,--,1.45,USD,6.06,76.1,477.3,630.8,-35.03,-47.1,Bearish,Strong BUY,False,,False,,,0.0,,,,,2026-08-25T11:22:13.959906,4
+CDZI,CDZI,USA,--,--,3.77,USD,6.96,45.8,319.2,994.0,-36.43,-46.05,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-25T11:22:14.198350,4
+DXYZ,DXYZ,USA,--,--,32.4,USD,72.87,55.5,987.1,2881.9,-23.6,-44.13,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-25T11:22:14.607679,4
+OI,OI,USA,--,--,7.25,USD,16.91,57.1,1114.0,3348.3,-61.42,-57.83,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-25T11:22:14.656929,2
