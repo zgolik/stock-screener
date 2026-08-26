@@ -1,15 +1,9 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-25 11:22 UTC
-### Liczba tickerow: 8
+### Wygenerowano: 2026-08-26 11:27 UTC
+### Liczba tickerow: 2
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-NMG  ### Strong BUY | -76.1% | --
-NAGE  ### Strong BUY | -69.5% | --
-JMIA  ### Strong BUY | -55.9% | --
-DXYZ  ### Strong BUY | -55.5% | --
-LRN  ### Strong BUY | -50.3% | --
-CDZI  ### Strong BUY | -45.8% | --
-### ── Turning Up (2) ──
-OI  ### Turning Up | -57.1% | --
-NKE  ### Turning Up | -48.7% | --
+### ── Strong BUY (1) ──
+CHA  ### Strong BUY | -52.1% | Consumer Cyclical
+### ── Turning Up (1) ──
+FAC  ### Turning Up | -79.4% | --
