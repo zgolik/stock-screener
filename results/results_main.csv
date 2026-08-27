@@ -1,3 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-CHA,Chagee Holdings Limited,USA,China,Consumer Cyclical,10.81,USD,22.57,52.1,2062.2,679.9,-37.95,-35.65,Bearish,Strong BUY,False,,False,,0.74,12907.4,3.03,0.9821,0.174,0.4584,2026-08-26T11:27:26.193761,7
-FAC,FAC,USA,--,--,5.21,USD,25.33,79.4,557.6,445.0,-88.29,-87.75,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-26T11:27:30.044668,2
+NAGE,NAGE,USA,--,--,3.21,USD,10.52,69.5,254.0,717.7,-38.76,-48.71,Bearish,Strong BUY,False,,False,,,129.4,3.83,0.6251,0.037,0.6428,2026-08-27T20:57:09.064645,6
+NGEN,NGEN,USA,--,--,2.34,USD,6.3,62.9,251.1,727.4,-32.18,-54.31,Bearish,Strong BUY,False,,True,,,0.0,1.16,,0.002,,2026-08-27T20:57:11.586463,6
+VNDA,VNDA,USA,--,--,5.44,USD,9.94,45.3,328.9,943.6,-32.55,-42.94,Bearish,Strong BUY,True,"div_bull (cena -13.8%, SMI +16.3)",False,,,,,,,,2026-08-27T20:57:16.550274,6
+TTGT,TTGT,USA,--,--,3.91,USD,7.15,45.3,282.8,394.3,-36.15,-41.75,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-27T20:57:16.385740,4
+DXYZ,DXYZ,USA,--,--,35.4,USD,72.87,51.4,1078.5,2648.4,-18.21,-41.43,Bearish,Strong BUY,False,,False,,,,,,,,2026-08-27T20:57:16.447188,4
+STRO,STRO,USA,--,--,21.31,USD,43.85,51.4,353.1,341.2,-64.49,-64.09,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-08-27T20:57:16.435605,2
+BMI,BMI,USA,--,--,138.15,USD,204.0,32.3,4004.5,459.3,-14.5,-10.1,Bearish,Turning Up,False,,False,,,,,,,,2026-08-27T20:57:17.681353,1
