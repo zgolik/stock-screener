@@ -1,14 +1,18 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-27 20:57 UTC
-### Liczba tickerow: 7
+### Wygenerowano: 2026-08-28 21:23 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-NAGE  ### Strong BUY | -69.5% | --
-NGEN  ### Strong BUY | -62.9% | --
-DXYZ  ### Strong BUY | -51.4% | --
-VNDA  ### Strong BUY | -45.3% | --
-TTGT  ### Strong BUY | -45.3% | --
-### ── Turning Up (2) ──
-STRO  ### Turning Up | -51.4% | --
-BMI  ### Turning Up | -32.3% | --
+### ── Strong BUY (12) ──
+NAGE  ### Strong BUY | -68.7% | --
+NGEN  ### Strong BUY | -63.8% | --
+TMC  ### Strong BUY | -57.6% | --
+JMIA  ### Strong BUY | -52.9% | --
+DXYZ  ### Strong BUY | -52.3% | --
+LRN  ### Strong BUY | -48.0% | --
+CHA  ### Strong BUY | -47.5% | --
+NRGV  ### Strong BUY | -46.7% | --
+KYTX  ### Strong BUY | -38.8% | --
+HNRG  ### Strong BUY | -34.3% | --
+TUYA  ### Strong BUY | -32.1% | --
+XETR:PAH3  ### Strong BUY | -31.0% | --
