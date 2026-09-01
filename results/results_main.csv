@@ -1,4 +1,2 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-PODD,PODD,USA,--,--,148.54,USD,354.88,58.1,10301.9,1560.8,-10.55,-8.69,Bearish,Turning Up,True,"div_bull (cena -3.1%, SMI +89.8)",False,,,2708.1,2.15,0.1922,0.626,0.7163,2026-08-31T17:54:41.655464,5
-PHAT,PHAT,USA,--,--,9.36,USD,18.31,48.9,757.2,1304.9,-53.63,-50.49,OVERSOLD,Turning Up,False,,False,,,175.1,1.69,,,0.8709,2026-08-31T17:54:39.016695,3
-SUPV,SUPV,USA,--,--,8.76,USD,13.55,35.4,822.8,641.0,-56.18,-55.27,OVERSOLD,Turning Up,False,,False,,,1135129.2,,,0.19,,2026-08-31T17:54:35.943370,2
+PHAT,PHAT,USA,--,--,9.44,USD,18.31,48.5,763.3,1284.0,-55.28,-52.0,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-01T15:25:16.448083,2

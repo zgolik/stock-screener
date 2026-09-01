@@ -1,9 +1,7 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-08-31 17:54 UTC
-### Liczba tickerow: 3
+### Wygenerowano: 2026-09-01 15:25 UTC
+### Liczba tickerow: 1
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Turning Up (3) ──
-PODD  ### Turning Up | -58.1% | --
-PHAT  ### Turning Up | -48.9% | --
-SUPV  ### Turning Up | -35.4% | --
+### ── Turning Up (1) ──
+PHAT  ### Turning Up | -48.5% | --
