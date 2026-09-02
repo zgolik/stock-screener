@@ -1,2 +1,14 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-PHAT,PHAT,USA,--,--,9.44,USD,18.31,48.5,763.3,1284.0,-55.28,-52.0,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-01T15:25:16.448083,2
+CHA,CHA,USA,--,--,11.66,USD,18.62,37.4,2224.3,685.9,-27.1,-33.3,Bearish,Strong BUY,False,,True,,,12907.4,3.03,0.9821,0.174,0.4584,2026-09-02T14:56:53.019279,7
+CRUS,CRUS,USA,--,--,113.99,USD,180.42,36.8,5712.9,690.9,-87.41,-88.58,OVERSOLD,Strong BUY,False,,False,,,1997.4,6.13,0.2571,0.063,0.5278,2026-09-02T14:56:55.390228,7
+GPRO,GPRO,USA,--,--,1.27,USD,3.05,58.2,235.2,17107.6,-25.72,-52.72,Bearish,Strong BUY,True,"div_bull (cena -9.8%, SMI +3.5)",True,,,,,,,,2026-09-02T14:57:01.216110,7
+TIMB,TIMB,USA,--,--,18.5,USD,28.22,34.5,8786.1,469.6,-71.19,-73.6,OVERSOLD,Strong BUY,True,"div_bull (cena -15.6%, SMI +8.2)",False,,,,,,,,2026-09-02T14:57:01.223155,7
+LRN,LRN,USA,--,--,86.65,USD,166.93,48.1,3601.2,914.1,-32.74,-39.61,Bearish,Strong BUY,False,,False,,,2518.1,5.81,0.2484,0.334,0.3775,2026-09-02T14:56:48.409086,6
+PODD,PODD,USA,--,--,148.4,USD,354.88,58.2,10292.4,1615.3,-12.85,-10.32,Bearish,Turning Up,True,"div_bull (cena -3.1%, SMI +89.8)",True,,,2708.1,2.15,0.1922,0.626,0.7163,2026-09-02T14:56:55.728813,6
+LMB,LMB,USA,--,--,47.6,USD,114.95,58.6,567.6,318.3,-85.79,-85.97,OVERSOLD,Strong BUY,False,,True,,,,,,,,2026-09-02T14:57:01.177223,6
+AGBK,AGBK,USA,--,--,6.84,USD,12.21,44.0,400.6,317.7,-43.73,-49.26,OVERSOLD,Strong BUY,False,,False,,,6466.2,,,0.511,,2026-09-02T14:56:45.997854,5
+TTD,TTD,USA,--,--,14.24,USD,56.39,74.7,6693.4,21759.5,-75.06,-74.63,OVERSOLD,Turning Up,False,,False,,,2896.3,1.61,0.1779,0.176,0.7863,2026-09-02T14:56:45.439770,4
+WING,WING,USA,--,--,117.72,USD,325.0,63.8,3207.0,1183.5,-74.49,-69.76,OVERSOLD,Turning Up,False,,False,,,696.9,3.26,0.3291,,0.4868,2026-09-02T14:56:49.353969,4
+URG,URG,USA,--,--,1.38,USD,2.35,41.5,547.1,10058.5,-26.56,-39.99,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-02T14:57:01.181682,4
+WBTN,WBTN,USA,--,--,10.22,USD,22.47,54.5,1387.0,363.5,-37.22,-52.4,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-02T14:57:01.195342,4
+VIV,VIV,USA,--,--,11.84,USD,17.26,31.4,18910.5,1326.3,-71.02,-67.58,OVERSOLD,Turning Up,False,,False,,,59595.0,,,,0.4475,2026-09-02T14:57:01.063116,2

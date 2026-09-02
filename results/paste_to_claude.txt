@@ -7,18 +7,100 @@ Turning Up  = SMI osiągnął lokalne dno i odbija, jeszcze poniżej EMA (wczesn
 Filtr wejścia: dyskonto ≥ 30% vs 52-tygodniowego szczytu + EPS>0 + QR>1 + Cap>200M
 
 === METADANE SKANU ===
-Data:              2026-09-01
-Przeskanowano:     7131 spółek
-Sygnały SMI:       411
-Po wszystkich filtrach: 3 (Strong BUY: 1, Turning Up: 1)
+Data:              2026-09-02
+Przeskanowano:     7140 spółek
+Sygnały SMI:       539
+Po wszystkich filtrach: 117 (Strong BUY: 43, Turning Up: 41)
 
 === SYGNAŁY STRONG BUY ===
-(posortowane od największego dyskonta; 1 spółek)
-  NYT    | NYT                          | --                   |    67.88 USD | dyskonto -22.1% | cap 10947.9M | SMI -47.78 / EMA -49.3 | strefa OVERSOLD     | EPS None | QR None
+(posortowane od największego dyskonta; 43 spółek)
+  EOSE   | EOSE                         | --                   |     3.48 USD | dyskonto -82.5% | cap 1269.1M | SMI -78.73 / EMA -78.82 | strefa OVERSOLD     | EPS None | QR 4.52
+  SSTK   | SSTK                         | --                   |     5.73 USD | dyskonto -80.6% | cap 211.7M | SMI -92.36 / EMA -92.38 | strefa OVERSOLD     | EPS None | QR 0.54
+  UWMC   | UWMC                         | --                   |     1.46 USD | dyskonto -79.6% | cap 2342.0M | SMI -39.1 / EMA -46.77 | strefa Bearish      | EPS None | QR None
+  ABAT   | ABAT                         | --                   |     2.74 USD | dyskonto -76.1% | cap 374.5M | SMI -23.58 / EMA -39.61 | strefa Bearish      | EPS None | QR 2.13
+  SLDP   | SLDP                         | --                   |     2.39 USD | dyskonto -73.0% | cap 545.4M | SMI -33.76 / EMA -45.31 | strefa Bearish      | EPS None | QR 15.92
+  NUS    | NUS                          | --                   |     4.76 USD | dyskonto -67.4% | cap 231.9M | SMI -39.89 / EMA -43.72 | strefa Bearish      | EPS None | QR 1.4
+  FMC    | FMC                          | --                   |    12.69 USD | dyskonto -67.2% | cap 1589.4M | SMI -13.7 / EMA -36.34 | strefa Bearish      | EPS None | QR 1.0
+  OCS    | OCS                          | --                   |    12.05 USD | dyskonto -65.0% | cap 669.1M | SMI -36.98 / EMA -47.01 | strefa Bearish      | EPS None | QR 5.96
+  OPTU   | OPTU                         | --                   |     0.99 USD | dyskonto -64.7% | cap 375.9M | SMI -57.82 / EMA -59.54 | strefa OVERSOLD     | EPS None | QR 0.8
+  CWH    | CWH                          | --                   |     6.87 USD | dyskonto -62.5% | cap 438.5M | SMI -28.74 / EMA -37.61 | strefa Bearish      | EPS None | QR 0.23
+  SLI    | SLI                          | --                   |     2.53 USD | dyskonto -60.5% | cap 623.1M | SMI -31.89 / EMA -45.72 | strefa Bearish      | EPS None | QR 15.63
+  SMPL   | SMPL                         | --                   |    11.57 USD | dyskonto -60.0% | cap 1023.3M | SMI -59.9 / EMA -60.98 | strefa OVERSOLD     | EPS None | QR 2.3
+  LMB    | LMB                          | --                   |     47.6 USD | dyskonto -58.6% | cap 567.6M | SMI -85.79 / EMA -85.97 | strefa OVERSOLD     | EPS None | QR None
+  GPRO   | GPRO                         | --                   |     1.27 USD | dyskonto -58.2% | cap 235.2M | SMI -25.72 / EMA -52.72 | strefa Bearish      | EPS None | QR None
+  OI     | OI                           | --                   |     7.28 USD | dyskonto -56.9% | cap 1118.6M | SMI -57.64 / EMA -57.88 | strefa OVERSOLD     | EPS None | QR None
+  WBTN   | WBTN                         | --                   |    10.22 USD | dyskonto -54.5% | cap 1387.0M | SMI -37.22 / EMA -52.4 | strefa Bearish      | EPS None | QR None
+  GLXY   | GLXY                         | --                   |    23.56 USD | dyskonto -48.7% | cap 4577.5M | SMI -38.33 / EMA -47.29 | strefa Bearish      | EPS None | QR 1.6
+  LRN    | LRN                          | --                   |    86.65 USD | dyskonto -48.1% | cap 3601.2M | SMI -32.74 / EMA -39.61 | strefa Bearish      | EPS None | QR 5.81
+  SID    | SID                          | --                   |     1.17 USD | dyskonto -46.6% | cap 1558.2M | SMI -10.48 / EMA -33.04 | strefa Bearish      | EPS None | QR 0.71
+  PROK   | PROK                         | --                   |     1.86 USD | dyskonto -46.6% | cap 381.7M | SMI -21.38 / EMA -36.7 | strefa Bearish      | EPS None | QR 9.13
+  SUJA   | SUJA                         | --                   |    10.08 USD | dyskonto -45.5% | cap 389.2M | SMI -24.97 / EMA -44.14 | strefa Bearish      | EPS None | QR 0.86
+  AGBK   | AGBK                         | --                   |     6.84 USD | dyskonto -44.0% | cap 400.6M | SMI -43.73 / EMA -49.26 | strefa OVERSOLD     | EPS None | QR None
+  INTR   | INTR                         | --                   |     5.89 USD | dyskonto -43.1% | cap 2600.5M | SMI -18.74 / EMA -38.63 | strefa Bearish      | EPS None | QR None
+  GORO   | GORO                         | --                   |      3.8 USD | dyskonto -42.1% | cap 512.6M | SMI -28.74 / EMA -40.85 | strefa Bearish      | EPS None | QR 0.24
+  URG    | URG                          | --                   |     1.38 USD | dyskonto -41.5% | cap 547.1M | SMI -26.56 / EMA -39.99 | strefa Bearish      | EPS None | QR None
+  SITE   | SITE                         | --                   |    99.03 USD | dyskonto -41.2% | cap 4323.2M | SMI -47.03 / EMA -47.78 | strefa OVERSOLD     | EPS None | QR 1.2
+  VERA   | VERA                         | --                   |    34.19 USD | dyskonto -39.0% | cap 2463.6M | SMI -42.65 / EMA -43.32 | strefa OVERSOLD     | EPS None | QR 13.64
+  ACI    | ACI                          | --                   |     12.4 USD | dyskonto -38.0% | cap 6015.6M | SMI -38.07 / EMA -43.58 | strefa Bearish      | EPS None | QR 0.2
+  CHA    | CHA                          | --                   |    11.66 USD | dyskonto -37.4% | cap 2224.3M | SMI -27.1 / EMA -33.3 | strefa Bearish      | EPS None | QR 3.03
+  CRUS   | CRUS                         | --                   |   113.99 USD | dyskonto -36.8% | cap 5712.9M | SMI -87.41 / EMA -88.58 | strefa OVERSOLD     | EPS None | QR 6.13
+  TIMB   | TIMB                         | --                   |     18.5 USD | dyskonto -34.5% | cap 8786.1M | SMI -71.19 / EMA -73.6 | strefa OVERSOLD     | EPS None | QR None
+  SBS    | SBS                          | --                   |     5.07 USD | dyskonto -29.2% | cap 17812.1M | SMI -54.7 / EMA -57.95 | strefa OVERSOLD     | EPS None | QR None
+  TKC    | TKC                          | --                   |     5.09 USD | dyskonto -29.0% | cap 4435.6M | SMI -67.61 / EMA -68.12 | strefa OVERSOLD     | EPS None | QR 1.24
+  ORA    | ORA                          | --                   |   105.97 USD | dyskonto -27.6% | cap 6516.8M | SMI -32.36 / EMA -39.89 | strefa Bearish      | EPS None | QR 0.75
+  TDS    | TDS                          | --                   |    36.17 USD | dyskonto -26.4% | cap 4163.7M | SMI -37.35 / EMA -48.83 | strefa Bearish      | EPS None | QR 2.09
+  NYT    | NYT                          | --                   |     67.9 USD | dyskonto -22.0% | cap 10951.2M | SMI -46.88 / EMA -48.85 | strefa OVERSOLD     | EPS None | QR 1.54
+  BBD    | BBD                          | --                   |     3.42 USD | dyskonto -20.3% | cap 36267.9M | SMI -25.76 / EMA -29.55 | strefa Bearish      | EPS None | QR None
+  ARCO   | ARCO                         | --                   |     8.28 USD | dyskonto -15.0% | cap 1745.3M | SMI -40.41 / EMA -49.73 | strefa OVERSOLD     | EPS None | QR 0.95
+  TS     | TS                           | --                   |    55.35 USD | dyskonto -14.3% | cap 27941.8M | SMI -52.52 / EMA -58.23 | strefa OVERSOLD     | EPS None | QR 2.33
+  ABEV   | ABEV                         | --                   |      3.0 USD | dyskonto -13.0% | cap 46275.4M | SMI -41.42 / EMA -48.97 | strefa OVERSOLD     | EPS None | QR 0.73
+  OMH    | OMH                          | --                   |     3.03 USD | dyskonto -12.1% | cap 255.6M | SMI -35.4 / EMA -65.22 | strefa Bearish      | EPS None | QR 1.25
+  AGCO   | AGCO                         | --                   |   127.46 USD | dyskonto -11.3% | cap 8926.6M | SMI 1.71 / EMA -21.56 | strefa Bullish      | EPS None | QR 0.67
+  YUM    | YUM                          | --                   |   151.97 USD | dyskonto -10.7% | cap 41472.8M | SMI -39.84 / EMA -40.48 | strefa Bearish      | EPS None | QR 1.35
 
 === SYGNAŁY TURNING UP ===
-(SMI jeszcze poniżej EMA — wczesny sygnał; 1 spółek)
-  PHAT   | PHAT                         | --                   |     9.44 USD | dyskonto -48.5% | cap 763.3M | SMI -55.28 / EMA -52.0 | strefa OVERSOLD     | EPS None | QR None
+(SMI jeszcze poniżej EMA — wczesny sygnał; 41 spółek)
+  TTD    | TTD                          | --                   |    14.24 USD | dyskonto -74.7% | cap 6693.4M | SMI -75.06 / EMA -74.63 | strefa OVERSOLD     | EPS None | QR 1.61
+  RBLX   | RBLX                         | --                   |    40.23 USD | dyskonto -71.7% | cap 28739.3M | SMI -58.08 / EMA -56.01 | strefa OVERSOLD     | EPS None | QR 0.96
+  FLUT   | FLUT                         | --                   |   101.31 USD | dyskonto -66.1% | cap 17581.2M | SMI -30.46 / EMA -28.56 | strefa Bearish      | EPS None | QR 0.95
+  WING   | WING                         | --                   |   117.72 USD | dyskonto -63.8% | cap 3207.0M | SMI -74.49 / EMA -69.76 | strefa OVERSOLD     | EPS None | QR 3.26
+  KD     | KD                           | --                   |    13.25 USD | dyskonto -60.9% | cap 2886.1M | SMI 28.37 / EMA 28.48 | strefa Bullish      | EPS None | QR 0.88
+  PODD   | PODD                         | --                   |    148.4 USD | dyskonto -58.2% | cap 10292.4M | SMI -12.85 / EMA -10.32 | strefa Bearish      | EPS None | QR 2.15
+  IPGP   | IPGP                         | --                   |    75.94 USD | dyskonto -51.3% | cap 3230.3M | SMI -74.77 / EMA -72.64 | strefa OVERSOLD     | EPS None | QR 4.74
+  STNE   | STNE                         | --                   |    10.22 USD | dyskonto -48.8% | cap 2356.6M | SMI -45.8 / EMA -45.42 | strefa OVERSOLD     | EPS None | QR 1.37
+  MIR    | MIR                          | --                   |     15.5 USD | dyskonto -48.8% | cap 3770.8M | SMI -55.43 / EMA -55.07 | strefa OVERSOLD     | EPS None | QR 2.34
+  AEO    | AEO                          | --                   |    16.87 USD | dyskonto -40.7% | cap 2827.0M | SMI -29.52 / EMA -24.32 | strefa Bearish      | EPS None | QR 0.71
+  CRNC   | CRNC                         | --                   |     8.44 USD | dyskonto -38.6% | cap 381.7M | SMI -63.32 / EMA -62.56 | strefa OVERSOLD     | EPS None | QR 1.89
+  GME    | GME                          | --                   |     18.8 USD | dyskonto -33.1% | cap 8433.2M | SMI -79.13 / EMA -78.16 | strefa OVERSOLD     | EPS None | QR 14.68
+  UMC    | UMC                          | --                   |    19.86 USD | dyskonto -31.4% | cap 49807.1M | SMI -51.05 / EMA -47.81 | strefa OVERSOLD     | EPS None | QR 1.87
+  VIV    | VIV                          | --                   |    11.84 USD | dyskonto -31.4% | cap 18910.5M | SMI -71.02 / EMA -67.58 | strefa OVERSOLD     | EPS None | QR None
+  ECVT   | ECVT                         | --                   |    10.42 USD | dyskonto -30.9% | cap 1140.7M | SMI -72.04 / EMA -71.59 | strefa OVERSOLD     | EPS None | QR 2.42
+  TDC    | TDC                          | --                   |    28.85 USD | dyskonto -30.9% | cap 2683.1M | SMI -52.0 / EMA -50.5 | strefa OVERSOLD     | EPS None | QR 0.9
+  GGAL   | GGAL                         | --                   |    44.21 USD | dyskonto -29.3% | cap 7491.2M | SMI -64.82 / EMA -58.95 | strefa OVERSOLD     | EPS None | QR None
+  SNEX   | SNEX                         | --                   |    68.77 USD | dyskonto -27.4% | cap 8318.6M | SMI -65.77 / EMA -63.67 | strefa OVERSOLD     | EPS None | QR 1.53
+  LOMA   | LOMA                         | --                   |    10.09 USD | dyskonto -23.6% | cap 1176.9M | SMI -62.58 / EMA -62.57 | strefa OVERSOLD     | EPS None | QR 0.48
+  RDY    | RDY                          | --                   |    12.13 USD | dyskonto -22.6% | cap 10104.1M | SMI -60.36 / EMA -59.81 | strefa OVERSOLD     | EPS None | QR None
+  VC     | VC                           | --                   |   101.58 USD | dyskonto -21.3% | cap 2711.7M | SMI -31.56 / EMA -31.37 | strefa Bearish      | EPS None | QR 1.53
+  TEO    | TEO                          | --                   |    13.31 USD | dyskonto -18.5% | cap 5733.1M | SMI -34.36 / EMA -33.38 | strefa Bearish      | EPS None | QR 0.46
+  CRCT   | CRCT                         | --                   |     5.76 USD | dyskonto -16.8% | cap 1207.4M | SMI 49.3 / EMA 50.39 | strefa OVERBOUGHT   | EPS None | QR 1.8
+  LEA    | LEA                          | --                   |   127.85 USD | dyskonto -15.0% | cap 8511.6M | SMI -50.64 / EMA -46.76 | strefa OVERSOLD     | EPS None | QR 1.05
+  ELAN   | ELAN                         | --                   |    24.56 USD | dyskonto -12.2% | cap 12264.0M | SMI -8.99 / EMA -5.27 | strefa Bearish      | EPS None | QR 1.08
+  ARW    | ARW                          | --                   |   208.29 USD | dyskonto -12.2% | cap 10602.8M | SMI -12.12 / EMA -10.94 | strefa Bearish      | EPS None | QR 1.09
+  BCRX   | BCRX                         | --                   |     9.86 USD | dyskonto -12.1% | cap 2519.6M | SMI -14.13 / EMA -13.56 | strefa Bearish      | EPS None | QR 2.03
+  PG     | PG                           | --                   |   147.05 USD | dyskonto -12.1% | cap 341543.2M | SMI -22.25 / EMA -17.68 | strefa Bearish      | EPS None | QR 0.47
+  XIFR   | XIFR                         | --                   |     11.7 USD | dyskonto -11.7% | cap 1103.3M | SMI -30.62 / EMA -28.04 | strefa Bearish      | EPS None | QR 0.84
+  PBI    | PBI                          | --                   |     17.4 USD | dyskonto -8.8% | cap 2384.7M | SMI -20.09 / EMA -12.8 | strefa Bearish      | EPS None | QR 0.67
+  C      | C                            | --                   |   136.04 USD | dyskonto -8.1% | cap 228206.9M | SMI -14.0 / EMA -11.69 | strefa Bearish      | EPS None | QR None
+  WFC    | WFC                          | --                   |    89.94 USD | dyskonto -8.0% | cap 271978.5M | SMI 32.29 / EMA 35.34 | strefa Bullish      | EPS None | QR None
+  IBN    | IBN                          | --                   |    30.51 USD | dyskonto -7.6% | cap 109488.6M | SMI 65.59 / EMA 66.79 | strefa OVERBOUGHT   | EPS None | QR None
+  NUE    | NUE                          | --                   |   261.67 USD | dyskonto -6.6% | cap 59366.6M | SMI 29.66 / EMA 29.85 | strefa Bullish      | EPS None | QR 1.57
+  PLGO   | PLGO                         | --                   |    25.05 USD | dyskonto -4.9% | cap 2141.7M | SMI 37.15 / EMA 39.49 | strefa Bullish      | EPS None | QR None
+  LIVN   | LIVN                         | --                   |    81.89 USD | dyskonto -4.5% | cap 4498.5M | SMI 11.69 / EMA 14.97 | strefa Bullish      | EPS None | QR 1.16
+  PAG    | PAG                          | --                   |   219.06 USD | dyskonto -3.5% | cap 14384.1M | SMI 73.16 / EMA 73.56 | strefa OVERBOUGHT   | EPS None | QR 0.22
+  ASH    | ASH                          | --                   |    75.81 USD | dyskonto -3.1% | cap 3471.6M | SMI 59.96 / EMA 61.78 | strefa OVERBOUGHT   | EPS None | QR 1.51
+  CHEF   | CHEF                         | --                   |   114.15 USD | dyskonto -3.0% | cap 4657.1M | SMI 63.18 / EMA 63.75 | strefa OVERBOUGHT   | EPS None | QR 1.23
+  HESM   | HESM                         | --                   |    40.38 USD | dyskonto -2.7% | cap 5183.5M | SMI 48.44 / EMA 49.01 | strefa OVERBOUGHT   | EPS None | QR 0.85
+  RJF    | RJF                          | --                   |   178.79 USD | dyskonto -2.2% | cap 34392.3M | SMI 71.29 / EMA 72.3 | strefa OVERBOUGHT   | EPS None | QR None
 
 === OCZEKIWANA STRUKTURA RAPORTU ===
 1. Kontekst rynkowy — co ilość/rozkład sygnałów mówi o sentymencie
