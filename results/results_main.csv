@@ -1,6 +1,9 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-CRUS,CRUS,USA,--,--,113.68,USD,180.42,37.0,5697.4,705.5,-89.37,-89.95,OVERSOLD,Strong BUY,False,,False,,,1997.4,6.13,0.2571,0.063,0.5278,2026-09-03T14:57:15.607129,7
-EVGO,EVGO,USA,--,--,1.39,USD,5.18,73.1,438.7,3643.3,-68.88,-69.22,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-03T14:57:16.926707,5
-UWMC,UWMC,USA,--,--,1.44,USD,7.14,79.8,2309.9,21899.7,-38.46,-46.37,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-03T14:57:16.799534,4
-SLDP,SLDP,USA,--,--,2.53,USD,8.86,71.4,577.5,3960.7,-26.99,-41.92,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-03T14:57:16.925508,4
-LMND,LMND,USA,--,--,55.03,USD,99.9,44.9,4259.5,1420.6,-56.19,-54.37,OVERSOLD,Turning Up,False,,False,,,737.9,,,0.341,,2026-09-03T14:57:15.161683,2
+AGBK,AGBK,USA,--,--,6.68,USD,12.21,45.3,391.5,309.4,-49.17,-51.81,OVERSOLD,Strong BUY,False,,False,,,6466.2,,,0.511,,2026-09-04T14:44:23.229235,5
+MIR,MIR,USA,--,--,16.88,USD,30.28,44.3,4105.3,3998.1,-47.43,-52.12,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-04T14:44:39.899415,5
+URG,URG,USA,--,--,1.39,USD,2.35,40.9,553.0,9207.3,-25.26,-39.35,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-04T14:44:39.903340,4
+SLDP,SLDP,USA,--,--,2.47,USD,8.86,72.1,564.7,3897.4,-30.03,-43.44,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-04T14:44:39.927995,4
+SUPV,SUPV,USA,--,--,8.72,USD,13.55,35.6,819.6,626.6,-56.18,-55.27,OVERSOLD,Turning Up,False,,False,,,1135129.2,,,0.19,,2026-09-04T14:44:37.544449,2
+ASLE,ASLE,USA,--,--,5.66,USD,8.91,36.5,270.4,442.5,-71.6,-68.47,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-04T14:44:39.922068,2
+HUT,HUT,USA,--,--,90.12,USD,140.8,36.0,11108.8,4560.1,-65.73,-61.7,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-04T14:44:39.933731,2
+BDN,BDN,USA,--,--,3.13,USD,4.63,32.4,539.0,1968.3,-11.05,-6.81,Bearish,Turning Up,False,,False,,,,,,,,2026-09-04T14:44:39.905281,1
