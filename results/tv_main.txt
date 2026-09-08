@@ -1,18 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-07 16:17 UTC
-### Liczba tickerow: 11
+### Wygenerowano: 2026-09-08 14:56 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-FAC  ### Strong BUY | -79.4% | --
-TTD  ### Strong BUY | -74.4% | --
-RBLX  ### Strong BUY | -69.5% | --
-LMB  ### Strong BUY | -56.6% | --
-AGBK  ### Strong BUY | -44.7% | --
-### ── Turning Up (6) ──
-CMTG  ### Turning Up | -59.4% | --
-KEEL  ### Turning Up | -52.9% | --
-PHAT  ### Turning Up | -48.1% | --
-CLSK  ### Turning Up | -46.3% | --
-ON  ### Turning Up | -44.9% | --
-SUPV  ### Turning Up | -35.1% | --
+### ── Strong BUY (3) ──
+NXT  ### Strong BUY | -46.4% | Technology
+AGBK  ### Strong BUY | -44.5% | Financial Services
+HUT  ### Strong BUY | -32.4% | --
+### ── Turning Up (3) ──
+RKT  ### Turning Up | -43.1% | Financial Services
+KLRA  ### Turning Up | -41.9% | --
+FLEX  ### Turning Up | -32.1% | --
