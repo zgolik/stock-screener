@@ -1,7 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-NXT,Nextpower Inc.,USA,United States,Technology,87.36,USD,163.13,46.4,13255.8,2992.4,-75.24,-76.31,OVERSOLD,Strong BUY,False,,False,,3.87,3559.4,2.22,0.3154,0.063,0.3259,2026-09-08T14:55:57.057014,8
-AGBK,AGI Inc,USA,Brazil,Financial Services,6.78,USD,12.21,44.5,397.4,303.3,-23.44,-36.86,Bearish,Strong BUY,False,,False,,2.72,6466.2,,,0.511,,2026-09-08T14:55:55.568140,5
-HUT,HUT,USA,--,--,95.24,USD,140.8,32.4,11739.2,4591.1,-49.19,-54.62,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-08T14:56:13.320827,5
-KLRA,KLRA,USA,--,--,16.39,USD,28.23,41.9,2124.9,769.7,-75.72,-74.13,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-08T14:56:13.120883,2
-FLEX,FLEX,USA,--,--,113.36,USD,166.86,32.1,41875.5,5774.1,-55.93,-52.46,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-08T14:56:13.157813,2
-RKT,"Rocket Companies, Inc.",USA,United States,Financial Services,13.86,USD,24.36,43.1,39260.7,29613.9,-22.89,-22.27,Bearish,Turning Up,False,,False,,,6257.0,,,0.68,,2026-09-08T14:56:12.246378,1
+INDP,INDP,USA,--,--,2.37,USD,8.57,72.3,315.8,621.6,-62.4,-70.58,OVERSOLD,Strong BUY,False,,True,,,0.0,1.51,,0.0,,2026-09-09T14:58:55.020650,7
+SUPV,SUPV,USA,--,--,8.57,USD,13.55,36.7,805.9,630.5,-47.04,-51.09,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.597219,5
+WULF,WULF,USA,--,--,17.38,USD,29.84,41.8,8670.1,32994.1,-68.99,-71.27,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.631727,5
+CIFR,CIFR,USA,--,--,17.4,USD,30.14,42.3,7219.5,29767.0,-65.05,-65.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.654770,5
+STAA,STAA,USA,--,--,23.69,USD,35.87,34.0,1187.9,873.7,-52.14,-51.84,OVERSOLD,Turning Up,True,"div_bull (cena -5.4%, SMI +2.3)",False,,,,,,,,2026-09-09T14:59:11.770318,4
+TAC,TAC,USA,--,--,12.3,USD,17.88,31.2,3890.5,1792.7,-70.4,-66.86,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-09T14:59:11.582692,2
