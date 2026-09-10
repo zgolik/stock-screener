@@ -1,13 +1,11 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-09 14:59 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-09-10 14:52 UTC
+### Liczba tickerow: 4
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-INDP  ### Strong BUY | -72.3% | --
-CIFR  ### Strong BUY | -42.3% | --
-WULF  ### Strong BUY | -41.8% | --
-SUPV  ### Strong BUY | -36.7% | --
+### ── Strong BUY (2) ──
+CAMT  ### Strong BUY | -33.4% | Technology
+DOCN  ### Strong BUY | -30.2% | --
 ### ── Turning Up (2) ──
-STAA  ### Turning Up | -34.0% | --
-TAC  ### Turning Up | -31.2% | --
+AIP  ### Turning Up | -55.0% | --
+BBAR  ### Turning Up | -31.3% | Financial Services

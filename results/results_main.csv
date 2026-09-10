@@ -1,7 +1,5 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-INDP,INDP,USA,--,--,2.37,USD,8.57,72.3,315.8,621.6,-62.4,-70.58,OVERSOLD,Strong BUY,False,,True,,,0.0,1.51,,0.0,,2026-09-09T14:58:55.020650,7
-SUPV,SUPV,USA,--,--,8.57,USD,13.55,36.7,805.9,630.5,-47.04,-51.09,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.597219,5
-WULF,WULF,USA,--,--,17.38,USD,29.84,41.8,8670.1,32994.1,-68.99,-71.27,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.631727,5
-CIFR,CIFR,USA,--,--,17.4,USD,30.14,42.3,7219.5,29767.0,-65.05,-65.91,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-09T14:59:11.654770,5
-STAA,STAA,USA,--,--,23.69,USD,35.87,34.0,1187.9,873.7,-52.14,-51.84,OVERSOLD,Turning Up,True,"div_bull (cena -5.4%, SMI +2.3)",False,,,,,,,,2026-09-09T14:59:11.770318,4
-TAC,TAC,USA,--,--,12.3,USD,17.88,31.2,3890.5,1792.7,-70.4,-66.86,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-09T14:59:11.582692,2
+CAMT,Camtek Ltd.,USA,Israel,Technology,143.88,USD,215.99,33.4,6714.6,492.0,-42.06,-43.5,OVERSOLD,Strong BUY,False,,False,,0.74,496.1,,,,0.5046,2026-09-10T14:52:05.834574,6
+DOCN,DOCN,USA,--,--,130.93,USD,187.5,30.2,15394.7,3222.0,-50.5,-56.58,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-10T14:52:05.851674,5
+BBAR,Banco BBVA Argentina S.A.,USA,Argentina,Financial Services,15.43,USD,22.47,31.3,3151.4,713.5,-73.09,-67.97,OVERSOLD,Turning Up,False,,False,,1.1,3054315.4,,,0.435,,2026-09-10T14:51:55.423710,3
+AIP,AIP,USA,--,--,22.6,USD,50.26,55.0,1110.8,834.3,-87.03,-84.98,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-10T14:52:06.122163,2
