@@ -1,9 +1,16 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-11 14:51 UTC
-### Liczba tickerow: 2
+### Wygenerowano: 2026-09-14 16:46 UTC
+### Liczba tickerow: 9
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (1) ──
-TSSI  ### Strong BUY | -58.3% | Technology
-### ── Turning Up (1) ──
-HLIT  ### Turning Up | -31.7% | --
+### ── Strong BUY (2) ──
+OFRM  ### Strong BUY | -37.7% | --
+AKAM  ### Strong BUY | -35.1% | Technology
+### ── Turning Up (7) ──
+QFIN  ### Turning Up | -74.0% | Financial Services
+BOT  ### Turning Up | -55.1% | Financial Services
+NXT  ### Turning Up | -49.3% | Technology
+AMSF  ### Turning Up | -44.8% | Financial Services
+WIT  ### Turning Up | -43.3% | --
+COCO  ### Turning Up | -35.6% | Consumer Defensive
+CVLT  ### Turning Up | -30.1% | --
