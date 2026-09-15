@@ -1,10 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-AKAM,"Akamai Technologies, Inc.",USA,United States,Technology,107.43,USD,165.45,35.1,15438.8,3547.9,-63.81,-64.71,OVERSOLD,Strong BUY,False,,False,,2.76,4208.2,,,,0.5895,2026-09-14T16:46:40.999273,6
-COCO,"The Vita Coco Company, Inc.",USA,United States,Consumer Defensive,55.25,USD,85.83,35.6,3197.0,1150.4,-81.04,-80.24,OVERSOLD,Turning Up,False,,False,,1.81,609.8,2.66,0.4282,0.045,0.365,2026-09-14T16:46:27.703239,5
-NXT,Nextpower Inc.,USA,United States,Technology,82.71,USD,163.13,49.3,12550.3,2953.5,-78.94,-78.65,OVERSOLD,Turning Up,False,,False,,3.87,3559.4,2.22,0.3154,0.063,0.3259,2026-09-14T16:46:28.678521,5
-OFRM,OFRM,USA,--,--,16.82,USD,27.0,37.7,706.3,500.0,-38.96,-39.26,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-14T16:46:41.816753,4
-QFIN,"Qfin Holdings, Inc.",USA,China,Financial Services,8.49,USD,32.69,74.0,1032.8,1858.6,-82.85,-80.43,OVERSOLD,Turning Up,False,,False,,4.37,16081.8,,,,,2026-09-14T16:46:40.995122,3
-AMSF,"AMERISAFE, Inc.",USA,United States,Financial Services,24.82,USD,45.0,44.8,460.1,332.8,-87.76,-85.94,OVERSOLD,Turning Up,False,,False,,2.48,317.3,,,,,2026-09-14T16:46:41.017865,3
-BOT,"RoboStrategy, Inc.",USA,United States,Financial Services,26.48,USD,59.0,55.1,644.8,507.3,-60.99,-59.92,OVERSOLD,Turning Up,False,,False,,,,,,0.0,,2026-09-14T16:46:25.321440,2
-WIT,WIT,USA,--,--,1.75,USD,3.09,43.3,17320.7,10395.4,-63.36,-61.27,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-09-14T16:46:42.027426,2
-CVLT,CVLT,USA,--,--,138.48,USD,198.18,30.1,5739.2,688.6,8.84,11.31,Bullish,Turning Up,False,,False,,,,,,,,2026-09-14T16:46:42.026754,0
+INDP,INDP,USA,--,--,3.58,USD,8.57,58.3,476.3,688.3,-11.88,-39.56,Bearish,Strong BUY,False,,False,,,0.0,1.51,,0.0,,2026-09-15T15:26:36.512319,5
+BLLN,BLLN,USA,--,--,103.76,USD,150.44,31.0,4896.4,718.3,-60.26,-56.86,OVERSOLD,Turning Up,False,,False,,,305.1,11.32,0.1735,0.227,0.6832,2026-09-15T15:26:29.546195,4
+OPTU,OPTU,USA,--,--,0.99,USD,2.79,64.4,379.1,6800.9,-33.74,-43.09,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-15T15:26:46.804934,4
+DOCS,DOCS,USA,--,--,26.36,USD,76.51,65.5,4699.5,4616.8,-37.81,-37.11,Bearish,Turning Up,False,,False,,,644.9,6.09,0.2249,0.011,0.8909,2026-09-15T15:26:31.450876,3
+TNGX,TNGX,USA,--,--,23.81,USD,34.39,30.8,4014.6,3040.9,-64.67,-61.05,OVERSOLD,Turning Up,False,,False,,,62.4,,,,,2026-09-15T15:26:46.610009,2
+MNDY,MNDY,USA,--,--,96.16,USD,220.8,56.4,4065.1,1371.9,45.8,46.31,OVERBOUGHT,Turning Up,False,,False,,,1232.0,2.5,,0.135,0.892,2026-09-15T15:26:43.483643,1
