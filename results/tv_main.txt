@@ -1,13 +1,14 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-15 15:26 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-09-16 15:19 UTC
+### Liczba tickerow: 7
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (2) ──
-OPTU  ### Strong BUY | -64.4% | --
-INDP  ### Strong BUY | -58.3% | --
+### ── Strong BUY (3) ──
+SOC  ### Strong BUY | -80.9% | --
+INDP  ### Strong BUY | -63.5% | --
+FLEX  ### Strong BUY | -33.3% | --
 ### ── Turning Up (4) ──
-DOCS  ### Turning Up | -65.5% | --
-MNDY  ### Turning Up | -56.4% | --
-BLLN  ### Turning Up | -31.0% | --
-TNGX  ### Turning Up | -30.8% | --
+SRAD  ### Turning Up | -57.6% | --
+AMSF  ### Turning Up | -44.7% | --
+NXDR  ### Turning Up | -34.4% | --
+BLLN  ### Turning Up | -30.3% | --
