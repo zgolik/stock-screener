@@ -1,8 +1,6 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-INDP,INDP,USA,--,--,3.12,USD,8.57,63.5,416.4,713.3,-21.83,-44.54,Bearish,Strong BUY,False,,False,,,0.0,1.51,,0.0,,2026-09-16T15:19:36.680936,5
-FLEX,FLEX,USA,--,--,111.35,USD,166.86,33.3,41133.0,5584.2,-49.41,-50.33,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-16T15:19:46.578312,5
-BLLN,BLLN,USA,--,--,104.86,USD,150.44,30.3,4948.0,712.3,-59.77,-56.61,OVERSOLD,Turning Up,False,,False,,,305.1,11.32,0.1735,0.227,0.6832,2026-09-16T15:19:39.146225,4
-SOC,SOC,USA,--,--,4.76,USD,24.96,80.9,912.3,11519.0,-35.08,-44.42,Bearish,Strong BUY,False,,False,,,,,,,,2026-09-16T15:19:46.556023,4
-AMSF,AMSF,USA,--,--,24.86,USD,45.0,44.7,460.9,340.2,-87.96,-86.04,OVERSOLD,Turning Up,False,,False,,,317.3,,,0.0,,2026-09-16T15:19:41.996573,2
-NXDR,NXDR,USA,--,--,2.44,USD,3.72,34.4,943.9,2406.4,-23.17,-16.2,Bearish,Turning Up,False,,False,,,257.6,,,,0.8409,2026-09-16T15:19:46.434743,1
-SRAD,SRAD,USA,--,--,13.23,USD,31.18,57.6,3915.4,2310.8,-37.2,-36.77,Bearish,Turning Up,False,,False,,,,,,,,2026-09-16T15:19:46.520585,1
+INOD,Innodata Inc.,USA,United States,Technology,56.39,USD,125.14,54.9,1938.8,1212.8,-78.43,-77.21,OVERSOLD,Turning Up,False,,False,,1.31,251.7,2.68,0.8645,0.041,0.3953,2026-09-17T15:30:51.396590,5
+AIAI,AIAI,USA,--,--,3.92,USD,19.57,79.9,277.4,539.4,-85.41,-85.49,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-17T15:30:53.817898,5
+EXTR,"Extreme Networks, Inc.",USA,United States,Technology,22.85,USD,33.73,32.3,2981.7,1800.7,-80.12,-75.41,OVERSOLD,Turning Up,False,,False,,0.31,1283.6,,,,0.6148,2026-09-17T15:30:53.677923,3
+BRUN,BRUN,USA,--,--,16.91,USD,42.0,59.7,1343.7,2014.3,-73.9,-72.59,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-09-17T15:30:54.035684,3
+BOT,"RoboStrategy, Inc.",USA,United States,Financial Services,27.42,USD,59.0,53.5,667.7,481.2,-58.92,-58.89,OVERSOLD,Turning Up,False,,False,,,,,,0.0,,2026-09-17T15:30:49.044061,2
