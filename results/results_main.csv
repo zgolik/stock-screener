@@ -1,6 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-INOD,Innodata Inc.,USA,United States,Technology,56.39,USD,125.14,54.9,1938.8,1212.8,-78.43,-77.21,OVERSOLD,Turning Up,False,,False,,1.31,251.7,2.68,0.8645,0.041,0.3953,2026-09-17T15:30:51.396590,5
-AIAI,AIAI,USA,--,--,3.92,USD,19.57,79.9,277.4,539.4,-85.41,-85.49,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-09-17T15:30:53.817898,5
-EXTR,"Extreme Networks, Inc.",USA,United States,Technology,22.85,USD,33.73,32.3,2981.7,1800.7,-80.12,-75.41,OVERSOLD,Turning Up,False,,False,,0.31,1283.6,,,,0.6148,2026-09-17T15:30:53.677923,3
-BRUN,BRUN,USA,--,--,16.91,USD,42.0,59.7,1343.7,2014.3,-73.9,-72.59,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-09-17T15:30:54.035684,3
-BOT,"RoboStrategy, Inc.",USA,United States,Financial Services,27.42,USD,59.0,53.5,667.7,481.2,-58.92,-58.89,OVERSOLD,Turning Up,False,,False,,,,,,0.0,,2026-09-17T15:30:49.044061,2
+COCO,"The Vita Coco Company, Inc.",USA,--,--,56.4,USD,85.83,34.3,3263.8,1221.8,-79.25,-79.35,OVERSOLD,Strong BUY,False,,True,,,609.8,2.66,0.4282,0.045,0.365,2026-09-18T14:49:11.389311,8
+RMBS,"Rambus, Inc.",USA,United States,Technology,86.13,USD,174.1,50.5,9341.8,2747.7,-74.63,-75.07,OVERSOLD,Strong BUY,False,,False,,2.18,707.6,7.84,0.1735,0.018,0.7959,2026-09-18T14:49:35.571784,8
+HDB,HDFC Bank Limited,USA,India,Financial Services,23.08,USD,37.45,38.4,118604.9,9334.2,-55.08,-56.63,OVERSOLD,Strong BUY,False,,False,,1.43,1925667.8,,,0.813,,2026-09-18T14:49:12.253500,6
+NXT,Nextpower Inc.,USA,United States,Technology,80.89,USD,163.13,50.4,12272.6,2961.4,-78.8,-78.58,OVERSOLD,Turning Up,False,,False,,3.87,3559.4,2.22,0.3154,0.063,0.3259,2026-09-18T14:49:27.393309,5
+BOT,"RoboStrategy, Inc.",USA,United States,Financial Services,28.16,USD,59.0,52.3,685.7,478.5,-56.59,-57.73,OVERSOLD,Strong BUY,False,,False,,,,,,0.0,,2026-09-18T14:49:28.693565,5
+BMI,BMI,USA,--,--,132.65,USD,204.0,35.0,3845.1,435.0,-33.93,-29.5,Bearish,Turning Up,False,,False,,,916.7,2.36,0.2307,0.0,0.4168,2026-09-18T14:49:08.904353,3
