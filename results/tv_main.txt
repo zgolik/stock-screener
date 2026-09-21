@@ -1,13 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-18 14:49 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-09-21 16:50 UTC
+### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (4) ──
-BOT  ### Strong BUY | -52.3% | Financial Services
-RMBS  ### Strong BUY | -50.5% | Technology
-HDB  ### Strong BUY | -38.4% | Financial Services
-COCO  ### Strong BUY | -34.3% | --
-### ── Turning Up (2) ──
-NXT  ### Turning Up | -50.4% | Technology
-BMI  ### Turning Up | -35.0% | --
+EVGO  ### Strong BUY | -71.1% | --
+INOD  ### Strong BUY | -53.1% | Technology
+INIO  ### Strong BUY | -51.4% | Industrials
+ULS  ### Strong BUY | -38.2% | Industrials
+### ── Turning Up (4) ──
+ONON  ### Turning Up | -46.0% | Consumer Cyclical
+AMSF  ### Turning Up | -44.4% | Financial Services
+YOU  ### Turning Up | -43.4% | Technology
+BMI  ### Turning Up | -35.6% | Technology
