@@ -1,15 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-21 16:50 UTC
+### Wygenerowano: 2026-09-22 15:22 UTC
 ### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-EVGO  ### Strong BUY | -71.1% | --
-INOD  ### Strong BUY | -53.1% | Technology
-INIO  ### Strong BUY | -51.4% | Industrials
-ULS  ### Strong BUY | -38.2% | Industrials
-### ── Turning Up (4) ──
-ONON  ### Turning Up | -46.0% | Consumer Cyclical
-AMSF  ### Turning Up | -44.4% | Financial Services
-YOU  ### Turning Up | -43.4% | Technology
-BMI  ### Turning Up | -35.6% | Technology
+### ── Strong BUY (5) ──
+LWLG  ### Strong BUY | -70.6% | --
+ECX  ### Strong BUY | -59.6% | --
+SPIR  ### Strong BUY | -53.0% | --
+INOD  ### Strong BUY | -48.7% | --
+MXL  ### Strong BUY | -33.9% | --
+### ── Turning Up (3) ──
+OPEN  ### Turning Up | -71.4% | --
+MAZE  ### Turning Up | -48.9% | --
+PLAB  ### Turning Up | -46.6% | --
