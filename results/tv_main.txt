@@ -1,16 +1,18 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-24 15:42 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-09-25 15:43 UTC
+### Liczba tickerow: 11
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-AOSL  ### Strong BUY | -51.1% | --
-INOD  ### Strong BUY | -43.3% | --
-ONON  ### Strong BUY | -41.5% | --
-CYH  ### Strong BUY | -33.5% | --
+### ── Strong BUY (6) ──
+SIGA  ### Strong BUY | -64.6% | --
+QNC  ### Strong BUY | -57.8% | --
+NXT  ### Strong BUY | -50.5% | --
+PLAB  ### Strong BUY | -46.2% | --
+INOD  ### Strong BUY | -44.6% | --
+COCO  ### Strong BUY | -31.7% | --
 ### ── Turning Up (5) ──
-LU  ### Turning Up | -69.6% | --
-DOCS  ### Turning Up | -65.5% | --
-PLAB  ### Turning Up | -47.4% | --
-ULS  ### Turning Up | -39.1% | --
-BIRK  ### Turning Up | -38.2% | --
+LU  ### Turning Up | -72.2% | --
+DOCS  ### Turning Up | -65.4% | --
+MPT  ### Turning Up | -44.3% | --
+YOU  ### Turning Up | -43.4% | --
+ULS  ### Turning Up | -38.9% | --
