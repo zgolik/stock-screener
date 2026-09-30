@@ -1,14 +1,16 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-09-29 16:45 UTC
-### Liczba tickerow: 7
+### Wygenerowano: 2026-09-30 16:42 UTC
+### Liczba tickerow: 9
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (5) ──
-WOLF  ### Strong BUY | -65.5% | --
-WING  ### Strong BUY | -65.4% | --
-BOT  ### Strong BUY | -54.6% | --
-RMBS  ### Strong BUY | -41.4% | --
-YOU  ### Strong BUY | -40.5% | --
-### ── Turning Up (2) ──
-SFIX  ### Turning Up | -57.3% | --
-GOLF  ### Turning Up | -30.1% | --
+WING  ### Strong BUY | -64.8% | --
+INOD  ### Strong BUY | -47.3% | --
+LEN  ### Strong BUY | -39.0% | --
+ULS  ### Strong BUY | -38.9% | --
+ACMR  ### Strong BUY | -37.1% | --
+### ── Turning Up (4) ──
+STRO  ### Turning Up | -62.9% | --
+HE  ### Turning Up | -48.1% | --
+PTON  ### Turning Up | -45.3% | --
+ANNX  ### Turning Up | -41.2% | --
