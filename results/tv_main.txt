@@ -1,16 +1,7 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-01 17:16 UTC
-### Liczba tickerow: 9
+### Wygenerowano: 2026-10-02 16:30 UTC
+### Liczba tickerow: 1
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (3) ──
-ICHR  ### Strong BUY | -44.5% | --
-RMBS  ### Strong BUY | -38.8% | --
-ULS  ### Strong BUY | -37.7% | --
-### ── Turning Up (6) ──
-WVE  ### Turning Up | -81.8% | --
-WING  ### Turning Up | -65.9% | --
-MNSO  ### Turning Up | -60.6% | --
-ENPH  ### Turning Up | -55.6% | --
-NKE  ### Turning Up | -53.2% | --
-PTON  ### Turning Up | -45.6% | --
+### ── Strong BUY (1) ──
+WING  ### Strong BUY | -64.9% | Consumer Cyclical

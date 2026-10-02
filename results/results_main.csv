@@ -1,10 +1,2 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-ULS,ULS,USA,--,--,66.98,USD,107.54,37.7,13523.1,907.0,-86.05,-88.03,OVERSOLD,Strong BUY,False,,False,,,3053.0,1.32,0.2191,0.541,0.4946,2026-10-01T17:16:03.457882,7
-RMBS,RMBS,USA,--,--,106.58,USD,174.1,38.8,11559.8,2577.7,-12.19,-36.35,Bearish,Strong BUY,False,,False,,,707.6,7.84,0.1735,0.018,0.7959,2026-10-01T17:16:04.640470,6
-ICHR,ICHR,USA,--,--,63.02,USD,113.58,44.5,2360.4,881.0,-66.27,-70.93,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-01T17:16:21.338452,5
-PTON,PTON,USA,--,--,5.01,USD,9.2,45.6,2196.6,8560.0,-74.56,-71.93,OVERSOLD,Turning Up,False,,False,,,2446.0,2.58,0.6574,,0.526,2026-10-01T17:16:06.468529,4
-NKE,NKE,USA,--,--,36.01,USD,76.97,53.2,53428.2,27262.3,-85.29,-82.35,OVERSOLD,Turning Up,False,,False,,,46398.0,1.36,0.1654,0.742,0.4291,2026-10-01T17:16:13.701153,4
-WING,WING,USA,--,--,103.18,USD,302.8,65.9,2810.9,1288.4,-79.64,-79.17,OVERSOLD,Turning Up,False,,False,,,696.9,3.26,0.3291,,0.4868,2026-10-01T17:16:18.554265,4
-WVE,WVE,USA,--,--,3.95,USD,21.73,81.8,778.3,3050.8,-86.11,-84.84,OVERSOLD,Turning Up,False,,False,,,42.7,6.47,,0.034,,2026-10-01T17:16:14.939151,3
-ENPH,ENPH,USA,--,--,32.72,USD,73.74,55.6,4323.6,4534.2,-76.99,-76.53,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-01T17:16:21.359199,2
-MNSO,MNSO,USA,--,--,9.1,USD,23.1,60.6,2669.9,820.5,-86.22,-83.96,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-01T17:16:21.385742,2
+WING,Wingstop Inc.,USA,United States,Consumer Cyclical,106.3,USD,302.8,64.9,2895.9,1272.8,-76.86,-77.78,OVERSOLD,Strong BUY,False,,False,,4.23,696.9,3.26,0.3291,,0.4868,2026-10-02T16:30:33.192240,8
