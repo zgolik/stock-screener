@@ -1,7 +1,26 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-02 16:30 UTC
-### Liczba tickerow: 1
+### Wygenerowano: 2026-10-05 19:33 UTC
+### Liczba tickerow: 19
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (1) ──
-WING  ### Strong BUY | -64.9% | Consumer Cyclical
+### ── Strong BUY (7) ──
+AMOD  ### Strong BUY | -92.8% | --
+RTO  ### Strong BUY | -42.1% | --
+ALTO  ### Strong BUY | -37.8% | --
+PAX  ### Strong BUY | -37.3% | --
+MRCY  ### Strong BUY | -35.2% | --
+LPX  ### Strong BUY | -34.0% | --
+CRUS  ### Strong BUY | -32.6% | --
+### ── Turning Up (12) ──
+RZLT  ### Turning Up | -61.3% | --
+DUOL  ### Turning Up | -58.4% | --
+SVC  ### Turning Up | -51.7% | --
+BXMT  ### Turning Up | -46.8% | --
+SUPV  ### Turning Up | -45.6% | --
+YELP  ### Turning Up | -45.5% | --
+PTON  ### Turning Up | -43.0% | --
+EDIT  ### Turning Up | -39.1% | --
+GGAL  ### Turning Up | -38.9% | --
+MATW  ### Turning Up | -37.6% | --
+UPBD  ### Turning Up | -34.3% | --
+ESTA  ### Turning Up | -32.1% | --

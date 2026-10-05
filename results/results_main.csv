@@ -1,2 +1,20 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-WING,Wingstop Inc.,USA,United States,Consumer Cyclical,106.3,USD,302.8,64.9,2895.9,1272.8,-76.86,-77.78,OVERSOLD,Strong BUY,False,,False,,4.23,696.9,3.26,0.3291,,0.4868,2026-10-02T16:30:33.192240,8
+AMOD,AMOD,USA,--,--,3.73,USD,52.0,92.8,211.2,3413.8,-21.4,-44.17,Bearish,Strong BUY,True,"div_bull (cena -56.3%, SMI +7.4)",True,,,,,,,,2026-10-05T19:33:19.452582,7
+PAX,PAX,USA,--,--,11.16,USD,17.8,37.3,1801.2,1057.5,-37.03,-41.79,Bearish,Strong BUY,True,"div_bull (cena -6.1%, SMI +21.6)",False,,,,,,,,2026-10-05T19:33:20.829686,6
+ALTO,ALTO,USA,--,--,3.8,USD,6.11,37.8,294.8,1784.1,-82.72,-83.8,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-05T19:33:16.943877,5
+MRCY,MRCY,USA,--,--,83.18,USD,128.45,35.2,5062.6,694.4,-74.52,-74.93,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-05T19:33:19.462616,5
+LPX,LPX,USA,--,--,66.24,USD,100.34,34.0,4631.4,1154.5,-64.91,-66.4,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-05T19:33:19.489042,5
+RTO,RTO,USA,--,--,20.07,USD,34.67,42.1,10100.2,1635.8,-90.58,-90.94,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-05T19:33:20.817642,5
+PTON,PTON,USA,--,--,5.02,USD,8.8,43.0,2203.1,8555.2,-74.71,-73.94,OVERSOLD,Turning Up,False,,False,,,2446.0,2.58,0.6574,,0.526,2026-10-05T19:32:58.133696,4
+CRUS,CRUS,USA,--,--,121.66,USD,180.42,32.6,6097.2,796.4,-27.58,-40.68,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-05T19:33:20.800388,4
+GGAL,GGAL,USA,--,--,38.17,USD,62.52,38.9,6468.9,876.6,-78.2,-77.01,OVERSOLD,Turning Up,False,,False,,,8537670.3,,,0.377,,2026-10-05T19:32:58.925720,2
+DUOL,DUOL,USA,--,--,146.73,USD,353.0,58.4,6836.6,1169.7,21.13,23.92,Bullish,Turning Up,False,,False,,,1037.6,2.61,0.335,0.07,0.7223,2026-10-05T19:33:02.669796,2
+SUPV,SUPV,USA,--,--,7.38,USD,13.55,45.6,693.1,545.0,-71.53,-68.31,OVERSOLD,Turning Up,False,,False,,,1135129.2,,,0.19,,2026-10-05T19:33:14.886864,2
+BXMT,BXMT,USA,--,--,11.0,USD,20.67,46.8,1854.0,2343.0,-92.24,-90.89,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:16.942111,2
+MATW,MATW,USA,--,--,19.31,USD,30.93,37.6,602.7,749.4,-87.34,-86.68,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:16.968291,2
+EDIT,EDIT,USA,--,--,2.77,USD,4.54,39.1,424.6,2472.6,-53.61,-50.53,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:18.270276,2
+ESTA,ESTA,USA,--,--,66.25,USD,97.59,32.1,1974.4,436.8,-82.12,-78.53,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:19.268846,2
+RZLT,RZLT,USA,--,--,4.43,USD,11.46,61.3,429.0,1435.5,-52.92,-52.89,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:19.452142,2
+UPBD,UPBD,USA,--,--,15.74,USD,23.98,34.3,917.9,953.8,-79.51,-76.07,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:19.459056,2
+SVC,SVC,USA,--,--,6.39,USD,13.25,51.7,828.2,1659.8,-84.31,-81.49,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:19.495076,2
+YELP,YELP,USA,--,--,18.81,USD,34.49,45.5,1020.4,1183.0,-82.69,-81.13,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-05T19:33:20.799081,2
