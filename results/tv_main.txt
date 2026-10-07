@@ -1,16 +1,16 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-06 17:07 UTC
+### Wygenerowano: 2026-10-07 17:43 UTC
 ### Liczba tickerow: 9
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (3) ──
-MNKD  ### Strong BUY | -41.7% | --
-BBAR  ### Strong BUY | -39.1% | --
-DECK  ### Strong BUY | -33.2% | --
-### ── Turning Up (6) ──
-LTBR  ### Turning Up | -78.0% | --
-CSIQ  ### Turning Up | -66.4% | --
-SGML  ### Turning Up | -60.7% | --
-LRN  ### Turning Up | -49.0% | --
-SUPV  ### Turning Up | -44.4% | --
-PTON  ### Turning Up | -40.0% | --
+### ── Strong BUY (2) ──
+ALHC  ### Strong BUY | -65.4% | --
+SOLS  ### Strong BUY | -33.3% | --
+### ── Turning Up (7) ──
+KLC  ### Turning Up | -69.6% | --
+BCYC  ### Turning Up | -59.2% | --
+FDXF  ### Turning Up | -43.9% | --
+CLBT  ### Turning Up | -43.3% | --
+GGAL  ### Turning Up | -40.1% | --
+TRTX  ### Turning Up | -36.6% | --
+AAP  ### Turning Up | -36.3% | --
