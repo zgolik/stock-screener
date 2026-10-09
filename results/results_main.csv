@@ -1,11 +1,8 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-AMSF,AMSF,USA,--,--,24.52,USD,42.22,41.9,454.5,432.2,-86.32,-88.57,OVERSOLD,Strong BUY,False,,False,,,317.3,,,0.0,,2026-10-08T17:46:50.772638,5
-PRG,PRG,USA,--,--,30.75,USD,47.73,35.6,1224.8,579.6,-85.09,-80.17,OVERSOLD,Turning Up,False,,False,,,2409.2,4.26,0.2473,0.807,,2026-10-08T17:46:56.954370,4
-KLAR,KLAR,USA,--,--,13.19,USD,44.75,70.5,5001.1,5784.4,-86.63,-83.67,OVERSOLD,Turning Up,False,,False,,,3510.0,1.09,1.0502,0.569,0.5433,2026-10-08T17:46:58.029951,4
-STM,STM,USA,--,--,52.57,USD,81.42,35.4,47086.9,9561.2,-35.23,-47.8,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-08T17:47:10.961183,4
-SHLS,SHLS,USA,--,--,8.14,USD,13.18,38.3,1369.1,4945.1,-38.16,-50.07,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-08T17:47:11.587375,4
-NRDS,NRDS,USA,--,--,9.58,USD,16.24,41.0,612.4,690.8,-16.24,-12.56,Bearish,Turning Up,False,,False,,,836.6,3.45,0.1595,0.04,0.9239,2026-10-08T17:46:51.536482,3
-CHKP,CHKP,USA,--,--,134.53,USD,210.66,36.1,13735.6,1134.4,4.92,7.09,Bullish,Turning Up,False,,False,,,2725.4,2.05,0.2042,0.684,0.8672,2026-10-08T17:46:56.488475,2
-WB,WB,USA,--,--,6.41,USD,12.77,49.8,1573.5,1006.2,-91.27,-89.03,OVERSOLD,Turning Up,False,,False,,,1757.2,,,,0.7599,2026-10-08T17:47:10.668697,2
-SEZL,SEZL,USA,--,--,115.89,USD,195.71,40.8,3902.6,618.9,-82.52,-81.3,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-08T17:47:10.955282,2
-TRUP,TRUP,USA,--,--,25.58,USD,46.98,45.6,1115.8,468.9,-49.7,-41.53,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-08T17:47:11.023760,2
+DECK,Deckers Outdoor Corporation,USA,United States,Consumer Cyclical,83.21,USD,122.29,32.0,11332.4,2801.9,-79.79,-82.7,OVERSOLD,Strong BUY,False,,False,,7.07,5472.3,2.94,0.9986,0.15,0.577,2026-10-09T17:27:42.535945,8
+ERIC,Ericsson,USA,Sweden,Technology,9.55,USD,13.77,30.6,31070.6,10830.2,-37.9,-39.26,Bearish,Strong BUY,False,,False,,0.79,236681.0,1.08,0.1832,0.368,0.476,2026-10-09T17:27:59.676136,7
+RTO,Rentokil Initial plc,USA,United Kingdom,Industrials,20.11,USD,34.67,42.0,10120.3,1685.7,-90.31,-90.8,OVERSOLD,Strong BUY,False,,True,,0.63,6908.0,,,,0.8312,2026-10-09T17:28:04.729942,7
+UPWK,Upwork Inc.,USA,United States,Communication Services,8.64,USD,22.84,62.2,1079.2,3208.4,-47.77,-42.36,OVERSOLD,Turning Up,False,,False,,0.77,787.8,1.46,0.2744,0.589,0.7782,2026-10-09T17:27:53.955640,5
+PTON,"Peloton Interactive, Inc.",USA,United States,Consumer Cyclical,5.01,USD,8.19,38.9,2196.6,8496.7,-74.58,-73.88,OVERSOLD,Turning Up,False,,False,,0.14,2446.0,2.58,0.6574,,0.526,2026-10-09T17:28:03.293280,5
+IVR,INVESCO MORTGAGE CAPITAL INC,USA,United States,Real Estate,5.68,USD,9.5,40.2,619.7,2988.8,-88.13,-85.49,OVERSOLD,Turning Up,False,,False,,1.55,119.8,,,0.0,,2026-10-09T17:27:44.195716,3
+MAX,MAX,USA,--,--,10.02,USD,14.7,31.9,530.6,878.8,-70.74,-61.67,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-10-09T17:28:05.243642,3
