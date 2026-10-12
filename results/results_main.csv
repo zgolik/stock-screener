@@ -1,8 +1,7 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-DECK,Deckers Outdoor Corporation,USA,United States,Consumer Cyclical,83.21,USD,122.29,32.0,11332.4,2801.9,-79.79,-82.7,OVERSOLD,Strong BUY,False,,False,,7.07,5472.3,2.94,0.9986,0.15,0.577,2026-10-09T17:27:42.535945,8
-ERIC,Ericsson,USA,Sweden,Technology,9.55,USD,13.77,30.6,31070.6,10830.2,-37.9,-39.26,Bearish,Strong BUY,False,,False,,0.79,236681.0,1.08,0.1832,0.368,0.476,2026-10-09T17:27:59.676136,7
-RTO,Rentokil Initial plc,USA,United Kingdom,Industrials,20.11,USD,34.67,42.0,10120.3,1685.7,-90.31,-90.8,OVERSOLD,Strong BUY,False,,True,,0.63,6908.0,,,,0.8312,2026-10-09T17:28:04.729942,7
-UPWK,Upwork Inc.,USA,United States,Communication Services,8.64,USD,22.84,62.2,1079.2,3208.4,-47.77,-42.36,OVERSOLD,Turning Up,False,,False,,0.77,787.8,1.46,0.2744,0.589,0.7782,2026-10-09T17:27:53.955640,5
-PTON,"Peloton Interactive, Inc.",USA,United States,Consumer Cyclical,5.01,USD,8.19,38.9,2196.6,8496.7,-74.58,-73.88,OVERSOLD,Turning Up,False,,False,,0.14,2446.0,2.58,0.6574,,0.526,2026-10-09T17:28:03.293280,5
-IVR,INVESCO MORTGAGE CAPITAL INC,USA,United States,Real Estate,5.68,USD,9.5,40.2,619.7,2988.8,-88.13,-85.49,OVERSOLD,Turning Up,False,,False,,1.55,119.8,,,0.0,,2026-10-09T17:27:44.195716,3
-MAX,MAX,USA,--,--,10.02,USD,14.7,31.9,530.6,878.8,-70.74,-61.67,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-10-09T17:28:05.243642,3
+UPWK,UPWK,USA,--,--,8.61,USD,22.84,62.3,1075.4,3185.9,-41.15,-41.82,OVERSOLD,Strong BUY,False,,False,,,787.8,1.46,0.2744,0.589,0.7782,2026-10-12T20:11:21.738566,7
+LRN,LRN,USA,--,--,84.46,USD,155.06,45.5,3510.1,843.7,-19.93,-35.82,Bearish,Strong BUY,False,,False,,,2518.1,5.81,0.2484,0.334,0.3775,2026-10-12T20:11:16.766101,6
+BBAR,BBAR,USA,--,--,12.73,USD,22.47,43.3,2599.9,645.1,-86.16,-86.45,OVERSOLD,Strong BUY,False,,False,,,3054315.4,,,0.435,,2026-10-12T20:11:15.235571,5
+GOF,GOF,USA,--,--,8.93,USD,15.01,40.5,1893.5,2609.4,-63.66,-65.67,OVERSOLD,Strong BUY,False,,False,,,221.4,,,0.256,,2026-10-12T20:11:23.027463,5
+STAA,STAA,USA,--,--,22.01,USD,35.87,38.6,1103.7,993.7,-35.65,-43.95,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-12T20:11:27.386101,4
+SUPV,SUPV,USA,--,--,7.08,USD,13.55,47.7,665.4,560.3,-76.04,-73.33,OVERSOLD,Turning Up,False,,False,,,1135129.2,,,0.19,,2026-10-12T20:11:16.759136,2

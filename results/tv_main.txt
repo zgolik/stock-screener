@@ -1,14 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-09 17:28 UTC
-### Liczba tickerow: 7
+### Wygenerowano: 2026-10-12 20:11 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (3) ──
-RTO  ### Strong BUY | -42.0% | Industrials
-DECK  ### Strong BUY | -32.0% | Consumer Cyclical
-ERIC  ### Strong BUY | -30.6% | Technology
-### ── Turning Up (4) ──
-UPWK  ### Turning Up | -62.2% | Communication Services
-IVR  ### Turning Up | -40.2% | Real Estate
-PTON  ### Turning Up | -38.9% | Consumer Cyclical
-MAX  ### Turning Up | -31.9% | --
+### ── Strong BUY (5) ──
+UPWK  ### Strong BUY | -62.3% | --
+LRN  ### Strong BUY | -45.5% | --
+BBAR  ### Strong BUY | -43.3% | --
+GOF  ### Strong BUY | -40.5% | --
+STAA  ### Strong BUY | -38.6% | --
+### ── Turning Up (1) ──
+SUPV  ### Turning Up | -47.7% | --
