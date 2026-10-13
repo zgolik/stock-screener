@@ -1,172 +1,173 @@
 ### TradingView Watchlist – Full Scan
-### Wygenerowano: 2026-10-12 20:11 UTC
-### Liczba tickerow: 164
+### Wygenerowano: 2026-10-13 17:58 UTC
+### Liczba tickerow: 165
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (82) ──
-ENHA  ### Strong BUY | -85.3% | --
-GOGO  ### Strong BUY | -75.4% | --
-LVWR  ### Strong BUY | -73.6% | --
-FVRR  ### Strong BUY | -63.9% | --
-UPWK  ### Strong BUY | -62.3% | --
-FICO  ### Strong BUY | -60.2% | --
-CLVT  ### Strong BUY | -58.4% | --
-RLMD  ### Strong BUY | -56.1% | --
-LMB  ### Strong BUY | -55.6% | --
-LZ  ### Strong BUY | -51.2% | --
-TRIP  ### Strong BUY | -51.1% | --
-LI  ### Strong BUY | -50.9% | --
-JBGS  ### Strong BUY | -49.3% | --
-SITE  ### Strong BUY | -47.7% | --
-LRN  ### Strong BUY | -45.5% | --
-KMPR  ### Strong BUY | -45.3% | --
-POWL  ### Strong BUY | -43.5% | --
-BBAR  ### Strong BUY | -43.3% | --
-GOF  ### Strong BUY | -40.5% | --
-FWRG  ### Strong BUY | -40.2% | --
-LII  ### Strong BUY | -39.3% | --
-SGRY  ### Strong BUY | -39.2% | --
-FN  ### Strong BUY | -39.0% | --
-STAA  ### Strong BUY | -38.6% | --
-HPP  ### Strong BUY | -37.5% | --
-LHX  ### Strong BUY | -37.2% | --
-ERAS  ### Strong BUY | -36.3% | --
-BMBL  ### Strong BUY | -36.2% | --
-PTLO  ### Strong BUY | -36.2% | --
-AAP  ### Strong BUY | -36.1% | --
-RLX  ### Strong BUY | -33.8% | --
-MIRM  ### Strong BUY | -33.8% | --
-CMP  ### Strong BUY | -33.7% | --
-TRN  ### Strong BUY | -32.2% | --
-IART  ### Strong BUY | -31.8% | --
-VIV  ### Strong BUY | -29.5% | --
-OTIS  ### Strong BUY | -29.4% | --
-UVV  ### Strong BUY | -29.4% | --
-MWA  ### Strong BUY | -29.4% | --
-CMI  ### Strong BUY | -28.4% | --
-AQN  ### Strong BUY | -28.3% | --
-VRSK  ### Strong BUY | -27.8% | --
-VCYT  ### Strong BUY | -27.7% | --
-VICI  ### Strong BUY | -27.3% | --
-HD  ### Strong BUY | -26.9% | --
-BKV  ### Strong BUY | -26.6% | --
-LSTR  ### Strong BUY | -26.1% | --
-ATEN  ### Strong BUY | -25.4% | --
-DIN  ### Strong BUY | -24.9% | --
-ATEX  ### Strong BUY | -24.8% | --
-AGO  ### Strong BUY | -24.7% | --
-LOMA  ### Strong BUY | -24.2% | --
-NYT  ### Strong BUY | -24.1% | --
-IIPR  ### Strong BUY | -21.6% | --
-CWST  ### Strong BUY | -21.1% | --
-IVT  ### Strong BUY | -19.4% | --
-PFGC  ### Strong BUY | -19.4% | --
-ADC  ### Strong BUY | -19.4% | --
-CPT  ### Strong BUY | -18.6% | --
-GRND  ### Strong BUY | -18.3% | --
-NTES  ### Strong BUY | -18.3% | --
-SKT  ### Strong BUY | -17.2% | --
-FRT  ### Strong BUY | -17.0% | --
-ACIW  ### Strong BUY | -16.4% | --
-PHK  ### Strong BUY | -16.3% | --
-ACHC  ### Strong BUY | -16.0% | --
-HLN  ### Strong BUY | -15.7% | --
-OPLN  ### Strong BUY | -15.2% | --
-VMRK  ### Strong BUY | -14.4% | --
-INVH  ### Strong BUY | -13.5% | --
-MNST  ### Strong BUY | -12.8% | --
-ETSY  ### Strong BUY | -12.6% | --
-CUBE  ### Strong BUY | -12.3% | --
-IDA  ### Strong BUY | -12.0% | --
-HST  ### Strong BUY | -11.6% | --
-WFF  ### Strong BUY | -11.1% | --
-PBI  ### Strong BUY | -11.1% | --
-L  ### Strong BUY | -10.9% | --
-HIG  ### Strong BUY | -10.8% | --
-DNP  ### Strong BUY | -10.5% | --
+### ── Strong BUY (69) ──
+RZLT  ### Strong BUY | -59.6% | --
+PLNT  ### Strong BUY | -58.8% | --
+BILI  ### Strong BUY | -58.7% | --
+RXT  ### Strong BUY | -57.6% | --
+LMB  ### Strong BUY | -56.0% | --
+AHCO  ### Strong BUY | -52.9% | --
+TRIP  ### Strong BUY | -51.2% | --
+PLTK  ### Strong BUY | -50.5% | --
+TU  ### Strong BUY | -48.0% | --
+KMPR  ### Strong BUY | -45.2% | --
+YELP  ### Strong BUY | -44.7% | --
+PTRN  ### Strong BUY | -42.5% | --
+BBAR  ### Strong BUY | -42.2% | --
+CRTO  ### Strong BUY | -40.5% | --
+TBLA  ### Strong BUY | -39.3% | --
+TDOC  ### Strong BUY | -38.9% | --
+HPP  ### Strong BUY | -38.1% | --
+VIPS  ### Strong BUY | -37.0% | --
+WOOF  ### Strong BUY | -36.8% | --
+BBWI  ### Strong BUY | -35.4% | --
+TTAN  ### Strong BUY | -35.1% | --
+ATMU  ### Strong BUY | -34.9% | --
+CRNC  ### Strong BUY | -33.1% | --
+CYH  ### Strong BUY | -32.7% | --
+CHDN  ### Strong BUY | -31.3% | --
+MCD  ### Strong BUY | -31.0% | --
+PTLO  ### Strong BUY | -30.6% | --
+DEI  ### Strong BUY | -30.0% | --
+RPC  ### Strong BUY | -29.8% | --
+TAP  ### Strong BUY | -29.7% | --
+UVV  ### Strong BUY | -29.2% | --
+VRSK  ### Strong BUY | -28.2% | --
+JBL  ### Strong BUY | -27.5% | --
+EXE  ### Strong BUY | -27.4% | --
+TXT  ### Strong BUY | -26.7% | --
+EPRT  ### Strong BUY | -26.1% | --
+LOMA  ### Strong BUY | -24.4% | --
+GLPI  ### Strong BUY | -23.4% | --
+KTB  ### Strong BUY | -23.0% | --
+CWST  ### Strong BUY | -21.3% | --
+GPRE  ### Strong BUY | -21.0% | --
+CVS  ### Strong BUY | -20.9% | --
+PFGC  ### Strong BUY | -19.8% | --
+MAA  ### Strong BUY | -19.4% | --
+NTES  ### Strong BUY | -18.9% | --
+VCEL  ### Strong BUY | -18.0% | --
+SIRI  ### Strong BUY | -18.0% | --
+WBI  ### Strong BUY | -17.3% | --
+BRX  ### Strong BUY | -17.1% | --
+RYZ  ### Strong BUY | -17.1% | --
+NOVT  ### Strong BUY | -17.0% | --
+PGNY  ### Strong BUY | -15.5% | --
+INN  ### Strong BUY | -13.2% | --
+LAMR  ### Strong BUY | -12.6% | --
+NOMD  ### Strong BUY | -12.3% | --
+CUBE  ### Strong BUY | -12.0% | --
+WKC  ### Strong BUY | -11.8% | --
+IDA  ### Strong BUY | -11.4% | --
+LNTH  ### Strong BUY | -10.6% | --
+AFL  ### Strong BUY | -10.6% | --
+DNP  ### Strong BUY | -10.6% | --
+HIG  ### Strong BUY | -10.3% | --
+FTS  ### Strong BUY | -9.4% | --
 SKWD  ### Strong BUY | -8.8% | --
-CHD  ### Strong BUY | -5.8% | --
-### ── BUY (22) ──
-BSY  ### BUY | -33.5% | --
-MH  ### BUY | -24.4% | --
-BRZE  ### BUY | -22.1% | --
-SR  ### BUY | -16.5% | --
-ZM  ### BUY | -14.6% | --
-RRC  ### BUY | -14.3% | --
-W  ### BUY | -11.5% | --
-COKE  ### BUY | -10.2% | --
-UGI  ### BUY | -8.8% | --
-CAH  ### BUY | -7.8% | --
-WOR  ### BUY | -7.3% | --
-CTAS  ### BUY | -6.4% | --
-PNTG  ### BUY | -5.2% | --
-HOG  ### BUY | -5.1% | --
-FAST  ### BUY | -2.7% | --
-EOG  ### BUY | -2.4% | --
-CBLL  ### BUY | -1.4% | --
-CVX  ### BUY | -1.3% | --
-MA  ### BUY | -1.0% | --
-BOX  ### BUY | -0.4% | --
-V  ### BUY | --0.6% | --
-TEN  ### BUY | --1.4% | --
-### ── Turning Up (60) ──
-SION  ### Turning Up | -91.5% | --
-ERII  ### Turning Up | -62.5% | --
-PAR  ### Turning Up | -60.9% | --
-INTU  ### Turning Up | -55.6% | --
-CHWY  ### Turning Up | -50.9% | --
-FIS  ### Turning Up | -50.3% | --
-SUPV  ### Turning Up | -47.7% | --
-SAH  ### Turning Up | -46.5% | --
-FSLR  ### Turning Up | -44.0% | --
-HNRG  ### Turning Up | -41.1% | --
-NVO  ### Turning Up | -39.9% | --
-WOOF  ### Turning Up | -39.8% | --
-SGI  ### Turning Up | -36.7% | --
-PPC  ### Turning Up | -35.8% | --
-BRO  ### Turning Up | -33.5% | --
+APD  ### Strong BUY | -8.5% | --
+MDLZ  ### Strong BUY | -7.6% | --
+CCEP  ### Strong BUY | -7.1% | --
+OGE  ### Strong BUY | -6.9% | --
+CB  ### Strong BUY | -5.0% | --
+### ── BUY (31) ──
+VERX  ### BUY | -51.8% | --
+EVH  ### BUY | -44.3% | --
+SHAK  ### BUY | -34.0% | --
+BSY  ### BUY | -33.3% | --
+BZ  ### BUY | -30.1% | --
+CEG  ### BUY | -28.1% | --
+ADSK  ### BUY | -27.7% | --
+IT  ### BUY | -23.8% | --
+LW  ### BUY | -22.8% | --
+GO  ### BUY | -22.2% | --
+BRZE  ### BUY | -21.8% | --
+CBOE  ### BUY | -20.3% | --
+CNX  ### BUY | -19.2% | --
+RELY  ### BUY | -15.0% | --
+GOOG  ### BUY | -13.4% | --
+RRC  ### BUY | -12.2% | --
+HAS  ### BUY | -10.9% | --
+RHP  ### BUY | -10.2% | --
+EDU  ### BUY | -9.5% | --
+UGI  ### BUY | -9.1% | --
+SIBN  ### BUY | -8.5% | --
+BAP  ### BUY | -8.2% | --
+RS  ### BUY | -6.7% | --
+PNTG  ### BUY | -5.4% | --
+DOCU  ### BUY | -3.6% | --
+OVV  ### BUY | -1.6% | --
+EOG  ### BUY | -1.0% | --
+MET  ### BUY | -0.4% | --
+RNR  ### BUY | --0.1% | --
+MPC  ### BUY | --0.8% | --
+APA  ### BUY | --0.9% | --
+### ── Turning Up (65) ──
+TTD  ### Turning Up | -77.7% | --
+VITL  ### Turning Up | -77.5% | --
+LFTO  ### Turning Up | -46.7% | --
+SUPV  ### Turning Up | -46.5% | --
+HLLY  ### Turning Up | -43.3% | --
+XPER  ### Turning Up | -42.1% | --
+GGAL  ### Turning Up | -40.7% | --
+HGV  ### Turning Up | -37.3% | --
+SGI  ### Turning Up | -36.2% | --
+PPC  ### Turning Up | -35.9% | --
+LYFT  ### Turning Up | -35.8% | --
+TUYA  ### Turning Up | -33.9% | --
+DOW  ### Turning Up | -33.6% | --
+BRO  ### Turning Up | -32.6% | --
 KLTR  ### Turning Up | -31.7% | --
-HSY  ### Turning Up | -31.6% | --
-TAP  ### Turning Up | -30.4% | --
-CHCT  ### Turning Up | -29.4% | --
-AGNC  ### Turning Up | -28.8% | --
-DLX  ### Turning Up | -28.6% | --
-CRC  ### Turning Up | -25.6% | --
-BXDC  ### Turning Up | -24.3% | --
-FA  ### Turning Up | -24.1% | --
-FRPT  ### Turning Up | -24.1% | --
-JD  ### Turning Up | -23.8% | --
-AJG  ### Turning Up | -23.2% | --
-GE  ### Turning Up | -20.6% | --
-NFG  ### Turning Up | -17.9% | --
-NP  ### Turning Up | -17.5% | --
-HIW  ### Turning Up | -16.8% | --
-SBUX  ### Turning Up | -16.5% | --
-GD  ### Turning Up | -16.2% | --
-FIZZ  ### Turning Up | -15.9% | --
-RF  ### Turning Up | -15.7% | --
-NVS  ### Turning Up | -15.6% | --
-OPRA  ### Turning Up | -15.3% | --
-CURB  ### Turning Up | -15.1% | --
-OZK  ### Turning Up | -15.1% | --
-WFC  ### Turning Up | -14.8% | --
-SYY  ### Turning Up | -14.3% | --
-MDT  ### Turning Up | -13.6% | --
-TFX  ### Turning Up | -13.3% | --
-FWONK  ### Turning Up | -12.6% | --
-HAS  ### Turning Up | -11.5% | --
-NSC  ### Turning Up | -10.9% | --
-UNP  ### Turning Up | -10.9% | --
-HELE  ### Turning Up | -10.9% | --
-FDS  ### Turning Up | -10.0% | --
-FANG  ### Turning Up | -10.0% | --
-FDUS  ### Turning Up | -9.3% | --
-OKE  ### Turning Up | -7.8% | --
-EG  ### Turning Up | -7.1% | --
-DK  ### Turning Up | -6.0% | --
-ANF  ### Turning Up | -5.9% | --
-KYN  ### Turning Up | -5.8% | --
-EPC  ### Turning Up | -5.4% | --
-KNTK  ### Turning Up | -4.3% | --
-ALRM  ### Turning Up | -3.8% | --
-NSIT  ### Turning Up | -1.4% | --
+IBM  ### Turning Up | -30.5% | --
+WSE  ### Turning Up | -30.1% | --
+BLMN  ### Turning Up | -28.3% | --
+SYK  ### Turning Up | -27.8% | --
+YSWY  ### Turning Up | -25.2% | --
+GMED  ### Turning Up | -25.0% | --
+CRC  ### Turning Up | -24.9% | --
+GEHC  ### Turning Up | -23.5% | --
+DEC  ### Turning Up | -21.6% | --
+GBCI  ### Turning Up | -21.4% | --
+STE  ### Turning Up | -19.3% | --
+EE  ### Turning Up | -19.3% | --
+LSE:LMP  ### Turning Up | -18.9% | --
+PERI  ### Turning Up | -18.8% | --
+AR  ### Turning Up | -18.4% | --
+OGS  ### Turning Up | -18.3% | --
+FERG  ### Turning Up | -18.2% | --
+DLTR  ### Turning Up | -17.6% | --
+DOC  ### Turning Up | -17.4% | --
+VTR  ### Turning Up | -17.4% | --
+CVSA  ### Turning Up | -17.0% | --
+SBUX  ### Turning Up | -17.0% | --
+ORLY  ### Turning Up | -16.9% | --
+HASI  ### Turning Up | -16.8% | --
+NP  ### Turning Up | -16.6% | --
+CUZ  ### Turning Up | -15.9% | --
+CME  ### Turning Up | -15.4% | --
+MCO  ### Turning Up | -14.8% | --
+ALL  ### Turning Up | -14.7% | --
+MRSH  ### Turning Up | -14.2% | --
+AXTA  ### Turning Up | -13.0% | --
+OPRA  ### Turning Up | -12.9% | --
+AIZ  ### Turning Up | -11.2% | --
+CSX  ### Turning Up | -11.2% | --
+MGA  ### Turning Up | -10.7% | --
+SDRL  ### Turning Up | -10.1% | --
+WELL  ### Turning Up | -9.9% | --
+FDUS  ### Turning Up | -9.8% | --
+GM  ### Turning Up | -8.2% | --
+ASH  ### Turning Up | -7.6% | --
+OKE  ### Turning Up | -7.3% | --
+BTE  ### Turning Up | -7.3% | --
+TALO  ### Turning Up | -6.5% | --
+SLDE  ### Turning Up | -5.7% | --
+CAKE  ### Turning Up | -5.7% | --
+BSM  ### Turning Up | -3.6% | --
+SFL  ### Turning Up | -2.8% | --
+KO  ### Turning Up | -2.6% | --
+EQNR  ### Turning Up | -1.8% | --
+ECPG  ### Turning Up | -1.4% | --

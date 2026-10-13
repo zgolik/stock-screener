@@ -1,13 +1,18 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-12 20:11 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-10-13 17:58 UTC
+### Liczba tickerow: 11
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (5) ──
-UPWK  ### Strong BUY | -62.3% | --
-LRN  ### Strong BUY | -45.5% | --
-BBAR  ### Strong BUY | -43.3% | --
-GOF  ### Strong BUY | -40.5% | --
-STAA  ### Strong BUY | -38.6% | --
-### ── Turning Up (1) ──
-SUPV  ### Turning Up | -47.7% | --
+YELP  ### Strong BUY | -44.7% | --
+BBAR  ### Strong BUY | -42.2% | --
+HPP  ### Strong BUY | -38.1% | --
+VIPS  ### Strong BUY | -37.0% | --
+PTLO  ### Strong BUY | -30.6% | --
+### ── Turning Up (6) ──
+TTD  ### Turning Up | -77.7% | --
+VITL  ### Turning Up | -77.5% | --
+SUPV  ### Turning Up | -46.5% | --
+HLLY  ### Turning Up | -43.3% | --
+GGAL  ### Turning Up | -40.7% | --
+WSE  ### Turning Up | -30.1% | --
