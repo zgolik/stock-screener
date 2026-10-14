@@ -1,12 +1,13 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-YELP,YELP,USA,--,--,19.07,USD,34.49,44.7,1034.5,1196.9,-77.84,-79.77,OVERSOLD,Strong BUY,False,,False,,,1465.0,2.99,0.2309,0.035,0.9027,2026-10-13T17:58:21.854932,7
-BBAR,BBAR,USA,--,--,12.99,USD,22.47,42.2,2654.1,632.8,-84.14,-85.44,OVERSOLD,Strong BUY,False,,False,,,3054315.4,,,0.435,,2026-10-13T17:58:22.747772,5
-VITL,VITL,USA,--,--,9.53,USD,42.42,77.5,409.1,1592.0,-67.15,-64.71,OVERSOLD,Turning Up,True,"div_bull (cena -7.0%, SMI +0.1)",False,,,,1.61,,0.152,,2026-10-13T17:58:31.015485,5
-HPP,HPP,USA,--,--,12.04,USD,19.46,38.1,653.4,687.8,-62.93,-66.21,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-13T17:58:31.189449,5
-VIPS,VIPS,USA,--,--,12.9,USD,20.49,37.0,6136.3,2628.6,-65.44,-67.18,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-13T17:58:31.492079,5
-TTD,TTD,USA,--,--,12.27,USD,55.11,77.7,5798.8,23414.1,-83.61,-82.52,OVERSOLD,Turning Up,False,,False,,,2896.3,1.61,0.1779,0.176,0.7863,2026-10-13T17:58:30.163942,4
-PTLO,PTLO,USA,--,--,4.64,USD,6.69,30.6,336.8,1382.6,-33.06,-47.96,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-13T17:58:31.451785,4
-WSE,WSE,USA,--,--,12.21,USD,17.47,30.1,12011.3,1403.8,-40.25,-38.67,OVERSOLD,Turning Up,False,,False,,,2699.7,1.07,,0.251,0.7317,2026-10-13T17:58:25.344001,3
-SUPV,SUPV,USA,--,--,7.25,USD,13.55,46.5,681.4,555.2,-72.89,-71.75,OVERSOLD,Turning Up,False,,False,,,1135129.2,,,0.19,,2026-10-13T17:58:10.829589,2
-GGAL,GGAL,USA,--,--,37.05,USD,62.52,40.7,6278.3,872.5,-80.9,-80.22,OVERSOLD,Turning Up,False,,False,,,8537670.3,,,0.377,,2026-10-13T17:58:27.086989,2
-HLLY,HLLY,USA,--,--,2.54,USD,4.48,43.3,307.9,1100.2,-54.96,-48.71,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-13T17:58:31.609221,2
+YELP,Yelp Inc.,USA,United States,Communication Services,19.08,USD,34.49,44.7,1035.3,1195.2,-77.67,-79.69,OVERSOLD,Strong BUY,False,,False,,2.08,1465.0,2.99,0.2309,0.035,0.9027,2026-10-14T15:45:11.513978,8
+MWA,MUELLER WATER PRODUCTS,USA,United States,Industrials,21.46,USD,31.0,30.8,3350.5,1244.7,-82.89,-83.12,OVERSOLD,Strong BUY,False,,False,,1.42,1429.7,2.41,0.1819,0.46,0.3614,2026-10-14T15:45:17.261900,8
+BRBR,"BellRing Brands, Inc.",USA,United States,Consumer Defensive,8.7,USD,35.67,75.6,1012.2,3698.5,-70.99,-74.83,OVERSOLD,Strong BUY,False,,False,,1.42,2316.6,1.18,0.456,,0.3326,2026-10-14T15:45:32.247414,8
+INFY,Infosys Limited,USA,India,Technology,11.44,USD,30.0,61.9,46356.2,19836.2,-34.22,-35.55,Bearish,Strong BUY,False,,False,,0.81,20158.0,1.98,0.3503,0.099,0.3016,2026-10-14T15:45:14.867459,7
+COCO,"The Vita Coco Company, Inc.",USA,United States,Consumer Defensive,57.98,USD,85.83,32.4,3355.0,1199.1,-39.9,-49.89,Bearish,Strong BUY,False,,False,,1.81,609.8,2.66,0.4282,0.045,0.365,2026-10-14T15:45:28.262861,7
+WING,Wingstop Inc.,USA,United States,Consumer Cyclical,121.32,USD,302.8,59.9,3305.1,1261.7,-27.42,-46.72,Bearish,Strong BUY,False,,False,,4.22,696.9,3.26,0.3291,,0.4868,2026-10-14T15:45:31.676853,7
+PDD,PDD Holdings Inc.,USA,Ireland,Consumer Cyclical,81.52,USD,139.41,41.5,116033.9,6373.8,-50.82,-53.19,OVERSOLD,Strong BUY,False,,False,,8.89,,,,,,2026-10-14T15:45:33.112887,6
+NUS,NUS,USA,--,--,5.05,USD,11.67,56.7,245.8,545.1,-30.48,-39.3,Bearish,Strong BUY,True,"div_bull (cena -2.1%, SMI +10.7)",False,,,,,,,,2026-10-14T15:45:35.857730,6
+PODD,Insulet Corporation,USA,United States,Healthcare,136.12,USD,354.88,61.6,9440.5,1677.8,-55.96,-53.37,OVERSOLD,Turning Up,False,,False,,5.34,2708.1,2.15,0.1922,0.626,0.7163,2026-10-14T15:45:21.713939,5
+RZLT,RZLT,USA,--,--,4.43,USD,11.46,61.3,428.5,1468.7,-31.27,-39.49,Bearish,Strong BUY,False,,False,,,0.0,,,,,2026-10-14T15:45:33.104876,4
+ALO.PA,ALO.PA,EU,--,--,16.15,EUR,30.23,46.6,7468.9,1235.3,-22.0,-30.14,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-14T15:45:35.859088,4
+ORC,"Orchid Island Capital, Inc.",USA,United States,Real Estate,5.07,USD,8.4,39.6,1001.8,5406.7,-75.02,-69.87,OVERSOLD,Turning Up,False,,False,,1.64,179.5,,,0.0,,2026-10-14T15:45:21.284415,3
