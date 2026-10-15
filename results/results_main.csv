@@ -1,13 +1,11 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-YELP,Yelp Inc.,USA,United States,Communication Services,19.08,USD,34.49,44.7,1035.3,1195.2,-77.67,-79.69,OVERSOLD,Strong BUY,False,,False,,2.08,1465.0,2.99,0.2309,0.035,0.9027,2026-10-14T15:45:11.513978,8
-MWA,MUELLER WATER PRODUCTS,USA,United States,Industrials,21.46,USD,31.0,30.8,3350.5,1244.7,-82.89,-83.12,OVERSOLD,Strong BUY,False,,False,,1.42,1429.7,2.41,0.1819,0.46,0.3614,2026-10-14T15:45:17.261900,8
-BRBR,"BellRing Brands, Inc.",USA,United States,Consumer Defensive,8.7,USD,35.67,75.6,1012.2,3698.5,-70.99,-74.83,OVERSOLD,Strong BUY,False,,False,,1.42,2316.6,1.18,0.456,,0.3326,2026-10-14T15:45:32.247414,8
-INFY,Infosys Limited,USA,India,Technology,11.44,USD,30.0,61.9,46356.2,19836.2,-34.22,-35.55,Bearish,Strong BUY,False,,False,,0.81,20158.0,1.98,0.3503,0.099,0.3016,2026-10-14T15:45:14.867459,7
-COCO,"The Vita Coco Company, Inc.",USA,United States,Consumer Defensive,57.98,USD,85.83,32.4,3355.0,1199.1,-39.9,-49.89,Bearish,Strong BUY,False,,False,,1.81,609.8,2.66,0.4282,0.045,0.365,2026-10-14T15:45:28.262861,7
-WING,Wingstop Inc.,USA,United States,Consumer Cyclical,121.32,USD,302.8,59.9,3305.1,1261.7,-27.42,-46.72,Bearish,Strong BUY,False,,False,,4.22,696.9,3.26,0.3291,,0.4868,2026-10-14T15:45:31.676853,7
-PDD,PDD Holdings Inc.,USA,Ireland,Consumer Cyclical,81.52,USD,139.41,41.5,116033.9,6373.8,-50.82,-53.19,OVERSOLD,Strong BUY,False,,False,,8.89,,,,,,2026-10-14T15:45:33.112887,6
-NUS,NUS,USA,--,--,5.05,USD,11.67,56.7,245.8,545.1,-30.48,-39.3,Bearish,Strong BUY,True,"div_bull (cena -2.1%, SMI +10.7)",False,,,,,,,,2026-10-14T15:45:35.857730,6
-PODD,Insulet Corporation,USA,United States,Healthcare,136.12,USD,354.88,61.6,9440.5,1677.8,-55.96,-53.37,OVERSOLD,Turning Up,False,,False,,5.34,2708.1,2.15,0.1922,0.626,0.7163,2026-10-14T15:45:21.713939,5
-RZLT,RZLT,USA,--,--,4.43,USD,11.46,61.3,428.5,1468.7,-31.27,-39.49,Bearish,Strong BUY,False,,False,,,0.0,,,,,2026-10-14T15:45:33.104876,4
-ALO.PA,ALO.PA,EU,--,--,16.15,EUR,30.23,46.6,7468.9,1235.3,-22.0,-30.14,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-14T15:45:35.859088,4
-ORC,"Orchid Island Capital, Inc.",USA,United States,Real Estate,5.07,USD,8.4,39.6,1001.8,5406.7,-75.02,-69.87,OVERSOLD,Turning Up,False,,False,,1.64,179.5,,,0.0,,2026-10-14T15:45:21.284415,3
+TTD,"The Trade Desk, Inc.",USA,United States,Communication Services,13.02,USD,55.11,76.4,6153.4,23531.8,-77.76,-79.6,OVERSOLD,Strong BUY,False,,False,,0.83,2896.3,1.61,0.1779,0.176,0.7863,2026-10-15T15:32:55.898183,8
+MWA,MUELLER WATER PRODUCTS,USA,United States,Industrials,21.67,USD,31.0,30.1,3384.0,1250.1,-81.24,-82.3,OVERSOLD,Strong BUY,False,,False,,1.42,1429.7,2.41,0.1819,0.46,0.3614,2026-10-15T15:33:04.196078,8
+INFY,INFY,USA,--,--,12.18,USD,30.0,59.4,49312.9,19687.5,-20.84,-28.86,Bearish,Strong BUY,False,,False,,,20158.0,1.98,0.3503,0.099,0.3016,2026-10-15T15:32:46.887692,6
+MRTN,MRTN,USA,--,--,12.81,USD,18.48,30.7,1046.1,693.8,-81.4,-82.14,OVERSOLD,Strong BUY,False,,False,,,,1.86,,0.0,,2026-10-15T15:33:20.458288,6
+IVR,IVR,USA,--,--,5.72,USD,9.5,39.7,624.0,3047.0,-82.5,-83.8,OVERSOLD,Strong BUY,False,,False,,,119.8,,,0.0,,2026-10-15T15:32:42.366828,5
+LULU,lululemon athletica inc.,USA,Canada,Consumer Cyclical,99.52,USD,225.98,56.0,11527.0,4724.3,-70.49,-69.1,OVERSOLD,Turning Up,False,,False,,12.12,11102.6,1.36,0.3274,0.362,0.566,2026-10-15T15:33:14.076212,5
+SAH,SAH,USA,--,--,64.97,USD,113.67,42.8,2054.0,305.2,-79.62,-82.07,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-15T15:33:16.852525,5
+PHAT,PHAT,USA,--,--,7.56,USD,18.31,58.7,611.6,1367.8,-71.5,-75.86,OVERSOLD,Strong BUY,False,,False,,,,,,,,2026-10-15T15:33:20.657312,5
+BL,BL,USA,--,--,30.01,USD,59.57,49.6,1744.3,985.3,-30.85,-33.51,Bearish,Strong BUY,False,,False,,,,,,,,2026-10-15T15:33:16.932673,4
+ORC,ORC,USA,--,--,5.24,USD,8.4,37.6,1035.4,5397.4,-69.24,-66.98,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-15T15:33:16.918785,2
