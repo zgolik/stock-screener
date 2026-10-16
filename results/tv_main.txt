@@ -1,17 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-15 15:33 UTC
-### Liczba tickerow: 10
+### Wygenerowano: 2026-10-16 15:12 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-TTD  ### Strong BUY | -76.4% | Communication Services
-INFY  ### Strong BUY | -59.4% | --
-PHAT  ### Strong BUY | -58.7% | --
-BL  ### Strong BUY | -49.6% | --
-SAH  ### Strong BUY | -42.8% | --
-IVR  ### Strong BUY | -39.7% | --
-MRTN  ### Strong BUY | -30.7% | --
-MWA  ### Strong BUY | -30.1% | Industrials
-### ── Turning Up (2) ──
-LULU  ### Turning Up | -56.0% | Consumer Cyclical
-ORC  ### Turning Up | -37.6% | --
+### ── Strong BUY (5) ──
+TTD  ### Strong BUY | -76.5% | --
+PODD  ### Strong BUY | -59.9% | --
+INFY  ### Strong BUY | -59.7% | --
+LRN  ### Strong BUY | -46.3% | --
+TBLA  ### Strong BUY | -38.6% | --
+### ── Turning Up (7) ──
+MNDY  ### Turning Up | -57.6% | --
+ROCK  ### Turning Up | -48.1% | --
+SUPV  ### Turning Up | -46.8% | --
+MZTI  ### Turning Up | -41.2% | --
+STN  ### Turning Up | -38.8% | --
+HAPN  ### Turning Up | -32.5% | --
+ARR  ### Turning Up | -30.5% | --
