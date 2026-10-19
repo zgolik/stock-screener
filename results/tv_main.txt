@@ -1,19 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-16 15:12 UTC
+### Wygenerowano: 2026-10-19 17:23 UTC
 ### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-TTD  ### Strong BUY | -76.5% | --
-PODD  ### Strong BUY | -59.9% | --
-INFY  ### Strong BUY | -59.7% | --
-LRN  ### Strong BUY | -46.3% | --
-TBLA  ### Strong BUY | -38.6% | --
-### ── Turning Up (7) ──
-MNDY  ### Turning Up | -57.6% | --
-ROCK  ### Turning Up | -48.1% | --
-SUPV  ### Turning Up | -46.8% | --
-MZTI  ### Turning Up | -41.2% | --
-STN  ### Turning Up | -38.8% | --
-HAPN  ### Turning Up | -32.5% | --
-ARR  ### Turning Up | -30.5% | --
+### ── Strong BUY (7) ──
+QDEL  ### Strong BUY | -63.3% | --
+LULU  ### Strong BUY | -57.2% | --
+NKE  ### Strong BUY | -47.4% | --
+ANNX  ### Strong BUY | -46.2% | --
+PRG  ### Strong BUY | -36.0% | --
+ULS  ### Strong BUY | -32.3% | --
+ANAB  ### Strong BUY | -31.7% | --
+### ── Turning Up (5) ──
+QNT  ### Turning Up | -58.8% | --
+CORZ  ### Turning Up | -54.4% | --
+MIAX  ### Turning Up | -45.2% | --
+VRDN  ### Turning Up | -40.3% | --
+PTCT  ### Turning Up | -32.8% | --
