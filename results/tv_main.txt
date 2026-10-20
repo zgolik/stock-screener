@@ -1,19 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-19 17:23 UTC
+### Wygenerowano: 2026-10-20 15:37 UTC
 ### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (7) ──
-QDEL  ### Strong BUY | -63.3% | --
-LULU  ### Strong BUY | -57.2% | --
-NKE  ### Strong BUY | -47.4% | --
-ANNX  ### Strong BUY | -46.2% | --
-PRG  ### Strong BUY | -36.0% | --
-ULS  ### Strong BUY | -32.3% | --
-ANAB  ### Strong BUY | -31.7% | --
-### ── Turning Up (5) ──
-QNT  ### Turning Up | -58.8% | --
-CORZ  ### Turning Up | -54.4% | --
-MIAX  ### Turning Up | -45.2% | --
-VRDN  ### Turning Up | -40.3% | --
-PTCT  ### Turning Up | -32.8% | --
+### ── Strong BUY (8) ──
+HTZ  ### Strong BUY | -74.9% | --
+UPWK  ### Strong BUY | -61.8% | --
+TPB  ### Strong BUY | -55.4% | --
+SUPV  ### Strong BUY | -46.4% | --
+ESRT  ### Strong BUY | -41.2% | --
+XFOR  ### Strong BUY | -38.8% | --
+SEZL  ### Strong BUY | -31.9% | --
+AROC  ### Strong BUY | -30.2% | --
+### ── Turning Up (4) ──
+IHRT  ### Turning Up | -75.6% | --
+KYTX  ### Turning Up | -55.7% | --
+COUR  ### Turning Up | -52.9% | --
+IVR  ### Turning Up | -43.4% | --
