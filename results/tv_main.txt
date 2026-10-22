@@ -1,35 +1,17 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-21 15:52 UTC
-### Liczba tickerow: 28
+### Wygenerowano: 2026-10-22 15:52 UTC
+### Liczba tickerow: 10
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (18) ──
-GOGO  ### Strong BUY | -79.1% | --
-TTD  ### Strong BUY | -77.2% | --
-UPWK  ### Strong BUY | -61.4% | --
-PODD  ### Strong BUY | -60.3% | --
-LASR  ### Strong BUY | -58.1% | --
-TPB  ### Strong BUY | -56.4% | --
-OSG  ### Strong BUY | -54.2% | --
-PNR  ### Strong BUY | -52.6% | --
-OXM  ### Strong BUY | -46.2% | --
-LMRI  ### Strong BUY | -43.7% | --
-GGAL  ### Strong BUY | -42.1% | --
-VRDN  ### Strong BUY | -33.2% | --
-FER  ### Strong BUY | -32.9% | --
-UFPI  ### Strong BUY | -32.8% | --
-KLTR  ### Strong BUY | -31.5% | --
-SVRA  ### Strong BUY | -31.3% | --
-SEZL  ### Strong BUY | -30.8% | --
-BLLN  ### Strong BUY | -30.1% | --
-### ── Turning Up (10) ──
-ABR  ### Turning Up | -75.9% | --
-FIG  ### Turning Up | -58.3% | --
-ARTV  ### Turning Up | -55.0% | --
-EVC  ### Turning Up | -54.2% | --
-AVTX  ### Turning Up | -47.5% | --
-MIAX  ### Turning Up | -41.6% | --
-CRMD  ### Turning Up | -39.9% | --
-TBBK  ### Turning Up | -38.2% | --
-IMVT  ### Turning Up | -37.3% | --
-ANAB  ### Turning Up | -34.6% | --
+### ── Strong BUY (6) ──
+DBVT  ### Strong BUY | -62.7% | --
+TSHA  ### Strong BUY | -45.0% | --
+PTON  ### Strong BUY | -32.0% | --
+PTCT  ### Strong BUY | -30.8% | --
+ULS  ### Strong BUY | -30.8% | --
+GIS  ### Strong BUY | -30.3% | --
+### ── Turning Up (4) ──
+BUR  ### Turning Up | -70.9% | --
+TASK  ### Turning Up | -38.9% | --
+IMVT  ### Turning Up | -36.6% | --
+HLI  ### Turning Up | -35.2% | --
