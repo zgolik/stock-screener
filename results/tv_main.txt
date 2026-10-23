@@ -1,17 +1,13 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-22 15:52 UTC
-### Liczba tickerow: 10
+### Wygenerowano: 2026-10-23 15:37 UTC
+### Liczba tickerow: 6
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (6) ──
-DBVT  ### Strong BUY | -62.7% | --
-TSHA  ### Strong BUY | -45.0% | --
-PTON  ### Strong BUY | -32.0% | --
-PTCT  ### Strong BUY | -30.8% | --
-ULS  ### Strong BUY | -30.8% | --
-GIS  ### Strong BUY | -30.3% | --
-### ── Turning Up (4) ──
-BUR  ### Turning Up | -70.9% | --
-TASK  ### Turning Up | -38.9% | --
-IMVT  ### Turning Up | -36.6% | --
-HLI  ### Turning Up | -35.2% | --
+### ── Strong BUY (5) ──
+PODD  ### Strong BUY | -58.4% | Healthcare
+GLUE  ### Strong BUY | -58.4% | --
+LASR  ### Strong BUY | -58.3% | --
+SUPV  ### Strong BUY | -45.3% | --
+MIAX  ### Strong BUY | -40.4% | Financial Services
+### ── Turning Up (1) ──
+ITRI  ### Turning Up | -38.1% | Technology
