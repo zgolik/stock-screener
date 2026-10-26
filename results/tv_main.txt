@@ -1,13 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-23 15:37 UTC
-### Liczba tickerow: 6
+### Wygenerowano: 2026-10-26 17:10 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (5) ──
-PODD  ### Strong BUY | -58.4% | Healthcare
-GLUE  ### Strong BUY | -58.4% | --
-LASR  ### Strong BUY | -58.3% | --
-SUPV  ### Strong BUY | -45.3% | --
-MIAX  ### Strong BUY | -40.4% | Financial Services
-### ── Turning Up (1) ──
-ITRI  ### Turning Up | -38.1% | Technology
+### ── Strong BUY (8) ──
+WVE  ### Strong BUY | -85.3% | --
+KLC  ### Strong BUY | -71.4% | --
+MPT  ### Strong BUY | -57.2% | --
+THRM  ### Strong BUY | -40.1% | --
+SFM  ### Strong BUY | -38.6% | --
+CRMD  ### Strong BUY | -38.5% | --
+AMSF  ### Strong BUY | -37.5% | --
+CRF  ### Strong BUY | -31.9% | --
+### ── Turning Up (4) ──
+QFIN  ### Turning Up | -80.1% | --
+RCAT  ### Turning Up | -76.3% | --
+IMNM  ### Turning Up | -40.3% | --
+HLI  ### Turning Up | -35.5% | --
