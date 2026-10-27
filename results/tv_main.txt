@@ -1,19 +1,27 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-26 17:10 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-10-27 16:11 UTC
+### Liczba tickerow: 20
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-WVE  ### Strong BUY | -85.3% | --
-KLC  ### Strong BUY | -71.4% | --
-MPT  ### Strong BUY | -57.2% | --
-THRM  ### Strong BUY | -40.1% | --
-SFM  ### Strong BUY | -38.6% | --
-CRMD  ### Strong BUY | -38.5% | --
-AMSF  ### Strong BUY | -37.5% | --
-CRF  ### Strong BUY | -31.9% | --
-### ── Turning Up (4) ──
-QFIN  ### Turning Up | -80.1% | --
-RCAT  ### Turning Up | -76.3% | --
-IMNM  ### Turning Up | -40.3% | --
-HLI  ### Turning Up | -35.5% | --
+### ── Strong BUY (10) ──
+WVE  ### Strong BUY | -84.9% | --
+BUR  ### Strong BUY | -70.8% | --
+QTTB  ### Strong BUY | -63.2% | --
+SOFI  ### Strong BUY | -48.9% | --
+CRMD  ### Strong BUY | -38.4% | --
+SPHR  ### Strong BUY | -37.6% | --
+TBBK  ### Strong BUY | -36.9% | --
+ITRI  ### Strong BUY | -36.6% | --
+CPRT  ### Strong BUY | -35.0% | --
+YOU  ### Strong BUY | -34.0% | --
+### ── Turning Up (10) ──
+QFIN  ### Turning Up | -77.7% | --
+KLAR  ### Turning Up | -68.1% | --
+CLYM  ### Turning Up | -45.6% | --
+IMNM  ### Turning Up | -37.2% | --
+ADEA  ### Turning Up | -35.0% | --
+HAPN  ### Turning Up | -34.2% | --
+PTCT  ### Turning Up | -33.2% | --
+CRF  ### Turning Up | -32.3% | --
+NPKI  ### Turning Up | -31.9% | --
+PIPR  ### Turning Up | -31.1% | --
