@@ -1,27 +1,20 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-27 16:11 UTC
-### Liczba tickerow: 20
+### Wygenerowano: 2026-10-28 17:01 UTC
+### Liczba tickerow: 13
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (10) ──
-WVE  ### Strong BUY | -84.9% | --
-BUR  ### Strong BUY | -70.8% | --
-QTTB  ### Strong BUY | -63.2% | --
-SOFI  ### Strong BUY | -48.9% | --
-CRMD  ### Strong BUY | -38.4% | --
-SPHR  ### Strong BUY | -37.6% | --
-TBBK  ### Strong BUY | -36.9% | --
-ITRI  ### Strong BUY | -36.6% | --
-CPRT  ### Strong BUY | -35.0% | --
-YOU  ### Strong BUY | -34.0% | --
-### ── Turning Up (10) ──
-QFIN  ### Turning Up | -77.7% | --
-KLAR  ### Turning Up | -68.1% | --
-CLYM  ### Turning Up | -45.6% | --
-IMNM  ### Turning Up | -37.2% | --
-ADEA  ### Turning Up | -35.0% | --
-HAPN  ### Turning Up | -34.2% | --
-PTCT  ### Turning Up | -33.2% | --
-CRF  ### Turning Up | -32.3% | --
-NPKI  ### Turning Up | -31.9% | --
-PIPR  ### Turning Up | -31.1% | --
+### ── Strong BUY (8) ──
+BUR  ### Strong BUY | -69.8% | --
+FLUT  ### Strong BUY | -67.1% | --
+KLAR  ### Strong BUY | -66.4% | --
+QTTB  ### Strong BUY | -62.4% | --
+CRMD  ### Strong BUY | -38.1% | --
+ITRI  ### Strong BUY | -35.2% | --
+TDOC  ### Strong BUY | -32.9% | --
+PTCT  ### Strong BUY | -31.7% | --
+### ── Turning Up (5) ──
+EH  ### Turning Up | -81.1% | --
+XE  ### Turning Up | -69.3% | --
+MMYT  ### Turning Up | -50.9% | --
+ZURA  ### Turning Up | -43.9% | --
+CSQR  ### Turning Up | -34.6% | --
