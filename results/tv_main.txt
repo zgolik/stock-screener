@@ -1,20 +1,19 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-28 17:01 UTC
-### Liczba tickerow: 13
+### Wygenerowano: 2026-10-29 17:18 UTC
+### Liczba tickerow: 12
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
 ### ── Strong BUY (8) ──
-BUR  ### Strong BUY | -69.8% | --
-FLUT  ### Strong BUY | -67.1% | --
-KLAR  ### Strong BUY | -66.4% | --
-QTTB  ### Strong BUY | -62.4% | --
-CRMD  ### Strong BUY | -38.1% | --
-ITRI  ### Strong BUY | -35.2% | --
-TDOC  ### Strong BUY | -32.9% | --
-PTCT  ### Strong BUY | -31.7% | --
-### ── Turning Up (5) ──
-EH  ### Turning Up | -81.1% | --
-XE  ### Turning Up | -69.3% | --
-MMYT  ### Turning Up | -50.9% | --
-ZURA  ### Turning Up | -43.9% | --
-CSQR  ### Turning Up | -34.6% | --
+BIOA  ### Strong BUY | -76.8% | --
+BRBR  ### Strong BUY | -72.8% | --
+KLAR  ### Strong BUY | -64.6% | --
+STLA  ### Strong BUY | -61.6% | --
+SOFI  ### Strong BUY | -46.3% | --
+DMRA  ### Strong BUY | -42.0% | --
+CRMD  ### Strong BUY | -40.7% | --
+BOOT  ### Strong BUY | -37.9% | --
+### ── Turning Up (4) ──
+FRVO  ### Turning Up | -78.9% | --
+NAGE  ### Turning Up | -68.0% | --
+ARQQ  ### Turning Up | -61.0% | --
+ADEA  ### Turning Up | -34.8% | --
