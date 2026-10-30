@@ -1,19 +1,15 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-29 17:18 UTC
-### Liczba tickerow: 12
+### Wygenerowano: 2026-10-30 16:59 UTC
+### Liczba tickerow: 8
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (8) ──
-BIOA  ### Strong BUY | -76.8% | --
-BRBR  ### Strong BUY | -72.8% | --
-KLAR  ### Strong BUY | -64.6% | --
-STLA  ### Strong BUY | -61.6% | --
-SOFI  ### Strong BUY | -46.3% | --
-DMRA  ### Strong BUY | -42.0% | --
-CRMD  ### Strong BUY | -40.7% | --
-BOOT  ### Strong BUY | -37.9% | --
+### ── Strong BUY (4) ──
+VITL  ### Strong BUY | -77.5% | --
+QTTB  ### Strong BUY | -62.7% | --
+YOU  ### Strong BUY | -32.4% | --
+EDIT  ### Strong BUY | -30.8% | --
 ### ── Turning Up (4) ──
-FRVO  ### Turning Up | -78.9% | --
-NAGE  ### Turning Up | -68.0% | --
-ARQQ  ### Turning Up | -61.0% | --
-ADEA  ### Turning Up | -34.8% | --
+CLPT  ### Turning Up | -58.2% | --
+NN  ### Turning Up | -53.4% | --
+GSHD  ### Turning Up | -40.4% | --
+BXDC  ### Turning Up | -30.5% | --
