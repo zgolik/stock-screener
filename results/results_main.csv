@@ -1,9 +1,6 @@
 ticker,name,market,country,sector,price,currency,high_52w,discount_52w,market_cap_mln,volume_k,smi,smi_ema,zone,signal,divergence_bull,divergence_desc,vol_confirm,rs_12m,eps_ttm,sales_ttm_mln,quick_ratio,roic,debt_equity,gross_margin,scanned_at,tech_score
-QTTB,QTTB,USA,--,--,8.8,USD,23.57,62.7,262.0,711.3,-80.03,-82.27,OVERSOLD,Strong BUY,False,,False,,,53.7,4.85,7.9241,0.365,,2026-10-30T16:59:42.909211,7
-VITL,VITL,USA,--,--,8.7,USD,38.64,77.5,373.5,1621.0,-68.99,-69.31,OVERSOLD,Strong BUY,False,,False,,,759.4,1.61,0.1843,0.152,0.3762,2026-10-30T16:59:46.980102,7
-YOU,YOU,USA,--,--,46.71,USD,69.07,32.4,4807.0,1763.0,-20.91,-41.6,Bearish,Strong BUY,False,,False,,,900.8,1.01,0.3324,0.632,0.6442,2026-10-30T16:59:38.892452,6
-EDIT,EDIT,USA,--,--,2.72,USD,3.94,30.8,418.5,2632.0,-53.95,-55.52,OVERSOLD,Strong BUY,False,,False,,,40.5,3.54,,0.663,,2026-10-30T16:59:44.717220,6
-GSHD,GSHD,USA,--,--,47.58,USD,79.85,40.4,1132.5,425.2,-71.23,-67.46,OVERSOLD,Turning Up,False,,False,,,365.3,,0.1715,,,2026-10-30T16:59:43.232511,3
-NN,NN,USA,--,--,11.38,USD,24.42,53.4,1552.7,3060.5,-67.81,-64.98,OVERSOLD,Turning Up,False,,True,,,,,,,,2026-10-30T16:59:52.320193,3
-BXDC,BXDC,USA,--,--,15.91,USD,22.9,30.5,1600.5,1865.5,-84.89,-83.0,OVERSOLD,Turning Up,False,,False,,,,,,,,2026-10-30T16:59:48.220625,2
-CLPT,CLPT,USA,--,--,10.35,USD,24.75,58.2,331.6,675.2,-81.68,-78.26,OVERSOLD,Turning Up,False,,False,,,37.0,,,,0.6138,2026-10-30T16:59:52.039838,2
+NXT,NXT,USA,--,--,91.12,USD,163.13,44.1,13826.4,2278.8,-37.94,-52.02,Bearish,Strong BUY,True,"div_bull (cena -2.0%, SMI +12.5)",False,,,3559.4,2.22,0.3154,0.063,0.3259,2026-11-02T20:43:20.440870,8
+CCXI,CCXI,USA,--,--,9.07,USD,19.69,53.9,505.2,2930.3,-89.42,-89.47,OVERSOLD,Strong BUY,False,,False,,,,8.13,,0.0,,2026-11-02T20:43:22.292437,6
+GOF,GOF,USA,--,--,8.97,USD,13.62,34.2,1901.4,2661.3,-34.13,-47.81,Bearish,Strong BUY,False,,False,,,,,,,,2026-11-02T20:43:34.083864,4
+ECC,ECC,USA,--,--,2.68,USD,6.45,58.4,357.1,1097.1,-84.2,-80.57,OVERSOLD,Turning Up,False,,False,,,-126.0,,,0.368,,2026-11-02T20:43:25.741018,2
+TASK,TASK,USA,--,--,8.55,USD,13.73,37.7,783.9,487.2,53.14,55.1,OVERBOUGHT,Turning Up,False,,False,,,1183.5,3.12,0.1563,0.496,0.3778,2026-11-02T20:43:29.109760,2

@@ -1,15 +1,12 @@
 ### TradingView Watchlist – Screener główny
-### Wygenerowano: 2026-10-30 16:59 UTC
-### Liczba tickerow: 8
+### Wygenerowano: 2026-11-02 20:43 UTC
+### Liczba tickerow: 5
 ### Format: EXCHANGE:TICKER  |  sygnał  |  discount 52W  |  sektor
 ###
-### ── Strong BUY (4) ──
-VITL  ### Strong BUY | -77.5% | --
-QTTB  ### Strong BUY | -62.7% | --
-YOU  ### Strong BUY | -32.4% | --
-EDIT  ### Strong BUY | -30.8% | --
-### ── Turning Up (4) ──
-CLPT  ### Turning Up | -58.2% | --
-NN  ### Turning Up | -53.4% | --
-GSHD  ### Turning Up | -40.4% | --
-BXDC  ### Turning Up | -30.5% | --
+### ── Strong BUY (3) ──
+CCXI  ### Strong BUY | -53.9% | --
+NXT  ### Strong BUY | -44.1% | --
+GOF  ### Strong BUY | -34.2% | --
+### ── Turning Up (2) ──
+ECC  ### Turning Up | -58.4% | --
+TASK  ### Turning Up | -37.7% | --
